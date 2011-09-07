@@ -1,0 +1,1069 @@
+Script started on Wed Mar 05 09:19:10 2008
+sh-2.05$ emacs bank_queue.h[4Pmain.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cppbank_queue.hsh-2.05$ [K./main
+Sally
+Welcome to the ABC Bank Queue System. Please enter your name: Colby
+Would you like to make a Withdrawal or Deposit?: Deposit
+For what amount please?: 100.00
+TS: action[0] = D
+Here are the current processing lines:
+Line 1 (Express Line):
+Sally
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 0
+Line 1 (Express Line):
+Sally
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 1
+TS: counter1.q3_counter = 1
+Line 1 (Express Line):
+Sally
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 2
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 2
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 3
+TS: counter1.q3_counter = 3
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 4
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 4
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 5
+TS: counter1.q3_counter = 5
+LINE 2 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 5
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 5
+LINE 3 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 1
+TS: counter1.q3_counter = 0
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 1
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): no
+Liz, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): Yes
+Liz, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): no
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): no
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Liz
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 1
+Line 1 (Express Line):
+Liz
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 3
+TS: counter1.q3_counter = 2
+Line 1 (Express Line):
+Liz
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 3
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): n
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 3
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 5
+TS: counter1.q3_counter = 4
+LINE 2 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): n
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: n
+Would you like to make a Withdrawal or Deposit?: na
+For what amount please?: a 1
+TS: action[0] = n
+Sorry-- we did not recognize your command-- Deposit or Withdrawl, or exit?: d
+Here are the current processing lines:
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 4
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 3
+TS: counter1.q2_counter = 1
+TS: counter1.q3_counter = 5
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 4
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 6
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 5
+TS: counter1.q2_counter = 3
+TS: counter1.q3_counter = 7
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 6
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 8
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 7
+TS: counter1.q2_counter = 5
+TS: counter1.q3_counter = 9
+LINE 2 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+
+Line 3:
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+
+Line 2:
+
+Line 3:
+
+TS: counter1.q1_counter = 8
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 9
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+
+Line 3:
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: er xit
+sh-2.05$ exit
+exit
+
+script done on Wed Mar 05 09:21:46 2008
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 [7m9[m[40;1H[43;46H[7m40[m[41;1H[43;47H[7m1[m[A[1;42r[3;1H[21M[1;44r[2;1H[K[22;1H  string name = "";[K
+  bool dep_or_wit = false;[K
+  double amount = 0.0;[K
+  string stemp = "";[K
+[K
+  if(pos_empty_line.empty())[K
+    {[K
+      if(!line_from1.empty())[K
+        {[K
+          cout << line_from1.back() << ", a line has freed up. Would you like to move\n"[K
+               << "to the empty line? (\'y\' for yes or anything else for no): "[K
+            ;[K
+          cin >> stemp;[K
+          if(stemp[0] == 'y' || stemp[0] == 'Y')[K
+            {[K
+              line_from1.get_back(name, dep_or_wit, amount);[K
+              line_from1.pop_back();[K
+              pos_empty_line.push(name, dep_or_wit, amount);[K
+            }[K
+          else[K
+            {[K[43;47H[7m2--18%[m[22;1H[43;47H[7m3[m[23;1H[43;47H[7m4[m[24;1H[43;47H[7m5[m[25;1H[43;47H[7m6[m[26;1H[43;47H[7m7[m[27;1H[43;47H[7m8[m[28;1H[43;47H[7m9[m[29;1H[43;46H[7m50[m[30;1H[43;47H[7m1[m[31;1H[43;47H[7m2[m[32;1H[43;47H[7m3[m[33;1H[43;47H[7m4[m[34;1H[43;47H[7m5[m[35;1H[43;47H[7m6[m[36;1H[43;47H[7m7[m[37;1H[43;47H[7m8[m[38;1H[43;47H[7m9[m[39;1H[43;46H[7m60[m[40;1H[43;47H[7m1[m[41;1H[43;47H[7m2[m[A[2;3Hbool dep_or_wit = false;
+  double amount = 0.0;
+  string stemp = "";[K
+[K[6;3Hif(pos_empty_line.empty())[K[7;3H  {[K
+[Cif(!line_from1.empty())[9;3H      {[K[10;3H        cout << line_from1.back() << ", a line has freed up. Would you like to move\n"[11;3H             << "to the empty line? (\'y\' for yes or anything else for no): "[12;3H          ;[K
+          cin >> stemp;
+          if(stemp[0] == 'y' || stemp[0] == 'Y')[15;13H{
+              line_from1.get_back(name, dep_or_wit, amount);[K
+              line_from1.pop_back();[K
+              pos_empty_line.push(name, dep_or_wit, amount);
+            }[K
+          else[K
+[4h            [22;3H[4l            if(!line_from2.empty())[23;3H              {[K[24;3H                cout << line_from2.back() << ", a line has freed up. Would you like to move\n"[25;3H                     << "to the empty line? (\'y\' for yes or anything else for no): "[26;21H;[27;3H                cin >> stemp;[28;5H              if(stemp[0] == 'y' || stemp[0] == 'Y')[29;7H              {[K[30;9H              line_from2.get_back(name, dep_or_wit, amount);[31;11H            line_from2.pop_back();[K[32;16H       pos_empty_line.push(name, dep_or_wit, amount);[K[33;13H        }[34;11H      }[K[35;11H  }[K
+}[K
+}[K
+}[K
+void TS()[K
+{[K
+[C/*[K
+q1.get_back(name, dep_or_wit, amount);[43;47H[7m3--35[m[22;1H[43;47H[7m4[m[23;1H[43;47H[7m5[m[24;1H[43;47H[7m6[m[25;1H[43;47H[7m7[m[26;1H[43;47H[7m8[m[27;1H[43;47H[7m9[m[28;1H[43;46H[7m70[m[29;1H[43;47H[7m1[m[30;1H[43;47H[7m2[m[31;1H[43;47H[7m3[m[32;1H[43;47H[7m4[m[33;1H[43;47H[7m5[m[34;1H[43;47H[7m6[m[35;1H[43;47H[7m7[m[36;1H[43;47H[7m8[m[37;1H[43;47H[7m9[m[38;1H[43;46H[7m80[m[39;1H[43;47H[7m1[m[40;1H[43;47H[7m2[m[41;1H[43;47H[7m3[m[A[2;3H              {[K[3;3H                cout << line_from2.back() << ", a line has freed up. Would you like to move\n"[4;3H                     << "to the empty line? (\'y\' for yes or anything else for no): "[5;21H;[6;3H                cin >> stemp;[7;5H              if(stemp[0] == 'y' || stemp[0] == 'Y')[8;7H              {[K[9;9H              line_from2.get_back(name, dep_or_wit, amount);[10;11H            line_from2.pop_back();[K[11;16H       pos_empty_line.push(name, dep_or_wit, amount);[K[12;13H        }[13;11H      }[K[14;11H  }[K
+}[K
+}[K
+}[K
+void TS()[K
+{[K
+[C/*[K
+q1.get_back(name, dep_or_wit, amount);
+[K[23;3Hcout << "TS: q1 back info - name - " << name << ", Withdrawl - " << dep_or_wit << ", amount - " << amount << '\n';[24;3H*/[K
+}[K
+[K
+int main()[K
+{[K
+[CBQueue q1, q2, q3;[K[30;3HCounter counter1;[K[31;3Hcounter1.q1_counter = 0;[K[32;3Hcounter1.q2_counter = 0;[K[33;3Hcounter1.q2_counter = 0;[34;3Hstring stemp = "";
+[K[36;3H//Test init[37;3Htest_init(q1, q2, q3);
+  q1.print_node(1);
+  //[K
+[K[41;3Hcout << "Welcome to the ABC Bank Queue System. Please enter your name: ";[42;3Hstring sname;[K[43;47H[7m4--50[m[22;1H[43;47H[7m5[m[23;1H[43;47H[7m6[m[24;1H[43;47H[7m7[m[25;1H[43;47H[7m8[m[26;1H[43;47H[7m9[m[27;1H[43;46H[7m90[m[28;1H[43;47H[7m1[m[29;1H[43;47H[7m2[m[30;1H[43;47H[7m3[m[31;1H[43;47H[7m4[m[32;1H[43;47H[7m5[m[33;1H[43;47H[7m6[m[34;1H[43;47H[7m7[m[35;1H[43;47H[7m8[m[36;1H[43;47H[7m9[m[37;1H[43;46H[7m100--50%[m[38;1H[43;48H[7m1[m[39;1H[43;48H[7m2[m[40;1H[43;48H[7m3[m[41;1H[43;48H[7m4[m[A[2;3Hcout << "TS: q1 back info - name - " << name << ", Withdrawl - " << dep_or_wit << ", amount - " << amount << '\n';[3;3H*/[K
+}[K
+[K
+int main()[K
+{[K
+[CBQueue q1, q2, q3;[K[9;3HCounter counter1;[K[10;3Hcounter1.q1_counter = 0;[K[11;3Hcounter1.q2_counter = 0;[K[12;3Hcounter1.q2_counter = 0;[13;3Hstring stemp = "";
+[K[15;3H//Test init[16;3Htest_init(q1, q2, q3);
+  q1.print_node(1);
+  //[K
+[K[20;3Hcout << "Welcome to the ABC Bank Queue System. Please enter your name: ";[21;3Hstring sname;[K[22;3Hcin >> sname;
+[K[24;3Hwhile(sname != "exit")
+    {
+[Cif(sname != "NA" && sname != "na")
+        {[K
+          cout << "Would you like to make a Withdrawal or Deposit?: ";[29;3H        string saction;[30;3H        cin >> saction;[31;3H[4h        [31;14H[4lt << "For what amount please?: ";[32;3H        double damount;[K[33;3H        cin >> damount;[K
+[K[35;11HBQueue shortest = shortest_line(q1, q2, q3);[36;3H        input(sname, saction, damount, shortest);[37;3H      }[K
+[K[39;3H    cout << "Here are the current processing lines:\n";[40;7Hprint_all(q1, q2, q3);
+[K[42;3H    while( process_transactions(q1, q2, q3, counter1) );[43;48H[7m5--63[m[22;1H[43;48H[7m6[m[23;1H[43;48H[7m7[m[24;1H[43;48H[7m8[m[25;1H[43;48H[7m9[m[26;1H[43;47H[7m10[m[27;1H[43;48H[7m1[m[28;1H[43;48H[7m2[m[29;1H[43;48H[7m3[m[30;1H[43;48H[7m4[m[31;1H[43;48H[7m5[m[32;1H[43;48H[7m6[m[33;1H[43;48H[7m7[m[34;1H[43;48H[7m8[m[35;1H[43;48H[7m9[m[36;1H[43;47H[7m20[m[37;1H[43;48H[7m1[m[38;1H[43;48H[7m2[m[39;1H[43;48H[7m3[m[40;1H[43;48H[7m4[m[41;1H[43;48H[7m5[m[A[H
+[K[3;3Hwhile(sname != "exit")
+    {
+[Cif(sname != "NA" && sname != "na")
+        {[K
+          cout << "Would you like to make a Withdrawal or Deposit?: ";[8;3H        string saction;[9;3H        cin >> saction;[10;3H[4h        [10;14H[4lt << "For what amount please?: ";[11;3H        double damount;[K[12;3H        cin >> damount;[K
+[K[14;11HBQueue shortest = shortest_line(q1, q2, q3);[15;3H        input(sname, saction, damount, shortest);[16;3H      }[K
+[K[18;3H    cout << "Here are the current processing lines:\n";[19;7Hprint_all(q1, q2, q3);
+[K[21;3H    while( process_transactions(q1, q2, q3, counter1) );[22;3H    cout << "Customer processed. Line now looks like this:\n";[23;7Hprint_all(q1, q2, q3);
+[K[25;5H  check_empty_line(q1, q2, q3);[26;7Hcheck_empty_line(q2, q3, q1);[K[27;7Hcheck_empty_line(q3, q1, q2);
+[K[29;7Hcout << "Welcome to the ABC Bank Queue System. Please enter your name, "[30;11H << "or type \'NA\' to resume back processing: ";[31;7Hcin >> sname;[K[32;5H}[K
+}[K
+
+[K
+[K
+[K
+
+[K
+[K
+
+[K[43;48H[7m6--Bot[m[22;1H[43;48H[7m7[m[23;1H[43;48H[7m8[m[24;1H[43;48H[7m9[m[25;1H[43;47H[7m30[m[26;1H[43;48H[7m1[m[27;1H[43;48H[7m2[m[28;1H[43;48H[7m3[m[29;1H[44;1H(No files need saving)[29;1H[44;1H[K[?1l>[2J[?47l8sh-2.05$ g++ -Wall -o main main.cpp
+sh-2.05$ ./main
+Sally
+Welcome to the ABC Bank Queue System. Please enter your name: Colby^C
+sh-2.05$ scrp ipt output.txc t
+Script started, file is output.txt
+sh-2.05$ emacs bank_queue.h[4Pmain.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cpp_functions.h[8P.cppbank_queue.hsh-2.05$ [K./main
+Sally
+Welcome to the ABC Bank Queue System. Please enter your name: Colby
+Would you like to make a Withdrawal or Deposit?: Deposit
+For what amount please?: 100.00
+TS: action[0] = D
+Here are the current processing lines:
+Line 1 (Express Line):
+Sally
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 0
+Line 1 (Express Line):
+Sally
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 1
+TS: counter1.q3_counter = 1
+Line 1 (Express Line):
+Sally
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 2
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 2
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 3
+TS: counter1.q3_counter = 3
+Line 1 (Express Line):
+Bob
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 4
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 4
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Jim
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 5
+TS: counter1.q3_counter = 5
+LINE 2 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Tim
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 5
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Beth
+Liz
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 5
+LINE 3 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 1
+TS: counter1.q3_counter = 0
+Line 1 (Express Line):
+Rufus
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 1
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+Liz
+
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): no
+Liz, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): Yes
+Liz, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): no
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): no
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+Liz
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 1
+Line 1 (Express Line):
+Liz
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 3
+TS: counter1.q3_counter = 2
+Line 1 (Express Line):
+Liz
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 3
+LINE 1 PROCESSED
+TS: counter1.q1_counter = 2
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): n
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 0
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 3
+Line 1 (Express Line):
+
+Line 2:
+Alice
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 1
+TS: counter1.q2_counter = 5
+TS: counter1.q3_counter = 4
+LINE 2 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+Colby, a line has freed up. Would you like to move
+to the empty line? ('y' for yes or anything else for no): n
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: n
+Would you like to make a Withdrawal or Deposit?: na
+For what amount please?: a 1
+TS: action[0] = n
+Sorry-- we did not recognize your command-- Deposit or Withdrawl, or exit?: d
+Here are the current processing lines:
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 2
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 4
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 3
+TS: counter1.q2_counter = 1
+TS: counter1.q3_counter = 5
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 4
+TS: counter1.q2_counter = 2
+TS: counter1.q3_counter = 6
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 5
+TS: counter1.q2_counter = 3
+TS: counter1.q3_counter = 7
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 6
+TS: counter1.q2_counter = 4
+TS: counter1.q3_counter = 8
+Line 1 (Express Line):
+
+Line 2:
+Colby
+
+Line 3:
+
+TS: counter1.q1_counter = 7
+TS: counter1.q2_counter = 5
+TS: counter1.q3_counter = 9
+LINE 2 PROCESSED
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+
+Line 3:
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: na
+Here are the current processing lines:
+Line 1 (Express Line):
+
+Line 2:
+
+Line 3:
+
+TS: counter1.q1_counter = 8
+TS: counter1.q2_counter = 0
+TS: counter1.q3_counter = 9
+Customer processed. Line now looks like this:
+Line 1 (Express Line):
+
+Line 2:
+
+Line 3:
+
+Welcome to the ABC Bank Queue System. Please enter your name, or type 'NA' to resume back processing: er xit
+sh-2.05$ exit
+exit
+Script don

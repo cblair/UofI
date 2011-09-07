@@ -1,0 +1,40 @@
+procedure main()
+    #if test() then write("True")
+    x := 1
+    b := 2
+
+    x := x<b
+    x <:= b
+
+    #swap a and b
+    a :=: b
+    
+    #size o
+    c := "Test"
+    write(*c)
+
+    #strings
+    s := "dexter"
+    s[3:6]
+    s[2:7]
+    s[1:4]
+    s[2]
+    s[*s]
+    s[-1]
+    s[2+:4]
+    write(s[2-:4])
+    s := "pinky and the brain"
+    s[1+:5] :=: s[0-:5]
+    write(s)
+    #more
+    while line := read() do
+        line := line[1+:60]
+        write(line)
+    while line := read() do
+	write(line[1+:60])
+
+end
+
+procedure test()
+    a<b<c
+end

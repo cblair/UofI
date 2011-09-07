@@ -1,0 +1,50 @@
+[1]> 23
+23
+[2]> + 34 3
+23
+[3]> 
+34
+[4]> 
+3
+[5]> ( + 34 3)
+37
+[6]> (/ 2(+ 1(sqrt 5)))
+0.618034
+[7]> (/ (+ 1(sqrt 5)) 2)
+1.618034
+[8]> '(/ (+ 1(sqrt 5)) 2)
+(/ (+ 1 (SQRT 5)) 2)
+[9]> "Amazon River"
+"Amazon River"
+[10]> T
+T
+[11]> nil
+NIL
+[12]> '(sun moon stars)
+(SUN MOON STARS)
+[13]> (car '(sun moon stars))
+SUN
+[14]> (cdr '(sun moon stars))
+(MOON STARS)
+[15]> (car (car('(sun moon stars)))
+
+*** - Ctrl-C: User break
+The following restarts are available:
+ABORT          :R1      Abort main loop
+Break 1 [16]> :Q
+[17]> (list a b)
+
+*** - SYSTEM::READ-EVAL-PRINT: variable A has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of A.
+STORE-VALUE    :R2      You may input a new value for A.
+ABORT          :R3      Abort main loop
+Break 1 [18]> :q
+[19]> (list 'a 'b)
+(A B)
+[20]> (cons 'dogs '(and cats))
+(DOGS AND CATS)
+Break 1 [22]> (cons '(dogs bats) '(and cats))
+((DOGS BATS) AND CATS)
+Break 1 [22]> 
+

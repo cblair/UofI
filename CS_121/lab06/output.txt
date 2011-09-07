@@ -1,0 +1,84 @@
+A[] = {1 2 3 4 5 2 3 4 6}, nA = 9, t = 0
+Set t (the threshold) to filter at (greater values will be filtered out): 4
+Now the array looks like this:
+A[] = {1 2 3 4 2 3 4 4 6}, nA = 9, t = 4
+Set t (the threshold) to filter at (less values will be filtered out): ^X^C
+bash-2.05$ g++ -Wall -o main main.cpp
+bash-2.05$ ./main
+Filter above function. Here is an array:
+A[] = {1 2 3 4 5 2 3 4 6}, nA = 9, t = 0
+Set t (the threshold) to filter at (greater values will be filtered out): 4
+Now the array looks like this:
+A[] = {1 2 3 4 2 3 4}, nA = 7, t = 4
+Set t (the threshold) to filter at (less values will be filtered out): 3
+Now the array looks like this:
+A[] = {3 4 3 4}, nA = 4, t = 3
+Filtering again, only no destruction of original.
+Set t (the threshold) to filter at (greater values will be filtered out): 4
+A[] = {3 4 3 4}, nA = 4, t = 4
+B[] = {3 4 3 4}, nB = 4, t = 4
+Set t (the threshold) to filter at (less values will be filtered out): 4
+A[] = {3 4 3 4}, nA = 4, t = 4
+B[] = {4 4}, nB = 2, t = 4
+Here is the same data set, only using a linked list.
+1
+2
+3
+4
+5
+2
+3
+4
+6
+Please enter the threshold to filtee greater values out at: 5
+The list is now as follows:
+1
+2
+3
+4
+5
+2
+3
+4
+List size = 8
+Please enter the threshold to filter less values out at: 2
+The list is now as follows:
+2
+3
+4
+5
+2
+3
+4
+List size = 7
+Now using non-destructive methods towards the original data. Please enter a threshold to filter greater values out at: 4
+Original list data untouched:
+2
+3
+4
+5
+2
+3
+4
+...and the filtered data:
+2
+3
+4
+2
+3
+4
+Please enter a threshold to filter less values out at: 3
+Original list data untouched:
+2
+3
+4
+5
+2
+3
+4
+...and the filtered data:
+3
+4
+5
+3
+4

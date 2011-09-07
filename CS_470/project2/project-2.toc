@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Algorithm Concepts}{4}
+\contentsline {subsection}{\numberline {2.1}Min-Max}{4}
+\contentsline {subsection}{\numberline {2.2}Alpha-Beta Pruning}{6}
+\contentsline {subsection}{\numberline {2.3}Alpha-Beta Pruning with Time Estimation}{7}
+\contentsline {subsection}{\numberline {2.4}Probabilities at Low Depth}{8}
+\contentsline {subsection}{\numberline {2.5}Evaluation Functions}{9}
+\contentsline {subsubsection}{\numberline {2.5.1}H2}{9}
+\contentsline {subsubsection}{\numberline {2.5.2}H1}{9}
+\contentsline {section}{\numberline {3}Time and Depth Comparisons}{11}
+\contentsline {section}{\numberline {4}Conclusion}{11}
+\contentsline {section}{\numberline {5}Results}{11}

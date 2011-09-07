@@ -1,0 +1,22 @@
+Script started on Tue Aug 28 15:11:25 2007
+/users/b/blai4021/ch3/lab2> g++ -Wall -o lab2-1 lab2-1.cpp
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 5
+Please enter another number: 17
+The sum of 5 plus 17 is 22.  The average of your numbers is 11.
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 6
+Please enter another number: 17
+The sum of 6 plus 17 is 23.  The average of your numbers is 11.5.
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 4.6^?5    5
+Please enter another number: 5.5
+The sum of 4.5 plus 5.5 is 10.  The average of your numbers is 5.
+/users/b/blai4021/ch3/lab2> exit
+exit
+
+script done on Tue Aug 28 15:12:50 2007
+
+*****
+Question 2:
+	My assumptions are right, seems to be running very well.

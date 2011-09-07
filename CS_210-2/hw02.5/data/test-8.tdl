@@ -1,0 +1,15 @@
+translate 0 0
+defaultlen 20
+spacing 10
+scale 2 1.2
+#p = porcupine;
+#x = meerkat;
+#m = #x;
+#v = ((#p, #m), (#p, #m));
+#v = (#v, #v);
+#v = (#v, #v);
+#v = (#v, #v);
+#v = (#v, #v);
+#x = #v;
+show #x;
+exit

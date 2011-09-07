@@ -1,0 +1,15 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Mathematicians getting bingo boards, and returning to the end of the line with results}}{3}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Amdah's Law. \cite {amdahl}}}{4}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Speedup comparisons,}}{4}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Amdah's Law (Figure \ref {amdahl}) with Overhead. }}{5}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Speedup comparisons including overhead}}{5}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces A potentially parallelizable algorithm}}{7}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces How many primes factors are in a number}}{8}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces A potentially Pipeline Parallel algorithm}}{9}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Brownian Bridge estimation \cite {bb}}}{10}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Optimal CPUs (65) for the Brownian Bridge estimation with 979 animal locations}}{10}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Optimal CPUs (108) for the Brownian Bridge estimation with 3486 animal locations}}{11}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Synoptic Model Likelihood algorithm \cite {syn}}}{11}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Optimal CPUs (670) for the Synoptic Model \cite {syn} with 979 animal locations}}{11}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Software Lifecycles}}{12}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Hybrid Scrum Project}}{13}{figure.15}

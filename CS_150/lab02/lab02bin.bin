@@ -1,0 +1,35 @@
+0011000000000000 ;x3000 ;.ORIG 0x3000
+0101 000 000 1 00000 ;x3001 ;AND R0, R0, #0 ; Clear R0
+0101 001 001 1 00000 ;x3002 ;AND R1, R1m #0 ; Clear R1
+0101 010 010 1 00000 ;x3003 ;AND R2, R2, #0 ; Clear R2
+0101 011 011 1 00000 ;x3004 ;AND R3, R3, #0 ; Clear R3
+0101 100 100 1 00000 ;x3005 ;AND R4, R4, #0 ; Clear R4
+
+0001 100 100 1 01111 ;x3006 ;ADD R4, R4, #15 ; Store neg ASCII 2's comp of = in R4
+0001 100 100 1 01111 ;x3007 ;ADD R4, R4, #15 ;in dec - 3d = 0011 1110 =  1100 0010 = C2 = FFC2\
+0001 100 100 1 01111 ;x3008 ;ADD R4, R4, #15
+0001 100 100 1 01111 ;x3009 ;ADD R4, R4, #15
+1001 100 100 1 11111 ;x300A ;NOT R4, R4
+
+0001 010 000 0 00 001 	;x300B ;ADD R2, R0, R1 ; Start of loop. R1 is the sum of the last
+0001 001 010 1 00000	;x300C ;ADD R1, R2, #0 ; iteration. Add it to the new input R0,
+1111 0000 00100011    	;x300D ;TRAP X23 ; and store the sun back in R1. Input next.
+0001 011 000 0 00 100	;x300E ;ADD R3, R0, R4 ; If z flag set, then input was an =, and we
+                                	       ; branch to the end process
+0000 010 000001001	;x300F ;BRz 5
+0001 000 000 1 00000	;x3010 ;ADD R0, R0, #-15 ; Otherwise, convert the ASCII val to the real
+0001 000 000 1 00000	;x3011 ;ADD R0, R0, #-15 ; numerical val for arithmetic operations
+0001 000 000 1 00000 	;x3012 ;ADD R0, R0, #-15
+0001 000 000 1 01000	;x3013 ;ADD R0, R0, #-3
+0000 111 111110111 	;x3014 ;BRnzp -10 ; Since this val was not =, branch back
+	                        	  ; unconditionally.
+0001 000 000 00000	;x3015 ;AND R0, R0, #0 ; Clear	R0 for the output...
+0001 000 001 00000	;x3016 ;ADD R0, R1, #0 ; and put the sum, R1, in it.
+0001 000 000 01111	;x3017 ;ADD R0, R0, #15 ; Convert back to ASCII...
+0001 000 000 01111	;x3018 ;ADD R0, R0, #15 
+0001 000 000 01111	;x3019 ;ADD R0, R0, #15
+0001 000 000 00011	;x301A ;ADD R0, R0, #3
+1111 0000 00100001	;x301B ;TRAP x21	; And output.
+
+1111000000100101 ;x301C ; HALT
+; .END

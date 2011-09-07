@@ -1,0 +1,23 @@
+[1]> (defun allGreater (l limit) (mapcan #'(lambda (elem) (if (> elem limit) (list elem) nil) l))  
+)
+ALLGREATER
+[2]> (defun allGreater (l limit) (mapcan #'(lambda (elem) (if (> elem limit) (list elem) nil)) l))
+ALLGREATER
+[3]> (allGreater '(3 1 4 1 5 9 2 6 5 3 5 8) 4)
+(5 9 6 5 5 8)
+[4]> (let ((x 'dogs) (y 'cats)) (print x))
+
+DOGS 
+DOGS
+[5]> (let ((mult 101)) (setq z #'(lambda (x) (* x mult))))
+#<FUNCTION :LAMBDA (X) (* X MULT)>
+[6]> (funcall z 5)
+505
+[7]> (defun flat (x) (mapcan #'(lambda (z) (cond ((listp z) (flat z))
+                                                 (T (list z))
+)) x))
+FLAT
+[8]> (flat '(a ((a) (c ((d))))))
+(A A C D)
+[9]> 
+

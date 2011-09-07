@@ -1,0 +1,29 @@
+########################################
+#Abhay Patil
+########################################
+readlib('gdi')
+readlib('gdi');d := gdi.open(300, 300)
+gdi.thickness(d , 5)
+gdi.line(d, 0, 300, 300,300)
+gdi.line(d, 300, 0, 300, 300)
+gdi.arc(d , 0 , 0 , 300, 300 , 0 , -90 )
+hits:=0
+for external i to 1000 do
+local ix , iy , x , y
+ ix:=math.random()
+ iy:=math.random()
+ x:=ix*300
+ y:=iy*300
+
+if (ix*ix + iy*iy) <=1 then 
+hits:=hits+1
+gdi.point(d, x, y , 5)
+else
+gdi.point(d, x, y , 1)
+fi
+ od
+
+estpie:= (4*hits)/1000
+
+print(estpie);
+

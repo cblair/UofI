@@ -1,0 +1,32 @@
+function "main"
+  param types : 
+  return types: float
+  0 ND_FUNC (my nodes:  3 4 2) <"xxx.sc", "main", 1>
+    0 inputs: (nodes )
+    1 outputs: (nodes  1)
+      port 0 <float> 
+    ;
+  1 ND_G_OUTPUT  (output 0 for graph node 0) <"xxx.sc", "main", 1>
+    1 inputs:
+      port 0 <float>
+    0 outputs:
+    ;
+  2 ND_SUB <"xxx.sc", "main", 5>
+    2 inputs:
+      port 0 <float>
+      port 1 <float>
+    1 outputs:
+      port 0 <float>   1.0
+    ;
+  3 ND_CAST <"xxx.sc", "main", 5>
+    1 inputs:
+      port 0 <double>  value "27.41532681"
+    1 outputs:
+      port 0 <float>   2.0
+    ;
+  4 ND_CAST <"xxx.sc", "main", 5>
+    1 inputs:
+      port 0 <double>  value "-23.56419725"
+    1 outputs:
+      port 0 <float>   2.1
+    ;

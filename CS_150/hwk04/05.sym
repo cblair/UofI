@@ -1,0 +1,11 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	START             302C
+//	TEST              302F
+//	TEST2             3033
+//	FINISH            3037
+//	SAVE3             3039
+//	SAVE2             303A
+

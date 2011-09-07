@@ -1,0 +1,38 @@
+procedure diag(bar)
+	#suspend (!bar <- "*", bar)	
+	every i:=1 to *bar do {
+		suspend (bar[i] <- "*", bar)
+	}
+end
+
+procedure stars(s)
+	suspend !s | (stars(s) || !s)
+	#suspend !s | (!s || stars(s))
+	# || is str concat
+end
+
+procedure main()
+	bar := repl(" ", 10)
+	every !bar := "*" do write(bar)
+	
+	#reversible assignment
+	bar := repl(" ", 10)
+	every !bar <- "*" do write(bar)
+
+	bar := repl(" ", 10)
+	every i:=1 to *bar do { 
+  		bar[i] <- "*"
+	}
+	write("Rev prob")
+	write(bar)
+
+
+	bar := repl(" ", 10)
+	every diag(bar) do write(bar)
+
+	#recursive stuff
+	write("Stars:")
+	s := "abcd"
+	every write(stars(s))
+
+end

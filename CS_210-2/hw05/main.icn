@@ -1,0 +1,7 @@
+$include "jug.icn"
+
+procedure main()
+	inlist:=[]
+	every(put(inlist, read()+0))
+	every(write(!inlist))
+end

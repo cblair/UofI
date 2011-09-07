@@ -1,0 +1,1061 @@
+Java StarLogo
+2.1
+English
+`turtle`
+turtles-own [happiness desire]
+setmaxhappiness 9
+
+to patch-setup
+ repeat 100 [seth random 360 sethappiness 5
+ jump random 2 stamp 9]
+end
+
+to move
+ setdesire 5 / (happiness)
+ fd desire
+ rt random 360
+ lt random 360
+end
+
+to create-terrain
+ ;ifelse pc = black
+  ;[sethappiness happiness - .05 stamp gray + happiness]
+  ;[sethappiness happiness + .05 stamp gray + happiness]
+ sethappiness ((happiness + pc) / 2)
+ stamp happiness
+ move
+ if happiness < .25 [die]
+end
+
+to bb-roam
+ print average-of-patches-with [(distance 0 0) < 5] [color] 
+ sethappiness ((happiness + pc) / 2)
+ setdesire 5 / (happiness)
+ fd desire
+ rt random 360
+ lt random 360
+end
+
+to bb
+
+end
+
+
+`observer`
+to setup
+ ca
+ crt 30
+ ask-turtles [setshape goat fd 10]
+ ask-turtles [patch-setup]
+end
+
+to total-goats
+ output count-turtles
+end
+
+to bb-setup
+ ct
+ crt 5
+ ask-turtles [setshape goat fd random 10]
+end
+
+to bb-run
+ ask-turtles [bb-roam]
+end
+
+
+`information`
+
+
+
+`interface`
+SLCanvas
+top-left 6 308
+
+SLLineWidget
+top-left 254 28
+width-height 70 70
+id 2
+order 2
+type 1
+title "Plot 2"
+delay-string "1.0"
+ymin 0.025000000000000022
+ymax 4.975
+xmin 0.0050000000000000044
+xmax 0.995
+xlabel ""
+ylabel ""
+grid false
+connected true
+autoscale true
+autoscale-x true
+autoscale-y true
+location 0 22
+whichip 16
+onewhichip 17
+wizard-on true
+lineset-id 1
+lineset-name "<name>"
+lineset-order 2
+lineset-type 1
+lineset-color -65536
+lineset-displayed? true
+lineset-instruction " ( count-Turtles-with [ pc = gray + 3 ]  ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with? true
+extrainfo-with-text "pc = gray + 3"
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 1
+lineset-id 2
+lineset-name "name2"
+lineset-order 2
+lineset-type 1
+lineset-color -43776
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 2
+lineset-id 3
+lineset-name "name3"
+lineset-order 2
+lineset-type 1
+lineset-color -6262704
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 3
+lineset-id 4
+lineset-name "name4"
+lineset-order 2
+lineset-type 1
+lineset-color -256
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 4
+lineset-id 5
+lineset-name "name5"
+lineset-order 2
+lineset-type 1
+lineset-color -11418368
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 5
+lineset-id 6
+lineset-name "name6"
+lineset-order 2
+lineset-type 1
+lineset-color -16711936
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 6
+lineset-id 7
+lineset-name "name7"
+lineset-order 2
+lineset-type 1
+lineset-color -16711738
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 7
+lineset-id 8
+lineset-name "name8"
+lineset-order 2
+lineset-type 1
+lineset-color -16711681
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 8
+lineset-id 9
+lineset-name "name9"
+lineset-order 2
+lineset-type 1
+lineset-color -16744449
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 9
+lineset-id 10
+lineset-name "name10"
+lineset-order 2
+lineset-type 1
+lineset-color -7434610
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 10
+
+SLMonitor
+top-left 437 213
+width-height 74 36
+name "goats"
+list-to-run "total-goats"
+digits 0
+delay 0.5
+monitor-number 1
+show-name? false
+whichip 14
+onewhichip 15
+
+SLLineWidget
+top-left 377 59
+width-height 70 70
+id 3
+order 3
+type 1
+title "Avg Happiness"
+delay-string "1.0"
+ymin 0.025000000000000022
+ymax 4.975
+xmin 0.0050000000000000044
+xmax 0.995
+xlabel ""
+ylabel ""
+grid false
+connected true
+autoscale true
+autoscale-x true
+autoscale-y true
+location 0 22
+whichip 18
+onewhichip 19
+wizard-on true
+lineset-id 1
+lineset-name "Avg Happiness"
+lineset-order 3
+lineset-type 1
+lineset-color -65536
+lineset-displayed? true
+lineset-instruction " ( average-of-Turtles [ happiness ] ) "
+extrainfo-extra? true
+extrainfo-instruction "Average of"
+extrainfo-breed "Turtles"
+extrainfo-var "happiness"
+extrainfo-kind "Turtles"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 1
+lineset-id 2
+lineset-name "name2"
+lineset-order 3
+lineset-type 1
+lineset-color -43776
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 2
+lineset-id 3
+lineset-name "name3"
+lineset-order 3
+lineset-type 1
+lineset-color -6262704
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 3
+lineset-id 4
+lineset-name "name4"
+lineset-order 3
+lineset-type 1
+lineset-color -256
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 4
+lineset-id 5
+lineset-name "name5"
+lineset-order 3
+lineset-type 1
+lineset-color -11418368
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 5
+lineset-id 6
+lineset-name "name6"
+lineset-order 3
+lineset-type 1
+lineset-color -16711936
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 6
+lineset-id 7
+lineset-name "name7"
+lineset-order 3
+lineset-type 1
+lineset-color -16711738
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 7
+lineset-id 8
+lineset-name "name8"
+lineset-order 3
+lineset-type 1
+lineset-color -16711681
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 8
+lineset-id 9
+lineset-name "name9"
+lineset-order 3
+lineset-type 1
+lineset-color -16744449
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 9
+lineset-id 10
+lineset-name "name10"
+lineset-order 3
+lineset-type 1
+lineset-color -7434610
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 10
+
+SLLineWidget
+top-left 278 133
+width-height 70 70
+id 4
+order 4
+type 1
+title "Plot 4"
+delay-string "1.0"
+ymin 0.025000000000000022
+ymax 4.975
+xmin 0.0050000000000000044
+xmax 0.995
+xlabel ""
+ylabel ""
+grid false
+connected true
+autoscale true
+autoscale-x true
+autoscale-y true
+location 2 22
+whichip 20
+onewhichip 21
+wizard-on true
+lineset-id 1
+lineset-name "<name>"
+lineset-order 4
+lineset-type 1
+lineset-color -65536
+lineset-displayed? true
+lineset-instruction " ( count-patches-with[pc = gray] )"
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Patches"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with? true
+extrainfo-with-text "pc = gray"
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 1
+lineset-id 2
+lineset-name "name2"
+lineset-order 4
+lineset-type 1
+lineset-color -43776
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 2
+lineset-id 3
+lineset-name "name3"
+lineset-order 4
+lineset-type 1
+lineset-color -6262704
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 3
+lineset-id 4
+lineset-name "name4"
+lineset-order 4
+lineset-type 1
+lineset-color -256
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 4
+lineset-id 5
+lineset-name "name5"
+lineset-order 4
+lineset-type 1
+lineset-color -11418368
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 5
+lineset-id 6
+lineset-name "name6"
+lineset-order 4
+lineset-type 1
+lineset-color -16711936
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 6
+lineset-id 7
+lineset-name "name7"
+lineset-order 4
+lineset-type 1
+lineset-color -16711738
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 7
+lineset-id 8
+lineset-name "name8"
+lineset-order 4
+lineset-type 1
+lineset-color -16711681
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 8
+lineset-id 9
+lineset-name "name9"
+lineset-order 4
+lineset-type 1
+lineset-color -16744449
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 9
+lineset-id 10
+lineset-name "name10"
+lineset-order 4
+lineset-type 1
+lineset-color -7434610
+lineset-displayed? false
+lineset-instruction " ( count-Turtles ) "
+extrainfo-extra? true
+extrainfo-instruction "Number of"
+extrainfo-breed "Turtles"
+extrainfo-var ""
+extrainfo-kind "nothing"
+extrainfo-with false
+extrainfo-xy? false
+extrainfo-xval? false
+lineset-end 10
+
+SLButton
+turtle-or-observer? turtle
+top-left 98 118
+width-height 60 30
+name "move"
+line-to-run "move"
+forever? true
+button-number 2
+show-name? false
+whichip 9
+
+SLButton
+turtle-or-observer? turtle
+top-left 98 190
+width-height 110 30
+name "create-terrain"
+line-to-run "create-terrain"
+forever? true
+button-number 3
+show-name? false
+whichip 10
+
+SLButton
+turtle-or-observer? observer
+top-left 141 57
+width-height 61 30
+name "bb-setup"
+line-to-run "bb-setup"
+forever? false
+button-number 5
+show-name? false
+whichip 11
+
+SLButton
+turtle-or-observer? observer
+top-left 141 134
+width-height 66 30
+name "bb-run"
+line-to-run "bb-run"
+forever? true
+button-number 4
+show-name? false
+whichip 12
+
+SLButton
+turtle-or-observer? observer
+top-left 99 50
+width-height 42 30
+name "setup"
+line-to-run "setup"
+forever? false
+button-number 1
+show-name? false
+whichip 13
+
+
+`turtle shapes`
+H4sIAAAAAAAAAO3cXbck113Y4UI2IIzADuTdATomAfIiIo2kkZQAPle+Yfk2Fywu
+LCUT5LWM5UjjxUqu+oPmA3DJNyCutk73zNbprqree9d+e5616B9d51Tv+tf0OXNm
+PNrTt3/08udfvPzJi8OXn33ysxdf/ujhzenRw+nxrV9+/O3Tx+cDv/KL//vGL/7v
+zfOnMLLj/PCPvxA2PHbt81Kdv+W1n3q92PPXvk7sHBXO/51fflsAAMbzxulx688R
+NXTrz2i51t37OvZa/9rrrl3/3uvK/WtY6jpS/Trsta71x14/dt17ryP1uqmuY+31
+LZ1fYQ/T9M0JAAAAAAAAAOjBL/87okr+TYIO0KXPKX195t933t7vh/nN39P8W683
+9fyl79do8+e8l3vU/GO9H3KvUXq+0vPXdj9K33Pzm9/85je/+c1v/t7nLz1v6ftR
+er695y89T+n7Ufr6S8+/9X6kvn+x65tf9WZ/ZXrry//980++uGwfetom0PahPDpW
+8lbVQp1sHwoAA3uj+M8iqqqqun8n24cCAAAAAAAAQEfeLP5vEVRVVVVVVVVVVVVV
+VVVVVTW+07wh0Fs/e/HFl5//9Lx96BvzPoG2D+XRcX546i30xNvp5udtPT/h2zzq
++lOff+/1rr2f917vjY/bPhQAhvXG6THmZ6TYn7lKr3/vz2r3rl/7+aN16zmpX8/6
+da8f+xq9rZ/682tbP/Z+Nnj+wfahAAAAAAAAANCLN0+PMf9WY6mxr5H7+sxv/pHn
+z71+6fmtb33r5/0eoqptNvcatV+f+c1vfvOb3/zm33++1u+P+c1v/nzXZ37zm7/c
+/LGvYX3rW7/q9b8x/dbLF1/87Y9fvjjvH/qNLvcPffj28bVu/Xjr60c4zg+x78U1
+7+89zn/VrY/der2Yr7vS6995/+wfCpWK/b2j4t97VjH/8cnmOo9Rbd8/dPSm+lkt
+9bq5r6P0+qXvf4n1XxVzborrKvHrX9P8a+9DqnXuneGW1n79rb/L++9g/1AAAACu
+ufa/Nez1vzmUXh9GVvrrr/T6MLKlr7/UX497rwcA0L/8+4eq6riNfY3S119q7lbv
+Q+41Ss9nfvObf//7UHqeUveh9PWb3/v/qWu5puTaNdynPeYv/etv/rHnv6Xk2jXc
+nxF+/Uvch9LzlLoPpa//2jWttedaqdb0619+7lbvQ+41Ss9nfvOb3/x734fS85S6
+Dztc5zen33ncP/TvPv/8f543Ef3mzU1EH37w1ze7JPb8e5XexLP0+hGO88NTb9Bb
+1rzBY85/6ots67prrumeL+6a17/z/q3aRHTpazv31/7o6zMmm2geX+ve55dmE1H2
+sW4T0ViRf7AZfv01PyPe+zNjK+uvvY5c65ZY/1Ux56a4rhK//jXNv/Y+pFrn3hlu
+ae3X3/q7vP8OKTYRjf2zcut/1ja/+Uu2NPOPPT8A0L/Sm3iVXh9GVvrrr/T6MDKb
+iAIAtC7NJqKl5fg3F1tamvnNX7Klmb/s/K92j3tdw5zmN7/5zb/XfSg9T6n7UPr6
+S81d8324peTaNdynPeYv/etv/rHnv6Xk2jXcnxF+/Uvch9LzlLoPpa//2jWtteda
+qdas4de9hffBHnO3dh/Mb37zm3/U+XPdh9LzlLoPO1znr05vffHJp5/++OV5+9Bf
+vb196OM/u/zR7732/JqH705Pft6154+fv/Q6X+uV866ef+V56vPPn7ex4flLr3ft
+8695+OHfr/vEjduH3norh59z7fmt11trzXXsef69ttyrW5+/NM/C563bPjT8mnz8
+HhF8r7h7m79r7/mN/1T82nVce/1rH49d99r3sHvX/9rnb/z40vpXryfR3FtVs/61
+69j4cetHrn/t9+il4xvXv/f39K2/9++97tbvP6mua+n17/14qvnW+to6X/2MdW7k
+62++nmD9eHm2D73nj0VPnR9r6fVTrbPVlvXX3qsts6T+9Y5dz/rWr2H93Eqtu3Qd
+1z6eap1717/3Ora+fur3xdbXj72eyNc7pNg+9FHqP0O3YvVcP/qDr/r036GUvg+r
+/+yy9dfzPPeVJnpf5Poz4Nc+P/XfFUXOf++fQdeen+3vyBL/HVu2+UvPGXkflqSa
+/2uvG/u+3mn+83qR9+Hu67/3/ERzn9dr7esg8fzX1D5/btW9D/b+u7fSXxc7vc+v
+iZ4/8/m5mX9lU8+f6Oe7WOZfWfM/3VHmvzZP6s83/2tNbfO8lfVepa+79H0ofb2l
+5i99naXvw/LrPAQtPde261mydr31n5+3l+t4CHr786+59/7t9354yHL9S6+z/PkP
+q9bPPf+915/K6jl++P9eb+Lv46WtnnvlfejF0vyjqHfuNNuHlv43PKWbW6k5Ss27
+JPW/kdm6Xmmx11/bPLmZP//8sa+Z89dkj+/jNc5f2+9je8v1+2JtUs1pfvM/1dqZ
+3/w5Wzvzmz9na2f+seZdMurcIfOPOXfI/Gnmr+V+3Xvd985fy/sm9fUvvU5tXzep
+r7+Vnxf2mqO2+1B6nr3uS+nrK3UfSl/PV/216bd/8uJ/vXz7f3zyxXkD0V+bP351
+A9FYD//9vpd8PO/e87nbcX549Y1z602+5Qvi3o+tXWvpelvptfmX7k/Cj6/aQJS6
+lPpeWep7dbjuXutfW9fvVUA/1m0gqnU11+euea0S6z8l5z27tW7sTEufs9d7SHX6
+yq2Pveqe177n/CW9n7/z/T+k3EAUAF41+t+hjTr/qH+HOurfIS/N3ev8a+fubf6t
+c/cy/71z9zI/AAAAAK1Ju4Goqqrqq31VitcqPU/J+Vu6D08ZYf5bcqxVet41c+e+
+1trn3usaa527xLXVNPfe86e+D3tfdy33p/T1lZq/9HWpqqpqvt57zi17XHOJ9bfq
+Zf1Y1re+9dtd/97rSLVuLeuvvY5c62Za/9enb3/x47/57PUdRH99/oRsO4heE/tf
+yvgvbrI5zg9PvYNuvUtvvfPWvLu3nHfrq2PNebX31oxL9yDRx+0g2pHS3yNLf68u
+/V9p+q9FgfbYQbT2rv3cV5VeP8V1bD3nlpzrrln/1nWk/LVae50l19e6uvSxV93z
+2vecv6T383e+/wc7iAJQi9H/Ds38D092FKP/nfLoOzGOviPl6Dtz2qEUAAAAgLTs
+IKqqqmka+xpPqWGu3HOb//r8Nd+H1K+5Ro9zb5m/5H3IvcY9epg7Zv6c92GvuVPM
+f8992Hu+Pe/jyPOvvQ+lr6/0fSh9XaqqqiV67zm37HHNJdbfqpf1Y1nf+tZvd/17
+ryPVurWsv/Y6cq2baf03p299+Xef/PS8eejpHwXcvXnow/e2nvH6eec+X/d5S8ev
+vv5C7z0vVe+9/iXhfb12n19xnB/ufZOmenMvfd7S8dhvIqXce/1bf30Wzhti89Ct
+X0u51l36Hrj3+rmvI/V93/q9MXb91N/bc6279fe4XOu2+ntxKz8D5Fo/9/Xcq9S6
+X7uOhe+T2b+PLny/jv9+/sbpMfcfcEo3VGrdva9jrVbu+9brj11/q1Trx0p1v3Ir
+tW7p9Wu573u9D3J//0q97rXruPfjqb/vJf4+d7B5KK3b688Etdn7z0S12Pxnw53+
+7msv5t/Y57fbGvPfbu9qnz/339nVOn8tf1ebW+m/szb/fefda695186z9/8mUHr+
+cI5c31diX7+VLil9fbV+X+mlodLXY/59ek3p6zJ/3q5V+jpLzx8qfd17zbmk9Fyl
+5r5mtHlDo88fiv37xOb/PtL8N5v7/NLan9/modp+l5S+vlJz9zp/rNLXb/6y87d+
+P8zf1zy9zb9VL/OnUvv8ezF/HfOXFns9rc//KPZ6Wps3F/OPOfejUed+NOr83vdj
+zj/673ut/9yzVuqfe1u5D7nmrvV+7D2v+bfdj73PL13z35b7/NJtfP7fmN568dP/
++3/+9sV5+9DfmPcJPG8f+vCXL0+X8fCDz1Y19Hj+krXnx64fft6956eaf/G+rrx/
+V1/38dfvzk5fbR+61bW3+dovh6XjsesvvV7u9bd+G1g6P/Z1F5y2D/3ae+QHf520
+S2pbP1Zv65e+/7Wtv/X6elu/9P2v7es/+vtU4+tHX29l64/Wx+1Dc9vpZ5pk66f+
+I2Tr68fqbf2t19fb+lu1vv7W83Nfb23rp77e0usP5jBvH7r4M0PiP5vv/Wf9JeY3
+/81WMmep+Uszv/lvNfr1zX+zsdfX+/c/85u/ZGPlnj/2fPObP+b1F9c3/80unu/7
+X9HGMr/5bzW30vfP/Oa/1dxGnz8385v/Zs2vqoP2cfvQ1o3+b0PMb/6Y5n792q/P
+/OY3//2vX5r5zR/T2Ncvrfb5c98/85s/prmvf/T5czO/+WMa+/qllZ4/9/qlmd/8
+OVu73PPXfn9LX7/5zV9yfqBb35q+9dmzz5+dNw/91mubhz5+1sPbP3utoVE+vmTp
+88J1Ftf9qz99sms/L/b86avNQ6/9ZrL0m02vH1/7m+69vymv/fzY3+xXnn/aPDS0
+9b3sfOc7v9/zY7W2/tL5Wxsr9/qxP2PEvp71y67/uHlo7M8yzne+8/s9f+nzU79e
+6fW33s8lqa8/9fqlX8/6Rdc/zJuHLun9Z2HrW9/61re+9a1vfetb3/rWt771rZ//
+9WOZ3/y3Wvvrxyp9fbHfn0p/f4tlfvOXbPT1F/63C6Wvz/zmz9lYpa/f/OaPaazS
+19/7/I+bh5b+tyjWt771rW9961vf+ta3vvWtb33rW7/+9WNfv/brM7/5R54/dv3c
+ar//uZnf/DEd/fpyM7/5Y9o685s/pq2rfP7fnN769OeffvqTF+ftQ3/zye1DHz18
+93avWTrv2ut87eM//PvXu/F1o8/fuY/uPS90x3nH+WHr2zLV27mXbwOxYu9f5K/f
+d57aPjSU6r1+r73X3+trv5b1N39v3ft7rfXLrq9dN7T3erWtn/p6YuVf/+ntQ1P/
+kaX0H5kq+yNadesD4yr9/ae29Uv//rPz+oc124cuqe1n2b2Zv2xL633+0vOVvj+l
+r9/8cY1V+vpzzx+9ztLfVfb+d5nmN7/5zW9+8484v6qqqjbXJaWvL/d8S0pfv/nj
+Gqv09Zeef0nv8y0xf9mW1v7867YPLf1vN5bEXr/5zR/T0nqfL5b5zR/T1vU+HwAA
+ALCs978f8Pc/5o9p62Lnr/3+5J7P/Oa/1dIir/+t6Y2Xz+be3DR0q4fvxXXr69Uu
+9bw73I/j/FD6i2Pr6625rqdec8tcMeennnfr623sqk1DAYAerds0VFXranhstPVV
+NUkPKTYNBQAAAAAAAABqkGbTUFVVVVVVVVV9uuGx0tdjflVVVVVVVdWu+1vTN//m
+809ezv/fqm1D792W8t7tLcPPW3pe6/mx23ym2h70+/+w+lOP88O1t8+jrW+7a9ac
+d23tNa+zVq3nx96/O3/97to2tPSWvnuvX2BL36Lrb93yeOvHrW/9ltbfe4vv0uvH
+Xk9qpdcPPf6MteFnrcrXv2/b0NDef8TZe/2tWl//1mtt/Xjr66dgfeu3tH7s9cSu
+V9v6S9eTe73M6x/22Da09M9upZn/dnvX+/yp/+za2v0xf97Wrvf5Y6+v9PmxSl+/
++ePOj1X6+s0fd36s0tdv/rjzY5W+fvPHnR+r9PWbP+78WKWvv/b5Sze30vOZ/3Zz
+Kz1f6fmX9D7fEvPnbe1Gn39J+G+XSv9bqr2Z/3Z7V//8+2wbumTvf0tR+t9umN/8
+Pc2fW+n5zG/+W82t5vli702Ke2t+8+dszutvff4amN/8OVs785s/Z2tnfvPnbO3M
+b/6S7X0+85v/VnMrPV/u+1P6+sxv/oHn/+3pzS8/++RnL95+9/3Ts2nF1qEM4zg/
+lP4SytGnvkz3PL+h3rV1KADQgzdOj5X8TKKqKxseG219VU3Swx5bhwIAAAAAAAAA
+e9hn61BVVVVVVVXVURseK3095ldVVVVVVVXtut8+bx36wenZZOtQLo7zQyVv1aQN
+j+19fkO1dSgADMvWoaotNjw22vqqmqQHW4cCAAAAAAAAQC9sHaqqqqqqqqqas+Gx
+0tdjflVVVVVVVdWu+53z1qHPT88mW4dycZwfKnmrJm14bO/zG6qtQwFgWLYOVW2x
+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
+lo61bgsPFQAAFQ8L
+
+
+`settings`
+patch-size 8
+num-shapes 256
+screen-half-width 25
+screen-half-height 25
+interface-window-xcor 358
+interface-window-ycor 68
+interface-window-size 892 590
+output-window-xcor 93
+output-window-ycor 80
+output-window-width 301
+output-window-height 219
+info-window-xcor 0
+info-window-ycor 20
+info-window-width 500
+info-window-height 419
+control-center-xcor 65
+control-center-ycor 129
+control-center-width 482
+control-center-height 631
+shape-chooser-xcor 265
+shape-chooser-ycor 152
+shape-chooser-width 298
+shape-chooser-height 161
+turtle-command-center-height 150
+observer-command-center-height 150
+background-image ""
+
+`string table`
+H4sIAAAAAAAAAGNgYGAAABzfRCEEAAAAAAAABA==
+
+`symbol table`
+H4sIAAAAAAAAAGNgYGAAABzfRCEEAAAAAAAABA==
+
+`double table`
+H4sIAAAAAAAAAGNgYOBxED+w3235Cy77Vx/X7pk7zcFB4vHve1xNsfYvt2WpL+0O
+cpC8dPCjdQa7/YsTq9SOWpg5iCy247B+5GT/nunhG8s/sx20GMDA/gOUvgClH0Bo
+AIyOe5RkAAAAAAAAZA==
+
+`list table`
+H4sIAAAAAAAAAHWOQQ6AIAwEtwWMqBc/4Os88P8X2MJiGhNJGmA62xTACSAJcCmw
+2r3ZX+wGeQncz2LvWyDNe+5ZqVVlrzPLVOlz3JPG3nQxS8fcI7Dy8f7mzR3dE+vv
+ZI4L88J80rFf/nKyRAZ6KTI6eeaC87IHSylcZUgBAAAAAAFI
+
+`bytecodes`
+H4sIAAAAAAAAAKVUy47TMBS9jvNq0sZplU6nrALDIBZ0w2PTFWINa7aTdKKhEtOM
+Unck/hH+CdtxbMdJBxCWWjv29TnnPnwhvil/0GpX31bHm4/wk49fAHAB3rGipwe2
+XIMaL9gPyfWlC+DwRSD32N/ylVyzg+UUALPllS/tPGEK4Gq87pzwQ4CY1rT4vrmr
+C3oEaS0GWofMCGlygjz+EZblppO5MGTiEZnhqEyU+n2pQooDPkNuTgcuSuP23NDq
++ncxxA8F3X3bjMQPmUBzJagVcaljhyTqonPZlTaR/GY8GW6JyUQSu+De148V93nI
+2DEtIoaENZNiwOJMhKLHuFaM7fczyeZBsmuqglYbWjVNseehej7gFXwZm1NDw1P8
+3KtAetjDcttzpeVCRtFp3RWRcKQ2HwKevrq4Z7sfrPwlw6CsQqMeNDBaElGtiCRi
+dq7eAOR9wX3nXMM5z3DOl3NgJSA0bCZWAiIrAbGVgACcsmyx7WQTT9qEMPt0orQ+
+bPNc1sbEKmMjziKGvtzEsFJXB4m2QfyzIHMFYjzV7poDxhDmxDRv35/Nhc9yJeqy
+TQQDouxLfdjTutnm/Z5DJFusoxmYoWXjJVaVAySyVEzOIodPI4rbESSf94cq/7q/
+vavoNn8LorqFomxQt11f4zVotw5ekyhdybplMby+VjU6VB2P8M7/n09gTy3sd60v
+Ais9w+Hq98jfhMB8bfiAR3yYjfDM/h1fYCUW1nu2vbTato3JmlKGNK6KxfQPuskI
+17BH/RWHwEt/A4DemYfTBwAAAAAH0w==
+
+`observer world`
+H4sIAAAAAAAAAGMQSMhPKk4tKkstUiguSSxJTXBggAMrBq6CnPyS8syU9NQSIJ+F
+gS0nNS+9JAPI5mBgB8kVpOaBlXKDNSPJQgAjCAMA+OWZc2QAAAAAAABk
+
+`patch world`
+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
+
+`turtle world`
+H4sIAAAAAAAAAGPgSygpLSrJSVUoLkksSU1wYICD+QxsOal56SUZQLYDA2tSUWpq
+CpCpwsBVkJNfUp6Zkp5aAuSbMLCD+AWpeUCOHgNrcn5OfhGQKcPAUpkMZvEwcIMN
+h5tmwcABVJ6SX55XAOQZMbAWZyQWpAKZWgwsFRA9LAzM5Rn5YHewFWdAVRozsGek
+JqZk5qUDOSJAzMTACdRZkJmXWlwMUZuSWpxZBDKKEeERoGEQzHCAIeChpPV9DQeG
+woobDBULHPITwAoc9BhQAS/YBJAZjExgeyDs/ZuN7hfFL2ZwEKy8vFl1+RKHwgMQ
+/ZZ49TMBMTPImP0/A3qnrYxh2P/q7SaDipIGB8cGiH4ojUM/CxCzAtnMBwSm7U6b
+yidwQOETh0VP4RaHkg0Q/W549bMBMTsAaqS8PuoBAAAAAAHq
+

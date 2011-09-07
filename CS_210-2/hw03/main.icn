@@ -1,0 +1,69 @@
+$include "isPrime.icn"
+$include "assign3.icn"
+
+procedure main()
+	l := [1, 2, 3]
+	
+	#1
+	write("sum:")
+	write(sum(l))
+
+	#2
+	write("runningSum:")
+	every write(runningSum(l))
+
+	#3
+	write("sumto:")
+	every write(!sumto(l, 4))
+
+	#4 and 5, forgot how to limit this, skipping run until safeties 
+	#4
+	write("allnums:")
+	every write(allnums(1))\50
+
+	#5
+	write("prime")
+	every (write(prime()))\20
+
+	#6
+	write("onlyOddDigits:")
+	n := 5994
+	write(onlyOddDigits(n))
+	if(onlyOddDigits(n)) then write(n || " had odd numbers only")
+	else write(n || " did not have odd numbers only")
+
+	#7
+	write("oddReversiblePrimes:")
+	every write(oddReversablePrimes())\25
+
+	#8
+	write("divisors:")
+	every write(divisors(20))
+
+	#9
+	makeList(p,[2,3,5,7])
+
+	#10
+	write("isPalindromic:")
+	n:=1221 
+	if(isPalindromic(n)) then write(n || " is palindromic")
+	else write(n || " is not palindromic")
+
+	#11
+	write("palindromicPrimes:")
+	every write(palindromicPrimes())\10
+
+	#12
+	write("perfect:")
+	every write(perfect())\3
+
+	#13	
+	write("stripLefts:")
+	s:="Hello there"
+	every write(stripLeft(s))
+
+	#14
+	write("leftPrimes:")
+	every write(leftPrimes())\20
+
+end

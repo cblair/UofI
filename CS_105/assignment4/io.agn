@@ -1,0 +1,35 @@
+###############################################################################
+#file i/o
+###############################################################################
+printfile := proc(fname)
+	for line,endline in io.lines(fname) do
+		print(line)
+	od
+end
+
+copyfile := proc(finame,foname)
+	foh := io.open(fname, 'w')
+	io.write(foh,'')
+	io.close(foh)
+	for line,endline in io.lines(finame) do
+		foh := io.open(foname, 'a')
+		if os.isWin() then
+			io.write(foh, line & '\n')
+		else
+			io.write(foh,line)
+		fi
+		io.close(foh)	
+	od
+end
+
+
+#file input
+fname := 'i.txt'
+printfile(fname)
+#file output
+fname := 'o.txt'
+content := "This is our output file.\nIt all its squishiness.\n"
+foh := io.open(fname, 'w')
+io.write(foh,content)
+io.close(foh)
+copyfile("i.txt","o.txt")

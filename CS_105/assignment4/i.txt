@@ -1,0 +1,3 @@
+#this is content for the io portion of the assignment
+Hey look, we are reding a file!
+Stop.

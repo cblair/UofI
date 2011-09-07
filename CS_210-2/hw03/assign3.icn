@@ -1,0 +1,149 @@
+#1
+procedure sum(l)	
+	sum := 0
+	i := 1
+	every !l do (sum := sum + l[i], i +:= 1)
+	return(sum)
+end
+
+#2
+procedure runningSum(l)
+	sum := 0
+	every i:=!l do suspend(sum := sum + i)	
+end
+
+#3
+procedure sumto(l, x)
+	sum := 0
+	every i:=!l do {
+		every j:=!l do {
+			if(x = l[i] + l[j]) then {
+						suspend ([l[i], l[j]])
+					}
+		}
+	}
+end
+
+#4
+procedure allnums(start)
+	suspend start | allnums(start+:=1)
+end
+
+#5
+procedure prime()
+	suspend isPrime(allnums(1))
+end
+
+#6
+procedure onlyOddDigits(n)
+	size:=0
+	every i:=!string(n) do {
+		size+:=1
+		if((integer(i)/2)*2 = integer(i)) then break
+		else if size = *string(n) then return(n)
+	}
+end
+
+#7
+procedure oddReversablePrimes()
+	suspend (j:=isPrime(integer(reverse(string(i:=prime())))), onlyOddDigits(i), j>=i)
+end
+
+#8
+procedure divisors(n)
+	i:=1
+	every i to n do {
+		if ((n/i)*i = n) then suspend(i)
+		i+:=1	
+	}
+end
+
+#9
+procedure p(n)
+	return(n)
+end
+procedure makeList(g, n)
+	retl:=[]
+	every (retl|||:=[g(n)])
+	return(retl)
+end
+
+#10
+procedure isPalindromic(n)
+	pos:=1
+	#if even
+	if((*string(n)/2)*2 = *string(n)) then {
+		every i:=!string(n)/2 do {
+			if(pos = (*string(n)/2) + 1) then return(n) #success!
+			if(string(n)[pos] ~== string(n)[*string(n) - pos + 1]) then break #fail!
+			pos+:=1
+		}
+	}
+	else { # else is odd
+		every i:=!string(n) do {
+			if(pos = (*string(n)/2) + 1) then return(n) #success!
+			if(string(n)[pos] ~== string(n)[*string(n) - pos + 1]) then break #fail!
+			pos+:=1
+		}
+	}
+end
+
+#11
+procedure palindromicPrimes()	
+	i:=1
+	repeat {
+		if isPalindromic(isPrime(i)) then suspend i
+		i+:=1
+	}
+end
+
+#12
+procedure perfect()
+	every i:=allnums(1) do {
+		sum:=0
+		every j:=divisors(i) do {
+			sum+:=j
+		}
+		if sum = 2 * i then suspend i
+	}
+end
+
+#13
+procedure stripLeft(s)
+	i:=1
+	every i to (*s)do {
+		suspend s[i:*s+1]
+		i+:=1
+	}
+end
+
+#14
+procedure leftPrimes()
+	suspend 1
+	every i:=prime() do {	
+		fail_detected:=0
+		every j:=stripLeft(i) do {
+			if(not(isPrime(j)) & not(integer(j)=1)) then {
+				fail_detected:=1
+			}	
+		}
+		if(fail_detected=1) then {
+			fail_detected:=0
+		}
+		else suspend i
+	}
+end
+
+#############################
+#testing and troubleshooting
+#############################
+	
+procedure To(i, j)
+  #while i <= j do {
+  #  suspend i
+  #  i +:= 1
+  #  }
+  #fail
+	
+end
+

@@ -1,0 +1,73 @@
+//////////////////////////////////////
+//	Author:	Colby Blair
+//	Class:	CS-120 Sect. 3
+//	Lab:	6
+//	Date:	09/23/07
+/////////////////////////////////////
+
+
+
+Main 1:    g = 4     a = 11     b = 56789  x = 2020
+//g was declared and initialized on line 9 as 4 as  a global variable.
+//a was declared and initialized on line 13 as 11 as a local variable to main()
+//b was declared and initialized on line 14 as 56789 as a local variable to main()
+//x was declared and  initialized on line 15 as 2020 as a local variable to main()
+
+Main 1a:             a = 44    
+//a is incremented by 33 on line 26 in main(), and printed on line 31,
+// in an unnamed block set, child of main()
+
+Main 2:    g = 14    a = 777    b = 56789  x = 2020
+//g was incremented by 10 on line 35; value changes globally to 14.
+//a was declared and initialized in the unnamed block set as 777, child of main();
+// not the same a as the one in main()
+//b was declared and initialized on line 14, in main(), and inherited in the unnamed
+// child block set.
+//x was initialized on line 15, in main(), and inherited in the unnamed child
+// block set.
+
+function1: g = 56833 a = -56745            x = 44     y = 88    
+//value for var. a from main(), 44, is passed to function1() local variable x,
+// on line 44.
+//value for var. b from main(), 56789, is passed to function1() local variable y.
+// on line 44.
+//g: global var. g is set to function1() local var.s (x + y), which is 44 + 56789,
+// or 56833, on line 64.
+//a: function1() local var. a declared and initialized on line 63 as x - y, which 
+// is 44 - 56789, or -56745, on line 63.
+//x: function1() local var. x is declared and initialized as 44, value passed from
+// main() local var. a, on line 61.
+//y: function1() local var. y, representing main()'s var. b, is declared and
+// initialized as 56789, value passed from main() local var. b, on line 61.
+//  y is then set to a + g, or -56734 + 56833, or 88, on line 65.
+
+Main 3:    g = 56833 a = 44     b = 88     x = -56745
+//g: g is still set to 56833 from line 64.
+//a: a is still set to 44 from line 26; no previous functions other than main have 
+// called the a var. in main.
+//b: b is set to 88 from line 61, when &y represented b in function1() as y.
+//x: x is returned value -57645 from line 73, ON line 44.
+ 
+function1: g = 132   a = 44                x = 88     y = 176   
+//function1() local var. x is declared and initialized as 88 on line 61, passed 
+// value from a on line 44.
+//a: function1() local var. a is declared and initialized as x - y, which is
+// 88 - 44, or 44, on line 63.
+//x: function1() local var. x is declared and initialized as 88 on line 61,
+// passed value from a on line 44.
+//y: function1() local var. y, representing function2() local var. x, is declared and
+// initialized as 44 on line 61, and then is set as a + g, or 132 + 44, or 
+// 176, on line 65.
+   
+function2: g = 7744                        x = 176   
+//g: function2() local var. g is set to temp * x, or 44 * 176, or 7744, on
+// line 83.
+//x: function2() local var. x is set to 176 on line 82, represented by y value from
+// function1() on line 61.
+
+Main 4:    g = 132   a = 44     b = 176    x = 44
+//g: global var. g is still set as 132 on line 64 from the last function1() call.
+//a: main() local var. a is still set to 44 from line 26.
+//b: main() local var. b is set to 176 on line 76 when function2() local val. x 
+// represents b on line 76.
+//x: main() local var. x is set to 44 on line 52, return value from function2() call.

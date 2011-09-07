@@ -1,0 +1,12 @@
+///////////////////////////////////////////////
+//	Class: CS120 Sect. 3
+//	Author: Colby Blair
+//	Date: 11/06/07
+//	Lab: 11.1
+
+The letter 'a' is changed on line 10.
+The letter 'c' is changed on line 13.
+The letter 'f' is changed on line 15.
+The letter 'd' is changed on line 17 by calling functl, making the change on line 25.
+The letter 'b' is changed on line 18 by calling functl, making the change on line 25.
+The letter 'e' is changed on line 19 by calling funct1, making the change on line 25.

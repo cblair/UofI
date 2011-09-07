@@ -1,0 +1,28 @@
+Script started on Tue Aug 28 14:53:22 2007
+/users/b/blai4021/ch3/lab2> g++ -Wall -o lab2-1 lab2-1.cpp
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 5
+Please enter another number: 17
+The sum of 5 plus 17 is 22.  The average of your numbers is 11.
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 6
+Please enter another number: 17
+The sum of 6 plus 17 is 23.  The average of your numbers is 11.
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 4.5
+Please enter another number: The sum of 4 plus 0 is 4.  The average of your numbers is 2.
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 4.5
+Please enter another number: The sum of 4 plus 0 is 4.  The average of your numbers is 2.
+/users/b/blai4021/ch3/lab2> ./lab2-1
+Please enter a number: 5
+Please enter another number: 17
+The sum of 5 plus 17 is 22.  The average of your numbers is 11.
+/users/b/blai4021/ch3/lab2> exit
+exit
+
+script done on Tue Aug 28 14:56:28 2007
+
+******
+Question 2:
+	As I saw here, when doing decimal points, the program thinks I enter y as 0.

@@ -1,0 +1,21 @@
+###############################################################################
+#array-numerical
+###############################################################################
+#we're doing tables, a little more interesting
+#a loction table of tables
+loc := [ 
+	"AB1" ~ ["lat" ~ 46.3875,
+		"lon" ~ -123.1616
+		],
+	"AB2" ~ ["lat" ~ 46.3321,
+		"lon" ~ -123.1881
+		],
+	"AB3" ~ ["lat" ~ 46.195660,
+		"lon" ~ -123.164540
+		],
+	"B1J" ~ ["lat" ~ 45.6680,
+		"lon" ~ -121.8617
+		]
+]
+print("GPS Location data for site AN1:")
+print(loc["AB1"]) 

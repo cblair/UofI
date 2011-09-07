@@ -1,0 +1,97 @@
+#!/bin/bash
+
+if [ $# == "0" ]; then
+    echo "This is the g++ research recorder script - provide your g++ arguments"
+    echo "as arguments to this script."
+    exit 1
+fi
+
+echo "Research recorder working."
+
+echo "================================================="
+echo "Command line: $0 $@"
+
+# copy input file to archive
+
+archive='/net/ugrads/user1234/archive2'
+#archive='/net/faculty/dbuehler/study'
+
+gppArgs=''   # Build the arguments to pass to g++ in this string
+outFile=''   # Grab the output file name in this string
+inFile=''    # Grab the input file name in this string
+
+# Process the command-line arguments...
+# Grabs -o and the following word as the outFile specifier
+# Copies any other -<switch> as-is
+# Any other string (not starting with a '-') is assumed to be
+#  the input file name - the last such string will be stored as
+#  the input file name!
+while [ -n "$1" ]; do
+    case $1 in
+	-o ) shift
+	     outFile=$1
+	     gppArgs="${gppArgs}-o $1 "
+	     ;;
+	-* ) gppArgs="${gppArgs}$1 "
+	     ;;
+	* )  gppArgs="${gppArgs}$1 "
+	     inFile=$1
+	     ;;
+    esac
+    shift
+done    
+
+if ! [ -f $inFile ]; then
+    echo "There must be an error with processing the command-line arguments,"
+    echo "I can't find the input file: $inFile"
+    exit 1
+fi
+
+# The original script always provided an output file specification
+# I've made this script provide one if the user doesn't specify -o <ofile>
+# Think about removing this?
+if [ -z "$outFile" ]; then
+    outFile="${inFile%.*}"
+    gppArgs="${gppArgs}-o $outFile "
+    echo "Providing automatic output file name $outFile"
+fi
+
+# I'm putting each user's data in a separate user-specific subdirectory,
+# This behavior is different from the original script
+destDir="$archive/$USER"
+if ! [ -d $destDir ]; then
+    if ! mkdir -p $destDir; then
+	echo "ERROR - problem creating directory $destDir - aboarting!"
+	exit 1
+    fi
+    chmod go+rx $destDir  # Make sure the study owner can see the reports!
+fi
+
+# I changed the original %X on the end to %T because %X was including
+# <space>{AM|PM} - and the SPACE was annoying - why add AM/PM when %T
+# uses 24-hour hours anyway?
+dateStamp=`date '+%m-%d-%y@%T'`
+
+archiveFile="$USER^$inFile^$dateStamp"
+
+#echo "gppArgs  = $gppArgs"
+#echo "outFile = $outFile"
+#echo "inFile  = $inFile"
+#echo "destDir = $destDir"
+#echo "archiveFile = $archiveFile"
+
+srcArchiveFile="$destDir/$archiveFile"
+logFile="$destDir/$archiveFile.log"
+
+if ! cp $inFile $srcArchiveFile; then
+    echo "ERROR - problem archiving input file to $srcArchiveFile - aboarting!"
+    exit 1
+fi
+chmod go+rw $srcArchiveFile  # make sure study owner can read the files!
+
+g++ $gppArgs &> $logFile
+
+cat $logFile
+chmod go+wr $logFile  # make sure study owner can read the log files!
+
+exit

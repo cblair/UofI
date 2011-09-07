@@ -1,0 +1,185 @@
+#include "node.h"
+#include "string.h"
+#include <stdio.h>
+
+void node::reinitNode() {
+	//iterative destruct
+        for(node *pTemp = this; pTemp != NULL; ) {
+		if(pTemp->next != NULL && pTemp->next->next == NULL) {
+		  pTemp->next->name = '\0';
+		  pTemp->next->val = pTemp->next->x = pTemp->next->y = -1;
+		  delete pTemp->next; pTemp->next = NULL; 
+		  pTemp = this;
+		}
+		else {
+			pTemp = pTemp->next;
+		}
+        }
+	this->name = '\0';
+	this->val = this->x = this->y = -1;
+	delete this->next; this->next = NULL;
+}
+
+bool node::exists(int x, int y) {
+  for(node *pTemp = this; ; pTemp = pTemp->next) {
+    if(pTemp == NULL) {
+      return(false);
+    }
+    else if(x == pTemp->x && y == pTemp->y) {
+      return(true);
+    }
+  }
+  return(false);
+}
+
+int node::length() {
+  int i = 0;
+  for(node *pTemp = this; pTemp != NULL && !pTemp->isEmpty(); pTemp = pTemp->next) {i++;}
+  return(i);
+}
+
+int node::nAncestors(node *nTemp){
+  int i = 0;
+  for(node *pTemp = nTemp; pTemp != NULL && !pTemp->isEmpty(); pTemp = pTemp->parent) {i++;}
+  return(i);
+}
+
+void node::addNode(char name, int val, int x, int y) {
+  if(this->exists(x,y)) return; //no dups
+	//if head values are not null, add to last next in list
+	if(this->name != '\0') {
+	        node *pTemp = this;
+		while(pTemp->next != NULL) {
+			pTemp = pTemp->next;
+		}
+		node *newNode = new node(name,val,x,y);
+		newNode->next = NULL;
+		pTemp->next = newNode;
+	}
+	else {
+	//else, initialze and add to head
+		this->name = name;
+		this->val = val;
+		this->x = x;
+		this->y = y;
+		this->next = NULL;
+	}
+	//printf("Added node %s : %s\n", pTemp->name, pTemp->val); 
+}
+
+bool node::popFront() {
+  if(this->isEmpty()) return(false);
+  if(this->next == NULL) {
+    this->reinitNode();
+    return(true);
+  }
+
+  //kinda cheesey because 'this' can't be reassigned
+  this->name = this->next->name;
+  this->val = this->next->val;
+  this->x = this->next->x;
+  this->y = this->next->y;
+  node *temp = this->next;
+  this->next = this->next->next;
+  //delete this->next; //this should be done, but screw things up for some reason
+  return(true);
+}
+
+bool node::pushNodeFront(char name, int val, int x, int y) {
+  if(this->exists(x,y)) return(false); //no dups
+ 
+  if(this->isEmpty()) {
+    this->name = name;
+    this->val = val;
+    this->x = x;
+    this->y = y;
+    this->next = NULL;
+    return(true);
+  }
+
+  //if head values are not null, add to last next in list
+  node *newNode = new node(this->name,this->val,this->x,this->y);
+  newNode->next = this->next;
+  this->name = name; this->val = val; this->x= x; this->y = y;
+
+  //printf("Added node %s : %s\n", pTemp->name, pTemp->val); 
+}
+
+int node::getVal(char name) {
+        for(node *pTemp = this; ; pTemp = pTemp->next) {
+                if(pTemp == NULL) {
+                        return(-1);
+                }
+                else if(name == pTemp->name) {
+                        return(pTemp->val);
+                }
+        }
+	return(-1);
+}
+
+bool node::isEmpty() {
+	//if(strcmp(this->name, "") == 0 && strcmp(this->val, "") == 0) return(true);
+	if(this->name == '\0' && this->val == -1) return(true);
+	return(false);
+}
+
+bool node::isAncestor(int x, int y, node *child) {
+  for(node *pTemp = child; pTemp != NULL; pTemp = pTemp->parent) {
+    if(pTemp->x == child->x && pTemp->y == child->y) return(true);
+  }
+  return(false);
+}
+
+bool node::areRelatives(node *child, node *ancestor) {
+  node * nTemp = child;
+  if(nTemp == NULL) return(false);
+  for(node * pTemp = nTemp; pTemp != NULL && !pTemp->isEmpty(); pTemp = pTemp->parent) {
+    if(pTemp->x == ancestor->x && pTemp->y == ancestor->y) return(true);
+  }
+  return(false);
+}
+
+node *node::getEndPtr() {
+  if(this == NULL || this->isEmpty()) return(NULL);
+  node *pTemp = this; 
+  while(pTemp->next != NULL) { pTemp = pTemp->next;}
+  return(pTemp);
+}
+
+
+//testing methods
+void node::print(int i ) {
+        node *pTemp = this;
+        for(int x = 0; x <= i; x++, pTemp = pTemp->next) {
+	  if(pTemp == NULL || pTemp->isEmpty()) {
+                        cout << "NODE_WARNING: index of " << i << " is beyond the size of the list." << endl;
+                        return;
+                }
+		else if(x == i) {			
+		        cout << "node element[" << x << "] - " << pTemp->name << "," << pTemp->val 
+				<< "," << pTemp->x << "," << pTemp->y << endl;
+			return;
+		}	
+        }
+}
+
+void node::printAll() {
+        node *pTemp = this;
+        if(pTemp == NULL || pTemp->isEmpty()) {
+                cout << "node list is empty" << endl;
+                return;
+        }
+	for(; pTemp != NULL && !pTemp->isEmpty(); pTemp = pTemp->next) {
+	  cout << "node list name,val,x,y : " << pTemp->name << "," ;
+	  cout << pTemp->val << "," << pTemp->x << "," << pTemp->y << endl;
+        }
+
+}
+
+void node::printAncestors(node *nTemp) {
+  if(nTemp == NULL) return;
+  for(node * pTemp = nTemp; pTemp != NULL && !pTemp->isEmpty(); pTemp = pTemp->parent) {
+    cout << "node list name,val,x,y : " << pTemp->name << "," ;
+    cout << pTemp->val << "," << pTemp->x << "," << pTemp->y << endl;
+  }
+}

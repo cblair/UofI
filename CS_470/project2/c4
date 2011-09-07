@@ -1,0 +1,66 @@
+#! /usr/bin/python
+
+import pygame, sys, os, getopt
+#import sys,os
+#from numpy import *
+from pygame.locals import * 
+from c4 import *
+
+def usage():
+	print "Usage: c4 <mode>"
+	print "	modes:"
+	print "		-p, --2player"
+	print "		-t <player #>"
+	print "		--ai_test"
+	print "		--minmax"
+	print "		--alpha_beta"
+	print "		--alpha_beta_timed"
+
+def main():
+	mode = False
+	init_turn = -1
+	try:
+		opts, args = getopt.getopt(sys.argv[1:], "ht:p", ["help", "2player", "ai_test","minmax","alpha_beta","alpha_beta_timed"])
+	except getopt.GetoptError, err:
+		# print help information and exit:
+		print str(err) # will print something like "option -a not recognized"
+		usage()
+		sys.exit(2)
+		output = None
+		verbose = False
+	for o, a in opts:
+		if o in ("-h", "--help"):
+			usage()
+			sys.exit()
+		elif o in ("-p", "--2player"):
+			mode = "2player"
+		elif o in ("-t"):
+			init_turn = a
+		elif o in ("--ai_test"):
+			mode = "ai_test"
+		elif o in ("--minmax"):
+			mode = "minmax"
+		elif o in ("--alpha_beta"):
+			mode = "alpha_beta"
+		elif o in ("--alpha_beta_timed"):
+			mode = "alpha_beta_timed"
+	 	else:
+			assert False, "unhandled option"
+	if not mode:
+		print "ERROR: You must specify a mode."
+		usage()
+		sys.exit(1)
+
+	play_again = True
+	while(play_again):
+		current_game = c4()
+		if init_turn != -1:
+			current_game.turn = int(init_turn) - 1 # turn is usually 0 or 1, input will be 1 or 2
+		play_again = current_game.play(mode)
+
+###############################################################################
+#run
+###############################################################################
+main()
+
+sys.exit(0)

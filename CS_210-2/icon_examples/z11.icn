@@ -1,0 +1,3 @@
+procedure stars2(s)
+	suspend !s | (stars2(s) || !s)
+end

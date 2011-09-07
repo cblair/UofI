@@ -1,0 +1,14 @@
+procedure main()
+    if locate("dog") then write("Dog found")
+    else write("Dog not found")
+end
+
+procedure locate(s)
+    local u;
+
+    while line := read() do {
+	if find(s, line) then return
+	u:="howdy"
+    }
+    fail
+end

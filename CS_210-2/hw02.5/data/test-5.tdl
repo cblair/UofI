@@ -1,0 +1,8 @@
+translate 100 100
+rotate 90
+scale 2 2
+defaultlen 50
+spacing 30
+#v = ((ants:23, grasshoppers)insects, (bass, salmon)fish:44, (mouse):13);
+draw (#v, dog, #v);
+quit

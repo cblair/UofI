@@ -1,0 +1,32 @@
+Script started on Tue Sep 04 14:55:13 2007
+/users/b/blai4021/lab3> g++ -Wall -o lab3-1 lab3-1.cpp
+/users/b/blai4021/lab3> ./b lab3-1
+Enter 2 numbers to compare:
+3
+7
+x < y, 3 is the smaller number!
+/users/b/blai4021/lab3> ./lab3-1
+Enter 2 numbers to compare:
+7 2
+x > y, 2 is the smaller number!
+/users/b/blai4021/lab3> lab   ./lab3-1
+Enter 2 numbers to compare:
+0 0
+x == y!
+/users/b/blai4021/lab3> g++ lab3    -Wall -o lab3-1b lab3-1b.cpp
+/users/b/blai4021/lab3> ./lab3-1b
+Enter 2 numbers to compare:
+6 2
+x > y, 2 is the smaller number!
+/users/b/blai4021/lab3> ./lab3-1b
+Enter 2 numbers to compare:
+4 3   3 4
+x < y, 3 is the smaller number!
+/users/b/blai4021/lab3> ./lab3-1b
+Enter 2 numbers to compare:
+6 6
+x == y!
+/users/b/blai4021/lab3> exit
+exit
+
+script done on Tue Sep 04 14:58:43 2007

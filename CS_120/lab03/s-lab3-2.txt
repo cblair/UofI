@@ -1,0 +1,24 @@
+Script started on Tue Sep 04 16:17:44 2007
+/users/b/blai4021/lab3> g++ la  -Wall -o lab3-2 lab3-2.cpp
+/users/b/blai4021/lab3> ./lab3-2
+Type in ONE character for analysis, please...
+6
+The ASCII decimal equivalent is: 54
+6 is a number 1-9.
+6 squared is: 36
+/users/b/blai4021/lab3> ./lab3-2
+Type in ONE character for analysis, please...
+t
+The ASCII decimal equivalent is: 116
+t is a alpa character in lowercase form.
+The UPPERCASE form is: T
+/users/b/blai4021/lab3> ./lab3-2
+Type in ONE character for analysis, please...
+F
+The ASCII decimal equivalent is: 70
+F is a alpha character in CAPITAL form.
+The lowercase form is: f
+/users/b/blai4021/lab3> exit
+exit
+
+script done on Tue Sep 04 16:18:40 2007

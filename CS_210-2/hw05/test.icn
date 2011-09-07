@@ -1,0 +1,10 @@
+$include "jug.icn"
+
+procedure main()
+	juglist:=[]
+	put(juglist, jug(5,0))
+	put(juglist, jug(3,1))
+	write(str_qty_list(juglist))
+	every write(efp(juglist) || " " || str_qty_list(juglist))
+	#every write(pour(juglist) || ":" || jug_qty_sum(juglist) || ",:" || str_qty_list(juglist))
+end

@@ -1,0 +1,11 @@
+# (NMSU) Science Hall model
+
+default {
+	name Science Hall
+	home [92.0, 1.0, 25.9]
+	angle 4.6
+	origin_node foyer
+}
+
+include nodes/model.dat
+include edges/static.dat

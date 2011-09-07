@@ -1,0 +1,6 @@
+procedure main()
+    s:= "hi there"
+    write(s)
+    s := 666
+    write(s)
+end

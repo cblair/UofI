@@ -1,0 +1,116 @@
+[1]> (first (rest (assoc 'dog '((dog bark) (cat meow) (cow moo)))))
+BARK
+[2]> (first (assoc 'dog '((dog bark) (cat meow) (cow moo)))) 
+DOG
+[3]> (+ 1 2)
+3
+[4]> (apply '+ '(1 2 3))
+6
+[5]> (+ 1 2 3)
+6
+[6]> (funcall '+ '1 '2 '3)
+6
+[7]> (apply 'list '((a) (b) (c)))
+((A) (B) (C))
+[8]> (apply 'append '((a) (b) (c)))
+(A B C)
+[9]> (defun sqr (x) (* x x))
+SQR
+[10]> (sqr 6)
+36
+[11]> (funcall 'sqr 6)
+36
+[12]> (apply 'sqr '(6))
+36
+[13]> (funcall #'(lambda (x) (* x x)) 6)
+36
+[14]> #'(lambda (x) (* x x))
+#<FUNCTION :LAMBDA (X) (* X X)>
+[15]> (setq zog #'(lambda (x) (* x x)))
+#<FUNCTION :LAMBDA (X) (* X X)>
+[16]> (zog 6)
+
+*** - EVAL: undefined function ZOG
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'ZOG).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'ZOG).
+ABORT          :R4      Abort main loop
+Break 1 [17]> (funcall zog 6)
+36
+Break 1 [17]> (setq z '(2 3 5 7 11))
+(2 3 5 7 11)
+Break 1 [17]> z
+(2 3 5 7 11)
+Break 1 [17]> (mapcar #'(lambda (x) (* x x)) z)
+(4 9 25 49 121)
+Break 1 [17]> (setq zog2 zog)
+#<FUNCTION :LAMBDA (X) (* X X)>
+Break 1 [17]> (funcal zog2 6)
+
+*** - EVAL: undefined function FUNCAL
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'FUNCAL).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'FUNCAL).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort main loop
+Break 2 [18]> (funcall zog2 6)
+36
+Break 2 [18]> (mapcon 'sqr z)
+
+*** - *: (2 3 5 7 11) is not a number
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead.
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort main loop
+Break 3 [19]> (mapcan 'sqr z)
+121
+Break 3 [19]> (mapcan #'(lambda (x) (list (* x x))) z)
+(4 9 25 49 121)
+Break 3 [19]> (append '(a b) '(a) '() '(x))
+(A B A X)
+Break 3 [19]> (append '(a b) '(nill a) '() '(x))
+(A B NILL A X)
+Break 3 [19]> (maplist 'list '(a b c d))
+(((A B C D)) ((B C D)) ((C D)) ((D)))
+Break 3 [19]> (maplist 'length '(a b c d))
+(4 3 2 1)
+Break 3 [19]> (setq cities '( (moscow ((spokane 90) (colfax 20) (lewiston 30)))
+                              (spokane ((moscow 90) (colfax 70) (lewiston 120)))
+                            )
+)
+((MOSCOW ((SPOKANE 90) (COLFAX 20) (LEWISTON 30))) (SPOKANE ((MOSCOW 90) (COLFAX 70) (LEWISTON 120))))
+Break 3 [19]> (assoc 'moscow cities)
+(MOSCOW ((SPOKANE 90) (COLFAX 20) (LEWISTON 30)))
+Break 3 [19]> (second (assoc 'moscow cities))
+((SPOKANE 90) (COLFAX 20) (LEWISTON 30))
+Break 3 [19]> (defun alist-keys (x) (mapcar 'first x))
+ALIST-KEYS
+Break 3 [19]> (alist-keys cities)
+(MOSCOW SPOKANE)
+Break 3 [19]> (defun city-routes (x) (second (assoc x cities)))
+CITY-ROUTES
+Break 3 [19]> (city-routes 'spokane)
+((MOSCOW 90) (COLFAX 70) (LEWISTON 120))
+Break 3 [19]> (city-routes 'moscow)
+((SPOKANE 90) (COLFAX 20) (LEWISTON 30))
+Break 3 [19]> (city-routes 'chicago)
+NIL
+Break 3 [19]> (city-routes 'colfax)
+NIL
+Break 3 [19]> (defun dist (x y))
+DIST
+Break 3 [19]> (defun dist (x y) 
+                     (second (assoc y (city-routes x))))
+DIST
+Break 3 [19]> (dist 'moscow 'colfax)
+20
+Break 3 [19]> (defun within (miles x)
+                     (mapcan #'(lambda (y) (if (<= (second y) miles) (list (first y)) nil))
+(city-routes x))
+)
+WITHIN
+Break 3 [19]> 
+

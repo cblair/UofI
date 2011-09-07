@@ -1,0 +1,57 @@
+Script started on Mon Mar 31 01:30:51 2008
+sh-2.05$ ./ASCII g++ -Wall -o ASCII ASCII.cppsh-2.05$ ls[K./char_ASCII_int_values.exesh-2.05$ ls[K./char_ASCII_int_values.exe[Ksh-2.05$ ls[Kg++ -Wall -o ASCII ASCII.cppsh-2.05$ ./ASCII [K[Kmai   ./  ./main
+Filter above and below functions. Here is an array: 
+A[] = {1 2 3 4 5 2 3 4 6}, nA = 9, t = 0
+Please enter a filter function to perform on the array
+('above' or 'below' exactly): below
+Set t (the threshold) to filter at (below values will be filtered out): 3
+Now the pointer array looks like this: 
+pA[] = {3 4 5 3 4 6}, nA = 6, t = 3
+Filtering again, only no destruction of original. 'above' or 'below' please: above 4  
+Set t (the threshold) to filter at (above values will be filtered out): 4
+Original array looks like this: 
+A[] = {3 4 5 3 4 6}, nA = 6, t = 4
+Now the pointer array looks like this: 
+pB[] = {3 4 3 4}, nB = 4, t = 4
+Here is the same data set, only using a linked list.
+1
+2
+3
+4
+5
+2
+3
+4
+6
+Please enter a filter function to perform on the array
+('above' or 'below' exactly): above 
+Please enter the threshold to filter above values out at: 4
+The list is now as follows:
+1
+2
+3
+4
+2
+3
+4
+List size = 7
+Now we will do the same filter, but without changing the current data in the list.
+Please enter a filter function to perform on the list
+('above' or 'below' exactly): below 3
+Please enter the threshold to filter below values out at: Original list data untouched:
+1
+2
+3
+4
+2
+3
+4
+...and the filtered data:
+3
+4
+3
+4
+sh-2.05$ exit
+exit
+
+script done on Mon Mar 31 01:32:09 2008

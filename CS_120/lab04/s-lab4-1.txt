@@ -1,0 +1,22 @@
+Script started on Tue Sep 11 20:41:51 2007
+/users/b/blai4021/lab4> g++ -Wall -o lab4-1 lab4-1.cpp
+/users/b/blai4021/lab4> ./; lab4-1
+Please enter up to 10 integers to be added together.
+11 6 7 8
+0
+The sum of the numbers is: 32
+/users/b/blai4021/lab4> g++ -Wall -o lab4-1a lab4-1a.cpp
+/users/b/blai4021/lab4> ./lab4-1a
+Please enter up to 10 integers to be added together.
+7 8 9 0
+The sum of the numbers is: 24
+/users/b/blai4021/lab4> g++ lab4-1b       -Wall 0 -o lab4-1b lab4-1b.cpp
+/users/b/blai4021/lab4> ./ la   lab4-1b
+Please enter up to 10 integers to be added together.
+77 5 444
+0
+The sum of the numbers is: 526
+/users/b/blai4021/lab4> exit
+exit
+
+script done on Tue Sep 11 20:46:21 2007

@@ -1,0 +1,4 @@
+/usr/lib/bcc/include/math.h
+/usr/include/xulrunner-sdk-1.9/system_wrappers/math.h
+/usr/include/math.h
+/opt/lc3/include/math.h

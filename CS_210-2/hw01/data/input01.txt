@@ -1,0 +1,12 @@
+// a TDL test
+debug  // turn on debugging
+
+translate 100 100
+rotate 90
+scale 2
+defaultlen 50
+spacing 30 
+#v = ((ants:23.4, "GRASSHOPPERS")insects, ("a big bass":8, salmon)fish:44, (mouse, B.taurus:7):.78); 
+draw (#v, dog, #v);
+show (ant, bat);
+bye

@@ -1,0 +1,9 @@
+draw ant;
+draw (ant);
+draw (ant, bat);
+draw (ant, bat, cow, dog, elk, fox);
+draw (ant, (bat, cow), (dog, elk, (fox)));
+draw (((ant)));
+draw ((ant), (bat), (cow));
+exit
+

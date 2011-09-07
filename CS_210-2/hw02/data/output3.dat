@@ -1,0 +1,30 @@
+%!PS-Adobe-2.0
+%!BoundingBox: 0 0 300 300
+% Tree drawing program by Robert Heckendorn
+1 setlinecap 1 setlinejoin
+/Helvetica findfont 12 scalefont setfont
+ 72.0   0.0 translate  90.0 rotate
+  1.0   1.0 scale
+newpath
+2 setlinewidth
+ 15.0  20.0 moveto
+ 10.0  20.0 lineto
+ 15.0  16.4 moveto
+gsave   0.0 rotate
+( cat) show grestore
+ 15.0  40.0 moveto
+ 10.0  40.0 lineto
+ 15.0  36.4 moveto
+gsave   0.0 rotate
+( dog) show grestore
+ 10.0  20.0 moveto
+ 10.0  40.0 lineto
+ 10.0  30.0 moveto
+  5.0  30.0 lineto
+  5.0  30.0 moveto
+  5.0  30.0 lineto
+  5.0  30.0 moveto
+  0.0  30.0 lineto
+stroke
+showpage
+% (0.000000, 0.000000)  (15.000000, 40.000000)

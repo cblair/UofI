@@ -1,0 +1,17 @@
+#include <iostream>
+#include "map.h"
+
+using namespace std;
+
+int main(int argc, char *argv[]) {
+  cout << "Map Search!\n";
+  map *m1 = new map("data/map01.txt");
+  m1->print_params();
+  cout << "Map before searchL\n";
+  m1->print_valMatrix();
+  m1->search(argv[2]);
+  cout << "Map after search\n";
+  m1->print_valMatrix();
+  m1->printStats();
+
+}

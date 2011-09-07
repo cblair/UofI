@@ -1,0 +1,37 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	AHEX              3044
+//	BHEX              3045
+//	CHEX              3046
+//	APROMPT           3047
+//	BPROMPT           3051
+//	NANDPROMPT        305B
+//	NORPROMPT         3066
+//	XORPROMPT         3070
+//	MAX               307A
+//	HEAD              3098
+//	TWOSCP            3099
+//	LINE              309A
+//	BEEP              309B
+//	ASTRING           309C
+//	BSTRING           30AD
+//	CSTRING           30BE
+//	OSTRING           30CF
+//	ZEROASCII         30ED
+//	ONEASCII          30EE
+//	XORSUM            30EF
+//	SAVEDR6           30F0
+//	LOWASCII          30F1
+//	HIGHASCII         30F2
+//	INPUT             30F3
+//	ts1               3107
+//	ts2               311D
+//	SIGNEXT           312F
+//	NAND              3173
+//	NOR               31A5
+//	XOR               31D7
+//	PRINT_DEC         3208
+//	POW               3223
+

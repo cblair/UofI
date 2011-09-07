@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {2}Path Tracing}{4}
+\contentsline {section}{\numberline {3}Breadth First Search}{5}
+\contentsline {subsection}{\numberline {3.1}Procedure}{5}
+\contentsline {subsection}{\numberline {3.2}Procedure Summary}{7}
+\contentsline {subsection}{\numberline {3.3}Completeness, Efficiency (Cost and Path Length), and Complexity}{8}
+\contentsline {subsection}{\numberline {3.4}Program Output}{8}
+\contentsline {subsection}{\numberline {3.5}Breadth Conclusion}{9}
+\contentsline {section}{\numberline {4}Lowest Cost Search}{9}
+\contentsline {subsection}{\numberline {4.1}Procedure}{9}
+\contentsline {subsection}{\numberline {4.2}Procedure Summary}{11}
+\contentsline {subsection}{\numberline {4.3}Completeness, Efficiency (Cost and Path Length), and Complexity}{12}
+\contentsline {subsection}{\numberline {4.4}Program Output}{12}
+\contentsline {subsection}{\numberline {4.5}Lowest Cost Conclusion}{13}
+\contentsline {section}{\numberline {5}Iterative Deepening By Cost Search}{13}
+\contentsline {subsection}{\numberline {5.1}Procedure}{13}
+\contentsline {subsection}{\numberline {5.2}Procedure Summary}{15}
+\contentsline {subsection}{\numberline {5.3}Completeness, Efficiency (Cost and Path Length), and Complexity}{15}
+\contentsline {subsection}{\numberline {5.4}Program Output}{16}
+\contentsline {subsection}{\numberline {5.5}Iterative Deepening by Cost Conclusion}{17}
+\contentsline {section}{\numberline {6}A* Search With Multiple Heuristics}{17}
+\contentsline {subsection}{\numberline {6.1}Procedure}{17}
+\contentsline {subsection}{\numberline {6.2}Heuristics}{17}
+\contentsline {subsubsection}{\numberline {6.2.1}H1 - Manhattan Distance}{18}
+\contentsline {subsubsection}{\numberline {6.2.2}H2 - Cost Guilt By Association}{18}
+\contentsline {subsection}{\numberline {6.3}Procedure Summary}{18}
+\contentsline {subsection}{\numberline {6.4}Completeness, Efficiency (Cost and Path Length), and Complexity}{18}
+\contentsline {subsection}{\numberline {6.5}Program Output}{19}
+\contentsline {subsection}{\numberline {6.6}A* Search Conclusion}{21}
+\contentsline {section}{\numberline {7}Algorithm Comparison}{21}
+\contentsline {section}{\numberline {8}Conclusion}{22}

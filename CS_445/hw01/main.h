@@ -1,0 +1,16 @@
+///////////////////////////////////////////////////////////////////////////////
+//Class:	CS 445
+//Semester:	Fall 2011
+//Assignment:	Homework 1
+//Author:	Colby Blair
+//File name:	main.h
+///////////////////////////////////////////////////////////////////////////////
+
+#define EXIT    -1 
+#define ID      1 
+#define NAME    2 
+#define NUM     3 
+#define PUNC    4 
+#define MIX     5
+
+char *lexeme;

@@ -1,0 +1,51 @@
+procedure inc()
+	i:=0
+	repeat suspend i +:=1
+end
+
+procedure inc2()
+	suspend i:=1 | | (i+:=1)
+end
+
+procedure range(i, j)
+	while i<=j do {
+		suspend i
+		i+:=1
+	}
+end
+
+procedure range2()
+	suspend j>=i | | (j>=(i+:=1))
+end
+
+procedure select(l, low, high)
+	every x:=!l do 
+		if (x >=low) & (c<=high) then suspend x
+end
+
+
+procedure select2(l, low, high)
+	suspend x:=!l & (x>=low) & (x<=high) & x
+end
+
+procedure select3(l, low, high)
+	suspend (x:=!l, (x>=low), (x<=high), x)
+end
+
+procedure writelists(l)
+	writes("[")
+	every(i:=l to *l, writes(l[i]), i<*l, writes(", "))
+	writes("]")
+end
+
+procedure writeanys(x)
+	case type(x) of {
+		"list" : writelists(x)
+		"table" : writelists(sort(x))
+		default : writes(x)
+	}
+end
+
+procedure main()
+	every write(select2([3,1,4,1,5,9,2],2,5))
+end

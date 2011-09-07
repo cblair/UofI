@@ -1,0 +1,140 @@
+
+\section{Algorithms}
+
+\subsection{Brownian Bridge}
+Brownian Bridge for analyzing animal movements \cite{bb}
+
+\subsection{Synoptic Model}
+Synoptic Model of animal space use, using Brownian Bridges \cite{syn}
+
+\subsection{Hidden Markov Models}
+Hidden Markov Models for DNA Sequencing
+
+of where animals may be in a habitat, based off of where they had been 
+previously. Using Brownian Bridges created a method to do this. Although the 
+resulting maps told researches where animals would be, it didn't make any 
+direct relations with habitat. The research involves calculations over many locations, which is easily parallelizable.
+
+\bibitem{syn} Horne, Garton, Rachlow. "A synoptic model of animal space use:
+        Simultaneous estimation of home range, habitat selection, and
+        inter/intra-speciﬁc relationships" {\em Ecological Modelling}
+        214, 2008: 338-348. Print.
+	\\
+Horne and associate then moved on to the Synoptic Model for tieing animal 
+movement to habitat covariates. From this, any observed animal's behaviors 
+could be predicted by its habitat. This lead to current work the author is 
+involved with to tie the Brownian Bridge and Synoptic Model together. The
+result is a hugely paralellizable application.
+
+\bibitem{james} Foster, James. {\em Visualizing Human Microbiome
+	Ecosystems}. University of Idaho: Computer Science Colloquium, 
+	December 7th 2010. Seminar.
+	\\
+James is a strong proponent of interdisciplinary efforts like IBEST, and has
+given many talks about the intersect of science and technology. He has degrees
+and background in both, and is a great personal source for many scientific
+processes and technologies.
+
+\end{thebibliography}
+
+
+\pagebreak
+
+
+\section{Workplan}
+
+Parallel Concepts create the basis of understanding the entire project. 
+Parallel Concepts will then be applied in simple version of Parallel 
+Programming. Once the project has shown concepts implemented in code, the 
+research will then focus on taking real world algorithms, and making the same
+transfer to parallelism. 
+
+The research will then go on to explain the foundation of parallel programming,
+the HPC Cluster. Once completed, the reader will have a solid understanding 
+from concepts to implementation, all the way to the HPC Operating System.
+
+Next, the project will talk about how to measure performance of algorithms,
+and how to profile software. It will then help readers identify when software
+it is appropriate for parallelism.
+
+Finally, the research would summarize everything with explaining Software
+Lifecycles. More specifically, how to plan large scale computing projects, 
+and how to develop software for HPC / parallel environments. 
+
+\subsection{Schedule}
+
+\begin{tabular}{ l r }
+  March 13th - 19th		& Parallel Concepts \\
+  March 20th - 26th 		& Parallel Programming \\
+  March 27th - April 2nd	& Algorithms \\
+  April 3rd - 9th		& HPC Cluster \\
+  April 10th - 16th		& Profiling Applications for Parallelism\\
+  April 17th - 23rd		& Software Lifecycles \\
+  April 24th - 29th		& Proof read, final edits \\
+	
+\end{tabular}
+
+
+\section{Statement of Qualifications}
+This research project is a collection of tutorials, write up, and general 
+thoughts collected in 2+ years working in the University of Idaho IBEST 
+Computing Core. It is also information collected and researched in NCMGRP, a
+research project lead by Ph. D. student Adam Wells at the University of Idaho 
+College of Natural Resources. 
+
+This project content may be included in the final report
+in NCMGRP (Northwest Cascades Mountain Goat Research Project), and will 
+hopefully be distributed to users of the IBEST Core, as well as to potential 
+projects in CNR. The information in the report will be directly cited or 
+indirectly sourced from James Foster (IBEST, Co-founder) and Rob Lyon (IBEST,
+Lead System Administrator), Adam Wells (UI CNR Ph. D. student), Jon Horne 
+(UI CNR), and others within the author's research interests.
+
+This research project is part of the bigger NCMGRP research project. This is
+the first funded university research project the author has directly been 
+involved with. The research project may have big implication on what research
+the author does for graduate studies, if pursued. The author has spent years 
+in one realm or another of environment modeling. The computer science 
+portion that is the core of this research is the collection of a lot of previos
+efforts.
+
+Once this research is completed, research could be continued in the form of 
+Artificial Intelligence. Intelligent agents can simulate the behaviors of these
+animals in habitat. Modelling habitats, however, takes a lot of computation,
+and would be intractable without good practices in HPC and parallel computing.
+
+
+\section{Conclusion}
+The NSF should fund this project, because it is fundemental to establishing 
+more successful projects. Many current projects are lacking, because they do
+not have the research that would be conducted in this project. This project
+will identify and lay the framework for how to process large amounts of 
+scientific data. This is a problem that fundamentally affects almost all
+current scientific research, but is also one of the least defined areas.
+Computer literacy must increase if science will answere the questions of today,
+and this project will help achieve that.
+
+
+%\required{Broader Impacts}
+% as in the project summary, broader impacts must be called out separately 
+% in the project description.  You may be able to give more specific
+% examples, or discuss how you've previously achieved these impacts.
+% It should be similar, but not identical, to the Broader Impacts statement
+% in the project summary
+
+%\required{Results From Prior NSF Support}
+% 5 pages or fewer of the 15 pages for entire description document.
+% include results from NSF grants received in the past 5 years.
+% if supported by more than one grant, choose the most relevant one
+% for each grant, include: NSF award number, amount, dates of
+% support, and publications resulting from this research.
+% due to space limitations, it is often advisable to use citations rather
+% than putting the titles of the publications in the body 
+% of this section
+
+% e.g.: "My prior grant, "Uses of Coffee in Mathematical Research" (DMS-0123456, 
+% $100,000, 2005-2008), resulted in 3 papers [1],[2],[3], demonstrating..."
+
+% if requesting postdoctoral research salary, a supplemental 1-page document
+% called "Postdoc Mentoring Plan" will be required 
+

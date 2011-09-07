@@ -1,0 +1,12 @@
+#An incomplete interpretation of Prof. Bolden's Makefile
+testStack : teststack.o stack.o link.o
+
+teststack.o : stack.h 
+
+stack.o : stack.h \
+	link.h
+
+link.o: link.h
+
+clean : 
+	rm testStack

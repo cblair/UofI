@@ -1,0 +1,401 @@
+function "main"
+  param types : uint32[:]
+  return types: uint16[:]
+  0 ND_FUNC (my nodes:  1 3) <"sq_root1.sc", "main", 18>
+    1 inputs: (nodes  1)
+      port 0 <uint32[:]>
+    1 outputs: (nodes  2)
+      port 0 <uint16[:]> 
+    ;
+  1 ND_G_INPUT  (input 0 for graph node 0) <"sq_root1.sc", "main", 18>
+    0 inputs:
+    1 outputs:
+      port 0 <uint32[:]>   3.0
+    ;
+  2 ND_G_OUTPUT  (output 0 for graph node 0) <"sq_root1.sc", "main", 18>
+    1 inputs:
+      port 0 <uint16[:]>
+    0 outputs:
+    ;
+  3 ND_FORALL (my nodes:  6 4 10 9) extents [:,:,:,:,:,:,:,:] <"sq_root1.sc", "main", 20>
+    1 inputs: (nodes  6)
+      port 0 <uint32[:]>
+    1 outputs: (nodes  11)
+      port 0 <uint16[:]>   2.0
+    ;
+  4 ND_DOT_PROD (my nodes:  7 5) <"sq_root1.sc", "main", 20>
+    1 inputs: (nodes  7)
+      port 0 <uint32[:]>
+    1 outputs: (nodes  8)
+      port 0 <uint32>   10.0
+    ;
+  5 ND_ELE_GEN  [~] <"sq_root1.sc", "main", 20>
+    2 inputs:
+      port 0 <uint32[:]>
+      port 1 <uint1>  value "1"
+    2 outputs:
+      port 0 <uint32>   8.0
+      port 1 <uint32> 
+    ;
+  6 ND_G_INPUT  (input 0 for graph node 3) <"sq_root1.sc", "main", 20>
+    0 inputs:
+    1 outputs:
+      port 0 <uint32[:]>   4.0
+    ;
+  7 ND_G_INPUT  (input 0 for graph node 4) <"sq_root1.sc", "main", 20>
+    0 inputs:
+    1 outputs:
+      port 0 <uint32[:]>   5.0
+    ;
+  8 ND_G_OUTPUT  (output 0 for graph node 4) <"sq_root1.sc", "main", 20>
+    1 inputs:
+      port 0 <uint32>
+    0 outputs:
+    ;
+  9 ND_CONSTRUCT_ARRAY <"sq_root1.sc", "main", 21>
+    1 inputs:
+      port 0 <uint16>
+    1 outputs:
+      port 0 <uint16[:]>   11.0
+    ;
+  10 ND_FCALL  "sq_root" <"sq_root1.sc", "main", 21>
+    1 inputs:
+      port 0 <uint32>
+    1 outputs:
+      port 0 <uint16>   9.0
+    ;
+  11 ND_G_OUTPUT  (output 0 for graph node 3) <"sq_root1.sc", "main", 20>
+    1 inputs:
+      port 0 <uint16[:]>
+    0 outputs:
+    ;
+function "sq_root"
+  param types : uint32
+  return types: uint16
+  0 ND_FUNC (my nodes:  1 3 4 50 5 51 9 6 49) <"sq_root1.sc", "sq_root", 1>
+    1 inputs: (nodes  1)
+      port 0 <uint32>
+    1 outputs: (nodes  2)
+      port 0 <uint16> 
+    ;
+  1 ND_G_INPUT  (input 0 for graph node 0) <"sq_root1.sc", "sq_root", 1>
+    0 inputs:
+    1 outputs:
+      port 0 <uint32>   3.0
+    ;
+  2 ND_G_OUTPUT  (output 0 for graph node 0) <"sq_root1.sc", "sq_root", 1>
+    1 inputs:
+      port 0 <uint16>
+    0 outputs:
+    ;
+  3 ND_CAST <"sq_root1.sc", "sq_root", 2>
+    1 inputs:
+      port 0 <uint32>
+    1 outputs:
+      port 0 <bits32>   6.2
+    ;
+  4 ND_CAST <"sq_root1.sc", "sq_root", 3>
+    1 inputs:
+      port 0 <uint1>  value "0"
+    1 outputs:
+      port 0 <bits32>   50.0
+    ;
+  5 ND_CAST <"sq_root1.sc", "sq_root", 4>
+    1 inputs:
+      port 0 <uint1>  value "0"
+    1 outputs:
+      port 0 <bits16>   51.0
+    ;
+  6 ND_FORNXT (my nodes:  54 7 11 12 13 14 15 17 20 19 18 16 21 29 31 30 28 26 22 47 48) extents [:,:,:,:,:,:,:,:] <"sq_root1.sc", "sq_root", 7>
+    4 inputs: (nodes  11 12 29 54)
+      port 0 <bits16>
+      port 1 <bits32>
+      port 2 <bits32>
+      port 3 <int6>
+    1 outputs: (nodes  46)
+      port 0 <bits16>   49.0
+    ;
+  7 ND_DOT_PROD (my nodes:  52 8) <"sq_root1.sc", "sq_root", 7>
+    1 inputs: (nodes  52)
+      port 0 <int6>
+    1 outputs: (nodes  10)
+      port 0 <uint4>   13.1
+    ;
+  8 ND_SCALAR_GEN  rank 1 <"sq_root1.sc", "sq_root", 7>
+    3 inputs:
+      port 0 <uint1>  value "0"
+      port 1 <int6>
+      port 2 <uint1>  value "1"
+    1 outputs:
+      port 0 <uint4>   10.0
+    ;
+  9 ND_ADD <"sq_root1.sc", "sq_root", 7>
+    2 inputs:
+      port 0 <uint5>  value "16"
+      port 1 <int1>  value "-1"
+    1 outputs:
+      port 0 <int6>   6.3
+    ;
+  10 ND_G_OUTPUT  (output 0 for graph node 7) <"sq_root1.sc", "sq_root", 7>
+    1 inputs:
+      port 0 <uint4>
+    0 outputs:
+    ;
+  11 ND_G_INPUT_NEXT  (input 0 for graph node 6) <"sq_root1.sc", "sq_root", 12>
+    0 inputs:
+    1 outputs:
+      port 0 <bits16>   14.0
+    ;
+  12 ND_G_INPUT_NEXT  (input 1 for graph node 6) <"sq_root1.sc", "sq_root", 12>
+    0 inputs:
+    1 outputs:
+      port 0 <bits32>   15.0
+    ;
+  13 ND_SUB <"sq_root1.sc", "sq_root", 8>
+    2 inputs:
+      port 0 <uint4>  value "15"
+      port 1 <uint4>
+    1 outputs:
+      port 0 <uint4>   31.0
+    ;
+  14 ND_LEFT_SHIFT <"sq_root1.sc", "sq_root", 9>
+    2 inputs:
+      port 0 <bits16>
+      port 1 <uint1>  value "1"
+    1 outputs:
+      port 0 <bits16>   22.1  20.0
+    ;
+  15 ND_LEFT_SHIFT <"sq_root1.sc", "sq_root", 10>
+    2 inputs:
+      port 0 <bits32>
+      port 1 <uint2>  value "2"
+    1 outputs:
+      port 0 <bits32>   22.2  17.0
+    ;
+  16 ND_ADD <"sq_root1.sc", "sq_root", 11>
+    2 inputs:
+      port 0 <uint32>
+      port 1 <uint16>
+    1 outputs:
+      port 0 <uint32>   21.0
+    ;
+  17 ND_CAST <"sq_root1.sc", "sq_root", 11>
+    1 inputs:
+      port 0 <bits32>
+    1 outputs:
+      port 0 <uint32>   16.0
+    ;
+  18 ND_CAST <"sq_root1.sc", "sq_root", 11>
+    1 inputs:
+      port 0 <bits16>
+    1 outputs:
+      port 0 <uint16>   16.1
+    ;
+  19 ND_BIT_OR <"sq_root1.sc", "sq_root", 11>
+    2 inputs:
+      port 0 <bits16>
+      port 1 <bits1>  value "0x1"
+    1 outputs:
+      port 0 <bits16>   18.0
+    ;
+  20 ND_LEFT_SHIFT <"sq_root1.sc", "sq_root", 11>
+    2 inputs:
+      port 0 <bits16>
+      port 1 <uint1>  value "1"
+    1 outputs:
+      port 0 <bits16>   19.0
+    ;
+  21 ND_CAST <"sq_root1.sc", "sq_root", 11>
+    1 inputs:
+      port 0 <uint32>
+    1 outputs:
+      port 0 <bits32>   26.0  22.0
+    ;
+  22 ND_SWITCH (my nodes:  53 27 25 35 32 42 40) <"sq_root1.sc", "sq_root", 13>
+    4 inputs: (nodes  27 35 42 53)
+      port 0 <bits32>
+      port 1 <bits16>
+      port 2 <bits32>
+      port 3 <bool>
+    2 outputs: (nodes  23 24)
+      port 0 <bits16>   48.0  46.0
+      port 1 <bits32>   47.0
+    ;
+  23 ND_G_OUTPUT  (output 0 for graph node 22) <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <bits16>
+    0 outputs:
+    ;
+  24 ND_G_OUTPUT  (output 1 for graph node 22) <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <bits32>
+    0 outputs:
+    ;
+  25 ND_SWITCH_KEY <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <bool>
+    0 outputs:
+    ;
+  26 ND_LE <"sq_root1.sc", "sq_root", 13>
+    2 inputs:
+      port 0 <bits32>
+      port 1 <bits32>
+    1 outputs:
+      port 0 <bool>   22.3
+    ;
+  27 ND_G_INPUT  (input 0 for graph node 22) <"sq_root1.sc", "sq_root", 13>
+    0 inputs:
+    1 outputs:
+      port 0 <bits32>   32.1
+    ;
+  28 ND_RIGHT_SHIFT <"sq_root1.sc", "sq_root", 13>
+    2 inputs:
+      port 0 <bits32>
+      port 1 <uint5>
+    1 outputs:
+      port 0 <bits32>   26.1
+    ;
+  29 ND_G_INPUT  (input 2 for graph node 6) <"sq_root1.sc", "sq_root", 13>
+    0 inputs:
+    1 outputs:
+      port 0 <bits32>   28.0
+    ;
+  30 ND_MUL <"sq_root1.sc", "sq_root", 13>
+    2 inputs:
+      port 0 <uint5>
+      port 1 <uint2>  value "2"
+    1 outputs:
+      port 0 <uint5>   28.1
+    ;
+  31 ND_CAST <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <uint4>
+    1 outputs:
+      port 0 <uint5>   30.0
+    ;
+  32 ND_CASE (my nodes:  36 34 37 33) <"sq_root1.sc", "sq_root", 13>
+    2 inputs: (nodes  36 37)
+      port 0 <bits16>
+      port 1 <bits32>
+    2 outputs: (nodes  38 39)
+      port 0 <bits16>   23.0
+      port 1 <bits32>   24.0
+    ;
+  33 ND_SELECTORS <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <bool>  value "true"
+    0 outputs:
+    ;
+  34 ND_BIT_OR <"sq_root1.sc", "sq_root", 13>
+    2 inputs:
+      port 0 <bits16>
+      port 1 <bits1>  value "0x1"
+    1 outputs:
+      port 0 <bits16>   38.0
+    ;
+  35 ND_G_INPUT  (input 1 for graph node 22) <"sq_root1.sc", "sq_root", 13>
+    0 inputs:
+    1 outputs:
+      port 0 <bits16>   40.0  32.0
+    ;
+  36 ND_G_INPUT  (input 0 for graph node 32) <"sq_root1.sc", "sq_root", 13>
+    0 inputs:
+    1 outputs:
+      port 0 <bits16>   34.0
+    ;
+  37 ND_G_INPUT  (input 1 for graph node 32) <"sq_root1.sc", "sq_root", 13>
+    0 inputs:
+    1 outputs:
+      port 0 <bits32>   39.0
+    ;
+  38 ND_G_OUTPUT  (output 0 for graph node 32) <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <bits16>
+    0 outputs:
+    ;
+  39 ND_G_OUTPUT  (output 1 for graph node 32) <"sq_root1.sc", "sq_root", 13>
+    1 inputs:
+      port 0 <bits32>
+    0 outputs:
+    ;
+  40 ND_CASE (my nodes:  41 43) <"sq_root1.sc", "sq_root", 14>
+    2 inputs: (nodes  41 43)
+      port 0 <bits16>
+      port 1 <bits32>
+    2 outputs: (nodes  44 45)
+      port 0 <bits16>   23.0
+      port 1 <bits32>   24.0
+    ;
+  41 ND_G_INPUT  (input 0 for graph node 40) <"sq_root1.sc", "sq_root", 14>
+    0 inputs:
+    1 outputs:
+      port 0 <bits16>   44.0
+    ;
+  42 ND_G_INPUT  (input 2 for graph node 22) <"sq_root1.sc", "sq_root", 14>
+    0 inputs:
+    1 outputs:
+      port 0 <bits32>   40.1
+    ;
+  43 ND_G_INPUT  (input 1 for graph node 40) <"sq_root1.sc", "sq_root", 14>
+    0 inputs:
+    1 outputs:
+      port 0 <bits32>   45.0
+    ;
+  44 ND_G_OUTPUT  (output 0 for graph node 40) <"sq_root1.sc", "sq_root", 14>
+    1 inputs:
+      port 0 <bits16>
+    0 outputs:
+    ;
+  45 ND_G_OUTPUT  (output 1 for graph node 40) <"sq_root1.sc", "sq_root", 14>
+    1 inputs:
+      port 0 <bits32>
+    0 outputs:
+    ;
+  46 ND_G_OUTPUT  (output 0 for graph node 6) <"sq_root1.sc", "sq_root", 7>
+    1 inputs:
+      port 0 <bits16>
+    0 outputs:
+    ;
+  47 ND_NEXT  (back to node 12) <"sq_root1.sc", "sq_root", 12>
+    1 inputs:
+      port 0 <bits32>
+    0 outputs:
+    ;
+  48 ND_NEXT  (back to node 11) <"sq_root1.sc", "sq_root", 12>
+    1 inputs:
+      port 0 <bits16>
+    0 outputs:
+    ;
+  49 ND_CAST <"sq_root1.sc", "sq_root", 7>
+    1 inputs:
+      port 0 <bits16>
+    1 outputs:
+      port 0 <uint16>   2.0
+    ;
+  50 ND_FEED_NEXT <"sq_root1.sc", "sq_root", 7>
+    1 inputs:
+      port 0 <bits32>
+    1 outputs:
+      port 0 <bits32>   6.1
+    ;
+  51 ND_FEED_NEXT <"sq_root1.sc", "sq_root", 7>
+    1 inputs:
+      port 0 <bits16>
+    1 outputs:
+      port 0 <bits16>   6.0
+    ;
+  52 ND_G_INPUT  (input 0 for graph node 7) <"sq_root1.sc", "sq_root", 7>
+    0 inputs:
+    1 outputs:
+      port 0 <int6>   8.1
+    ;
+  53 ND_G_INPUT  (input 3 for graph node 22) <"sq_root1.sc", "sq_root", 13>
+    0 inputs:
+    1 outputs:
+      port 0 <bool>   25.0
+    ;
+  54 ND_G_INPUT  (input 3 for graph node 6) <"sq_root1.sc", "sq_root", 7>
+    0 inputs:
+    1 outputs:
+      port 0 <int6>   7.0
+    ;

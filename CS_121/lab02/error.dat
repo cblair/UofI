@@ -1,0 +1,7 @@
+is_calc() = 1
+TS: argc = 5
+argv[0] = ./lab02
+argv[1] = calc
+argv[2] = 8
+argv[3] = /
+argv[4] = 2

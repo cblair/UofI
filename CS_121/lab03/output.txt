@@ -1,0 +1,12 @@
+bash-2.05$ gmake testStack
+g++    -c -o stack.o stack.cpp
+In file included from /usr/local/lib/gcc/sparc-sun-solaris2.9/3.4.2/../../../../include/c++/3.4.2/backward/iostream.h:31,
+                 from stack.cpp:6:
+/usr/local/lib/gcc/sparc-sun-solaris2.9/3.4.2/../../../../include/c++/3.4.2/backward/backward_warning.h:32:2: warning: #warning This file includes at least one deprecated or antiquated header. Please consider using one of the 32 headers found in section 17.4.1.2 of the C++ standard. Examples include substituting the <X> header for the <X.h> header for C++ includes, or <iostream> instead of the deprecated header <iostream.h>. To disable this warning use -Wno-deprecated.
+g++    -c -o link.o link.cpp
+In file included from /usr/local/lib/gcc/sparc-sun-solaris2.9/3.4.2/../../../../include/c++/3.4.2/backward/iostream.h:31,
+                 from link.cpp:6:
+/usr/local/lib/gcc/sparc-sun-solaris2.9/3.4.2/../../../../include/c++/3.4.2/backward/backward_warning.h:32:2: warning: #warning This file includes at least one deprecated or antiquated header. Please consider using one of the 32 headers found in section 17.4.1.2 of the C++ standard. Examples include substituting the <X> header for the <X.h> header for C++ includes, or <iostream> instead of the deprecated header <iostream.h>. To disable this warning use -Wno-deprecated.
+g++ -o testStack testStack.o stack.o link.o
+bash-2.05$ gmake testStack
+gmake: `testStack' is up to date.

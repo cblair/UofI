@@ -1,0 +1,7 @@
+-bash-3.2$ checkin hw05.tar 
+Enter class name: cs270
+Classdir = /net/classes/cs270/Checkin
+Submission of hw05.tar completed on Fri Nov  6 18:26:11 PST 2009
+Names of files you have checked in:
+  Fri Nov  6 18:26:11 2009   40960 blai4021.hw05.tar
+End of list

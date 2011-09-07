@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\title{CS 470 Spring 2011 \\
+     Project Proposal}
+\author{Colby Blair}
+\date{Due May 2nd, 2011}
+\begin{document}
+\maketitle
+
+\pagebreak
+\setcounter{page}{1}
+
+In the study of animal movements, there are many algorithms for calculating potential paths. One method for
+calculating the probability of an animal in an area is using the Brownian Bridge Motion Model (BBMM) \cite{bb}.
+The BBMM can create a probability map of an area to then predict where animals will tend to migrate. Since 
+animals can move in slightly different ways, it can be beneficial to analyze each individual seperately.
+
+The problem with the BBMM is that it only makes a probability map off of past animal movements. Since this
+doesn't tell us much about preference to habitat, the Synoptic Model \cite{syn} can also be used
+The Synoptic Model starts with a null model, and optimizes environment covariates for the following models 
+over a maximum likelihood algorithm.
+
+One can combine BBMM and SM. Selecting sets of locations to run the Synoptic Model on can be left to BBMM.
+The results are being finalized in a research project, Northwest Cascade Mountain Goat Research Project, at
+the University of Idaho College of Natural Resources. NCMGRP has found that mountain goats overwhelming 
+prefer slope in terrain, and talus rock. They care little about much else. The mountain goat appears to be
+a very paranoid animal, and are sensitive to predetors. So sensitive, that they stay in areas that are hard
+for predators to navigate.
+
+My proposal is to simulate a slope and talus environmet, for virtual goats to navigate. I will then simulate
+natural and human hunters, and place their movement limitations as well into the environment. I will take the
+resulting predictions from the study, and apply them to either StarLogo or V6 simulations, and then model
+real locations. I will then run simulations to answer environmental questions, like reintroduction of goats
+or predators in certain areas. I will also simulate environmental changes, and predict what goat populations 
+would do. The questions will be real questions of reintroduction, and the results will calculate where future 
+populations will move, and if they will survive.
+
+\pagebreak
+
+\section{Bibliography}
+
+\begin{thebibliography}{99}
+\bibitem{bb} Horne, Garton, et al. "Analyzing Animal Movements using Brownian 
+	Bridges". { \em Ecology } 88(9) 2007: 2354-2363. Print
+\bibitem{syn} Horne, Garton, Rachlow. "A synoptic model of animal space use: 
+	Simultaneous estimation of home range, habitat selection, and 
+	inter\/intra-species relationships" {\em Ecological Modelling} 
+	214, 2008: 338-348. Print.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,603 @@
+[1]> (defun countdown (n)
+        (cond ((zerop n) nil)
+              You are in the top-level Read-Eval-Print loop.
+Help (abbreviated :h) = this list
+Use the usual editing capabilities.
+(quit) or (exit) leaves CLISP.
+              (T (cons n (countdown (- n 1))))
+        )    
+      )
+COUNTDOWN
+[2]> (countdown (10))
+
+*** - EVAL: 10 is not a function name; try using a symbol instead
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead.
+ABORT          :R2      Abort main loop
+Break 1 [3]> (countdown 10)
+(10 9 8 7 6 5 4 3 2 1)
+Break 1 [3]> (defun countdown2 (n)
+        (cond ((zerop n) nil)
+              (T (cdr n (countdown (- n 1))))
+        )
+      )
+COUNTDOWN2
+Break 1 [3]> (countdown2 10)
+
+*** - EVAL: too many arguments given to CDR: (CDR N (COUNTDOWN (- N 1)))
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort main loop
+Break 2 [4]> (defun countdown2 (n)
+        (cond ((zerop n) nil)
+              (T (cons (countdown (- n 1)) n))
+        )
+      )
+COUNTDOWN2
+Break 2 [4]> (countdown2 10)
+((9 8 7 6 5 4 3 2 1) . 10)
+Break 2 [4]> (defun countup (n, from)
+        (cond ((= from n) nil)
+              (T (cons n (countdown (+ from 1))))
+        )
+      )
+
+*** - READ: comma is illegal outside of backquote
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort main loop
+Break 3 [5]> (defun countup '(n, from)
+        (cond ((= from n) nil)
+              (T (cons n (countdown (+ from 1))))
+        )
+      )
+
+*** - READ: comma is illegal outside of backquote
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort main loop
+Break 4 [6]> (defun countup (n from)
+        (cond ((= from n) nil)
+              (T (cons n (countdown (+ from 1))))
+        )
+      )
+COUNTUP
+Break 4 [6]> (countup 10 1)
+(10 2 1)
+Break 4 [6]> (defun countup (n from)
+        (cond ((= from n) nil)
+              (T (cons n (countup (+ from 1))))
+        )
+      )
+COUNTUP
+Break 4 [6]> (countup 10 1)
+
+*** - EVAL/APPLY: too few arguments given to COUNTUP
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort main loop
+Break 5 [7]> (defun countup (n from)
+        (cond ((= from n) nil)
+              (T (cons n (countup ((+ from 1) n))))
+        )
+      )
+
+*** - SYSTEM::%EXPAND-FORM: (+ FROM 1) should be a lambda expression
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort main loop
+Break 6 [8]> (defun countup (n from)
+        (cond ((= from n) nil)
+              (T (cons n (countup (+ from 1 n))))
+        )
+      )
+COUNTUP
+Break 6 [8]> (countup 10 1)
+
+*** - EVAL/APPLY: too few arguments given to COUNTUP
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort main loop
+Break 7 [9]> (defun countup (n)
+                (cond ((zerop n) nil)
+                    (T (append (countup (- n 1)) (list n)))
+                )
+             )
+COUNTUP
+Break 7 [9]> (countup 10)
+(1 2 3 4 5 6 7 8 9 10)
+Break 7 [9]> (defun countup (n)
+                (cond ((zerop n) nil)
+                    (T (cons (countup (- n 1)) (list n)))
+                )
+             )
+COUNTUP
+Break 7 [9]> (countup 5)
+(((((NIL 1) 2) 3) 4) 5)
+Break 7 [9]> (defun countupaux (n cnt)
+                (cond ((> cnt n) nil)
+                      (T (cons cnt (countupauz n (+ 1 cnt)))) 
+                )
+             )
+COUNTUPAUX
+Break 7 [9]> (countupaux 5 1)
+
+*** - EVAL: undefined function COUNTUPAUZ
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+Break 8 [10]> (defun countupaux (n cnt)
+                (cond ((> cnt n) nil)
+                      (T (cons cnt (countupaux n (+ 1 cnt))))
+                )
+             )
+COUNTUPAUX
+Break 8 [10]> (countupaux 5 1)
+(1 2 3 4 5)
+Break 8 [10]> (countupaux 5 2)
+(2 3 4 5)
+Break 8 [10]> (defun countupaux (n 1)
+                 (cond ((zerop n) nil)
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'COUNTUPAUZ).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'COUNTUPAUZ).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+(defun countupaux (n 1)
+                 (cond ((zerop n) nil)
+                       (T (countupaux (- n 1) (cons n 1)))))
+)
+)
+
+*** - DEFUN: Invalid lambda list element 1. A lambda list may only contain symbols and lists.
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort main loop
+Break 9 [11]> (defun countupaux (n 1)
+                 (cond ((zerop n) nil)
+(defun countupaux (n 1)
+                 (cond ((zerop n) nil)
+                       (T (countupaux (- n 1) (cons n 1)))
+)
+)
+(defun countupaux (n 1)
+                 (cond ((zerop n) nil)
+                       (T (countupaux (- n 1) (cons n 1)))
+)                                                         
+)
+
+)
+)
+
+*** - DEFUN: Invalid lambda list element 1. A lambda list may only contain symbols and lists.
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort main loop
+Break 10 [12]> (defun countupaux (n 1)
+                 (cond ((zerop n) nil)               
+                       (T (countupaux (- n 1) (cons n 1)))))
+)                                                           
+)                                                           
+
+*** - DEFUN: Invalid lambda list element 1. A lambda list may only contain symbols and lists.
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort main loop
+Break 11 [13]> (defun countupaux (n 1)
+                 (cond ((zerop n) nil)
+                       (T (countupaux (- n 1) (cons n 1)))))
+
+*** - DEFUN: Invalid lambda list element 1. A lambda list may only contain symbols and lists.
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort main loop
+Break 12 [14]> (defun revaux (shrink grow)
+
+Commands may be abbreviated as shown in the second column.
+COMMAND        ABBR     DESCRIPTION
+Help           :h, ?    this command list
+Error          :e       Print the last error message
+Inspect        :i       Inspect the last error
+Abort          :a       abort to the next recent input loop
+Unwind         :uw      abort to the next recent input loop
+Reset          :re      toggle *PACKAGE* and *READTABLE* between the
+                          local bindings and the sane values
+Quit           :q       quit to the top-level input loop
+Where          :w       inspect this frame
+Up             :u       go up one frame, inspect it
+Top            :t       go to top frame, inspect it
+Down           :d       go down one frame, inspect it
+Bottom         :b       go to bottom (most recent) frame, inspect it
+Mode mode      :m       set stack mode for Backtrace: 1=all the stack elements
+             2=all the frames                         3=only lexical frames
+             4=only EVAL and APPLY frames (default)   5=only APPLY frames
+Frame-limit n  :fl      set the frame-limit for Backtrace. This many frames
+                          will be printed in a backtrace at most.
+Backtrace [mode [limit]] :bt  inspect the stack
+Break+         :br+     set breakpoint in EVAL frame
+Break-         :br-     disable breakpoint in EVAL frame
+Redo           :rd      re-evaluate form in EVAL frame
+Return value   :rt      leave EVAL frame, prescribing the return values
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort main loop
+
+*** - Ctrl-C: User break
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort main loop
+Break 13 [15]> 
+
+asf
+
+*** - SYSTEM::READ-EVAL-PRINT: variable ASF has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of ASF.
+STORE-VALUE    :R2      You may input a new value for ASF.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort debug loop
+ABORT          :R16     Abort main loop
+Break 14 [16]> (defun revaux (shrink grow)
+                 (cond ((null shrink) grow)
+                       (T (revaux (cdr shrink) (cons (car shrink) grow)))
+                 )
+               )
+REVAUX
+Break 14 [16]> (defun rev (1) (reavaux 1 nil))
+
+*** - DEFUN: Invalid lambda list element 1. A lambda list may only contain symbols and lists.
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort main loop
+Break 15 [17]> (defun rev (1) (revaux 1 nil))
+
+*** - DEFUN: Invalid lambda list element 1. A lambda list may only contain symbols and lists.
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort debug loop
+ABORT          :R16     Abort main loop
+Break 16 [18]> (defun rev (l) (revaux l nil))
+REV
+Break 16 [18]> (rev '(a b c d))
+(D C B A)
+Break 16 [18]> 
+

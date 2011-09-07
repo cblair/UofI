@@ -1,0 +1,9 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	START             0BB8
+//	L02               0BCE
+//	L04               0BD3
+//	L06               0BD7
+

@@ -1,0 +1,5 @@
+(indexentry :tkey (("speedup" "\\glossaryentryfield{speedup}{\\glsnamefont{speedup}}{The overall time gain of a process or computation.}{\\relax }") ) :locref "3" :attr "glsnumberformat" ) 
+(indexentry :tkey (("paralellization" "\\glossaryentryfield{paralellization}{\\glsnamefont{paralellization}}{Taking independent or semi-independent processes, and processing them in parallel (at the same time).}{\\relax }") ) :locref "4" :attr "glsnumberformat" ) 
+(indexentry :tkey (("granularity" "\\glossaryentryfield{granularity}{\\glsnamefont{granularity}}{The time or portion of the process that each iteration / sub-process takes.}{\\relax }") ) :locref "6" :attr "glsnumberformat" ) 
+(indexentry :tkey (("granularity" "\\glossaryentryfield{granularity}{\\glsnamefont{granularity}}{The time or portion of the process that each iteration / sub-process takes.}{\\relax }") ) :locref "6" :attr "glsnumberformat" ) 
+(indexentry :tkey (("HPC" "\\glossaryentryfield{HPC}{\\glsnamefont{HPC}}{High Performance Computing.}{\\relax }") ) :locref "7" :attr "glsnumberformat" ) 

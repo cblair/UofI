@@ -1,0 +1,95 @@
+record jug(cap, qty)
+
+global N
+global inlistI
+global solution
+global solutionlist
+
+#list props
+#1 - # of jugs
+#2:N+1       - jug caps
+#N+1+1:N+N+1 - jug qtys
+
+procedure create_jugs(inlist)
+	N:=inlist[inlistI]
+	inlistI+:=1
+	solution:=""
+	solutionlist:=[]
+	#write("create jugs: N = " || N)
+end
+
+procedure init_jugs(inlist, juglist)
+	i:=1
+	initI:=inlistI
+	#write("init Start: " || initI || ":" || inlistI+N)
+	while(inlistI<initI+N) do {
+		put(juglist, jug(inlist[inlistI],inlist[inlistI+N]))
+		#write("juglist[" || i || "].cap=" ||juglist[i].cap || ", .qty=" || juglist[i].qty)
+		i+:=1
+		inlistI+:=1
+	}
+	inlistI+:=N
+	#write("Done")
+end
+
+procedure run_test(inlist, juglist)
+	writes("Max Capacity of jugs:") 
+	writes("[ ")
+	every (x:=(1 to *juglist), writes(juglist[x].cap), x<*juglist, writes(", "))
+	write(" ]")
+	writes("Initial water in jugs: ")	
+	writes("[ ")
+	every (x:=(1 to *juglist), writes(juglist[x].qty), x<*juglist, writes(", "))
+	write(" ]")
+
+	repeat {
+		ex:=inlist[inlistI]
+		inlistI+:=1
+		if(ex=0) then return
+		write("Required volume of water: " || ex)
+		juglistoriginal:=[]
+		every(i:=(1 to *juglist), put(juglistoriginal, copy(juglist[i])))
+		every(efp(juglist), (jug_one_qty_match(juglist, ex)), write(solution || " " || str_qty_list(juglist)))\3
+		juglist:=juglistoriginal
+		suspend
+	}
+end
+
+procedure efp(juglist)
+	efpl:=[empty, fill, pour]
+	suspend((solution<-(!efpl)(juglist)) | (solution <- efp(juglist) || ", " || (!efpl)(juglist)))
+end
+
+procedure empty(juglist)
+	suspend(i:=(1 to *juglist), not(juglist[i].qty=0), juglist[i].qty<-0, ("empty " || i || " "))
+end
+
+procedure fill(juglist)
+	suspend(i:=(1 to *juglist), not(juglist[i].qty=juglist[i].cap), juglist[i].qty <- juglist[i].cap, ("fill " || i || " "))
+end
+
+procedure pour(juglist)
+	suspend(i:=1 to *juglist, j:=1 to *juglist, not(i=j), jqtyaval<-(juglist[j].cap - juglist[j].qty), iqtyaval <- juglist[i].qty, transqty <- ((jqtyaval>=iqtyaval) | (iqtyaval>jqtyaval)), juglist[i].qty <- juglist[i].qty - transqty, juglist[j].qty <- juglist[j].qty + transqty, ("pour " || i || " to " || j || " "))
+end
+
+procedure jug_qty_sum(juglist)
+	sum:=0
+	every(jugA:=!juglist, sum+:=jugA.qty)
+	return sum
+end
+
+procedure jug_one_qty_match(juglist, ex)
+	every i:=(1 to *juglist) do {
+		if(juglist[i].qty=ex) then suspend i
+	}
+end
+
+procedure str_qty_list(juglist)
+	retval:="[ "
+	every((i:=(1 to *juglist)), retval||:=(juglist[i].qty), i<*juglist, retval||:=", ")
+	retval||:=" ]"
+	return retval
+end
+
+procedure alwaysfail()
+end

@@ -1,0 +1,6 @@
+draw ("Aunt Robin":10, "Uncle Arnold")"My Relavtives":30;
+draw (AuntRobin:10, UncleArnold)MyRelavtives:30;
+draw (Aunt-Robin:10, Uncle_Arnold)My.Relavtives:30;
+draw ("(ant:10)":10, "(bat:20)":20)"(ants, bats)";
+exit
+

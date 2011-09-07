@@ -1,0 +1,7 @@
+procedure stest()
+	suspend (1 | 2 | 3 | 4 | 5)
+end
+
+procedure main()
+	every write(stest())
+end

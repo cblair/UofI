@@ -1,0 +1,36 @@
+procedure meow(a, b)
+end
+
+procedure min(i, j)
+	return i>j | i
+end
+procedure max(i, j)
+	return i<j | i
+end
+
+procedure main()
+	l := [2, 3, 5, 7, "dog", [4, 5], [], main, 4+5*7, x]
+	write(l)
+
+	t:= table(0)
+	t["dog"] := "bark"
+	t["cat"] := meow;
+	t["cat"](x, z)
+
+	#mins and max
+	i := 1
+	j := 2
+	write(i<j | j)
+	write(1 | 2 | 3)
+
+	#files
+	in := open("fred.txt") | stop("ERROR: could not open fred.txt")
+
+	#strings
+	a := "azaleas"
+	b := "aardvark"
+	write(find("a", a) & find("a", b)) 	
+	every writes(find("a", a) & writes(" and ") & write(find("a", b))) 	
+
+
+end

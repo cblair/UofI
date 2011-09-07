@@ -1,0 +1,8 @@
+procedure main()
+    write(&date)
+    write(&clock)
+    write(&letters)
+
+    if x===&null then write("y")
+    else write("n")
+end

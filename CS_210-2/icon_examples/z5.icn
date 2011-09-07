@@ -1,0 +1,41 @@
+procedure randomize(s)
+    i := *s
+    while i>=1 do {
+	s[i] :=: s[?i]
+	i-:=1
+    }
+    return s
+end
+
+#         strings cset
+#go upto  find    upto
+#cross    match   many
+
+procedure words(s)
+    i:=1
+    while j:=upto(&letters, s, i) do {
+	i:=many(&leters, s, j)
+	write(left(j, 6), left(i, 6), s[j:
+    }
+
+procedure main()
+    &random := &clock[0-:2]
+    write(left(randomize("dogs and cats"), 30))
+    write(map("cats and dogs", "aeiou", "12345"))
+    write(map(&clock, ":", ""))
+    &random := map(&clock, ":", "7")
+
+    if 17 ~= 17 then write("no")
+    else write ("no")
+    if "cat"<<=="dog" then write("no")
+    else write ("no")
+
+    write(find("and", "pinky and the brain"))
+    write(match("and", "pinky and the brain"), 7)
+    write(upto("and", "1. pinky and the brain"))
+    write(many("and", "1. pinky and the brain"), 7)
+
+    i:=upto(&letters, "1. pinky and the brain")
+    j:=many(&letters, "1. pinky and the brain"), i)
+    write(i, " ", j)
+end

@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}Artificial Neurons (AN)}{1}
+\contentsline {subsection}{\numberline {1.2}Artificial Neural Networks (ANNs)}{2}
+\contentsline {subsection}{\numberline {1.3}Feed Forward ANN with no Hidden Layers}{2}
+\contentsline {subsection}{\numberline {1.4}Feed Forward ANN with Hidden Layers}{3}
+\contentsline {section}{\numberline {2}Learning}{4}
+\contentsline {subsection}{\numberline {2.1}Teaching Algorithm}{6}
+\contentsline {section}{\numberline {3}Results}{7}

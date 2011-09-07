@@ -1,0 +1,36 @@
+TWS()                                                                    TWS()
+
+
+
+NNAAMMEE
+       tws
+
+
+SSYYNNOOPPSSIISS
+       ttwwss
+
+
+       [[""
+
+
+       ......""]]
+
+
+AAVVAAIILLAABBIILLIITTYY
+       All UNIX flavors
+
+
+DDEESSCCRRIIPPTTIIOONN
+       tws is a bash-like shell
+
+
+OOPPTTIIOONNSS
+       There are no options, but there are internal commands
+
+
+AAUUTTHHOORR
+       Colby Blair
+
+
+
+                                                                         TWS()

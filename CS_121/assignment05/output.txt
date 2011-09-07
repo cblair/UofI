@@ -1,0 +1,376 @@
+Script started on Fri Apr 04 06:11:00 2008
+sh-2.05$ g++ -Wall -o main main.cppsh-2.05$ ls[Kg++ -Wall -o main main.cppsh-2.05$ [K./main
+Opening states2000.dat...
+
+
+Inserting ---> Idaho       Boise       1297274
+Inserting ---> Washington       Olympia       5908684
+Inserting ---> Vermont       Montpelier       609890
+Inserting ---> Hawaii       Honolulu       1216642
+Inserting ---> Arizona       Phonenix       5140683
+Inserting ---> Montana       Helena       905316
+Inserting ---> Virginia       Richmond       7100702
+Inserting ---> NorthDakota       Bismarck       643756
+Inserting ---> Colorado       Denver       4311882
+Inserting ---> Mississippi       Jackson       2852927
+Inserting ---> Delaware       Dover       785068
+Inserting ---> Georgia       Atlanta       8206975
+Inserting ---> SouthCarolina       Columbia       4025061
+Inserting ---> Illinois       Springfield       12439042
+Inserting ---> Nebraska       Lincoln       1715369
+Inserting ---> Arkansas       LittleRock       2679733
+Inserting ---> NewHampshire       Concord       1238415
+Inserting ---> Ohio       Columbus       11374540
+Inserting ---> Kansas       Topeka       2693824
+Inserting ---> Louisiana       BatonRouge       4480271
+Inserting ---> Michigan       Lansing       9955829
+Inserting ---> Florida       Talahasse       16028890
+Inserting ---> Connecticut       Hartford       3409535
+Inserting ---> Iowa       DesMoines       2931923
+Inserting ---> WestVirginia       Charleston       1813077
+Inserting ---> Missouri       Jefferson       5606260
+Inserting ---> Wyoming       Cheyenne       495304
+Inserting ---> California       Sacramento       33930798
+Inserting ---> Alabama       Montgomery       4461130
+Inserting ---> NewJersey       Trenton       8424354
+Inserting ---> SouthDakota       Pierre       756874
+Inserting ---> Maryland       Annapolis       5307886
+Inserting ---> Indiana       Indianapolis       6090782
+Inserting ---> Oklahoma       OklahomaCity       3458819
+Inserting ---> NorthCarolina       Raleigh       8067673
+Inserting ---> NewYork       Albany       19004973
+Inserting ---> RhodeIsland       Providence       1049662
+Inserting ---> Massachusetts       Boston       6355568
+Inserting ---> Texas       Austin       20903994
+Inserting ---> Kentucky       Frankfort       4049431
+Inserting ---> Alaska       Juneau       628933
+Inserting ---> Utah       SaltLakeCity       2236714
+Inserting ---> Nevada       CarsonCity       2002032
+Inserting ---> Maine       Augusta       1277731
+Inserting ---> Tennessee       Nashville       5700037
+Inserting ---> NewMexico       SantaFe       1823821
+Inserting ---> Oregon       Salem       3428543
+Inserting ---> Minnesota       St.Paul       4925670
+Inserting ---> Wisconsin       Madison       5371210
+Inserting ---> Pennsylvania       Harrisburg       12300670
+Printing Tree1: 
+Alabama    Montgomery    4461130
+Alaska    Juneau    628933
+Arizona    Phonenix    5140683
+Arkansas    LittleRock    2679733
+California    Sacramento    33930798
+Colorado    Denver    4311882
+Connecticut    Hartford    3409535
+Delaware    Dover    785068
+Florida    Talahasse    16028890
+Georgia    Atlanta    8206975
+Hawaii    Honolulu    1216642
+Idaho    Boise    1297274
+Illinois    Springfield    12439042
+Indiana    Indianapolis    6090782
+Iowa    DesMoines    2931923
+Kansas    Topeka    2693824
+Kentucky    Frankfort    4049431
+Louisiana    BatonRouge    4480271
+Maine    Augusta    1277731
+Maryland    Annapolis    5307886
+Massachusetts    Boston    6355568
+Michigan    Lansing    9955829
+Minnesota    St.Paul    4925670
+Mississippi    Jackson    2852927
+Missouri    Jefferson    5606260
+Montana    Helena    905316
+Nebraska    Lincoln    1715369
+Nevada    CarsonCity    2002032
+NewHampshire    Concord    1238415
+NewJersey    Trenton    8424354
+NewMexico    SantaFe    1823821
+NewYork    Albany    19004973
+NorthCarolina    Raleigh    8067673
+NorthDakota    Bismarck    643756
+Ohio    Columbus    11374540
+Oklahoma    OklahomaCity    3458819
+Oregon    Salem    3428543
+Pennsylvania    Harrisburg    12300670
+RhodeIsland    Providence    1049662
+SouthCarolina    Columbia    4025061
+SouthDakota    Pierre    756874
+Tennessee    Nashville    5700037
+Texas    Austin    20903994
+Utah    SaltLakeCity    2236714
+Vermont    Montpelier    609890
+Virginia    Richmond    7100702
+Washington    Olympia    5908684
+WestVirginia    Charleston    1813077
+Wisconsin    Madison    5371210
+Wyoming    Cheyenne    495304
+
+
+Inserting ---> Idaho       Boise       1297274
+Inserting ---> Washington       Olympia       5908684
+Inserting ---> Vermont       Montpelier       609890
+Inserting ---> Hawaii       Honolulu       1216642
+Inserting ---> Arizona       Phonenix       5140683
+Inserting ---> Montana       Helena       905316
+Inserting ---> Virginia       Richmond       7100702
+Inserting ---> NorthDakota       Bismarck       643756
+Inserting ---> Colorado       Denver       4311882
+Inserting ---> Mississippi       Jackson       2852927
+Inserting ---> Delaware       Dover       785068
+Inserting ---> Georgia       Atlanta       8206975
+Inserting ---> SouthCarolina       Columbia       4025061
+Inserting ---> Illinois       Springfield       12439042
+Inserting ---> Nebraska       Lincoln       1715369
+Inserting ---> Arkansas       LittleRock       2679733
+Inserting ---> NewHampshire       Concord       1238415
+Inserting ---> Ohio       Columbus       11374540
+Inserting ---> Kansas       Topeka       2693824
+Inserting ---> Louisiana       BatonRouge       4480271
+Inserting ---> Michigan       Lansing       9955829
+Inserting ---> Florida       Talahasse       16028890
+Inserting ---> Connecticut       Hartford       3409535
+Inserting ---> Iowa       DesMoines       2931923
+Inserting ---> WestVirginia       Charleston       1813077
+Inserting ---> Missouri       Jefferson       5606260
+Inserting ---> Wyoming       Cheyenne       495304
+Inserting ---> California       Sacramento       33930798
+Inserting ---> Alabama       Montgomery       4461130
+Inserting ---> NewJersey       Trenton       8424354
+Inserting ---> SouthDakota       Pierre       756874
+Inserting ---> Maryland       Annapolis       5307886
+Inserting ---> Indiana       Indianapolis       6090782
+Inserting ---> Oklahoma       OklahomaCity       3458819
+Inserting ---> NorthCarolina       Raleigh       8067673
+Inserting ---> NewYork       Albany       19004973
+Inserting ---> RhodeIsland       Providence       1049662
+Inserting ---> Massachusetts       Boston       6355568
+Inserting ---> Texas       Austin       20903994
+Inserting ---> Kentucky       Frankfort       4049431
+Inserting ---> Alaska       Juneau       628933
+Inserting ---> Utah       SaltLakeCity       2236714
+Inserting ---> Nevada       CarsonCity       2002032
+Inserting ---> Maine       Augusta       1277731
+Inserting ---> Tennessee       Nashville       5700037
+Inserting ---> NewMexico       SantaFe       1823821
+Inserting ---> Oregon       Salem       3428543
+Inserting ---> Minnesota       St.Paul       4925670
+Inserting ---> Wisconsin       Madison       5371210
+Inserting ---> Pennsylvania       Harrisburg       12300670
+Printing Tree2: 
+NewYork    Albany    19004973
+Maryland    Annapolis    5307886
+Georgia    Atlanta    8206975
+Maine    Augusta    1277731
+Texas    Austin    20903994
+Louisiana    BatonRouge    4480271
+NorthDakota    Bismarck    643756
+Idaho    Boise    1297274
+Massachusetts    Boston    6355568
+Nevada    CarsonCity    2002032
+WestVirginia    Charleston    1813077
+Wyoming    Cheyenne    495304
+SouthCarolina    Columbia    4025061
+Ohio    Columbus    11374540
+NewHampshire    Concord    1238415
+Colorado    Denver    4311882
+Iowa    DesMoines    2931923
+Delaware    Dover    785068
+Kentucky    Frankfort    4049431
+Pennsylvania    Harrisburg    12300670
+Connecticut    Hartford    3409535
+Montana    Helena    905316
+Hawaii    Honolulu    1216642
+Indiana    Indianapolis    6090782
+Mississippi    Jackson    2852927
+Missouri    Jefferson    5606260
+Alaska    Juneau    628933
+Michigan    Lansing    9955829
+Nebraska    Lincoln    1715369
+Arkansas    LittleRock    2679733
+Wisconsin    Madison    5371210
+Alabama    Montgomery    4461130
+Vermont    Montpelier    609890
+Tennessee    Nashville    5700037
+Oklahoma    OklahomaCity    3458819
+Washington    Olympia    5908684
+Arizona    Phonenix    5140683
+SouthDakota    Pierre    756874
+RhodeIsland    Providence    1049662
+NorthCarolina    Raleigh    8067673
+Virginia    Richmond    7100702
+California    Sacramento    33930798
+Oregon    Salem    3428543
+Utah    SaltLakeCity    2236714
+NewMexico    SantaFe    1823821
+Illinois    Springfield    12439042
+Minnesota    St.Paul    4925670
+Florida    Talahasse    16028890
+Kansas    Topeka    2693824
+NewJersey    Trenton    8424354
+
+
+Inserting ---> Idaho       Boise       1297274
+Inserting ---> Washington       Olympia       5908684
+Inserting ---> Vermont       Montpelier       609890
+Inserting ---> Hawaii       Honolulu       1216642
+Inserting ---> Arizona       Phonenix       5140683
+Inserting ---> Montana       Helena       905316
+Inserting ---> Virginia       Richmond       7100702
+Inserting ---> NorthDakota       Bismarck       643756
+Inserting ---> Colorado       Denver       4311882
+Inserting ---> Mississippi       Jackson       2852927
+Inserting ---> Delaware       Dover       785068
+Inserting ---> Georgia       Atlanta       8206975
+Inserting ---> SouthCarolina       Columbia       4025061
+Inserting ---> Illinois       Springfield       12439042
+Inserting ---> Nebraska       Lincoln       1715369
+Inserting ---> Arkansas       LittleRock       2679733
+Inserting ---> NewHampshire       Concord       1238415
+Inserting ---> Ohio       Columbus       11374540
+Inserting ---> Kansas       Topeka       2693824
+Inserting ---> Louisiana       BatonRouge       4480271
+Inserting ---> Michigan       Lansing       9955829
+Inserting ---> Florida       Talahasse       16028890
+Inserting ---> Connecticut       Hartford       3409535
+Inserting ---> Iowa       DesMoines       2931923
+Inserting ---> WestVirginia       Charleston       1813077
+Inserting ---> Missouri       Jefferson       5606260
+Inserting ---> Wyoming       Cheyenne       495304
+Inserting ---> California       Sacramento       33930798
+Inserting ---> Alabama       Montgomery       4461130
+Inserting ---> NewJersey       Trenton       8424354
+Inserting ---> SouthDakota       Pierre       756874
+Inserting ---> Maryland       Annapolis       5307886
+Inserting ---> Indiana       Indianapolis       6090782
+Inserting ---> Oklahoma       OklahomaCity       3458819
+Inserting ---> NorthCarolina       Raleigh       8067673
+Inserting ---> NewYork       Albany       19004973
+Inserting ---> RhodeIsland       Providence       1049662
+Inserting ---> Massachusetts       Boston       6355568
+Inserting ---> Texas       Austin       20903994
+Inserting ---> Kentucky       Frankfort       4049431
+Inserting ---> Alaska       Juneau       628933
+Inserting ---> Utah       SaltLakeCity       2236714
+Inserting ---> Nevada       CarsonCity       2002032
+Inserting ---> Maine       Augusta       1277731
+Inserting ---> Tennessee       Nashville       5700037
+Inserting ---> NewMexico       SantaFe       1823821
+Inserting ---> Oregon       Salem       3428543
+Inserting ---> Minnesota       St.Paul       4925670
+Inserting ---> Wisconsin       Madison       5371210
+Inserting ---> Pennsylvania       Harrisburg       12300670
+Printing Tree3: 
+Wyoming    Cheyenne    495304
+Vermont    Montpelier    609890
+Alaska    Juneau    628933
+NorthDakota    Bismarck    643756
+SouthDakota    Pierre    756874
+Delaware    Dover    785068
+Montana    Helena    905316
+RhodeIsland    Providence    1049662
+Hawaii    Honolulu    1216642
+NewHampshire    Concord    1238415
+Maine    Augusta    1277731
+Idaho    Boise    1297274
+Nebraska    Lincoln    1715369
+WestVirginia    Charleston    1813077
+NewMexico    SantaFe    1823821
+Nevada    CarsonCity    2002032
+Utah    SaltLakeCity    2236714
+Arkansas    LittleRock    2679733
+Kansas    Topeka    2693824
+Mississippi    Jackson    2852927
+Iowa    DesMoines    2931923
+Connecticut    Hartford    3409535
+Oregon    Salem    3428543
+Oklahoma    OklahomaCity    3458819
+SouthCarolina    Columbia    4025061
+Kentucky    Frankfort    4049431
+Colorado    Denver    4311882
+Alabama    Montgomery    4461130
+Louisiana    BatonRouge    4480271
+Minnesota    St.Paul    4925670
+Arizona    Phonenix    5140683
+Maryland    Annapolis    5307886
+Wisconsin    Madison    5371210
+Missouri    Jefferson    5606260
+Tennessee    Nashville    5700037
+Washington    Olympia    5908684
+Indiana    Indianapolis    6090782
+Massachusetts    Boston    6355568
+Virginia    Richmond    7100702
+NorthCarolina    Raleigh    8067673
+Georgia    Atlanta    8206975
+NewJersey    Trenton    8424354
+Michigan    Lansing    9955829
+Ohio    Columbus    11374540
+Pennsylvania    Harrisburg    12300670
+Illinois    Springfield    12439042
+Florida    Talahasse    16028890
+NewYork    Albany    19004973
+Texas    Austin    20903994
+California    Sacramento    33930798
+
+
+4. Printing less than 5 Million:
+Wyoming    Cheyenne    495304
+Vermont    Montpelier    609890
+Alaska    Juneau    628933
+NorthDakota    Bismarck    643756
+SouthDakota    Pierre    756874
+Delaware    Dover    785068
+Montana    Helena    905316
+RhodeIsland    Providence    1049662
+Hawaii    Honolulu    1216642
+NewHampshire    Concord    1238415
+Maine    Augusta    1277731
+Idaho    Boise    1297274
+
+
+Printing more than 10 Million:
+Idaho    Boise    1297274
+Nebraska    Lincoln    1715369
+WestVirginia    Charleston    1813077
+NewMexico    SantaFe    1823821
+Nevada    CarsonCity    2002032
+Utah    SaltLakeCity    2236714
+Arkansas    LittleRock    2679733
+Kansas    Topeka    2693824
+Mississippi    Jackson    2852927
+Iowa    DesMoines    2931923
+Connecticut    Hartford    3409535
+Oregon    Salem    3428543
+Oklahoma    OklahomaCity    3458819
+SouthCarolina    Columbia    4025061
+Kentucky    Frankfort    4049431
+Colorado    Denver    4311882
+Alabama    Montgomery    4461130
+Louisiana    BatonRouge    4480271
+Minnesota    St.Paul    4925670
+Arizona    Phonenix    5140683
+Maryland    Annapolis    5307886
+Wisconsin    Madison    5371210
+Missouri    Jefferson    5606260
+Tennessee    Nashville    5700037
+Washington    Olympia    5908684
+Indiana    Indianapolis    6090782
+Massachusetts    Boston    6355568
+Virginia    Richmond    7100702
+NorthCarolina    Raleigh    8067673
+Georgia    Atlanta    8206975
+NewJersey    Trenton    8424354
+Michigan    Lansing    9955829
+Ohio    Columbus    11374540
+Pennsylvania    Harrisburg    12300670
+Illinois    Springfield    12439042
+Florida    Talahasse    16028890
+NewYork    Albany    19004973
+Texas    Austin    20903994
+California    Sacramento    33930798
+Done.
+exit
+^C
+sh-2.05$ exit
+exit
+
+script done on Fri Apr 04 06:11:27 2008

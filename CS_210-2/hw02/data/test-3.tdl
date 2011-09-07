@@ -1,0 +1,10 @@
+draw ant:3;
+draw (ant:5);
+draw (ant:7):11;
+draw ((ant:7):11):13;
+draw (ant):11;
+draw (ant:3, (bat:5, cow:7):11, (dog:13, elk:17, (fox:19):23):29):31;
+draw (ant:3, (bat, cow:7), (dog:13, elk, (fox:19)):29):31;
+draw (ant, (bat, cow)mammals)animals;
+draw (ant:3, (bat:6, cow:9)mammals:12)animals:15;
+exit

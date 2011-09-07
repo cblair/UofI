@@ -1,0 +1,6 @@
+procedure main()
+s:="elderberries"
+#write((i:=upto('berries', s), many('eld', s, i)))
+write(find("r", s) < find("e", s))
+
+end

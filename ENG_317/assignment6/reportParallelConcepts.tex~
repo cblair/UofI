@@ -1,0 +1,19 @@
+
+\section{Parallel Concepts}
+
+Parallel Programming means doing many similar things in software at once.
+
+\subsection{Data parallelism}
+
+\subsection{Task parallelism}
+
+\subsection{Pipeline parallelism}
+
+\subsection{Mutual Exclusion issues}
+
+\subsection{Data dependency}
+
+\subsection{Process granularity}
+
+\subsection{Process profiling}
+

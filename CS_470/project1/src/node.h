@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+#ifndef NODEH
+#define NODEH
+
+class node {
+public:
+	char name;
+	int val, x, y;
+	struct node *next, *parent;
+ 
+	node(char name,int val, int x, int y) {
+		this->name = name;
+		this->val = val;
+		this->x = x;
+		this->y = y;
+		this->next = this->parent = NULL;
+	}
+
+	~node() {
+		this->reinitNode();
+	}
+ 
+	//General Node_ methods
+	void reinitNode();
+	bool exists(int, int);
+	int length();
+	int sumAncestorsVal();
+	int nAncestors();
+	void addNode(char name, int val, int x, int y);
+	bool pushNodeFront(char, int, int, int);
+	bool popFront();
+	int getVal(char name);
+	bool isEmpty();
+	bool isAncestor(int, int, node*);
+	bool areRelatives(node*, node*);
+	node *getEndPtr();
+	node* sortedValLowHigh();
+	node* sortedValHighLow();
+
+  	//testing methods
+  	void print(int i);
+  	void printAll();  
+	void printAncestors(node *);
+};
+
+#endif

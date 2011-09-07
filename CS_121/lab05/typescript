@@ -1,0 +1,187 @@
+Script started on Thu Feb 28 21:55:03 2008
+sh-2.05$ clear
+[H[Jsh-2.05$ clearls[Kcd ../..g++ -Wall -o prog1 prog1.cppsh-2.05$ ls[Kcd seperate_filessh-2.05$ ls[Kcd assignment03sh-2.05$ ls[Kcd ..ls[Kemacs mems_and_funcs.hinclude.c[Ktest.h[Kmems_and_funcs.hitest.h[Knclude.ctest.h[Ksh-2.05$ ls[Kemacs itest.hnclude.ctest.h[Knclude.ctest.h[Ksh-2.05$ ls[Kcd driversls[Kcd CS_121-121./includeg++ -Wall -o include include.csh-2.05$ ./include[Kg++ -Wall -o include include.csh-2.05$ gcc include.c[Ksh-2.05$ clear[K./includels[Kgcc include.csh-2.05$ g++ -Wall -o include include.csh-2.05$ gcc include.c[Ksh-2.05$ ls[K./includeclear[Kgcc include.csh-2.05$ g++ -Wall -o include include.csh-2.05$ ./include[Kg++ -Wall -o include include.csh-2.05$ gcc include.c[Ksh-2.05$ clear[Kgcc include.csh-2.05$ g++ -Wall -o include include.csh-2.05$ ./include[Kg++ -Wall -o include include.csh-2.05$ ./include[Kcd CS-121_121ls[Kcd driversls[Kemacs itest.hnclude.ctest.h[Knclude.ctest.h[Ksh-2.05$ ls[Kemacs itest.hnclude.ctest.h[Kmems_and_funcs.hitest.h[Knclude.cmems_and_funcs.hsh-2.05$ ls[Kcd ..ls[Kcd assignment03sh-2.05$ ls[Kcd seperate_filessh-2.05$ ls[Kg++ -Wall -o prog1 prog1.cppsh-2.05$ cd ../..[Kls[Kclear[Kgcc -Wall -o memerro2r22 memerror2.c
+memerror2.c: In function `main':
+memerror2.c:44: warning: format argument is not a pointer (arg 2)
+memerror2.c: In function `reverseIt':
+memerror2.c:62: warning: implicit declaration of function `strlen'
+sh-2.05$ gcc -Wall -o memerror2 memerror2.c
+memerror2.c: In function `main':
+memerror2.c:45: warning: format argument is not a pointer (arg 2)
+sh-2.05$ ./memerror2   test123
+Segmentation Fault (core dumped)
+sh-2.05$ 2
+sh: 2: command not found
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 2./memerror2 test123sh-2.05$ gcc -Wall -o memerror2 memerror2.c
+memerror2.c: In function `main':
+memerror2.c:45: warning: format argument is not a pointer (arg 2)
+sh-2.05$ gcc -Wall -o memerror2 memerror2.csh-2.05$ 2[K./memerror2 test123
+Segmentation Fault (core dumped)
+sh-2.05$ 3
+sh: 3: command not found
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 4
+sh: 4: command not found
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 
+sh-2.05$ 43./memerror2 test123sh-2.05$ gcc -Wall -o memerror2 memerror2.c
+sh-2.05$ gcc -Wall -o memerror2 memerror2.csh-2.05$ 4[K3./memerror2 test123sh-2.05$ gcc -Wall -o memerror2 memerror2.csh-2.05$ ./memerror2 test123[K
+the reversed string is ''
+sh-2.05$ d gdb memerror2 .memerror2/memerror2
+GNU gdb 5.3
+Copyright 2002 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "sparc-sun-solaris2.9"...
+(no debugging symbols found)...
+(gdb) break 1
+Can't find a default source file
+(gdb) run test123
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test123
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbols found)..the reversed string is ''
+.
+Program exited normally.
+(gdb) file memerror2
+Reading symbols from memerror2...
+(no debugging symbols found)...done.
+(gdb) break 2
+Can't find a default source file
+(gdb) break 2
+Can't find a default source file
+(gdb) run test
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbols found)..the reversed string is ''
+.
+Program exited normally.
+(gdb) quit
+sh-2.05$ gdb ./memerror2sh-2.05$ ./memerror2 test123sh-2.05$ gcc -Wall -o memerror2 memerror2.c
+sh-2.05$ gcc -Wall -o memerror2 memerror2.csh-2.05$ gdb ./memerror2[K
+GNU gdb 5.3
+Copyright 2002 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "sparc-sun-solaris2.9"...
+(no debugging symbols found)...
+(gdb) run test
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbols found)..the reversed string is 'tset'
+.
+Program exited normally.
+(gdb) break 20
+Can't find a default source file
+(gdb) file memerror        ./memerror2
+Reading symbols from ./memerror2...
+(no debugging symbols found)...done.
+(gdb) break 2
+Can't find a default source file
+(gdb) preint    int argc
+No symbol table is loaded.  Use the "file" command.
+(gdb) file memerror2
+Reading symbols from memerror2...
+(no debugging symbols found)...done.
+(gdb) file memerror2(gdb) print argc[K
+No symbol table is loaded.  Use the "file" command.
+(gdb) break memerror2
+Function "memerror2" not defined.
+(gdb) file break memerror2(gdb) print argc[K(gdb) file memerror2(gdb) print argc[K(gdb) file memerror2
+Reading symbols from memerror2...
+(no debugging symbols found)...done.
+(gdb) file memerror2(gdb) break memerror2
+Function "memerror2" not defined.
+(gdb) break main
+Breakpoint 1 at 0x10770
+(gdb) ne  run
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbols found)...
+Breakpoint 1, 0x00010770 in main ()
+(gdb) qy  print argv
+No symbol table is loaded.  Use the "file" command.
+(gdb) print argv[2]
+No symbol table is loaded.  Use the "file" command.
+(gdb) print String  BuffertringBuffer[KstringBuffer
+No symbol table is loaded.  Use the "file" command.
+(gdb) next
+Single stepping until exit from function main, 
+which has no line number information.
+the reversed string is 'tset'
+0x00010604 in _start ()
+(gdb) nextprint stringBufferargv[2][K[K(gdb) run[Kbreak main(gdb) run[K test
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbols found)...
+Breakpoint 1, 0x00010770 in main ()
+(gdb) step
+Single stepping until exit from function main, 
+which has no line number information.
+the reversed string is 'tset'
+0x00010604 in _start ()
+(gdb) steprun test
+The program being debugged has been started already.
+Start it from the beginning? (y or n) 
+Please answer y or n.
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbols found)...
+Breakpoint 1, 0x00010770 in main ()
+(gdb) file memerror2
+A program is being debugged already.  Kill it? (y or n) y
+
+Reading symbols from memerror2...
+(no debugging symbols found)...done.
+(gdb) break main
+Note: breakpoint 1 also set at pc 0x10770.
+Breakpoint 2 at 0x10770
+(gdb) break 2 10
+Can't find a default source file
+(gdb) run test
+Starting program: /net/ugrads/blai4021/CS_121/lab05/memerror2 test
+(no debugging symbols found)...
+(no debugging symbols found)...
+(no debugging symbol

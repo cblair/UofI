@@ -1,0 +1,8 @@
+translate 600 0
+rotate 90
+defaultlen 70
+spacing 50
+
+draw ((SOUTHERN-STYLE)"Chen Chou Tung", ("Che Chou-Tung", ("Chen You-Heng", ("Chen Gen-Yur", ((WU-STYLE)"Wu Quan-Yu", "Yang Pan-Hou", ((YANG-STYLE)"Yang Chen-Fu")"Yang Chen-Hou")"Yang Lu-Chan")"Chen Chang-Hsing", (((SUN-STYLE)"Sun Lu-Tang")"Wu Yu-Xiang")"Chen Yau-Pun")"Chiang Fa")NORTHERN-STYLE)"Chang San-Feng"; 
+
+exit

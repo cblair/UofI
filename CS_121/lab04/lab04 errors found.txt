@@ -1,0 +1,31 @@
+/* memerror.c
+ *
+ * CS 121.Bolden.........GNU Version 2...........Colby Blair
+ * February 12, 2008 ....Lenovo ThinkCentre.............cblair@vandals.uidaho.edu
+ *
+ * This is the errors found from Prof. Bolden's Lab 4 of CS 121
+ *---------------------------------------------------------------------
+ */
+
+
+1. The first error found was the use of 'strlen' function without including the string.h header file. This cleared up error on lines 37 and more.
+
+2. The second error was also on line 37; not only can malloc not be assigned to a char * array without a (char*) cast before it, but more importantly... I have no idea what this is trying to accomplish here! A simple assignment of operator 'stringBuffer = argv[1]' will do.
+
+3. Third error was the same as the beginning or 2 with malloc , except on line 69 and 75 with a (CharNode*) cast needed, for malloc.
+
+4. Changing line 46 arg 2 in the printf (*stringBuffer) to 'stringBuffer'. I am not sure if this is good or not yet, but at least I have notes and it got rid of the error. The following problem, the seg faults, haven't even reached this point yet, so I will keep notes on this for now.
+	-Update: All errors have been cleared from the program, and this would have been one 	of the segfaults, so yes indeed, it was good to get rid of this warning.
+
+5. Program is now getting seg faults. Setting up scaffoldings throughout main() to find the error location (ah, printf, how I have not missed you).
+
+	-The fprint needed one more argument, a reference to a string, to be printed out.
+	This is now argument 3 - argv[1].
+
+	-Original line 36 (now 39) had some really overcomplicated proceedure for copying
+	strings. I should probably figure out what specifically was being attempted here,
+	but for now, a simple assignment operator from one string to the next was fine.
+
+6. Currently line 63, stop should have been set to 'stringbuffer + strlen (stringbuffer)', and not 'stringbuffer + strlen	(stringbuffer) + 1'. Who snuck that '+ 1' in there?!
+
+7. I also added one more input checking if statement if argc was less than 2 (meaning there were not arguments), to avoid seg faulting in the other input checking if statement.

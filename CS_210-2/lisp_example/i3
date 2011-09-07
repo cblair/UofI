@@ -1,0 +1,276 @@
+[1]> (cons 'a '(b))
+(A B)
+[2]> (cons 'a 'b)
+(A . B)
+[3]> (= 'a 'b)
+
+*** - =: A is not a number
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead.
+ABORT          :R2      Abort main loop
+Break 1 [4]> q
+
+*** - SYSTEM::READ-EVAL-PRINT: variable Q has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of Q.
+STORE-VALUE    :R2      You may input a new value for Q.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort main loop
+Break 2 [5]> q()
+
+*** - SYSTEM::READ-EVAL-PRINT: variable Q has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of Q.
+STORE-VALUE    :R2      You may input a new value for Q.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort main loop
+Break 3 [6]>   
+a
+
+*** - SYSTEM::READ-EVAL-PRINT: variable A has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of A.
+STORE-VALUE    :R2      You may input a new value for A.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort main loop
+Break 4 [7]> (eq 'a 'b)
+NIL
+Break 4 [7]> (= 'a 'b)
+
+*** - =: A is not a number
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead.
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort main loop
+Break 5 [8]> (eq 'a 'b)
+NIL
+Break 5 [8]> (eq '(a) '(b))
+NIL
+Break 5 [8]> (equal '(a) '(c))
+NIL
+Break 5 [8]> (equal '(a) '(a))
+T
+Break 5 [8]> (not t)
+NIL
+Break 5 [8]> (not 'day)
+NIL
+Break 5 [8]> (not'(dade dexter))
+NIL
+Break 5 [8]> (and T T T 'day nil 'cat)
+NIL
+Break 5 [8]> (setq univ '(sun moon stars planets))
+(SUN MOON STARS PLANETS)
+Break 5 [8]> (member 'stars univ)
+(STARS PLANETS)
+Break 5 [8]> (cond ((null x) "its null"))
+
+*** - COND: variable X has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of X.
+STORE-VALUE    :R2      You may input a new value for X.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort main loop
+Break 6 [9]> (cond ((null x) "its nill"))
+
+*** - COND: variable X has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of X.
+STORE-VALUE    :R2      You may input a new value for X.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort main loop
+Break 7 [10]> (setq x nill)
+Break 8 [11]> (cond ((nil x) "its nill"))
+
+*** - EVAL: undefined function NIL
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'NIL).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'NIL).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort main loop
+Break 9 [12]> (cond ((nill x) "its nill"))
+
+*** - EVAL: undefined function NILL
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'NILL).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'NILL).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort main loop
+Break 10 [13]> (setq x nil)
+NIL
+Break 10 [13]> (cond ((nil x) "its nil"))
+
+*** - EVAL: undefined function NIL
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'NIL).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'NIL).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort main loop
+Break 11 [14]> (cond ((null x) "its null"))
+"its null"
+Break 11 [14]> (abs (x))
+
+*** - EVAL: undefined function X
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'X).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'X).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort main loop
+Break 12 [16]> (abs x)
+
+*** - EVAL: undefined function -X
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION '-X).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION '-X).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort debug loop
+ABORT          :R16     Abort main loop
+Break 13 [17]> (defun abs(x)(cond ((< x 0) (- x) x)) (T x))
+ABS
+Break 13 [17]> (abs x)
+
+*** - EVAL: undefined function T
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of (FDEFINITION 'T).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      You may input a new value for (FDEFINITION 'T).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort debug loop
+ABORT          :R16     Abort debug loop
+ABORT          :R17     Abort main loop
+Break 14 [18]> defun(fact (n) (cond ((= n 1) 1) (T (* n (fact (- n 1))))))
+
+*** - SYSTEM::READ-EVAL-PRINT: variable DEFUN has no value
+The following restarts are available:
+USE-VALUE      :R1      You may input a value to be used instead of DEFUN.
+STORE-VALUE    :R2      You may input a new value for DEFUN.
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort debug loop
+ABORT          :R16     Abort debug loop
+ABORT          :R17     Abort main loop
+Break 15 [19]> (defun(fact (n) (cond ((= n 1) 1) (T (* n (fact (- n 1)))))))
+
+*** - DEFUN: the name of a function must be a symbol, not (FACT (N) (COND ((= N 1) 1) (T (* N (FACT (- N 1))))))
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort debug loop
+ABORT          :R7      Abort debug loop
+ABORT          :R8      Abort debug loop
+ABORT          :R9      Abort debug loop
+ABORT          :R10     Abort debug loop
+ABORT          :R11     Abort debug loop
+ABORT          :R12     Abort debug loop
+ABORT          :R13     Abort debug loop
+ABORT          :R14     Abort debug loop
+ABORT          :R15     Abort debug loop
+ABORT          :R16     Abort main loop
+Break 16 [20]> (defun fact (n) (cond ((= n 1) 1) (T (* n (fact (- n 1)))))) 
+FACT
+Break 16 [20]> (fact x
+)
+
+*** - Program stack overflow. RESET
+Break 16 [20]> (fact x)
+
+*** - Program stack overflow. RESET
+Break 16 [20]> x
+-1
+Break 16 [20]> (setq x 3)
+3
+Break 16 [20]> (fact x)
+6
+Break 16 [20]> (defun fib(n) (if (< n 3) 1 (+ (fib (- n 1)) (fib (- n 2)))))
+FIB
+Break 16 [20]> (fib x)
+2
+Break 16 [20]> (defun newmember(x l) (cond ((atom l) ((listp l) (cond ((eq x (car l)) l) (T (newmember x (cdr l))) 
+
+

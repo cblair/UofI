@@ -1,0 +1,84 @@
+[1]> (defun findatom (a l)
+             (cond ((atom l) (eq a l))
+             )
+             
+*** - Ctrl-C: User break
+The following restarts are available:
+ABORT          :R1      Abort main loop
+Break 1 [2]> (defun findatom (a l)
+             (cond ((atom l) (eq a l))
+                   (T (or (findatom a (car l))
+                          (findatom a (cdr l))
+                   )
+             )
+)
+)
+FINDATOM
+Break 1 [2]> (findatom 'b '(a b))
+T
+Break 1 [2]> (findatom 'c '(a b))
+NIL
+Break 1 [2]> (defun subst (a b l)
+             ((equal a l) b)
+                   (T (cons (substr a b (car l))
+                          (substr a b (cdr l))
+                       )
+                   )
+             )
+)
+
+** - Continuable Error
+DEFUN/DEFMACRO(SUBST): #<PACKAGE COMMON-LISP> is locked
+If you continue (by typing 'continue'): Ignore the lock and proceed
+The following restarts are also available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort main loop
+Break 2 [3]> (defun subst (a b l)
+             ((equal a l) b)
+                   (T (cons (substr a b (car l))
+                          (substr a b (cdr l))
+                       )
+                   )
+             )
+)
+
+** - Continuable Error
+DEFUN/DEFMACRO(SUBST): #<PACKAGE COMMON-LISP> is locked
+If you continue (by typing 'continue'): Ignore the lock and proceed
+The following restarts are also available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort main loop
+Break 3 [4]> continue
+WARNING: DEFUN/DEFMACRO: redefining function SUBST in top-level, was defined in C
+*** - SYSTEM::%EXPAND-FORM: (EQUAL A L) should be a lambda expression
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort main loop
+Break 3 [5]> (defun subst (a b l)
+             ((eq a l) b)
+                   (T (cons (substr a b (car l))
+                          (substr a b (cdr l))
+                       )
+                   )
+             )
+)
+
+*** - SYSTEM::%EXPAND-FORM: (EQ A L) should be a lambda expression
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort debug loop
+ABORT          :R3      Abort debug loop
+ABORT          :R4      Abort main loop
+Break 4 [6]> (defun copy (l) 
+                    (cond ((atom l) l)
+                          (T (cons (copy (car l))
+                                   (copy (cdr l))
+                             )
+                    )
+              )
+)
+COPY
+Break 4 [6]> 
+

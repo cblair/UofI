@@ -1,0 +1,16 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	PROMPT            3053
+//	PROMPT2           3063
+//	TWOSCP            3074
+//	SECRET            3075
+//	LINE              3076
+//	LOWASCII          3077
+//	HIGHASCII         3078
+//	BEEP              3079
+//	PERIOD            307A
+//	MESSAGE           307B
+//	MESREV            30DF
+

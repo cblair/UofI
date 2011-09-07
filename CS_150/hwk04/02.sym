@@ -1,0 +1,11 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	LOOP              3003
+//	DONE              3007
+//	RESULT            3009
+//	ZERO              300A
+//	M0                300B
+//	M1                300C
+

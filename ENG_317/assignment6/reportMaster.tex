@@ -1,0 +1,110 @@
+
+%%%%%%%%% MASTER -- compiles the sections
+
+\documentclass[11pt,letterpaper]{article}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+\usepackage{listings} %for source code figures
+\usepackage[toc,xindy,style=long3colheaderborder,footnote]{glossaries}
+%\usepackage[toc,xindy]{glossaries}
+\makeindex
+\makeglossaries
+
+\input{reportGlossary.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{April 29th, 2011}
+\title{High Performance Computing \\
+	in the University of Idaho \\
+	College of Natural Resources}
+
+\author{Colby Blair \\
+	Computer Science Undergraduate \\
+	University of Idaho Computer Science Department
+}
+
+
+\begin{document}
+
+\section*{Letter of Transmittal}
+\textbf{Subject.} High Performance Computing in Natural Resources.
+
+\textbf{Purpose.} This report focuses on the programming challenge faced in computing current research. The goal is to introduce the concept of High Performance Computing (HPC) to an audience that may understand mathematics and habitat data, but doesn't have a lot of training with programming. This report covers the concept of Parallel Computing, and the motivation to do so. It then demonstrates implementation of Parallel Computing on a High Performance Computing Cluster (HPCC). It then talks about real algorithms in current research, and their parallel equivalents on several University of Idaho HPC Clusters. It then shows the results  of using an HPCC and Parallel programming, to motivate others in CNR to embrace HPC in their research projects.
+
+\textbf{Background.} A large part of animal studies in CNR is tracking animal movement. As an animal moves through a landscape over time, its recorded locations can create probabilities of where that animal may be at any one time. One method of probability mapping uses the Brownian Bridge model (Horne, Garton, Krone, and Lewis et al 2007). The Brownian Bridge alone, however, doesn't tell us anything about the habitat. The Synoptic model of Space Use (Horne, Garton, and Rachlow et al 2007) provides us with habitat data based off of animal locations. Combining the Brownian Bridge model with the Synoptic Model allows us to more intelligently select habitat data that affects animal movement. But it is also very computationally expensive.
+
+\textbf{Preliminary Work}. The graduate student leading the project has already earned his Masters on this study. He then went on to pursue his Ph.D., and the author joined the project around February of 2010. Our first challenge was to create a parallel implementation of the Brownian Bridge model. This shortened the computer process time of 1 goat from 144 hours to under 1 minute. But it was quickly realized that Brownian Bridge was not enough; we needed Synoptic Modeling. Merging the two methods is what we are finishing now.
+
+\thispagestyle{empty}
+
+\pagebreak
+
+\maketitle
+
+\thispagestyle{empty}
+
+\pagebreak
+
+\thispagestyle{empty}
+\tableofcontents
+\listoffigures
+
+\pagebreak
+
+\begin{abstract}
+With today's exponential increase of data, the demand for processing is outpacing the supply. The way we 
+processed data yesterday would take years to do today. Unfortunately, the lake of fluency with computing in
+today's research proposals results in processing a fraction of the data collected. This weakens research 
+projects, and leads to a lot of unnecessary data collection. 
+
+Today's researchers must become fluent with the language of High Performance Computing. Not only can
+HPC strengthen the results of research projects, but it can also be overused. With an understanding of the 
+rules of HPC, embarassingl parallel gains in processing will occur. The gains and pitfalls can suprise even
+the experienced programmer, but the concepts of HPC are simple, and the benefits are great.
+
+\end{abstract}
+
+\setcounter{page}{1}
+
+\pagebreak
+
+\input{../assignment4/reportSumm.tex}
+\include{reportParallelConcepts}
+\include{reportParallelProgramming}
+\include{reportAlgorithms}
+%\include{reportHPCCluster}
+\include{reportSoftwareLifecycles}
+\include{reportConclusion}
+\include{reportRefs}
+%\printglossaries
+
+
+
+\end{document}

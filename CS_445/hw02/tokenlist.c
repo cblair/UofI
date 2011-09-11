@@ -31,13 +31,26 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 	struct tokenlist *tlp; 
 	for(tlp = YY_TOKENLIST; tlp != NULL; tlp = tlp->next)
 	{
-		printf("%d\t\t%s\t\t%d\t\t%s\t\t%010X\t\t\n", 
+		if(tlp->t->category == INT_LIT || tlp->t->category == REAL_LIT)
+		{
+			printf("%d\t\t%s\t\t%d\t\t%s\t%010X\n", 
 					tlp->t->category, 
 					tlp->t->text,
 					tlp->t->lineno,
 					tlp->t->filename,
 					tlp->t->ival
 					);
+		}
+		else
+		{
+			printf("%d\t\t%s\t\t%d\t\t%s\n", 
+					tlp->t->category, 
+					tlp->t->text,
+					tlp->t->lineno,
+					tlp->t->filename
+					);
+	
+		}
 	}
 }
 
@@ -50,7 +63,7 @@ int tokenlist_append(int cat, char *token_text, int lineno, char *fname)
 	token_new->text = strdup(token_text);
 	token_new->lineno = lineno;
 	token_new->filename = fname;
-	if(cat == NUM)
+	if(cat == INT_LIT || cat == REAL_LIT)
 	{	
 		token_new->ival = atof(token_text);
 		token_new->sval = NULL;

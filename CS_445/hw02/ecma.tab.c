@@ -68,187 +68,207 @@
    enum yytokentype {
      EXIT = 258,
      AS = 259,
-     BREAK = 260,
-     CASE = 261,
-     CATCH = 262,
-     CLASS = 263,
-     CONST = 264,
-     CONTINUE = 265,
-     DEFAULT = 266,
-     DELETE = 267,
-     DO = 268,
-     ELSE = 269,
-     EXTENDS = 270,
-     FALSE = 271,
-     FINALLY = 272,
-     FOR = 273,
-     FUNCTION = 274,
-     IF = 275,
-     IMPLEMENTS = 276,
-     IMPORT = 277,
-     IN = 278,
-     INSTANCEOF = 279,
-     INTERFACE = 280,
-     INTERNAL = 281,
-     IS = 282,
-     NEW = 283,
-     NULL_VAL = 284,
-     PACKAGE = 285,
-     PRIVATE = 286,
-     PROTECTED = 287,
-     PUBLIC = 288,
-     RETURN = 289,
-     SUPER = 290,
-     SWITCH = 291,
-     THIS = 292,
-     THROW = 293,
-     TO = 294,
-     TRUE = 295,
-     TRY = 296,
-     TYPEOF = 297,
-     USE = 298,
-     VAR = 299,
-     VOID = 300,
-     WHILE = 301,
-     WITH = 302,
-     EACH = 303,
-     GET = 304,
-     SET = 305,
-     NAMESPACE = 306,
-     INCLUDE = 307,
-     DYNAMIC = 308,
-     FINAL = 309,
-     NATIVE = 310,
-     OVERRIDE = 311,
-     PROTOTYPE = 312,
-     STATIC = 313,
-     ARRAY = 314,
-     INT = 315,
-     UINT = 316,
-     NUM = 317,
-     STRING = 318,
-     BOOL = 319,
-     OOBJECT = 320,
-     OB = 321,
-     CB = 322,
-     OP = 323,
-     CP = 324,
-     SQ = 325,
-     DQ = 326,
-     SUM = 327,
-     DIV = 328,
-     DIF = 329,
-     MUL = 330,
-     POW = 331,
-     ASSIGN = 332,
-     EQUIV = 333,
-     NOTEQ = 334,
-     LT = 335,
-     GT = 336,
-     LTEQ = 337,
-     GTEQ = 338,
-     COLON = 339,
-     SEMICOLON = 340,
-     COMMA = 341,
-     IDENT = 342,
-     INTEGER = 343,
-     ID = 344,
-     NAME = 345,
-     PUNC = 346,
-     MIX = 347
+     ARRAY = 260,
+     BOOLEAN = 261,
+     BREAK = 262,
+     CASE = 263,
+     CATCH = 264,
+     CLASS = 265,
+     CONST = 266,
+     CONTINUE = 267,
+     DEFAULT = 268,
+     DELETE = 269,
+     DO = 270,
+     ELSE = 271,
+     EXTENDS = 272,
+     FALSE = 273,
+     FINALLY = 274,
+     FOR = 275,
+     FUNCTION = 276,
+     IF = 277,
+     IMPLEMENTS = 278,
+     IMPORT = 279,
+     IN = 280,
+     INSTANCEOF = 281,
+     INT = 282,
+     INTERFACE = 283,
+     INTERNAL = 284,
+     IS = 285,
+     NEW = 286,
+     NULL_TYPE = 287,
+     NUMBER = 288,
+     OBJECT = 289,
+     PACKAGE = 290,
+     PRIVATE = 291,
+     PROTECTED = 292,
+     PUBLIC = 293,
+     RETURN = 294,
+     STRING = 295,
+     SUPER = 296,
+     SWITCH = 297,
+     THIS = 298,
+     THROW = 299,
+     TO = 300,
+     TRUE = 301,
+     TRY = 302,
+     TYPEOF = 303,
+     UINT = 304,
+     USE = 305,
+     VAR = 306,
+     VOID = 307,
+     WHILE = 308,
+     WITH = 309,
+     EACH = 310,
+     GET = 311,
+     SET = 312,
+     NAMESPACE = 313,
+     INCLUDE = 314,
+     DYNAMIC = 315,
+     FINAL = 316,
+     NATIVE = 317,
+     OVERRIDE = 318,
+     PROTOTYPE = 319,
+     STATIC = 320,
+     PERIOD = 321,
+     COMMA = 322,
+     SEMICOLON = 323,
+     COLON = 324,
+     LC = 325,
+     RC = 326,
+     LP = 327,
+     RP = 328,
+     LB = 329,
+     RB = 330,
+     ASSIGN = 331,
+     LT = 332,
+     GT = 333,
+     LTE = 334,
+     GTE = 335,
+     DLT = 336,
+     DGT = 337,
+     SUM = 338,
+     DIF = 339,
+     DIV = 340,
+     MUL = 341,
+     POW = 342,
+     INCREMENT = 343,
+     DECREMENT = 344,
+     AMP = 345,
+     DAMP = 346,
+     PIPE = 347,
+     DPIPE = 348,
+     AT = 349,
+     IDENT = 350,
+     INTEGER = 351,
+     ID = 352,
+     INT_LIT = 353,
+     NAME = 354,
+     PUNC = 355,
+     REAL_LIT = 356,
+     STRING_LIT = 357
    };
 #endif
 /* Tokens.  */
 #define EXIT 258
 #define AS 259
-#define BREAK 260
-#define CASE 261
-#define CATCH 262
-#define CLASS 263
-#define CONST 264
-#define CONTINUE 265
-#define DEFAULT 266
-#define DELETE 267
-#define DO 268
-#define ELSE 269
-#define EXTENDS 270
-#define FALSE 271
-#define FINALLY 272
-#define FOR 273
-#define FUNCTION 274
-#define IF 275
-#define IMPLEMENTS 276
-#define IMPORT 277
-#define IN 278
-#define INSTANCEOF 279
-#define INTERFACE 280
-#define INTERNAL 281
-#define IS 282
-#define NEW 283
-#define NULL_VAL 284
-#define PACKAGE 285
-#define PRIVATE 286
-#define PROTECTED 287
-#define PUBLIC 288
-#define RETURN 289
-#define SUPER 290
-#define SWITCH 291
-#define THIS 292
-#define THROW 293
-#define TO 294
-#define TRUE 295
-#define TRY 296
-#define TYPEOF 297
-#define USE 298
-#define VAR 299
-#define VOID 300
-#define WHILE 301
-#define WITH 302
-#define EACH 303
-#define GET 304
-#define SET 305
-#define NAMESPACE 306
-#define INCLUDE 307
-#define DYNAMIC 308
-#define FINAL 309
-#define NATIVE 310
-#define OVERRIDE 311
-#define PROTOTYPE 312
-#define STATIC 313
-#define ARRAY 314
-#define INT 315
-#define UINT 316
-#define NUM 317
-#define STRING 318
-#define BOOL 319
-#define OOBJECT 320
-#define OB 321
-#define CB 322
-#define OP 323
-#define CP 324
-#define SQ 325
-#define DQ 326
-#define SUM 327
-#define DIV 328
-#define DIF 329
-#define MUL 330
-#define POW 331
-#define ASSIGN 332
-#define EQUIV 333
-#define NOTEQ 334
-#define LT 335
-#define GT 336
-#define LTEQ 337
-#define GTEQ 338
-#define COLON 339
-#define SEMICOLON 340
-#define COMMA 341
-#define IDENT 342
-#define INTEGER 343
-#define ID 344
-#define NAME 345
-#define PUNC 346
-#define MIX 347
+#define ARRAY 260
+#define BOOLEAN 261
+#define BREAK 262
+#define CASE 263
+#define CATCH 264
+#define CLASS 265
+#define CONST 266
+#define CONTINUE 267
+#define DEFAULT 268
+#define DELETE 269
+#define DO 270
+#define ELSE 271
+#define EXTENDS 272
+#define FALSE 273
+#define FINALLY 274
+#define FOR 275
+#define FUNCTION 276
+#define IF 277
+#define IMPLEMENTS 278
+#define IMPORT 279
+#define IN 280
+#define INSTANCEOF 281
+#define INT 282
+#define INTERFACE 283
+#define INTERNAL 284
+#define IS 285
+#define NEW 286
+#define NULL_TYPE 287
+#define NUMBER 288
+#define OBJECT 289
+#define PACKAGE 290
+#define PRIVATE 291
+#define PROTECTED 292
+#define PUBLIC 293
+#define RETURN 294
+#define STRING 295
+#define SUPER 296
+#define SWITCH 297
+#define THIS 298
+#define THROW 299
+#define TO 300
+#define TRUE 301
+#define TRY 302
+#define TYPEOF 303
+#define UINT 304
+#define USE 305
+#define VAR 306
+#define VOID 307
+#define WHILE 308
+#define WITH 309
+#define EACH 310
+#define GET 311
+#define SET 312
+#define NAMESPACE 313
+#define INCLUDE 314
+#define DYNAMIC 315
+#define FINAL 316
+#define NATIVE 317
+#define OVERRIDE 318
+#define PROTOTYPE 319
+#define STATIC 320
+#define PERIOD 321
+#define COMMA 322
+#define SEMICOLON 323
+#define COLON 324
+#define LC 325
+#define RC 326
+#define LP 327
+#define RP 328
+#define LB 329
+#define RB 330
+#define ASSIGN 331
+#define LT 332
+#define GT 333
+#define LTE 334
+#define GTE 335
+#define DLT 336
+#define DGT 337
+#define SUM 338
+#define DIF 339
+#define DIV 340
+#define MUL 341
+#define POW 342
+#define INCREMENT 343
+#define DECREMENT 344
+#define AMP 345
+#define DAMP 346
+#define PIPE 347
+#define DPIPE 348
+#define AT 349
+#define IDENT 350
+#define INTEGER 351
+#define ID 352
+#define INT_LIT 353
+#define NAME 354
+#define PUNC 355
+#define REAL_LIT 356
+#define STRING_LIT 357
 
 
 
@@ -304,7 +324,7 @@ typedef union YYSTYPE
         char *sval;
 }
 /* Line 193 of yacc.c.  */
-#line 308 "ecma.tab.c"
+#line 328 "ecma.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -317,7 +337,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 321 "ecma.tab.c"
+#line 341 "ecma.tab.c"
 
 #ifdef short
 # undef short
@@ -535,7 +555,7 @@ union yyalloc
 #define YYLAST   1
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  93
+#define YYNTOKENS  103
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  2
 /* YYNRULES -- Number of rules.  */
@@ -545,7 +565,7 @@ union yyalloc
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   347
+#define YYMAXUTOK   357
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -587,7 +607,8 @@ static const yytype_uint8 yytranslate[] =
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
       65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
       75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
-      85,    86,    87,    88,    89,    90,    91,    92
+      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
+      95,    96,    97,    98,    99,   100,   101,   102
 };
 
 #if YYDEBUG
@@ -601,13 +622,13 @@ static const yytype_uint8 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      94,     0,    -1,     3,    -1
+     104,     0,    -1,     3,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    45,    45
+       0,    41,    41
 };
 #endif
 
@@ -616,19 +637,20 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "EXIT", "AS", "BREAK", "CASE", "CATCH",
-  "CLASS", "CONST", "CONTINUE", "DEFAULT", "DELETE", "DO", "ELSE",
-  "EXTENDS", "FALSE", "FINALLY", "FOR", "FUNCTION", "IF", "IMPLEMENTS",
-  "IMPORT", "IN", "INSTANCEOF", "INTERFACE", "INTERNAL", "IS", "NEW",
-  "NULL_VAL", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN",
-  "SUPER", "SWITCH", "THIS", "THROW", "TO", "TRUE", "TRY", "TYPEOF", "USE",
-  "VAR", "VOID", "WHILE", "WITH", "EACH", "GET", "SET", "NAMESPACE",
-  "INCLUDE", "DYNAMIC", "FINAL", "NATIVE", "OVERRIDE", "PROTOTYPE",
-  "STATIC", "ARRAY", "INT", "UINT", "NUM", "STRING", "BOOL", "OOBJECT",
-  "OB", "CB", "OP", "CP", "SQ", "DQ", "SUM", "DIV", "DIF", "MUL", "POW",
-  "ASSIGN", "EQUIV", "NOTEQ", "LT", "GT", "LTEQ", "GTEQ", "COLON",
-  "SEMICOLON", "COMMA", "IDENT", "INTEGER", "ID", "NAME", "PUNC", "MIX",
-  "$accept", "proc", 0
+  "$end", "error", "$undefined", "EXIT", "AS", "ARRAY", "BOOLEAN",
+  "BREAK", "CASE", "CATCH", "CLASS", "CONST", "CONTINUE", "DEFAULT",
+  "DELETE", "DO", "ELSE", "EXTENDS", "FALSE", "FINALLY", "FOR", "FUNCTION",
+  "IF", "IMPLEMENTS", "IMPORT", "IN", "INSTANCEOF", "INT", "INTERFACE",
+  "INTERNAL", "IS", "NEW", "NULL_TYPE", "NUMBER", "OBJECT", "PACKAGE",
+  "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "STRING", "SUPER", "SWITCH",
+  "THIS", "THROW", "TO", "TRUE", "TRY", "TYPEOF", "UINT", "USE", "VAR",
+  "VOID", "WHILE", "WITH", "EACH", "GET", "SET", "NAMESPACE", "INCLUDE",
+  "DYNAMIC", "FINAL", "NATIVE", "OVERRIDE", "PROTOTYPE", "STATIC",
+  "PERIOD", "COMMA", "SEMICOLON", "COLON", "LC", "RC", "LP", "RP", "LB",
+  "RB", "ASSIGN", "LT", "GT", "LTE", "GTE", "DLT", "DGT", "SUM", "DIF",
+  "DIV", "MUL", "POW", "INCREMENT", "DECREMENT", "AMP", "DAMP", "PIPE",
+  "DPIPE", "AT", "IDENT", "INTEGER", "ID", "INT_LIT", "NAME", "PUNC",
+  "REAL_LIT", "STRING_LIT", "$accept", "proc", 0
 };
 #endif
 
@@ -646,14 +668,15 @@ static const yytype_uint16 yytoknum[] =
      315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
      325,   326,   327,   328,   329,   330,   331,   332,   333,   334,
      335,   336,   337,   338,   339,   340,   341,   342,   343,   344,
-     345,   346,   347
+     345,   346,   347,   348,   349,   350,   351,   352,   353,   354,
+     355,   356,   357
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    93,    94
+       0,   103,   104
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -709,7 +732,7 @@ static const yytype_uint8 yycheck[] =
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,    94,     0
+       0,     3,   104,     0
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1525,7 +1548,7 @@ yyreduce:
     {
       
 /* Line 1267 of yacc.c.  */
-#line 1529 "ecma.tab.c"
+#line 1552 "ecma.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1739,6 +1762,6 @@ yyreturn:
 }
 
 
-#line 47 "ecma.y"
+#line 43 "ecma.y"
 
 

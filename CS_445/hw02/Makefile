@@ -6,7 +6,7 @@
 #File name:	Makefile
 #############################################################################
 
-PROC=scan
+PROC=ec
 CC=gcc
 PARSER=ecma
 LEX=flex

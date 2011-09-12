@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		{
 			fprintf(stderr, "ERROR: Cannot open '%s'. Ignoring.\n",\
 								YY_FNAME);
-			break;
+			continue;
 	        }
 
 		//while not end-of-file do

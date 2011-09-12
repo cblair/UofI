@@ -43,7 +43,7 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 		}
 		else if(tlp->t->category == STRING_LIT)
 		{
-			printf("%d\t\t%s\t\t%d\t\t%s\t%s\n", 
+			printf("%d\t\t%10s\t\t%d\t\t%s\t%s\n", 
 					tlp->t->category, 
 					tlp->t->text,
 					tlp->t->lineno,
@@ -52,7 +52,6 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 					);
 	
 		}
-
 		else
 		{
 			printf("%d\t\t%s\t\t%d\t\t%s\n", 

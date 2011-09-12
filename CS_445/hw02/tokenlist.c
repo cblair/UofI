@@ -41,6 +41,18 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 					tlp->t->ival
 					);
 		}
+		else if(tlp->t->category == STRING_LIT)
+		{
+			printf("%d\t\t%s\t\t%d\t\t%s\t%s\n", 
+					tlp->t->category, 
+					tlp->t->text,
+					tlp->t->lineno,
+					tlp->t->filename,
+					tlp->t->sval
+					);
+	
+		}
+
 		else
 		{
 			printf("%d\t\t%s\t\t%d\t\t%s\n", 
@@ -68,17 +80,11 @@ int tokenlist_append(int cat, char *token_text, int lineno, char *fname)
 		token_new->ival = atof(token_text);
 		token_new->sval = NULL;
 	}
-	else
+	else if(cat == STRING_LIT)
 	{
 		token_new->ival = 0;
-		token_new->sval = NULL; //TODO: should be string val
+		token_new->sval = strdup(tokenlist_strip_quotes(token_text));
 	}
-	/*
-	else if(cat == STRING)
-	{
-		token_new->sval = 
-	}
-	*/
 
 	//if empty list, initialize memory
 	if(YY_TOKENLIST == NULL)
@@ -102,4 +108,31 @@ int tokenlist_append(int cat, char *token_text, int lineno, char *fname)
 	}
 
 	return(0); 
+}
+
+char *tokenlist_strip_quotes(char *text)
+{
+	//null check
+	if(text == NULL)
+	{
+		return(text);
+	}
+
+	//single qoute strip
+	int end = strlen(text) - 1;
+	if(text[0] == '\'' && text[end] == '\'')
+	{
+		text++; //strip first '
+		end--; //decrement end index
+		text[end] = '\0'; //strip first '
+	}
+	//double qoute strip
+	else if(text[0] == '"' && text[end] == '"')
+	{
+		text++; //strip first "
+		end--; //decrement end index
+		text[end] = '\0'; //strip last "
+	}
+
+	return(text);
 }

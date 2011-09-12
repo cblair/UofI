@@ -154,7 +154,7 @@ string_lit	"\""[^\"\n]*"\""|"'"[^\"\n]*"'"
 
 {string_lit} 		{ return( _TLA(STRING_LIT)); } 
 
-<<EOF>>			{ return(EXIT); }
+<<EOF>>			{ lineno = 1; return(EXIT); }
 
 %%
 

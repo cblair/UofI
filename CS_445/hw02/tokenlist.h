@@ -7,7 +7,7 @@ struct token {
 	int lineno;     /* the line number on which the token occurs */
 	char *filename; /* the source file in which the token occurs */
 	int ival;       /* integer constant, store its value here */
-	int *sval;      /* string constant, malloc space and store */
+	char *sval;      /* string constant, malloc space and store */
 };
 
 struct tokenlist {
@@ -17,7 +17,8 @@ struct tokenlist {
 
 int tokenlist_init();
 int tokenlist_del();
-char* tokenlist_print();
+char *tokenlist_print();
 int tokenlist_append(int, char *, int, char *);
+char *tokenlist_strip_quotes(char*);
 
 #endif

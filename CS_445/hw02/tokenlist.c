@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+////Class:        CS 445
+////Semester:     Fall 2011
+////Assignment:   Homework 2
+////Author:       Colby Blair
+////File name:    tokenlist.c
+////////////////////////////////////////////////////////////////////////////////
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -43,7 +51,7 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 		}
 		else if(tlp->t->category == STRING_LIT)
 		{
-			printf("%d\t\t%10s\t\t%d\t\t%s\t%s\n", 
+			printf("%d\t\t%-16s%d\t\t%s\t%s\n", 
 					tlp->t->category, 
 					tlp->t->text,
 					tlp->t->lineno,

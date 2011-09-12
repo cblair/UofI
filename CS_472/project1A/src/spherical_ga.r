@@ -77,40 +77,21 @@ spherical.graph.fitnesses <- function(fitnesses,yrange)
 	}
 }
 
-
-spherical.steady.state <- function(individuals)
+spherical.save.graph <- function(name, fitnesses)
 {
-	spherical.selection(individuals)
+	pdf(paste(name,".pdf",sep="")) #init graph to be written to file
+	spherical.graph.fitnesses(fitnesses, NA)
+	dev.off() #write out graph
 }
 
 
-spherical.selection <- function(individuals)
-{	
+spherical.steady.state <- function(individuals)
+{
+	#Selection
+	#spherical.selection(individuals)
 	fitnesses <- spherical.fitnesses(individuals)
 
-	'
-	#copy first max individual
-	max1 <- individuals[[which(fitnesses == max(fitnesses))]]
-
-	#copy second max individual
-	n <- length(fitnesses)
-	max2 <- individuals[[which(fitnesses == sort(fitnesses,partial=n-1)[n-1])]]
-
-	#mutate the max-es
-	max1 <- spherical.mutate(max1)
-	max2 <- spherical.mutate(max2)
-
-	#replace first minimum
-	n <- which(fitnesses == min(fitnesses))
-	individuals[[n]] = max1
-	fitnesses <- spherical.fitnesses(individuals) #recalculate fitnesses
-
-	#replace second minimum
-	n <- which(fitnesses == min(fitnesses))
-	individuals[[n]] = max2
-	'
 	n <- which(fitnesses == min(fitnesses))[1] #1 if there are multi mins
-	print(n)
 	#copy first min individual
 	min1 <- individuals[[n]]
 
@@ -122,9 +103,13 @@ spherical.selection <- function(individuals)
 	#make a child
 	new.child <- spherical.one.point.crossover(min1,min2)
 	
+
+	#Mutate
 	#mutate the min's
 	new.child <- spherical.mutate(new.child)
 
+
+	#Re-generate / populate population
 	#replace first max
 	n <- which(fitnesses == max(fitnesses))[1] #1 if there are multi maxes
 	individuals[[n]] = new.child
@@ -135,7 +120,54 @@ spherical.selection <- function(individuals)
 	#individuals[[n]] = min2
 	
 
-	return(individuals)	
+	return(individuals)
+}
+
+
+spherical.generational <- function(individuals)
+{
+	#Selection
+	#spherical.selection(individuals)
+	fitnesses <- spherical.fitnesses(individuals)
+
+	n <- which(fitnesses == min(fitnesses))[1] #1 if there are multi mins
+	#copy first min individual
+	min1 <- individuals[[n]]
+
+	#copy second max individual
+	# [1] if multi second mins
+	n <- which(fitnesses == sort(fitnesses,partial=2)[2])[1]
+	min2 <- individuals[[n]]
+
+
+	#Re-generate / populate population
+	#make a child
+	new.child <- spherical.one.point.crossover(min1,min2)
+	new.individuals <- lapply(1:length(individuals), function(n) {
+		#Mutate
+		# mutate the new child
+		return(spherical.mutate(new.child))
+	})
+
+
+	#Elitism!
+	#replace first max
+	n <- which(fitnesses == max(fitnesses))[1] #1 if there are multi maxes
+	new.individuals[[n]] = min1
+	fitnesses <- spherical.fitnesses(new.individuals) #recalculate fitnesses
+
+	#replace second max
+	n <- which(fitnesses == max(fitnesses))[1] #1 if there are multi maxes
+	new.individuals[[n]] = min2
+	
+
+	return(new.individuals)	
+}
+
+
+
+spherical.selection <- function(individuals)
+{	
 }
 
 

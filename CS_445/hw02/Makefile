@@ -35,8 +35,8 @@ $(PARSER).yy.o: $(PARSER).l $(PARSER).tab.h
 $(PARSER).l: $(PARSER).tab.h
 	$(LEX) $(PARSER).l
 
+turnin:
+	tar cvf hw2.tar ecma.l main.c tokenlist.c Makefile ecma.y main.h tokenlist.h
+
 clean:
 	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'*
-
-turnin:
-	tar cf blai4021.tar makefile main.c yylex.c main.h

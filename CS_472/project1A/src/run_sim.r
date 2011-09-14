@@ -1,10 +1,10 @@
-source('./spherical_ga.r')
+source('./ga.r')
 
-individuals <- spherical.get.init.population(500,30)
+individuals <- ga.get.init.population(500,30)
 
 avg.fitnesses <- c()
 
-fitnesses <- spherical.fitnesses(individuals)
+fitnesses <- ga.fitnesses(individuals)
 for(i in 1:length(fitnesses))
 {
 	print(paste("Fitness for",i,":",fitnesses[[i]]))
@@ -18,8 +18,8 @@ i <- 1
 while(bored == 0)
 {
 	#Live graph
-	spherical.graph.fitnesses(fitnesses,NA)
-	#spherical.graph.fitnesses(spherical.means(individuals),NA)
+	ga.graph.fitnesses(fitnesses,NA)
+	#ga.graph.fitnesses(ga.means(individuals),NA)
 	avg.fitnesses[i] <- mean(fitnesses)
 	n <- which(fitnesses == min(fitnesses))[1] 
 	print(paste(i," - Avg fitness:",avg.fitnesses[i],
@@ -27,13 +27,13 @@ while(bored == 0)
 	print(individuals[[n]])
 	if(i < 101)
 	{
-		spherical.graph.fitnesses(avg.fitnesses, NA)
+		ga.graph.fitnesses(avg.fitnesses, NA)
 	}
 	else
 	{
 		n <- length(avg.fitnesses)
 		o <- n - 100
-		spherical.graph.fitnesses(avg.fitnesses[o:n], NA)
+		ga.graph.fitnesses(avg.fitnesses[o:n], NA)
 	}
 
 	#Period save graph
@@ -41,15 +41,15 @@ while(bored == 0)
 	{
 		n <- length(avg.fitnesses)
 		o <- n - 100
-		spherical.save.graph(paste("avg_",i,sep=""),avg.fitnesses[o:n])
-		spherical.save.graph(paste("ind_",i,sep=""),fitnesses)
+		ga.save.graph(paste("avg_",i,sep=""),avg.fitnesses[o:n])
+		ga.save.graph(paste("ind_",i,sep=""),fitnesses)
 	}
 
 	
 	#Re-run the GA for the next generation
-	#individuals <- spherical.steady.state(individuals)
-	individuals <- spherical.generational(individuals)
-	fitnesses <- spherical.fitnesses(individuals) #recalculate fitnesses
+	#individuals <- ga.steady.state(individuals)
+	individuals <- ga.generational(individuals)
+	fitnesses <- ga.fitnesses(individuals) #recalculate fitnesses
 
 	if(min(fitnesses) <= 0.0)
 	{
@@ -58,12 +58,12 @@ while(bored == 0)
 	i <- i + 1
 }
 
-spherical.save.graph('total_ind',fitnesses)
-spherical.save.graph('avg_ind',avg.fitnesses)
+ga.save.graph('total_ind',fitnesses)
+ga.save.graph('avg_ind',avg.fitnesses)
 #pdf("results.pdf") #init graph to be written to file
 #par(mfrow = c(2, 1)) #put the two graph.fitness graphs in one window
-#spherical.graph.fitnesses(avg.fitnesses, NA)
-#spherical.graph.fitnesses(spherical.means(individuals),NA)
+#ga.graph.fitnesses(avg.fitnesses, NA)
+#ga.graph.fitnesses(ga.means(individuals),NA)
 #dev.off() #write out graph
 
 

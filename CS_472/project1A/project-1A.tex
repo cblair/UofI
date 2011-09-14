@@ -14,7 +14,7 @@
 
 \begin{abstract}
 Evolutionary Computation is the study of combonational logic, that can often provide reasonable solutions to
-intractably complex problems. In Evolutionary Computation, there are many different approaches to optimizing a solution for a problem. Different approaches often result in better result, depending on the problem to be solved. This project considers the Spherical / Schwefel function, and tries to solve it using a Genetic Algorithm (GA).
+intractably complex problems. In Evolutionary Computation, there are many different approaches to optimizing a solution for a problem. Different approaches often result in better result, depending on the problem to be solved. This project considers the Spherical function, and tries to solve it using a Genetic Algorithm (GA).
 
 In this report, it will be found that some solutions work badly, some work much better, and some are clear winners over the rest. Specifically, this report will find that a Generational Rank Selection with Elitism was better than the other tested solutions. In testing methods, the changes can be subtle, but can make all the difference. This report will talk about when and why these solution would fail. It will also discuss other possible solution methods, and why they were not used here. Finally, this report will identify what 
 improvements could be made, and where parallelism can be achieved in harder problems.
@@ -24,7 +24,7 @@ improvements could be made, and where parallelism can be achieved in harder prob
 \part{Algorithm Descriptions}
 \label{part:alg_desc}
 
-A Genetic Algorithm (GA) create a \textbf{population} of individuals, each of which have attributes to try to solve a problem. Their correctness will be measure with a \textbf{fitness function}. The best of these individuals are found with \textbf{selection}, their attributes are combined using \textbf{crossover}, and a child is produced from this. Each child is then slightly \textbf{mutated}, or its attributes changed. This results in new individuals in the population, and the whole process is started again.
+A Genetic Algorithm (GA) creates a \textbf{population} of individuals, each of which have attributes to try to solve a problem. Their correctness will be measure with a \textbf{fitness function}. The best of these individuals are found with \textbf{selection}, their attributes are combined using \textbf{crossover}, and a child is produced from this. Each child is then slightly \textbf{mutated}, or its attributes changed. This results in new individuals in the population, and the whole process is started again.
 
 The \textbf{population} for all the GA methods in this report is represented as a list of vectors. The \textbf{initial population} has random values set in the attributes vector (x) for every individual (see Figure \ref{uniform_mutation}):
 \begin{figure}[!h]
@@ -42,7 +42,7 @@ The \textbf{population} for all the GA methods in this report is represented as 
         \end{center}
 \end{figure}
 
-All of the GA methods here will use the Spherical / Schfewel function to calculate their \textbf{fitness}. The GA's will then try to find the minimum fitnesses, or the individual(s) that attributes add up to 0:
+All of the GA methods here will use the Spherical function to calculate their \textbf{fitness}. The GA's will then try to find the minimum fitnesses, or the individual(s) that attributes add up to 0:
 \begin{figure}[!h]
         \begin{center}
 		\begin{tabular}{r l}
@@ -63,9 +63,9 @@ The \textbf{crossover} function will take two individuals $ i_a, i_b $, and retu
         \begin{center}
 		\begin{tabular}{r l}
 	                $ crossover(i_a, i_b) = $ & \\
-			& $ x_{i_a}[1:n], x_{i_b}[n:length(i_b) $ x values for the new child individual \\
+			& $ x_{i_a}[1:n], x_{i_b}[n + 1:length(i_b)] $ x values for the new child individual \\
 								& where \\
-								& $ n = $ a random integer from $ 1 ... $ the length of $i_b$
+								& $ n = $ a random integer from $ 1 ... $ the length of $ i_a $ or $ i_b$ (same)
 		\end{tabular} 
                	\caption{One point crossover}
                 \label{one_crossover}
@@ -249,19 +249,19 @@ The generational with elitism GA converged at 0.00 around 462 iterations (50 sec
 
 \part{Conclusion}
 \section{Algorithms}
-\textbf{Steady state} preserves existing populations, which could do well when many local minimums could surround a global minimum. However, it takes longer to converge on a single minimum, and in the case of the Spherical / Schwefel function, there is only one minimum. This makes this steady state a bad choice.
+\textbf{Steady state} preserves existing populations, which could do well when many local minimums could surround a global minimum. However, it takes longer to converge on a single minimum, and in the case of the Spherical function, there is only one minimum. This makes this steady state a bad choice.
 
 \textbf{Generational} is completely disruptive of existing populations, because it regenerates a new population every generation. This leads to a much faster convergence towards 0.00, but the uniform mutation delays this convergence, because it doesn't scale down its rate. This leads to wildly worse mutated childs when the overall population has good fitnesses, and therefore most mutated childs are bad and a waste of time. 
 
-This also lead to the incorrect mutation of the best individual's DNA, which was unfavorable. One solution that my classmates tries was scaling down mutations closer to convergence, but I tried a different approach with the next GA.
+This also lead to the incorrect mutation of the best individual's attributes, which was unfavorable. One solution that my classmates tried was scaling down mutations closer to convergence, but I tried a different approach with the next GA.
 
-The clear winner here was the \textbf{generational with elitism} GA, because it actually converged to 0.00, and because it did so in under a minute. It didn't hang on to bad individuals like steady state did, but it kept the best ones around through elitism, unlike the simple generational GA. It also did not mutate the best individual unfavorably, because of elitism. It probably won't be a winner, however, with more variatable algorithms; in which case, steady state may be a good choice.
+The clear winner here was the \textbf{generational with elitism} GA, because it actually converged to 0.00, and because it did so in under a minute. It didn't hang on to bad individuals like steady state did, but it kept the best ones around through elitism, unlike the simple generational GA. It also did not mutate the best individual unfavorably, because of elitism. It probably won't be a winner, however, with algorithms with more local minimums; in which case, steady state may be a good choice.
 
 \section{Performance}
 The algorithms here were left to a lot of brute force, because the environment made it practical. Sampling the population would be a better choice if the process time of the fitness algorithm increase. Also, sometimes the fitness algorithm was needlessly recalculated. 
 
-Another topic is \textbf{parallelism}. Data dependency prevents \textbf{task parallelism} on the optimization (although it could perhaps be pipeline parallelized), the way the above GA's seperate the fitness calculation could lead to true task parallelization on the fitness calculation. This wouldn't be as adventagious in the generational GA (every generation only needs 2 new fitness calculations), but would be much more adventagious in the simple state GA (where every new generation needs all fitnesses recalculated). 
+Another topic is \textbf{parallelism}. Data dependency prevents \textbf{task parallelism} on the optimization (although it could perhaps be pipeline parallelized). The way the above GA's seperate the fitness calculation could lead to true task parallelization on the fitness calculation. This wouldn't be as adventagious in the generational GA (every generation only needs 2 new fitness calculations), but would be much more adventagious in the simple state GA (where every new generation needs all fitnesses recalculated). 
 
-The Spherical / Schwefel function does not justify the communication overhead for parallelization, but if we write GAs in the future that need a lot of fitness recalcuation, like steady state, then future reports will implement parallelization. 
+The Spherical function does not justify the communication overhead for parallelization, but if we write GAs in the future that need a lot of fitness recalcuation, like steady state, then future reports will implement parallelization. 
 
 \end{document}

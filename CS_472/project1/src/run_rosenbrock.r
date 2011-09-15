@@ -1,11 +1,19 @@
 source('./ga.r')
 
-spherical.fitness <- function(individual)
+rosenbrock.fitness <- function(individual)
 {
-	return(sum(individual ^ 2))
+	retval <- lapply(1:length(individual) - 1, function(i) {
+		xi <- individual[i]
+		xi.one <- individual[i + 1]
+		return(100 * ( xi.one - xi ^ 2) + (xi - 1) ^ 2)
+	})
+	
+	retval <- unlist(retval)
+	retval <- sum(retval)
+	return(retval)
 }
 
-spherical.rand.val <- function()
+rosenbrock.rand.val <- function()
 {
 	'#skipping floating point random values...
 	lb <- -5.12 #lower bound of random values
@@ -13,16 +21,16 @@ spherical.rand.val <- function()
 	retval <- runif(1, lb, ub)
 	'
 	#and doing randoming reals instead
-	lb <- -512
-	ub <- 512
-	retval <- sample(lb:ub,1)[1] * .01
+	lb <- -2048
+	ub <- 2048
+	retval <- sample(lb:ub,1)[1] * .001
 
 	return(retval)
 }
 
 #register the fitness and random functions
-FIT.FUNC <- spherical.fitness
-RAND.VAL <- spherical.rand.val
+FIT.FUNC <- rosenbrock.fitness
+RAND.VAL <- rosenbrock.rand.val
 
 #initialize fitness variables
 individuals <- ga.get.init.population(500,30)
@@ -77,7 +85,7 @@ while(bored == 0)
 	individuals <- ga.generational(individuals)
 	fitnesses <- ga.fitnesses(individuals) #recalculate fitnesses
 
-	if(min(fitnesses) <= 0.0)
+	if(min(fitnesses) == 0.000)
 	{
 		bored <- 1
 	}
@@ -86,11 +94,5 @@ while(bored == 0)
 
 ga.save.graph('total_ind',fitnesses)
 ga.save.graph('avg_ind',avg.fitnesses)
-#pdf("results.pdf") #init graph to be written to file
-#par(mfrow = c(2, 1)) #put the two graph.fitness graphs in one window
-#ga.graph.fitnesses(avg.fitnesses, NA)
-#ga.graph.fitnesses(ga.means(individuals),NA)
-#dev.off() #write out graph
-
 
 Sys.sleep(5)

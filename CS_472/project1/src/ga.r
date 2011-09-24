@@ -234,7 +234,7 @@ ga.uniform.mutate <- function(individual)
 ga.creep.mutate <- function(individual)
 {
 	#Create bounds
-	k <- 10 # the reducing factor for lb/ub values for the new mutation
+	k <- 5  # the reducing factor for lb/ub values for the new mutation
 	n <- sample(1:length(individual), 1)
 	lb <- individual[n] - (abs(individual[n] - LB) / k )
 	ub <- individual[n] + (abs(individual[n] - UB) / k )

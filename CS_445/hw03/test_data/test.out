@@ -1,0 +1,26 @@
+Category	Text		Lineno		Filename	Ival/Sval
+-------------------------------------------------------------------------
+262		package		1		DataRange.as
+271		com		1		DataRange.as
+290		.		1		DataRange.as
+271		ts		1		DataRange.as
+290		.		1		DataRange.as
+271		data		1		DataRange.as
+290		.		1		DataRange.as
+271		enumerations	1		DataRange.as
+291		{		2		DataRange.as
+263		public		3		DataRange.as
+264		class		3		DataRange.as
+271		DataRange	3		DataRange.as
+291		{		4		DataRange.as
+263		public		5		DataRange.as
+265		static		5		DataRange.as
+266		const		5		DataRange.as
+271		UNBOUNDED	5		DataRange.as
+267		:		5		DataRange.as
+311		String		5		DataRange.as
+268		=		5		DataRange.as
+301		'unbounded'	5		DataRange.as	unbounded
+269		;		5		DataRange.as
+292		}		6		DataRange.as
+292		}		7		DataRange.as

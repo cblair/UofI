@@ -1,0 +1,173 @@
+%{
+///////////////////////////////////////////////////////////////////////////////
+//Class:        CS 445
+//Semester:     Fall 2011
+//Assignment:   Homework 2
+//Author:       Colby Blair
+//File name:    ecma.y
+///////////////////////////////////////////////////////////////////////////////
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//#include <typeinfo>
+
+extern int yylex();
+extern int lineno;
+
+// better error reporting
+#define YYERROR_VERBOSE
+
+// bison requires that you supply this function
+int yyerror(const char *msg)
+{
+        printf("ERROR(PARSER): %s at line %d.\n", msg, lineno);
+        return(1);
+}
+
+%}
+
+%union {
+        double dval;
+        int varindex;
+        int ival;
+        char *sval;
+}
+
+%token EXIT
+%token AS AMPEREQ ARRAY BOOLEAN BREAK CAROTEQ CASE CATCH CLASS CONST CONTINUE DEFAULT DELETE DIVIDEEQ DO DOT ELSE EXTENDS FALSE FINALLY FOR FUNCTION IF IMPLEMENTS IMPORT IN INSTANCEOF INT INTERFACE INTERNAL IS LBRACE LPAREN LSHIFTE MINUSEQ NEW NULL_TYPE NUMBER OBJECT PACKAGE PERCENTEQ PLUSEQ PRIVATE PROTECTED PUBLIC RBRACE RETURN RSHIFTEQ STRING SUPER SWITCH TIMESEQ THIS THROW TO TRUE TRY TYPEOF UINT USE VAR VOID WHILE WITH
+%token EACH GET SET NAMESPACE INCLUDE DYNAMIC FINAL NATIVE OVERRIDE PROTOTYPE STATIC 
+%token PERIOD COMMA SEMI COLON LC RC LP RP LBRACK RBRACK EQ LT GT GT3EQ LTE GTE DLT DGT SUM DIF DIV MUL POW INCREMENT DECREMENT AMP DAMP PIPE OR AT QUESTION PIPEEQ
+%token IDENT INTEGER
+
+%token ID INT_LIT NAME PUNC REAL_LIT STRING_LIT
+
+%type <sval> THIS
+
+%%
+
+program:
+	sourceElements EXIT
+	;
+
+sourceElements:
+	sourceElement
+	| sourceElements sourceElement
+	;
+
+sourceElement:
+	statement
+	| functionDeclaration
+	;
+
+statement:
+	block
+	| variableStatement
+	;
+
+statementList:
+	statement
+	| statementList statement
+	;
+
+block:
+	LBRACE RBRACE
+	| LBRACE statementList RBRACE
+	;
+
+variableStatement:
+	VAR variableDeclarationList SEMI
+	;
+variableDeclarationList:
+	variableDeclaration
+	| variableDeclarationList COMMA variableDeclaration
+	;
+variableDeclaration:
+	ID
+	| ID initialiser 
+	;
+initialiser:
+	EQ assignmentExpression
+	;
+assignmentExpression:
+	conditionalExpression
+	leftHandSideExpression assignmentOperator assignmentExpression
+	;
+conditionalExpression:
+	logicalOrExpression
+	| logicalOrExpression QUESTION assignmentExpression COLON assignmentExpression
+	;
+leftHandSideExpression:
+	newExpression
+	| callExpression
+	;
+newExpression:
+	memberExpression
+	| 'new' newExpression
+	;
+assignmentOperator:
+	EQ | TIMESEQ | DIVIDEEQ | PERCENTEQ | PLUSEQ | MINUSEQ | LSHIFTE
+	| RSHIFTEQ | GT3EQ | AMPEREQ | CAROTEQ | PIPEEQ
+	;
+memberExpression:
+	primaryExpression
+	| functionExpression
+	| memberExpression LBRACK expression RBRACK
+	| memberExpression DOT ID
+	| NEW memberExpression arguments
+	;
+arguments:
+	LPAREN RPAREN
+	| LPAREN argumentList RPAREN 
+	;
+argumentList:
+	assignmentExpression
+	| argumentList COMMA assignmentExpression
+	;
+
+functionDeclaration:
+	FUNCTION ID LPAREN LBRACE functionBody RBRACE
+	| FUNCTION ID LPAREN formalParameterList LBRACE functionBody RBRACE
+	;
+functionBody:
+	sourceElements
+	;
+
+callExpression:
+	memberExpression arguments
+	| callExpression arguments
+	| callExpression LBRACK expression RBRACK
+	| callExpression DOT ID
+	;
+expression:
+	assignmentExpression
+	| expression COMMA assignmentExpression
+	;
+primaryExpression:
+	THIS
+	| ID
+	| literal
+	| arrayLiteral
+	| objectLiteral
+	| LPAREN expression RPAREN
+	;
+
+arrayLiteral:
+	LBRACK RBRACK
+	LBRACK elision RBRACK
+	| LBRACK elementList RBRACK
+	| LBRACK elementList COMMA RBRACK
+	| LBRACK elementList COMMA elision RBRACK
+	;
+objectLiteral:
+	LBRACE RBRACE
+	| LBRACE propertyNameAndValueList RBRACE
+	;
+elementList:
+	assignmentExpression
+	| elision assignmentExpression
+	| elementList COMMA assignmentExpression
+	| elementList COMMA elision assignmentExpression
+	;
+
+%%

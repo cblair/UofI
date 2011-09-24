@@ -54,13 +54,15 @@ if(PARALLEL == TRUE) {
 FIT.FUNC <- fitness.func
 RAND.VAL <- rand.val
 # compile internal funcs for performance
-#library(compiler)
-#FIT.FUNC <- cmpfun(FIT.FUNC)
-#RAND.VAL <- cmpfun(RAND.VAL)
+if(library(compiler, logical.return=TRUE) == TRUE)
+{
+	FIT.FUNC <- cmpfun(FIT.FUNC)
+	RAND.VAL <- cmpfun(RAND.VAL)
+}
 
 
 #Initialize - fitness variables
-individuals <- ga.get.init.population(500,30)
+individuals <- ga.get.init.population(500,10)
 avg.fitnesses <- c()
 # calculate first fitnesses
 FITNESSES <- ga.fitnesses(individuals)
@@ -68,6 +70,7 @@ FITNESSES <- ga.fitnesses(individuals)
 
 #Graph - init
 quartz("Results",8,6) #init graph window for mac
+#X11("Results",8,6) #init graph window for linux
 par(mfrow = c(2, 1)) #put the two graph.fitness graphs in one window
 
 

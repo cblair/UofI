@@ -1,0 +1,21 @@
+bison -d -t ecma.y
+ecma.y:74.9-14: symbol LBRACE is used, but is not defined as a token and has no rules
+ecma.y:74.16-21: symbol RBRACE is used, but is not defined as a token and has no rules
+ecma.y:102.11-24: symbol callExpression is used, but is not defined as a token and has no rules
+ecma.y:117.32-40: symbol arguments is used, but is not defined as a token and has no rules
+ecma.y:116.28-30: symbol DOT is used, but is not defined as a token and has no rules
+ecma.y:97.9-27: symbol logicalOrExpression is used, but is not defined as a token and has no rules
+ecma.y:116.32-41: symbol identifier is used, but is not defined as a token and has no rules
+ecma.y:115.35-44: symbol expression is used, but is not defined as a token and has no rules
+ecma.y:109.56-62: symbol MINUSEQ is used, but is not defined as a token and has no rules
+ecma.y:109.47-52: symbol PLUSEQ is used, but is not defined as a token and has no rules
+ecma.y:109.66-72: symbol LSHIFTE is used, but is not defined as a token and has no rules
+ecma.y:109.35-43: symbol PERCENTEQ is used, but is not defined as a token and has no rules
+ecma.y:109.24-31: symbol DIVIDEEQ is used, but is not defined as a token and has no rules
+ecma.y:110.11-18: symbol RSHIFTEQ is used, but is not defined as a token and has no rules
+ecma.y:109.14-20: symbol TIMESEQ is used, but is not defined as a token and has no rules
+ecma.y:110.40-46: symbol CAROTEQ is used, but is not defined as a token and has no rules
+ecma.y:110.30-36: symbol AMPEREQ is used, but is not defined as a token and has no rules
+ecma.y:114.11-28: symbol functionExpression is used, but is not defined as a token and has no rules
+ecma.y:113.9-25: symbol primaryExpression is used, but is not defined as a token and has no rules
+make: *** [ecma.tab.c] Error 1

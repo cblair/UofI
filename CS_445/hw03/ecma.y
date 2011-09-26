@@ -12,12 +12,17 @@
 #include <string.h>
 //#include <typeinfo>
 
-#define YYACCEPT
-#define YYABORT
+//parse tree insert - just a debugger for now
+#define _PTI(MSG) printf("%s\n", MSG);
 
 extern int yylex();
 extern int lineno;
 extern char yytext[];
+
+//debugging
+#ifdef YYDEBUG
+extern int yydebug = 1;
+#endif
 
 // better error reporting
 #define YYERROR_VERBOSE
@@ -55,7 +60,7 @@ int yyerror(const char *msg)
 %%
 
 program:
-	sourceElements
+	sourceElements		{return(0);}
 	;
 
 
@@ -167,14 +172,18 @@ type:
 	/*made by Colby */
 	BOOLEAN|STRING|OBJECT|INT|UINT|VOID|STAR
 	;
-	
+
+identifierBody:
+	/*made by Colby */
+	ID
+	| ID COLON type
+	| identifier DOT identifier
+	;
 
 identifier:
 	/*changed by Colby */
 	/*identifierName /* but not reservedWord */
-	ID
-	| ID COLON type
-	| identifier DOT identifier
+	identifierBody
 	;
 
 identifierName:
@@ -322,15 +331,17 @@ signedInteger:
 
 hexIntegerLiteral:
 	HEX_PREFIX hexDigit
-	| HEX_PREFIX hexDigit
 	| hexIntegerLiteral hexDigit
 	;
 
 stringLiteral:
+	/* modified by Colby, pushing out to tokenizer
 	QUOTE QUOTE
 	QUOTE doubleStringCharacters QUOTE
 	| APOSTROPHE APOSTROPHE
 	| APOSTROPHE singleStringCharacters APOSTROPHE
+	*/
+	STRING_LIT
 	;
 
 doubleStringCharacters:
@@ -589,10 +600,11 @@ postfixExpression:
 	;
 
 unaryExpression:
+	/*reduce/reduce issues
 	postfixExpression
 	| DELETE unaryExpression
-	| VOID unaryExpression
-	| TYPEOF unaryExpression
+	|VOID unaryExpression*/
+	TYPEOF unaryExpression
 	| PLUS2 unaryExpression
 	| MINUS2 unaryExpression
 	| PLUS unaryExpression
@@ -658,18 +670,18 @@ relationalExpressionTail:
 	;
 
 relationalExpressionNolnBody:
+	/*reduce/reduce issues*/
 	LT|GT|LTEQ|GTEQ|INSTANCEOF
 	;
 
 relationalExpressionNoln:
 	shiftExpression
 	| relationalExpression shiftExpression
-	| relationalExpression relationalExpressionNolnBody shiftExpression
+	/*| relationalExpression relationalExpressionNolnBody shiftExpression*/
 	;
 
 equalityExpression:
 	relationalExpression
-	| relationalExpression
 	| relationalExpression equalityExpressionTail
 	;
 
@@ -829,7 +841,6 @@ expressionNolnTail:
 statement:
 	block
 	| variableStatement
-	| emptyStatement
 	| expressionStatement
 	| ifStatement
 	| iterationStatement
@@ -838,11 +849,16 @@ statement:
 	| returnStatement
 	| withStatement
 	| labelledStatement
-	| switchStatement
 	| throwStatement
 	| tryStatement
-	| packageStatement
+	/*classStatement - 3 shift/reduces:*/
 	| classStatement
+	| importStatement
+	| superStatement /*TODO: hack, should be in class constructor only*/	
+	/*
+	| packageStatement
+	| emptyStatement
+	/* reduce reduce: | switchStatement*/
 	;
 
 block:
@@ -856,7 +872,17 @@ statementList:
 	;
 
 variableStatement:
-	VAR variableDeclarationList SEMI
+	/*modified by Colby */
+	/*VAR variableDeclarationList SEMI*/
+	variablePrefix variableDeclarationList SEMI
+	;
+
+variablePrefix:
+	VAR
+	| CONST
+	| STATIC
+	| CONST STATIC
+	| STATIC CONST
 	;
 
 variableDeclarationList:
@@ -997,11 +1023,55 @@ tryStatement:
 
 packageStatement:
 	/*made by Colby */
-	PACKAGE identifier statementList
+	PACKAGE identifier packageBody
+	;
+
+packageBody:
+	LBRACE RBRACE
+	| LBRACE packageList RBRACE
+	;
+
+packageList:
+	packageListElement
+	| packageListElement packageList
+
+packageListElement:
+	importStatement
+	| classStatement
+	| PUBLIC classStatement
+	| classVariableOrMethodList 
 	;
 
 classStatement:
-	CLASS identifier statementList
+	CLASS identifier classBody
+	| CLASS identifier EXTENDS identifier classBody
+	;
+
+classVariableOrMethod:
+	variableStatement
+	/*| functionDeclaration*/
+	| memberExpression
+	| PUBLIC classVariableOrMethod
+	| PRIVATE classVariableOrMethod
+	;
+
+classVariableOrMethodList:
+	classVariableOrMethod
+	| classVariableOrMethod classVariableOrMethodList
+	;	
+
+classBody:
+	LBRACE RBRACE
+	| LBRACE classVariableOrMethodList RBRACE
+	;
+
+importStatement:
+	IMPORT identifier SEMI
+	;
+
+superStatement:
+	SUPER LPAREN RPAREN SEMI
+	| SUPER LPAREN formalParameterList RPAREN SEMI
 	;
 
 catch_:
@@ -1015,16 +1085,16 @@ finally_:
 /* A.5 Functions and Programs */
 
 functionDeclaration:
-	FUNCTION identifier LPAREN LBRACE functionBody RBRACE
-	| FUNCTION identifier LPAREN formalParameterList LBRACE functionBody RBRACE
+	/*'function' identifier LPAREN (formalParameterList)? LBRACE functionBody RBRACE*/
+	FUNCTION identifier LPAREN RPAREN LBRACE functionBody RBRACE 
+	| FUNCTION identifier LPAREN formalParameterList RPAREN LBRACE functionBody RBRACE
 	;
 
 functionExpression:
-	/*FUNCTION (identifier)? LPAREN (formalParameterList)? LBRACE functionBody RBRACE*/
-	FUNCTION LPAREN LBRACE functionBody RBRACE
-	| FUNCTION LPAREN formalParameterList LBRACE functionBody RBRACE
-	| FUNCTION identifier LPAREN LBRACE functionBody RBRACE
-	| FUNCTION identifier LPAREN formalParameterList LBRACE functionBody RBRACE
+	/*'function' (identifier)? LPAREN (formalParameterList)? LBRACE functionBody RBRACE*/
+	FUNCTION identifier LPAREN RPAREN LBRACE functionBody RBRACE
+	| FUNCTION identifier LPAREN RPAREN LBRACE RBRACE
+	| FUNCTION identifier LPAREN formalParameterList RPAREN LBRACE functionBody RBRACE
 	;
 
 formalParameterList:

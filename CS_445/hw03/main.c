@@ -50,7 +50,8 @@ int main(int argc, char *argv[])
 		yyparse();
 
 		//print our results
-		tokenlist_print();		
+		//tokenlist_print();		
+		DEBUGMSG("DEBUG: done with file '%s'\n", YY_FNAME);
 	}
 
 	tokenlist_del();

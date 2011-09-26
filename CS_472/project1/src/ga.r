@@ -4,6 +4,9 @@ FIT.FUNC <- NA
 RAND.VAL <- NA
 FITNESSES <- NA
 
+GA_K <- 5 #K used during selection
+
+
 decimalplaces <- function(x) {
     if ((x %% 1) != 0) {
         nchar(strsplit(sub('0+$', '', as.character(x)), ".", fixed=TRUE)[[1]][[2]])
@@ -87,6 +90,34 @@ ga.save.graph <- function(name, fitnesses)
 }
 
 
+#returns two of the min individuals from a subset of all individuals
+ga.selection.one <- function(individuals)
+{
+	#take a small subset of the individuals - a vector of indices
+	# there's sure to be a better way to get this
+	subset_individuals <- list()
+	for(i in 1:GA_K)
+	{
+		subset_individuals[[i]] <- individuals[[sample(1:length(individuals),1)]]
+	}
+	individuals <- subset_individuals
+
+	#Recalculate fitnesses
+	fitnesses <- ga.fitnesses(individuals)
+
+	#copy first min individual
+	n <- which(fitnesses == min(fitnesses))[1] #1 if there are multi mins
+	min1 <- individuals[[n]]
+
+	#copy second max individual
+	# [1] if multi second mins
+	n <- which(fitnesses == sort(fitnesses,partial=2)[2])[1]
+	min2 <- individuals[[n]]
+
+	return(list(min1, min2))
+}
+
+
 ga.steady.state <- function(individuals, elitism)
 {
 	#Selection
@@ -130,25 +161,23 @@ ga.steady.state <- function(individuals, elitism)
 
 ga.generational <- function(individuals, elitism)
 {
-	#Selection
-	#ga.selection(individuals)
+	#Recalculate fitnesses
 	FITNESSES <<- ga.fitnesses(individuals)
-
-	n <- which(FITNESSES == min(FITNESSES))[1] #1 if there are multi mins
-	#copy first min individual
-	min1 <- individuals[[n]]
-
-	#copy second max individual
-	# [1] if multi second mins
-	n <- which(FITNESSES == sort(FITNESSES,partial=2)[2])[1]
-	min2 <- individuals[[n]]
+	
+	#Selection
+	parents <- ga.selection.one(individuals)
 
 
 	#Re-generate / populate population
-	#make a child
-	new.child <- ga.one.point.crossover(min1,min2)
-	#new.child <- ga.two.point.crossover(min1,min2)
 	new.individuals <- lapply(1:length(individuals), function(n) {
+		#pick random parents
+		p1 <- parents[[sample(1:length(parents),1)]]
+		p2 <- parents[[sample(1:length(parents),1)]]
+
+		#make a child
+		new.child <- ga.one.point.crossover(p1,p2)
+		#new.child <- ga.two.point.crossover(min1,min2)
+
 		#Mutate
 		# mutate the new child
 		#return(ga.uniform.mutate(new.child))
@@ -159,6 +188,16 @@ ga.generational <- function(individuals, elitism)
 	#Elitism!
 	if(elitism == TRUE)
 	{
+		#1 if there are multi mins
+		n <- which(FITNESSES == min(FITNESSES))[1]
+		#copy first min individual
+		min1 <- individuals[[n]]
+
+		#copy second max individual
+		# [1] if multi second mins
+		n <- which(FITNESSES == sort(FITNESSES,partial=2)[2])[1]
+		min2 <- individuals[[n]]
+
 		#replace first max
 		# 1 if there are multi maxes
 		n <- which(FITNESSES == max(FITNESSES))[1]
@@ -171,7 +210,6 @@ ga.generational <- function(individuals, elitism)
 		n <- which(FITNESSES == max(FITNESSES))[1] 
 		new.individuals[[n]] = min2
 	}
-
 
 	return(new.individuals)	
 }

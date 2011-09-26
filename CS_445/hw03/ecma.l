@@ -12,8 +12,14 @@
 #include "main.h"
 #include "tokenlist.h"
 
+//#define DEBUG_PARSER
+
 //macro for the tokenlist_append argument
+#ifdef DEBUG_PARSER
+#define _TLA(CATEGORY)  DEBUGMSG("DEBUG: %d - %s \t\t\tline: %d\n", CATEGORY, yytext, lineno); yylval.sval = strdup(yytext); return( tokenlist_append((int)CATEGORY, yytext, lineno, YY_FNAME) );
+#else
 #define _TLA(CATEGORY)  yylval.sval = strdup(yytext); return( tokenlist_append((int)CATEGORY, yytext, lineno, YY_FNAME) );
+#endif
 
 int lineno;
 extern char *YY_FNAME;
@@ -179,7 +185,7 @@ string_lit	"\""[^\"\n]*"\""|"'"[^\"\n]*"'"
 
 [ -~]			{ _TLA(SOURCE_CHAR) }
 
-<<EOF>>			{ /*return(EXIT);*/ }
+<<EOF>>			{ return(EXIT); }
 
 %%
 

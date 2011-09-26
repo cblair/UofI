@@ -3,6 +3,10 @@ Rprof(tmp <- tempfile())
 example(glm)
 
 
+#Source - ga files
+source('./ga.r')
+
+
 #Handle Options
 z <- 0
 run.ga <- ""
@@ -28,6 +32,11 @@ for(option in options) {
 	{
 		algorithm.file <- options[z + 1]
 	}
+	else if(option == "-k")
+	{
+		GA_K <- options[z + 1]
+	}
+
 	else if(option == "-p") {
 		PARALLEL <- TRUE
 		nodes <- options[z + 1]
@@ -35,8 +44,7 @@ for(option in options) {
 }
 
 
-#Source
-source('./ga.r')
+#Source - 
 # whatever fitness and rand values we want
 source(algorithm.file)
 
@@ -62,7 +70,7 @@ if(library(compiler, logical.return=TRUE) == TRUE)
 
 
 #Initialize - fitness variables
-individuals <- ga.get.init.population(500,10)
+individuals <- ga.get.init.population(500,30)
 avg.fitnesses <- c()
 # calculate first fitnesses
 FITNESSES <- ga.fitnesses(individuals)

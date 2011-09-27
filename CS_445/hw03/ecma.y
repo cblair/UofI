@@ -60,7 +60,8 @@ int yyerror(const char *msg)
 %%
 
 program:
-	sourceElements		{return(0);}
+	/*sourceElements		{return(0);}*/
+	expression
 	;
 
 
@@ -839,9 +840,14 @@ expressionNolnTail:
 /* A.4 Statements */
 
 statement:
+	expressionStatement
+	;
+
+statementRest:
+	/*
 	block
-	| variableStatement
-	| expressionStatement
+	| variableStatement	
+	functionDeclaration
 	| ifStatement
 	| iterationStatement
 	| continueStatement
@@ -852,7 +858,7 @@ statement:
 	| throwStatement
 	| tryStatement
 	/*classStatement - 3 shift/reduces:*/
-	| classStatement
+	/*| classStatement
 	| importStatement
 	| superStatement /*TODO: hack, should be in class constructor only*/	
 	/*
@@ -1116,8 +1122,7 @@ sourceElements:
 	;
 
 sourceElement:
-	statement
-	| functionDeclaration
+	statement {/* moving to statement/*| functionDeclaration*/}
 	;
 
 /* A.6 URI character classes */

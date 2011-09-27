@@ -17,7 +17,7 @@ nodes <- 1
 options <- commandArgs()
 for(option in options) {
 	z <- z + 1
-    	if(option == "-ss"){
+    	if(option == "--ss"){
   		run.ga <- "steady.state"   
 	}
 	else if(option == '--g')
@@ -133,8 +133,10 @@ while(bored == 0)
 	}
 
 
-	#Evaluate if we have converged
-	if(min(FITNESSES) == 0.000 )# || i > 100)
+	#Evaluate if we have converged, for whatever precision
+	min_fitnesses <- min(FITNESSES)
+	print(paste("Min fitnesses:",min_fitnesses))
+	if(min_fitnesses == 0.000 || min_fitnesses == 0)# || i > 100)
 	{
 		bored <- 1
 	}

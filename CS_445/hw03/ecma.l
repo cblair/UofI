@@ -32,6 +32,8 @@ real_lit	[0-9]*"."[0-9]+
 
 string_lit	"\""[^\"\n]*"\""|"'"[^\"\n]*"'" 
 
+hexdigit	[0-9a-fA-F]
+
 %%
 "//".*$	      		{ }
 "\n"          		{ ++lineno; }
@@ -180,6 +182,9 @@ string_lit	"\""[^\"\n]*"\""|"'"[^\"\n]*"'"
 {int_lit}		{ _TLA(INT_LIT ) }
 {real_lit}		{ _TLA(REAL_LIT ) }
 {string_lit} 		{ _TLA(STRING_LIT) } 
+
+{hexdigit} 		{ _TLA(HEXDIGIT) } 
+
 {id} 			{ _TLA(ID) } 
 
 

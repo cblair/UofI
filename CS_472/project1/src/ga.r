@@ -120,42 +120,59 @@ ga.selection.one <- function(individuals)
 
 ga.steady.state <- function(individuals, elitism)
 {
-	#Selection
-	#ga.selection(individuals)
-	#fitnesses <- ga.fitnesses(individuals)
+	#Recalculate fitnesses
 	FITNESSES <<- ga.fitnesses(individuals)
 
-	n <- which(FITNESSES == min(FITNESSES))[1] #1 if there are multi mins
-	#copy first min individual
-	min1 <- individuals[[n]]
-
-	#copy second max individual
-	# [1] if multi second mins
-	n <- which(FITNESSES == sort(FITNESSES,partial=2)[2])[1]
-	min2 <- individuals[[n]]
-
-	#make a child
-	new.child <- ga.one.point.crossover(min1,min2)
 	
+	#Selection
+	parents <- ga.selection.one(individuals)
 
-	#Mutate
-	#mutate the min's
-	#new.child <- ga.uniform.mutate(new.child)
-	new.child <- ga.creep.mutate(new.child)
-
-
+	
 	#Re-generate / populate population
-	#replace first max
-	n <- which(FITNESSES == max(FITNESSES))[1] #1 if there are multi maxes
-	individuals[[n]] = new.child
-	FITNESSES[n] <<- ga.fitness(individuals[[n]]) #recalculate fitnesses
+	for(i in 1:length(parents))
+	{
+		#pick random parents
+		p1 <- parents[[sample(1:length(parents),1)]]
+		p2 <- parents[[sample(1:length(parents),1)]]
 
-	#replace second max
-	#n <- which(fitnesses == max(fitnesses))[1] #1 if there are multi maxes
-	#individuals[[n]] = min2
-	
+		#make a child
+		new.child <- ga.one.point.crossover(p1,p2)
+		#new.child <- ga.two.point.crossover(min1,min2)
 
-	return(individuals)
+		#Mutate
+		# pick a random individual to replace
+		n <- sample(1:length(individuals),1)
+		individuals[[n]] <- ga.creep.mutate.one(new.child)
+	}
+
+
+	#Elitism!
+	if(elitism == TRUE)
+	{
+		#1 if there are multi mins
+		n <- which(FITNESSES == min(FITNESSES))[1]
+		#copy first min individual
+		min1 <- individuals[[n]]
+
+		#copy second max individual
+		# [1] if multi second mins
+		n <- which(FITNESSES == sort(FITNESSES,partial=2)[2])[1]
+		min2 <- individuals[[n]]
+
+		#replace first max
+		# 1 if there are multi maxes
+		n <- which(FITNESSES == max(FITNESSES))[1]
+		individuals[[n]] = min1
+		#recalculate fitnesses
+		FITNESSES <- ga.fitnesses(individuals)
+
+		#replace second max
+		# 1 if there are multi maxes
+		n <- which(FITNESSES == max(FITNESSES))[1] 
+		individuals[[n]] = min2
+	}
+
+	return(individuals)	
 }
 
 
@@ -181,7 +198,8 @@ ga.generational <- function(individuals, elitism)
 		#Mutate
 		# mutate the new child
 		#return(ga.uniform.mutate(new.child))
-		return(ga.creep.mutate(new.child))
+		return(ga.creep.mutate.one(new.child))
+		#return(ga.creep.mutate.two(new.child))
 	})
 
 
@@ -269,11 +287,13 @@ ga.uniform.mutate <- function(individual)
 }
 
 
-ga.creep.mutate <- function(individual)
+#mutates one value in an individual 
+ga.creep.mutate.one <- function(individual)
 {
 	#Create bounds
-	k <- 5  # the reducing factor for lb/ub values for the new mutation
-	n <- sample(1:length(individual), 1)
+	k <- 10  # the reducing factor for lb/ub values for the new mutation
+	n <- sample(1:length(individual), 1) #which random variable to mutate
+	#lower bounds and upper bounds of muatation
 	lb <- individual[n] - (abs(individual[n] - LB) / k )
 	ub <- individual[n] + (abs(individual[n] - UB) / k )
 	# find max precision
@@ -291,4 +311,27 @@ ga.creep.mutate <- function(individual)
 	#print(paste(lb,":",ub,":",individual[n]))
 
 	return(individual)
+}
+
+ga.creep.mutate.two <- function(individual)
+{
+	k <- .10 #reducing factor of mutation
+
+	#find max precision
+	p <- 0
+	p1 <- decimalplaces(LB)
+	p2 <- decimalplaces(UB)
+	p <- max(c(p1,p2))
+
+	new_individual <- lapply(1:length(individual), function(i) {
+		#pick a random point in the search space
+		rand.val <- ga.rand.val(LB,UB)	
+		#find the difference between it and this attribute value
+		rand.dif <- individual[i] - rand.val
+		#scale the difference down, keeping precision
+		rand.dif <- round(rand.dif * k, p)
+	})
+	new_individual <- unlist(new_individual)
+
+	return(new_individual)
 }

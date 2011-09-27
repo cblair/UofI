@@ -24,10 +24,10 @@ fitness.func <- function(individual)
 	return(retval)
 }
 
-rand.val <- function()
+LB <- -600
+UB <- 600
+rand.val <- function(lb, ub)
 {
-	lb <- -600
-	ub <- 600
 	retval <- sample(lb:ub,1)[1]
 
 	return(retval)

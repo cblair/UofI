@@ -27,7 +27,7 @@ $(PARSER).tab.o: $(PARSER).tab.c
 	$(CC) $(CFLAGS) $(PARSER).tab.c -c 
 
 $(PARSER).tab.c $(PARSER).tab.h: $(PARSER).y
-	$(YACC) -v --debug -d -t $(PARSER).y
+	$(YACC) -g -v --debug -d -t $(PARSER).y
 
 $(PARSER).yy.o: $(PARSER).l $(PARSER).tab.h
 	$(CC) $(CFLAGS) lex.yy.c -c -o $(PARSER).yy.o 

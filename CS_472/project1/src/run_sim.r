@@ -13,6 +13,7 @@ run.ga <- ""
 elitism <- FALSE
 algorithm.file <- ""
 PARALLEL <- FALSE
+GRAPH_FILE <- FALSE
 nodes <- 1
 options <- commandArgs()
 for(option in options) {
@@ -23,6 +24,10 @@ for(option in options) {
 	else if(option == '--g')
 	{
 		run.ga <- "generational"
+	}
+	else if(option == '--gf')
+	{
+		GRAPH_FILE <- TRUE
 	}
 	else if(option == "--e")
 	{
@@ -111,15 +116,16 @@ while(bored == 0)
 
 
 	#Period save graph
-	'
-	if( (i %% 101) == 0 || i == 110 || i == 120 || i == 130 || i == 140)
+	if(GRAPH_FILE == TRUE)
 	{
-		n <- length(avg.fitnesses)
-		o <- n - 100
-		ga.save.graph(paste("avg_",i,sep=""),avg.fitnesses[o:n])
-		ga.save.graph(paste("ind_",i,sep=""),fitnesses)
+		if( (i %% 101) == 0 || i == 110 || i == 120 || i == 130 || i == 140)
+		{
+			n <- length(avg.fitnesses)
+			o <- n - 100
+			ga.save.graph(paste("avg_",i,sep=""),avg.fitnesses[o:n])
+			ga.save.graph(paste("ind_",i,sep=""),FITNESSES)
+		}
 	}
-	'
 
 	
 	#Re-run the GA for the next generation
@@ -136,7 +142,7 @@ while(bored == 0)
 	#Evaluate if we have converged, for whatever precision
 	min_fitnesses <- min(FITNESSES)
 	print(paste("Min fitnesses:",min_fitnesses))
-	if(min_fitnesses == 0.000 || min_fitnesses == 0)# || i > 100)
+	if(min_fitnesses < .00001  || i > 10000)
 	{
 		bored <- 1
 	}
@@ -148,8 +154,12 @@ while(bored == 0)
 	print(paste("Re-gen time:", ttime))
 }
 
-ga.save.graph('total_ind',FITNESSES)
-ga.save.graph('avg_ind',avg.fitnesses)
+
+if(GRAPH_FILE == TRUE)
+{
+	ga.save.graph('total_ind',FITNESSES)
+	ga.save.graph('avg_ind',avg.fitnesses)
+}
 
 Sys.sleep(5)
 

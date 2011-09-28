@@ -1,5 +1,11 @@
 fitness.func <- function(individual)
 {
+	if(all(individual == 0))
+	{
+		#hack for precision reasons
+		return(0)
+	}
+
 	A <- 20
 	n <- length(individual)
 
@@ -17,8 +23,8 @@ fitness.func <- function(individual)
 	sum2 <- unlist(sum2)
 	sum2 <- sum(sum2)
 
-	retval <- A + exp(1) - ( 20 * exp(-0.2 * sqrt((1/n) * sum1)) ) -
-			exp( (1/n) * sum2)
+
+	retval <- A + exp(1) - ( 20 * exp(-0.2 * sqrt((1/n) * sum1)) ) - exp( (1/n) * sum2)
 	return(retval)
 }
 

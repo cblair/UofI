@@ -316,6 +316,7 @@ ga.creep.mutate.one <- function(individual)
 ga.creep.mutate.two <- function(individual)
 {
 	k <- .10 #reducing factor of mutation
+	#k <- .01 #reducing factor of mutation
 
 	#find max precision
 	p <- 0

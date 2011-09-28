@@ -60,8 +60,7 @@ int yyerror(const char *msg)
 %%
 
 program:
-	/*sourceElements		{return(0);}*/
-	expression
+	sourceElements		{return(0);}
 	;
 
 
@@ -592,6 +591,8 @@ argumentListTail:
 leftHandSideExpression:
 	newExpression
 	| callExpression
+	/*added by Colby*/
+	| identifier
 	;
 
 postfixExpression:
@@ -840,14 +841,11 @@ expressionNolnTail:
 /* A.4 Statements */
 
 statement:
-	expressionStatement
-	;
-
-statementRest:
-	/*
 	block
 	| variableStatement	
-	functionDeclaration
+	| expressionStatement
+	/*
+	|functionDeclaration
 	| ifStatement
 	| iterationStatement
 	| continueStatement

@@ -58,6 +58,8 @@ int yyerror(const char *msg)
 
 %}
 
+%expect 28
+
 %union {
 	struct tree *t;
 }

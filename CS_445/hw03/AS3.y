@@ -392,10 +392,7 @@ classDefinition:
 	;
 
 as2ClassDefinition:
-	CLASS identifier	{ $$ = _TCN ("as2ClassDefinition",2, $1,$2); }
-	classExtendsClause	{ $$ = _TCN ("as2ClassDefinition",1, $1); }
-	implementsClause	{ $$ = _TCN ("as2ClassDefinition",1, $1); }
-	typeBlock		{ $$ = _TCN ("as2ClassDefinition",1, $1); }
+	CLASS identifier classExtendsClause implementsClause typeBlock	{ $$ = _TCN ("as2ClassDefinition",5, $1,$2,$3,$4,$5); }
 	;
 
 interfaceDefinition:

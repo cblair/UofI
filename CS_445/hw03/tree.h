@@ -9,13 +9,15 @@
 #ifndef _TREE_H
 #define _TREE_H
 
+#define MAX_KIDS 9
+
 #include <stdarg.h>
 
 struct tree {
 	//int prodrule; //not sure on how to set the int yet
 	char *prodrule;
 	int nkids;
-	struct tree *kids[9];
+	struct tree *kids[MAX_KIDS];
 	struct tree_token *leaf; //points to tree_token, terminals only
 };
 

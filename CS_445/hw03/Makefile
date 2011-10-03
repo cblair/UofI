@@ -42,7 +42,7 @@ $(PARSER).l: parser.tab.h
 	$(LEX) $(PARSER).l
 
 turnin:
-	tar cvf hw3.tar AS3.y AS3.l ecma1.l ecma1.y main.c tokenlist.c Makefile main.h tokenlist.h
+	tar cvf hw3.tar AS3.y AS3.l ecma1.l ecma1.y main.c Makefile main.h tree.h tree.c
 
 clean:
 	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'* *.output

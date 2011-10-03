@@ -94,8 +94,14 @@ struct tree *tree_create_node(char *prodrule, int n_args, ...)
 	// start vargs
 	register int i;
         va_list ap;
+	// init kids
+	int j;
+	for(j = 0; j < MAX_KIDS; j++) {
+		retval->kids[j] = NULL;
+	}
 	va_start(ap, n_args);
 	// add kids
+	// TODO: breaks if n_args bigger than MAX_KIDS
 	for(i = 1; i <= n_args; i++) {
 		retval->kids[i - 1] = va_arg(ap, struct tree*);
 	}

@@ -7,18 +7,20 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
-#include "ecma.tab.h"
+#include "parser.tab.h"
 #include "main.h"
-#include "tokenlist.h"
+#include "tree.h"
 
 FILE *yyin;
-extern char *YY_FNAME;
+char *YY_FNAME;
+extern struct tree *YY_TREE;
 extern int lineno;
+extern int colno;
 char yytext[YY_MAX_BUF];
 
 int main(int argc, char *argv[])
 {
-	tokenlist_init();
+	tree_init();
 	yytext[0] = '\0';
 
 	int i;
@@ -29,7 +31,7 @@ int main(int argc, char *argv[])
 		YY_FNAME = argv[i];
 		//yyrestart for multiple file parsing
 		FILE *yyfile = fopen(YY_FNAME, "r");
-        	yyrestart(yyfile); lineno = 1;
+        	yyrestart(yyfile); lineno = 1; colno = 1;
         	//instead of - yyin = fopen(YY_FNAME,"r");
 		if (yyin == NULL) 
 		{
@@ -50,9 +52,9 @@ int main(int argc, char *argv[])
 		yyparse();
 
 		//print our results
-		//tokenlist_print();		
+		treeprint(YY_TREE,0);
 		DEBUGMSG("DEBUG: done with file '%s'\n", YY_FNAME);
 	}
 
-	tokenlist_del();
+	tree_del();
 }

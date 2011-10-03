@@ -10,11 +10,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ecma.tab.h"
+#include "parser.tab.h"
 #include "tokenlist.h"
 
 struct tokenlist *YY_TOKENLIST;
-char *YY_FNAME;
+extern char *YY_FNAME;
 extern int lineno;
 
 int tokenlist_init()
@@ -39,7 +39,8 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 	struct tokenlist *tlp; 
 	for(tlp = YY_TOKENLIST; tlp != NULL; tlp = tlp->next)
 	{
-		if(tlp->t->category == INT_LIT || tlp->t->category == REAL_LIT)
+		if(tlp->t->category == DECIMAL_LITERAL 
+			|| tlp->t->category == OCTAL_LITERAL)
 		{
 			printf("%d\t\t%s\t\t%d\t\t%s\t%010X\n", 
 					tlp->t->category, 
@@ -49,7 +50,7 @@ Category	Text		Lineno		Filename	Ival/Sval\n\
 					tlp->t->ival
 					);
 		}
-		else if(tlp->t->category == STRING_LIT)
+		else if(tlp->t->category == STRING_LITERAL)
 		{
 			printf("%d\t\t%-16s%d\t\t%s\t%s\n", 
 					tlp->t->category, 
@@ -82,12 +83,12 @@ int tokenlist_append(int cat, char *token_text, int lineno, char *fname)
 	token_new->text = strdup(token_text);
 	token_new->lineno = lineno;
 	token_new->filename = fname;
-	if(cat == INT_LIT || cat == REAL_LIT)
+	if(cat == DECIMAL_LITERAL || cat == OCTAL_LITERAL)
 	{	
 		token_new->ival = atof(token_text);
 		token_new->sval = NULL;
 	}
-	else if(cat == STRING_LIT)
+	else if(cat == STRING_LITERAL)
 	{
 		token_new->ival = 0;
 		token_new->sval = strdup(tokenlist_strip_quotes(token_text));

@@ -9,9 +9,8 @@
 #define YY_MAX_BUF 1024
 
 //comment out for no debugging messages
-#define DEBUG
 
-#ifdef DEBUG
+#ifdef YYDEBUG
 #define DEBUGMSG printf
 #else
 #define DEBUGMSG //printf

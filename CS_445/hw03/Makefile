@@ -1,7 +1,7 @@
 #############################################################################
 #Class:		CS 445
 #Semester:	Fall 2011
-#Assignment:	Homework 2
+#Assignment:	Homework 3
 #Author:	Colby Blair
 #File name:	Makefile
 #############################################################################
@@ -42,7 +42,7 @@ $(PARSER).l: parser.tab.h
 	$(LEX) $(PARSER).l
 
 turnin:
-	tar cvf hw2.tar ecma.l main.c tokenlist.c Makefile ecma.y main.h tokenlist.h
+	tar cvf hw3.tar AS3.y AS3.l ecma1.l ecma1.y main.c tokenlist.c Makefile main.h tokenlist.h
 
 clean:
 	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'* *.output

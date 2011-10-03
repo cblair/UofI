@@ -118,7 +118,7 @@ while(bored == 0)
 	#Period save graph
 	if(GRAPH_FILE == TRUE)
 	{
-		if( (i %% 101) == 0 || i == 110 || i == 120 || i == 130 || i == 140)
+		if( (i %% 101) == 0 || (i %% 1000) == 0)
 		{
 			n <- length(avg.fitnesses)
 			o <- n - 100

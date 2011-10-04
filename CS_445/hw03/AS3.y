@@ -364,7 +364,7 @@ as3CompilationUnit:
 	;
 packageBlockEntries: 
 	packageBlockEntries packageBlockEntry	{ $$ = _TCN ("packageBlockEntries",2,$1,$2); }
-	|
+	|					{ $$ = NULL; }
 	;
 packageDecl: 
 	PACKAGE identifier packageBlock		{ $$ = _TCN ("packageDecl",3, $1,$2,$3); }
@@ -594,7 +594,7 @@ statement
 	;
 
 superStatement:	
-	SUPER arguments semi		{ $$ = _TCN ("superStatement",3, $1); }
+	SUPER arguments semi		{ $$ = _TCN ("superStatement",3, $1,$2,$3); }
 	;
 
 declarationStatement:	

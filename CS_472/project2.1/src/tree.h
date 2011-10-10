@@ -4,6 +4,7 @@
 #include <time.h>
 #include "tree_node.h"
 
+extern int SUM_TEMP;
 
 #define MAX_BUF 200
 class darray
@@ -14,7 +15,7 @@ private:
 public:
 	double a[MAX_BUF];
 
-	darray(int size);
+	darray(int, bool);
 
 	//getters
 	double get_val(int);
@@ -37,7 +38,20 @@ private:
 
 public:
 	tree(int, darray*);
-	tree_node *gen_rand_tree_node(darray*);//where [non]terminal vals go
+	~tree();
+	tree_node *gen_rand_nonterm_tree_node(darray*);//[non]terminal vals
+	tree_node *gen_rand_term_tree_node(darray*); //terminal vals
+
+	double eval();
+	double fitness(double);
+
+	bool is_term();
+	bool is_nonterm();
+
+	int count_terms();
+	int count_nonterms();
+
+	bool mutate_nth_nonterm(int, int, int, darray*);
 	bool print(int);
 };
 

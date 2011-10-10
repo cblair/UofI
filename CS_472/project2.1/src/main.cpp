@@ -1,19 +1,20 @@
 #include <iostream>
 #include "tree.h"
 
-#ifdef DEBUG
+//#ifdef DEBUG
 #include "test.h"
-#endif
+//#endif
 
 using namespace std;
 
 int main()
 {
-	#ifdef DEBUG
+	//run no matter what for now
+	//#ifdef DEBUG
 	test_nodes();
 	test_darray();
 	test_trees();
-	#endif
+	//#endif
 
 	return(0);
 }

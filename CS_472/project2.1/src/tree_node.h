@@ -6,7 +6,13 @@
 
 using namespace std; //for string
 
-#define NTYPES 6 //how many types? see tree_node::node_type
+//how many types? see tree_node::node_type
+// used in tree::gen_rand_node()
+#define NTYPES 4 
+
+//how many terminal types? see tree_node::node_type
+// used in tree_gen_rand_term_tree_node()
+#define NTERMTYPES 2 
 
 class tree_node
 {
@@ -18,8 +24,8 @@ public:
 		minus,
 		multi,
 		div,
-		tree_double,
-		tree_var
+		tree_double, 	//terminal
+		tree_var	//terminal
 	};
 
 private:
@@ -30,6 +36,9 @@ private:
 public:
 
 	tree_node(tree_node::node_type val, int n_args, ...);
+	double get_dval();
+	double get_ddp_val();
+	tree_node::node_type get_ntype();
 	bool print_ntype();
 };
 

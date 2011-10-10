@@ -75,10 +75,11 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 
 			/* generate secret number: */
 			// select random element in dp
-			int j = rand() % dp->get_size() + 1;
+			int j = rand() % dp->get_size();
 			//set ddp to point to a random element of dp->a
 			this->ddp = &dp->a[j];
-			DEBUGMSG << " Node val == " << *this->ddp << endl;
+			DEBUGMSG << " Node val from rand index " << j;
+			DEBUGMSG << " == " << *this->ddp << endl;
 			break;
 		}
 		default:
@@ -86,6 +87,25 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 			exit(1);
 	}		
 }
+
+
+double tree_node::get_dval()
+{
+	return(this->dval);
+}
+
+
+double tree_node::get_ddp_val()
+{
+	return(*this->ddp);
+}
+
+
+tree_node::node_type tree_node::get_ntype()
+{
+	return(this->ntype);
+}
+
 
 bool tree_node::print_ntype()
 {

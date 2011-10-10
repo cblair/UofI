@@ -8,6 +8,39 @@
 
 int SUM_TEMP;
 
+/*
+This is the structure I am trying to represent
+
+	+---------------+
+	|tree		|
+	|tree_node *tnp=|------------------------------ +---------------+
+	|...		|				|tree_node	|
+	|int nchildren= |				|enum node_type	|
+	| 2 (nonterminal)|				|double dval	|
+	|tree *children[]|------			|double variable*|
+	+---------------+	|			+---------------+
+				|
+				... (many more non-terminals)
+		----------------|
+		|		|
+		|	+---------------+
+		|	|tree		|
+		|	|tree_node *tnp=|-------------- +---------------+
+		|	|...		|		|tree_node	|
+		|	|int nchildren= |		|enum node_type	|
+		|	| 0 (terminal)	|		|double dval	|
+		|	|tree *children[]|--NULL	|double variable*|
+		|	+---------------+		+---------------+
+	+---------------+
+	|tree		|
+	|tree_node *tnp=|------------------------------ +---------------+
+	|...		|				|tree_node	|
+	|int nchildren= |				|enum node_type	|
+	| 0 (terminal)	|				|double dval	|
+	|tree *children[]|-------NULL			|double variable*|
+	+---------------+				+---------------+
+*/
+
 ///////////////////////////////////////////////////////////////////////////
 //Tree
 ///////////////////////////////////////////////////////////////////////////
@@ -23,7 +56,7 @@ tree::tree(int depth, darray *dp)
 	srand ( clock() );
 	/* generate secret number: */
 	int rand_val = rand() % 10; //0-9 values
-	// 1 out of 10 rand nodes get set to 
+	// 1 out of 10 rand nodes get set to terminal 
 	bool rand_term = (rand_val == 0);
 	if(depth <= 0 || rand_term == true)
 	{

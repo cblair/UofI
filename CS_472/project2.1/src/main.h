@@ -5,7 +5,7 @@
 #ifdef DEBUG
 #define DEBUGMSG cout
 #else
-#define DEBUGMSG cout
+#define DEBUGMSG //
 #endif
 
 #endif

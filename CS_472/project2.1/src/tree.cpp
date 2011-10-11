@@ -1,6 +1,7 @@
 #include <time.h>
 #include <iomanip>
 #include <cmath>
+#include <cstdlib>
 
 #include "tree.h"
 #include "tree_node.h"

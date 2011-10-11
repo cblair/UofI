@@ -33,10 +33,11 @@ class tree
 private:
 	tree_node *tnp;
 	darray *dp; //darray pointer, for tree_double use only
+
+public:
 	int nchildren;
 	tree *children[MAX_CHILDREN];
 
-public:
 	tree(int, darray*);
 	~tree();
 	tree_node *gen_rand_nonterm_tree_node(darray*);//[non]terminal vals
@@ -51,9 +52,10 @@ public:
 	int count_terms();
 	int count_nonterms();
 
-	bool mutate_nth_nonterm(int, int, int, darray*);
 	bool print(int);
 };
 
+
+bool mutate_nth_nonterm(tree**,int, int, int, darray*);
 
 #endif

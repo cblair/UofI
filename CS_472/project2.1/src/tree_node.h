@@ -25,7 +25,8 @@ public:
 		multi,
 		div,
 		tree_double, 	//terminal
-		tree_var	//terminal
+		tree_var,	//terminal
+		null
 	};
 
 private:

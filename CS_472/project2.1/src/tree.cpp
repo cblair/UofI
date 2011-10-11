@@ -296,64 +296,6 @@ int tree::count_nonterms()
 }
 
 
-bool tree::mutate_nth_nonterm(int n, int depth, int new_depth, darray *dp)
-{
-	if(this == NULL)
-	{
-		return(false);
-	}
-
-	if(this->is_nonterm())
-	{
-		SUM_TEMP++;
-	}
-	DEBUGMSG << string(depth, ' ') << depth << ":" << SUM_TEMP;
-
-	if(n == SUM_TEMP && this->is_nonterm())
-	{
-		DEBUGMSG << "!mutating!";
-	
-		//Nonterminal
-		this->tnp = this->gen_rand_nonterm_tree_node(dp);
-
-		//create the children
-		this->nchildren = MAX_CHILDREN;
-		for(int i = 0; i < MAX_CHILDREN; i++)
-		{
-			this->children[i] = new tree(depth, dp);
-		}
-
-		/*
-		for(int i = 0; i < this->nchildren; i++)
-		{
-			//delete this->children[i];
-			this->children[i] = new tree(depth, dp);
-		}
-		*/
-
-		DEBUGMSG << endl;
-		return(true);
-	}
-
-	DEBUGMSG << endl;
-
-	//if we've already see the node to mutate
-	
-	if(n < SUM_TEMP)
-	{
-		return(true);
-	}
-	
-	for(int i = 0; i <= this->nchildren; i++)
-	{
-		this->children[i]->mutate_nth_nonterm(n, depth + 1, new_depth, 
-							dp);
-	}
-	
-	return(true);
-}
-
-
 bool tree::print(int depth)
 {
 	if(this == NULL)
@@ -447,3 +389,55 @@ bool darray::print_vals()
 
 	return(true); 
 }
+
+
+///////////////////////////////////////////////////////////////////////////////
+//External tree functions
+
+bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
+{
+	if(*(tp) == NULL)
+	{
+		return(false);
+	}
+
+	if( (*tp)->is_nonterm())
+	{
+		SUM_TEMP++;
+	}
+	DEBUGMSG << string(depth, ' ') << depth << ":" << SUM_TEMP;
+
+	if(n == SUM_TEMP && (*tp)->is_nonterm())
+	{
+		DEBUGMSG << "!mutating!";
+	
+		//set this tree node to a new rand tree until it is a 
+		// nonterminal
+		do
+		{
+			delete (*tp);
+			(*tp) = new tree(new_depth, dp);
+		} while ((*tp)->is_nonterm() != true);
+
+		DEBUGMSG << endl;
+		return(true);
+	}
+
+	DEBUGMSG << endl;
+
+	//if we've already see the node to mutate
+	
+	if(n < SUM_TEMP)
+	{
+		return(true);
+	}
+	
+	for(int i = 0; i <= (*tp)->nchildren; i++)
+	{
+		mutate_nth_nonterm(&(*tp)->children[i], n, depth + 1, new_depth, 
+							dp);
+	}
+	
+	return(true);
+}
+

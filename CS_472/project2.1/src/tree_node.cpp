@@ -91,18 +91,33 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 
 double tree_node::get_dval()
 {
+	if(this == NULL)
+	{	
+		return(NULL);
+	}
+
 	return(this->dval);
 }
 
 
 double tree_node::get_ddp_val()
 {
+	if(this == NULL)
+	{	
+		return(NULL);
+	}
+
 	return(*this->ddp);
 }
 
 
 tree_node::node_type tree_node::get_ntype()
 {
+	if(this == NULL)
+	{	
+		return(tree_node::null);
+	}
+
 	return(this->ntype);
 }
 

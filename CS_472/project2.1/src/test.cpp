@@ -52,9 +52,9 @@ bool test_trees()
 	int n = 10;
 	cout << "Term mutation on " << n << " terminal\n";
 	SUM_TEMP = 0;
-	//tp->mutate_nth_nonterm(n, 0, 5, dp);
-	//cout << "After mutation:\n";
-	//tp->print(0);
+	mutate_nth_nonterm(&tp, n, 0, 5, dp);
+	cout << "After mutation:\n";
+	tp->print(0);
 
 	//x^3 + 5y^3 - 4xy + 7
 	//= (.2)^3 + 5(.3)^3 - 4(.2)(.3) + 7

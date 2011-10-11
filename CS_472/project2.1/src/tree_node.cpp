@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdarg.h>
 #include <typeinfo>
+#include <cstdlib>
 
 #include "tree_node.h"
 #include "tree.h"

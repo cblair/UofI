@@ -50,6 +50,13 @@ tree::tree(int depth, darray *dp)
 {
 	this->dp = dp;
 	
+	//init null children
+	this->nchildren = 0;
+	for(int i = 0; i < MAX_CHILDREN; i++)
+	{
+		this->children[i] = NULL;
+	}
+
 	//Terminal
 	// if we've reached the bottom, or a random fraction of total nodes
 	// be a terminal
@@ -61,13 +68,6 @@ tree::tree(int depth, darray *dp)
 	bool rand_term = (rand_val == 0);
 	if(depth <= 0 || rand_term == true)
 	{
-		//null children
-		this->nchildren = 0;
-		for(int i = 0; i < MAX_CHILDREN; i++)
-		{
-			this->children[i] = NULL;
-		}
-
 		this->tnp = this->gen_rand_term_tree_node(dp);
 		return;
 	}
@@ -79,7 +79,7 @@ tree::tree(int depth, darray *dp)
 	this->nchildren = MAX_CHILDREN;
 	for(int i = 0; i < MAX_CHILDREN; i++)
 	{
-		DEBUGMSG << "DEBUG: tree.cpp: Gen child " << i  << "at depth " << depth << endl;	
+		DEBUGMSG("DEBUG: tree.cpp: Gen child " << i  << "at depth " << depth);	
 		this->children[i] = new tree(depth - 1, dp);
 	}
 }
@@ -100,7 +100,7 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 	/* generate secret number: */
 	int type = rand() % NTYPES;	
 
-	DEBUGMSG << "DEBUG: tree.cpp: Generating rand node with type " << type << endl;
+	DEBUGMSG("DEBUG: tree.cpp: Generating rand node with type " << type);
 	switch (type)
 	{
 		case 0:
@@ -124,7 +124,7 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 			break;
 		}
 		default:
-			DEBUGMSG << "DEBUG: tree.cpp: No type for node\n";
+			cout << "DEBUG: tree.cpp: No type for node, got type" << type << endl;
 			exit(1);
 		}
 	
@@ -142,7 +142,7 @@ tree_node *tree::gen_rand_term_tree_node(darray *dp)
 	/* generate secret number: */
 	int type = rand() % NTERMTYPES;	
 
-	DEBUGMSG << "DEBUG: tree.cpp: Generating rand term node with type " << type << endl;
+	DEBUGMSG("DEBUG: tree.cpp: Generating rand term node with type " << type);
 	switch (type)
 	{
 		case 0:
@@ -162,7 +162,7 @@ tree_node *tree::gen_rand_term_tree_node(darray *dp)
 			break;
 		}
 		default:
-			DEBUGMSG << "DEBUG: tree.cpp: No term type for node\n";
+			cout << "DEBUG: tree.cpp: No term type for node, got type " << type << endl;
 			exit(1);
 		}
 	
@@ -228,6 +228,11 @@ double tree::eval()
 		case tree_node::tree_var:
 		{
 			return(this->tnp->get_ddp_val());
+		}
+		default:
+		{
+			cerr << "ERROR: No type for eval()\n";
+			exit(1);
 		}
 	}
 }
@@ -322,6 +327,15 @@ bool tree::print(int depth)
 }
 
 
+bool tree::print_tnp_ntype()
+{
+	if(this == NULL)
+	{
+		return(false);
+	}
+	return(this->tnp->print_ntype());
+}
+
 ///////////////////////////////////////////////////////////////////////////
 //DArray
 ///////////////////////////////////////////////////////////////////////////
@@ -394,10 +408,11 @@ bool darray::print_vals()
 
 ///////////////////////////////////////////////////////////////////////////////
 //External tree functions
+///////////////////////////////////////////////////////////////////////////////
 
 bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
 {
-	if(*(tp) == NULL)
+	if( (*tp) == NULL)
 	{
 		return(false);
 	}
@@ -406,25 +421,35 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
 	{
 		SUM_TEMP++;
 	}
-	DEBUGMSG << string(depth, ' ') << depth << ":" << SUM_TEMP;
+	cout << string(depth, ' ') << depth << ":";
+	(*tp)->print_tnp_ntype();
+	cout << " = " << SUM_TEMP;
 
 	if(n == SUM_TEMP && (*tp)->is_nonterm())
 	{
-		DEBUGMSG << "!mutating!";
+		cout << " !mutating!";
 	
 		//set this tree node to a new rand tree until it is a 
 		// nonterminal
+		/*
 		do
 		{
+			//TODO: resetting tp causes child pointer of parent to NULL
 			delete (*tp);
 			(*tp) = new tree(new_depth, dp);
 		} while ((*tp)->is_nonterm() != true);
+		*/
 
-		DEBUGMSG << endl;
+		tree *tp1 = new tree(5, dp);
+		cout << "TS:new tree: " << tp1->eval();
+		//(*tp)->print(0);
+		tp1->print(0);
+
+		cout << endl;
 		return(true);
 	}
 
-	DEBUGMSG << endl;
+	cout << endl;
 
 	//if we've already see the node to mutate
 	

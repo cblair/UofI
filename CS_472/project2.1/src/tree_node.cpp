@@ -9,37 +9,33 @@
 
 using namespace std;
 
-/*
-	Sets the node's type. Pretty redundant, but would be 
-	useful if operators ever took more than two parameters.
-*/
 tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 {
-	DEBUGMSG << "DEBUG: tree_node.cpp: Setting node type\n";
+	DEBUGMSG("DEBUG: tree_node.cpp: Setting node type");
 	switch (val)
 	{
 		case tree_node::plus:
 		{
 			this->ntype = val;
-			DEBUGMSG << " Node type == plus\n";
+			DEBUGMSG(" Node type == plus");
 			break;
 		}
 		case tree_node::minus:
 		{
 			this->ntype = val;
-			DEBUGMSG << " Node type == minus\n";
+			DEBUGMSG(" Node type == minus");
 			break;
 		}
 		case tree_node::multi:
 		{
 			this->ntype = val;
-			DEBUGMSG << " Node type == multi\n";
+			DEBUGMSG(" Node type == multi");
 			break;
 		}
 		case tree_node::div:
 		{
 			this->ntype = val;
-			DEBUGMSG << " Node type == div\n";
+			DEBUGMSG(" Node type == div");
 			break;
 		}
 		case tree_node::tree_double:
@@ -51,15 +47,14 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
         		va_list ap;
 			va_start(ap, n_args);
 			this->dval = va_arg(ap, double);
-			//this->ival = va_arg(ap, int);
 			va_end(ap);
-			DEBUGMSG << " Node type == tree_double\n";
-			DEBUGMSG << " Node val == " << this->dval << endl;
+			DEBUGMSG(" Node type == tree_double");
+			DEBUGMSG(" Node val == " << this->dval);
 			break;
 		}
 		case tree_node::tree_var:
 		{
-			DEBUGMSG << " Node type == tree_var\n";
+			DEBUGMSG(" Node type == tree_var");
 	
 			this->ntype = val;
 			//get the float val
@@ -79,12 +74,12 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 			int j = rand() % dp->get_size();
 			//set ddp to point to a random element of dp->a
 			this->ddp = &dp->a[j];
-			DEBUGMSG << " Node val from rand index " << j;
-			DEBUGMSG << " == " << *this->ddp << endl;
+			DEBUGMSG(" Node val from rand index " << j << "== " << *this->ddp);
 			break;
 		}
 		default:
-			DEBUGMSG << " Node type not set\n";
+			cerr << "ERROR: Node type not set, got val " \
+				<< val << endl;
 			exit(1);
 	}		
 }

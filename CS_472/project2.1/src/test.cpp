@@ -43,7 +43,7 @@ bool test_trees()
 	dp = new darray(2, false);
 	dp->a[0] = 0.2;
 	dp->a[1] = 0.3;
-	tp = new tree(7, dp);
+	tp = new tree(5, dp);
 	tp->print(0);
 
 	cout << "Tree has " << tp->count_terms() << " terminal(s).\n";
@@ -60,5 +60,22 @@ bool test_trees()
 	//= (.2)^3 + 5(.3)^3 - 4(.2)(.3) + 7
 	//= .008 + .135 - .24 + 7
 	//= 6.903
+	dp->a[0] = 0.2;
+	dp->a[1] = 0.3;
 	cout << "Tree fitness: " << tp->fitness(6.903) << endl;
+	cout << "Tree eval 1: " << tp->eval() << endl;
+
+	//x^3 + 5y^3 - 4xy + 7
+	//
+	dp->a[0] = 5;
+	dp->a[1] = 7;
+	cout << "Tree eval 2: " << tp->eval() << endl;
+
+	//x^3 + 5y^3 - 4xy + 7
+	//
+	dp->a[0] = 13;
+	dp->a[1] = 20;
+	cout << "Tree eval 3: " << tp->eval() << endl;
+
+
 }

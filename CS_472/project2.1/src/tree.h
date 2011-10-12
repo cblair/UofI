@@ -53,6 +53,7 @@ public:
 	int count_nonterms();
 
 	bool print(int);
+	bool print_tnp_ntype();
 };
 
 

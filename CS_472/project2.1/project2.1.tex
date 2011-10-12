@@ -736,9 +736,30 @@ After mutation:
 \end{lstlisting}
 
 
-%\section{Output}
-%\label{sec:output}
-%Skipping until I have something
+\section{Output}
+\label{sec:output}
+The eval for our trees isn't great, but we are not yet mutating or in any way trying to improve the fitnesses yet. For the following figures, values for $x$ and $y$ respectively were $(.2,.3)$, $(5,7)$, and $(13,20)$:
+
+\begin{figure}[!h]
+        \begin{center}
+		\scriptsize
+		\includegraphics[width=90mm]{images/equa.png}
+               \caption{The expression tested against, $ x^3 + 5y^3 - 4xy + 7 $}
+                \label{equa}
+        \end{center}
+\end{figure}
+
+\begin{figure}[!h]
+        \begin{center}
+		\scriptsize
+		\includegraphics[width=90mm]{images/tree.png}
+               \caption{Results from a random tree's expression}
+                \label{tree}
+        \end{center}
+\end{figure}
+
+\pagebreak
+
 
 \section{Code}
 \footnotesize

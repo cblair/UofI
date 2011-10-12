@@ -1,11 +1,10 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-//the not DEBUG defined does not work!
 #ifdef DEBUG
-#define DEBUGMSG cout
+#define DEBUGMSG(arg) (cout << arg << endl)
 #else
-#define DEBUGMSG //
+#define DEBUGMSG(arg) ;
 #endif
 
 #endif

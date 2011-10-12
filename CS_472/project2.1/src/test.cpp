@@ -76,6 +76,4 @@ bool test_trees()
 	dp->a[0] = 13;
 	dp->a[1] = 20;
 	cout << "Tree eval 3: " << tp->eval() << endl;
-
-
 }

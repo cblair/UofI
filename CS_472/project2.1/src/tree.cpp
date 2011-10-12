@@ -434,19 +434,11 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
 	
 		//set this tree node to a new rand tree until it is a 
 		// nonterminal
-		/*
 		do
 		{
-			//TODO: resetting tp causes child pointer of parent to NULL
 			delete (*tp);
 			(*tp) = new tree(new_depth, dp);
 		} while ((*tp)->is_nonterm() != true);
-		*/
-
-		tree *tp1 = new tree(5, dp);
-		cout << "TS:new tree: " << tp1->eval();
-		//(*tp)->print(0);
-		tp1->print(0);
 
 		cout << endl;
 		return(true);

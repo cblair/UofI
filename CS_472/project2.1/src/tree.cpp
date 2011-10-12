@@ -87,7 +87,10 @@ tree::tree(int depth, darray *dp)
 
 tree::~tree()
 {
-	//TODO: actual recursive freeing, mem leak for now
+	for(int i = 0; i < this->nchildren; i++)
+	{
+		delete this->children[i];
+	}
 }
 
 tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)

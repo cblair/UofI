@@ -64,9 +64,10 @@ tree::tree(int depth, darray *dp)
 	srand ( clock() );
 	/* generate secret number: */
 	int rand_val = rand() % 10; //0-9 values
+	//cout << "DEBUG: tree.cpp: rand_val = " << rand_val << endl;
 	// 1 out of 10 rand nodes get set to terminal 
 	bool rand_term = (rand_val == 0);
-	if(depth <= 0 || rand_term == true)
+	if(depth <= 0 ) //|| rand_term == true)
 	{
 		this->gen_rand_term_tree_node(dp);
 		return;
@@ -183,8 +184,8 @@ double tree::eval()
 		}
 		case tree_node::minus:
 		{
-			double sum = 0;
-			for(int i = 0; i < this->nchildren; i++)
+			double sum = this->children[0]->eval();
+			for(int i = 1; i < this->nchildren; i++)
 			{
 				sum -= this->children[i]->eval();
 			}

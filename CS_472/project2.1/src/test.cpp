@@ -13,11 +13,19 @@ bool test_nodes()
 	darray *dp = new darray(200, true);
 	tree_node *tp;
 	tp = new tree_node(tree_node::plus, 0);
+	delete tp;
 	tp = new tree_node(tree_node::minus, 0);
+	delete tp;
 	tp = new tree_node(tree_node::multi, 0);
+	delete tp;
 	tp = new tree_node(tree_node::div, 0);
+	delete tp;
 	tp = new tree_node(tree_node::tree_double, 1, 2.001);
+	delete tp;
 	tp = new tree_node(tree_node::tree_var, 1, dp);
+	delete tp;
+
+	delete dp;
 }
 
 
@@ -25,6 +33,7 @@ bool test_darray()
 {
 	darray *dp = new darray(200, true);
 	dp->print_vals();
+	delete dp;
 }
 
 
@@ -34,10 +43,16 @@ bool test_trees()
 	tree *tp;
 	darray *dp = new darray(200, true);
 	tp = new tree(5, dp);
+	delete tp;
 	tp = new tree(5, dp);
+	delete tp;
 	tp = new tree(5, dp);
+	delete tp;
 	tp = new tree(5, dp);
+	delete tp;
 	tp = new tree(5, dp);
+	delete tp;
+	delete dp;
 
 	//eval a tree
 	dp = new darray(2, false);
@@ -76,4 +91,6 @@ bool test_trees()
 	dp->a[0] = 13;
 	dp->a[1] = 20;
 	cout << "Tree eval 3: " << tp->eval() << endl;
+
+	delete dp;
 }

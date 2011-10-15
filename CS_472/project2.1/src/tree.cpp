@@ -68,12 +68,12 @@ tree::tree(int depth, darray *dp)
 	bool rand_term = (rand_val == 0);
 	if(depth <= 0 || rand_term == true)
 	{
-		this->tnp = this->gen_rand_term_tree_node(dp);
+		this->gen_rand_term_tree_node(dp);
 		return;
 	}
 
 	//Nonterminal
-	this->tnp = this->gen_rand_nonterm_tree_node(dp);
+	this->gen_rand_nonterm_tree_node(dp);
 
 	//create the children
 	this->nchildren = MAX_CHILDREN;
@@ -91,12 +91,12 @@ tree::~tree()
 	{
 		delete this->children[i];
 	}
+	
+	delete this->tnp;
 }
 
 tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 {
-	tree_node *tp;
-
 	/* initialize random seed: */
 	srand ( clock() );
 
@@ -108,37 +108,33 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 	{
 		case 0:
 		{
-			tp = new tree_node(tree_node::plus, 0);
+			this->tnp = new tree_node(tree_node::plus, 0);
 			break;
 		}	
 		case 1:
 		{
-			tp = new tree_node(tree_node::minus, 0);
+			this->tnp = new tree_node(tree_node::minus, 0);
 			break;
 		}
 		case 2:
 		{
-			tp = new tree_node(tree_node::multi, 0);
+			this->tnp = new tree_node(tree_node::multi, 0);
 			break;
 		}
 		case 3:
 		{
-			tp = new tree_node(tree_node::div, 0);
+			this->tnp = new tree_node(tree_node::div, 0);
 			break;
 		}
 		default:
 			cout << "DEBUG: tree.cpp: No type for node, got type" << type << endl;
 			exit(1);
 		}
-	
-		return(tp);
 }
 
 
 tree_node *tree::gen_rand_term_tree_node(darray *dp)
 {
-	tree_node *tp;
-
 	/* initialize random seed: */
 	srand ( clock() );
 
@@ -156,20 +152,18 @@ tree_node *tree::gen_rand_term_tree_node(darray *dp)
 			/* generate random double: */
 			double d = ((double)rand()/(double)RAND_MAX);	
 
-			tp = new tree_node(tree_node::tree_double, 1, d);
+			this->tnp = new tree_node(tree_node::tree_double, 1, d);
 			break;
 		}
 		case 1:
 		{
-			tp = new tree_node(tree_node::tree_var, 1, dp);
+			this->tnp = new tree_node(tree_node::tree_var, 1, dp);
 			break;
 		}
 		default:
 			cout << "DEBUG: tree.cpp: No term type for node, got type " << type << endl;
 			exit(1);
 		}
-	
-		return(tp);
 }
 
 
@@ -319,9 +313,10 @@ bool tree::print(int depth)
 	//more debugging stuff
 	//cout << ", term:nonterm == " << this->is_term() << ":" << this->is_nonterm();
 	//cout << " nterm:nnonterm == " << this->count_terms() << ":" << this->count_nonterms();
+	cout << ", children = " << this->nchildren;
 	cout << endl;
 
-	for(int i = 0; i <= this->nchildren; i++)
+	for(int i = 0; i < this->nchildren; i++)
 	{
 		this->children[i]->print(depth + 1);
 	}
@@ -453,7 +448,7 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
 		return(true);
 	}
 	
-	for(int i = 0; i <= (*tp)->nchildren; i++)
+	for(int i = 0; i < (*tp)->nchildren; i++)
 	{
 		mutate_nth_nonterm(&(*tp)->children[i], n, depth + 1, new_depth, 
 							dp);

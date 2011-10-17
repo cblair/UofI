@@ -1,8 +1,8 @@
 PROC=eval
 CPP=g++
-#CPPFLAGS=-g -pg -Wno-write-strings
+CPPFLAGS=-g -pg -Wno-write-strings
 #CPPFLAGS=-g -pg -Wno-write-strings -DDEBUG=1
-CPPFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE=1
+#CPPFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE=1
 OBJS=tree_gp.o darray.o tree_node.o tree.o main.o test.o
 
 all: $(OBJS)

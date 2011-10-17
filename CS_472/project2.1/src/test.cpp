@@ -215,6 +215,10 @@ bool test_tree_crossover()
 	tree *tp2 = new tree(5, dp1);
 
 	cout << "Tree crossover test:\n";
+	cout << "Tree 1 before crossover:\n";
+	tp1->print(0);
+	cout << "Tree 2 before crossover:\n";
+	tp2->print(0);
 	tree_crossover(&tp1, &tp2);
 	cout << "Tree 1 after crossover:\n";
 	tp1->print(0);

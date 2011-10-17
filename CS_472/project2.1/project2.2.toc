@@ -1,22 +1,23 @@
 \contentsline {part}{I\hspace {1em}Representation Description}{4}
 \contentsline {section}{\numberline {1}Trees}{4}
 \contentsline {section}{\numberline {2}Population}{5}
-\contentsline {part}{II\hspace {1em}Functions and Generators}{5}
-\contentsline {section}{\numberline {3}Fitness Function}{5}
-\contentsline {section}{\numberline {4}Random Tree Generator}{6}
-\contentsline {section}{\numberline {5}Mutation Function}{7}
-\contentsline {section}{\numberline {6}Samples}{8}
-\contentsline {subsection}{\numberline {6.1}A test individual}{8}
-\contentsline {subsection}{\numberline {6.2}Another test individual}{10}
-\contentsline {section}{\numberline {7}Mutation}{12}
-\contentsline {section}{\numberline {8}Output}{23}
-\contentsline {section}{\numberline {9}Code}{24}
-\contentsline {subsection}{\numberline {9.1}Makefile}{24}
-\contentsline {subsection}{\numberline {9.2}main.h}{25}
-\contentsline {subsection}{\numberline {9.3}main.cpp}{25}
-\contentsline {subsection}{\numberline {9.4}tree\_node.h}{26}
-\contentsline {subsection}{\numberline {9.5}tree\_node.cpp}{27}
-\contentsline {subsection}{\numberline {9.6}tree.h}{33}
-\contentsline {subsection}{\numberline {9.7}tree.cpp}{34}
-\contentsline {subsection}{\numberline {9.8}test.h}{45}
-\contentsline {subsection}{\numberline {9.9}test.cpp}{46}
+\contentsline {part}{II\hspace {1em}Functions and Generators}{6}
+\contentsline {section}{\numberline {3}Crossover Function}{6}
+\contentsline {section}{\numberline {4}Select Function}{6}
+\contentsline {section}{\numberline {5}Output}{7}
+\contentsline {subsection}{\numberline {5.1}Crossover Function}{7}
+\contentsline {subsection}{\numberline {5.2}Selection Function}{17}
+\contentsline {section}{\numberline {6}Code}{18}
+\contentsline {subsection}{\numberline {6.1}Makefile}{18}
+\contentsline {subsection}{\numberline {6.2}main.h}{18}
+\contentsline {subsection}{\numberline {6.3}main.cpp}{19}
+\contentsline {subsection}{\numberline {6.4}tree\_node.h}{20}
+\contentsline {subsection}{\numberline {6.5}tree\_node.cpp}{21}
+\contentsline {subsection}{\numberline {6.6}tree.h}{26}
+\contentsline {subsection}{\numberline {6.7}tree.cpp}{28}
+\contentsline {subsection}{\numberline {6.8}darray.h}{39}
+\contentsline {subsection}{\numberline {6.9}darray.cpp}{39}
+\contentsline {subsection}{\numberline {6.10}tree\_gp.h}{41}
+\contentsline {subsection}{\numberline {6.11}tree\_gp.cpp}{42}
+\contentsline {subsection}{\numberline {6.12}test.h}{45}
+\contentsline {subsection}{\numberline {6.13}test.cpp}{45}

@@ -329,27 +329,6 @@ int tree::count_nonterms()
 }
 
 
-bool tree::crossover(tree **tp1, tree **tp2)
-{
-	if( (*tp1) == NULL || (*tp2) == NULL)
-	{
-		return(false);
-	}
-
-	int SUM_TEMP = 0;
-
-	//Pick a random value of all nonterminals
-	/* initialize random seed: */
-	srand ( clock() );
-	/* generate secret number: */
-	int rand_val = rand() % (*tp1)->count_nonterms(); //0-n values
-	DEBUG_TREE_MSG("DEBUG: tree.cpp: picking " << rand_val 
-			<< " nonterminal to "<< "crossover");
-
-	//tree_crossover_nth_nonterm(tp1, tp2, rand_val);
-}
-
-
 bool tree::print(int depth)
 {
 	if(this == NULL)

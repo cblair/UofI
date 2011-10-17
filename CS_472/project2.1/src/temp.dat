@@ -1,0 +1,2947 @@
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 2.001
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 120 == 0.0266097
+0.0280732 : 0.028081 : 0.028081 : 0.0280967 : 0.0281045 : 0.0281045
+0.0281123 : 0.0281201 : 0.028128 : 0.028128 : 0.0281358
+0.0281515 : 0.0281515 : 0.0281593 : 0.0281593 : 0.0281749
+0.0281828 : 0.0281828 : 0.0281906 : 0.0281984 : 0.0282062
+0.0282141 : 0.0282141 : 0.0282297 : 0.0282297 : 0.0282375
+0.0282454 : 0.0282532 : 0.028261 : 0.028261 : 0.0282688
+0.0282767 : 0.0282845 : 0.0282923 : 0.0282923 : 0.028308
+0.028308 : 0.0283158 : 0.0283236 : 0.0283315 : 0.0283393
+0.0283393 : 0.0283471 : 0.0283628 : 0.0283628 : 0.0283706
+0.0283706 : 0.0283862 : 0.0283862 : 0.0283941 : 0.0284019
+0.0284097 : 0.0284175 : 0.0284175 : 0.0284254 : 0.028441
+0.028441 : 0.0284489 : 0.0284567 : 0.0284645 : 0.0284723
+0.0284723 : 0.028488 : 0.028488 : 0.0284958 : 0.0284958
+0.0285115 : 0.0285193 : 0.0285193 : 0.0285271 : 0.0285349
+0.0285428 : 0.0285506 : 0.0285506 : 0.0285662 : 0.0285662
+0.0285741 : 0.0285819 : 0.0285897 : 0.0285976 : 0.0285976
+0.0286054 : 0.0286132 : 0.028621 : 0.0286289 : 0.0286289
+0.0286445 : 0.0286445 : 0.0286523 : 0.0286602 : 0.028668
+0.0286758 : 0.0286758 : 0.0286836 : 0.0286993 : 0.0286993
+0.0287071 : 0.0287071 : 0.0287228 : 0.0287228 : 0.0287306
+0.0287384 : 0.0287463 : 0.0287541 : 0.0287541 : 0.0287619
+0.0287697 : 0.0287776 : 0.0287854 : 0.0287854 : 0.028801
+0.028801 : 0.0288089 : 0.0288167 : 0.0288245 : 0.0288323
+0.0288323 : 0.028848 : 0.0288558 : 0.0288558 : 0.0288636
+0.0288715 : 0.0288793 : 0.0288871 : 0.0288871 : 0.0289028
+0.0289028 : 0.0289106 : 0.0289184 : 0.0289263 : 0.0289341
+0.0289341 : 0.0289419 : 0.0289576 : 0.0289576 : 0.0289654
+0.0289654 : 0.028981 : 0.0289889 : 0.0289889 : 0.0289967
+0.0290045 : 0.0290124 : 0.0290124 : 0.0290202 : 0.0290358
+0.0290358 : 0.0290437 : 0.0290437 : 0.0290593 : 0.0290671
+0.0290671 : 0.029075 : 0.0290828 : 0.0290906 : 0.0290984
+0.0290984 : 0.0291141 : 0.0291141 : 0.0291219 : 0.0291297
+0.0291376 : 0.0291454 : 0.0291454 : 0.0291532 : 0.0291689
+0.0291689 : 0.0291767 : 0.0291845 : 0.0291924 : 0.0291924
+0.0292002 : 0.0292158 : 0.0292158 : 0.0292237 : 0.0292237
+0.0292393 : 0.0292471 : 0.0292471 : 0.029255 : 0.0292628
+0.0292706 : 0.0292784 : 0.0292784 : 0.0292941 : 0.0292941
+0.0293019 : 0.0293019 : 0.0293176 : 0.0293254 : 0.0293254
+0.0293332 : 0.0293411 : 0.0293489 : 0.0293567 : 0.0293567
+0.0293724 : 0.0293724 : 0.0293802 : 0.029388 : 
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 186 == 0.0340447
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 136 == 0.0337238
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 188 == 0.0340604
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0353439
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.035743
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0359152
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0361813
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 122 == 0.0336299
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0369796
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0371518
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0374179
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0375901
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 164 == 0.0339038
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0381379
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0384196
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.038584
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0391397
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0393119
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 20 == 0.0329725
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0397658
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 19 == 0.0329647
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0403215
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0404858
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 126 == 0.0336534
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 153 == 0.0338334
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 114 == 0.0335751
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 166 == 0.0339117
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0419415
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0423954
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0425676
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0428494
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0430216
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 106 == 0.0335282
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 193 == 0.0340917
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0439842
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0443599
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.044532
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 82 == 0.0333716
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 43 == 0.0331212
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 70 == 0.0332934
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 94 == 0.0334499
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 160 == 0.0338804
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0461912
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 71 == 0.0333012
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0467704
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 98 == 0.0334734
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.04724
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.047913
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0480852
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 74 == 0.0333169
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 35 == 0.0330742
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 192 == 0.0340838
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0491418
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0495018
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.049674
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 70 == 0.0332934
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 31 == 0.0330429
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.050621
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 37 == 0.0330821
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 15 == 0.0329412
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0513958
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 28 == 0.0330273
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0518575
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0524523
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0526245
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 197 == 0.0341151
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 158 == 0.0338569
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.053548
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0537202
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 100 == 0.033489
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0541663
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0544402
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 35 == 0.0330742
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0549959
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 34 == 0.0330586
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0554342
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 96 == 0.0334656
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.056342
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 154 == 0.0338334
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 199 == 0.034123
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 153 == 0.0338334
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0573516
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 50 == 0.0331603
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 102 == 0.0334969
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 63 == 0.0332542
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 16 == 0.032949
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0587682
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0590343
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0592065
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0593787
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 20 == 0.0329725
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0601222
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0603961
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0605683
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 116 == 0.0335908
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0611161
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.06139
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0615622
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 50 == 0.0331603
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 4 == 0.0328708
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 49 == 0.0331603
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 10 == 0.0329021
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0632997
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0634797
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 166 == 0.0339117
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 105 == 0.0335203
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 73 == 0.033309
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0647945
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0649745
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 64 == 0.0332542
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.065538
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 70 == 0.0332934
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0660311
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0666181
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.066892
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0671737
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 42 == 0.0331134
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0677372
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0679094
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0681833
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0683555
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0688486
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0690208
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 192 == 0.0340838
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0694903
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 110 == 0.0335516
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0700695
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0704217
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 154 == 0.0338334
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 7
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 6
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0715095
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0716817
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0721435
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.072707
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0729809
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0731531
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0736853
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0739514
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0742253
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0743975
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0745618
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0758845
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0760567
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0775202
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0776924
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0780759
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.078248
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0786941
+DEBUG: tree.cpp: Gen child 1at depth 6
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0793829
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.079555
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0798368
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0800011
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0802751
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0807681
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0813316
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0815038
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0826856
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0828578
+DEBUG: tree.cpp: Gen child 1at depth 7
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 6
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0836404
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0838126
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0840943
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0843291
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0847126
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0848848
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0858161
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0859883
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0862701
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0864422
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0871623
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0883206
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0884928
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0896667
+DEBUG: tree.cpp: Gen child 1at depth 6
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0911537
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0917172
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0921712
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.092719
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0939399
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0941121
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0942843
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0954034
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0958887
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.096053
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0970626
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.0972348
+0:multi = -0.0400978
+ 1:plus = -34.4194
+  2:multi = -34.4489
+   3:minus = -0.210426
+    4:multi = 0.284427
+     5:minus = -195.359
+      6:div = 195.087
+       7:tree_double = 0.0715095
+       7:tree_double = 0.0716817
+      6:plus = 0.272143
+       7:tree_var = 0.2
+       7:tree_double = 0.0721435
+     5:multi = -0.00145592
+      6:minus = -0.272707
+       7:tree_var = 0.2
+       7:tree_double = 0.072707
+      6:multi = 0.00533878
+       7:tree_double = 0.0729809
+       7:tree_double = 0.0731531
+    4:div = -0.0740013
+     5:minus = -181.236
+      6:plus = 0.147637
+       7:tree_double = 0.0736853
+       7:tree_double = 0.0739514
+      6:div = 181.088
+       7:tree_double = 0.0742253
+       7:tree_double = 0.0743975
+     5:tree_double = 0.0745618
+   3:plus = 163.71
+    4:div = 0.0192317
+     5:minus = 0.3
+      6:minus = -0.5
+       7:tree_var = 0.2
+       7:tree_var = 0.3
+      6:tree_var = 0.2
+     5:plus = 173.325
+      6:div = 173.265
+       7:tree_double = 0.0758845
+       7:tree_double = 0.0760567
+      6:multi = 0.06
+       7:tree_var = 0.3
+       7:tree_var = 0.2
+    4:plus = 163.691
+     5:div = -0.0100379
+      6:minus = -0.6
+       7:tree_var = 0.3
+       7:tree_var = 0.3
+      6:div = 166.038
+       7:tree_double = 0.0775202
+       7:tree_double = 0.0776924
+     5:plus = 163.701
+      6:div = 163.685
+       7:tree_double = 0.0780759
+       7:tree_double = 0.078248
+      6:multi = 0.0157388
+       7:tree_var = 0.2
+       7:tree_double = 0.0786941
+  2:plus = 0.0295132
+   3:div = -0.0533446
+    4:multi = -0.612537
+     5:minus = -314.913
+      6:div = 158.345
+       7:tree_double = 0.0793829
+       7:tree_double = 0.079555
+      6:div = 156.567
+       7:tree_double = 0.0798368
+       7:tree_double = 0.0800011
+     5:multi = 0.0019451
+      6:tree_double = 0.0802751
+      6:multi = 0.0242304
+       7:tree_var = 0.3
+       7:tree_double = 0.0807681
+    4:multi = 30.604
+     5:minus = -167.523
+      6:div = 150.856
+       7:tree_double = 0.0813316
+       7:tree_double = 0.0815038
+      6:div = 16.6667
+       7:tree_var = 0.2
+       7:tree_var = 0.3
+     5:plus = -0.182686
+      6:tree_var = 0.2
+      6:minus = -0.382686
+       7:tree_var = 0.3
+       7:tree_double = 0.0826856
+   3:tree_double = 0.0828578
+ 1:multi = 0.00116498
+  2:plus = -0.0299122
+   3:div = -9.23216e-06
+    4:minus = 141.059
+     5:minus = -141.179
+      6:plus = 0.167453
+       7:tree_double = 0.0836404
+       7:tree_double = 0.0838126
+      6:div = 141.012
+       7:tree_double = 0.0840943
+       7:tree_double = 0.0843291
+     5:div = 0.119847
+      6:div = 139.066
+       7:tree_double = 0.0847126
+       7:tree_double = 0.0848848
+      6:multi = 0.06
+       7:tree_var = 0.2
+       7:tree_var = 0.3
+    4:plus = -767.882
+     5:div = -784.636
+      6:multi = 0.00737919
+       7:tree_double = 0.0858161
+       7:tree_double = 0.0859883
+      6:minus = -0.172712
+       7:tree_double = 0.0862701
+       7:tree_double = 0.0864422
+     5:plus = 16.7538
+      6:div = 16.6667
+       7:tree_var = 0.3
+       7:tree_var = 0.2
+      6:tree_double = 0.0871623
+   3:multi = -0.0299029
+    4:multi = -0.33349
+     5:minus = -16.6745
+      6:div = 16.6667
+       7:tree_var = 0.3
+       7:tree_var = 0.2
+      6:multi = 0.00781573
+       7:tree_double = 0.0883206
+       7:tree_double = 0.0884928
+     5:multi = 0.02
+      6:plus = 0.5
+       7:tree_var = 0.3
+       7:tree_var = 0.2
+      6:multi = 0.04
+       7:tree_var = 0.2
+       7:tree_var = 0.2
+    4:tree_double = 0.0896667
+  2:div = -0.0389466
+   3:multi = -0.0537658
+    4:plus = -33.2422
+     5:div = -33.3333
+      6:multi = 0.06
+       7:tree_var = 0.2
+       7:tree_var = 0.3
+      6:minus = -0.5
+       7:tree_var = 0.2
+       7:tree_var = 0.3
+     5:tree_double = 0.0911537
+    4:div = 0.0016174
+     5:minus = -36.4563
+      6:plus = 0.291717
+       7:tree_double = 0.0917172
+       7:tree_var = 0.2
+      6:div = 36.1646
+       7:tree_double = 0.0921712
+       7:tree_var = 0.3
+     5:minus = -16.9594
+      6:plus = 0.292719
+       7:tree_double = 0.092719
+       7:tree_var = 0.2
+      6:div = 16.6667
+       7:tree_var = 0.2
+       7:tree_var = 0.3
+   3:plus = 477.555
+    4:div = 477.317
+     5:multi = 0.0177303
+      6:plus = 0.188052
+       7:tree_double = 0.0939399
+       7:tree_double = 0.0941121
+      6:tree_double = 0.0942843
+     5:multi = 0.118161
+      6:plus = 0.4
+       7:tree_var = 0.2
+       7:tree_var = 0.2
+      6:plus = 0.295403
+       7:tree_var = 0.2
+       7:tree_double = 0.0954034
+    4:minus = 0.237644
+     5:minus = -0.231942
+      6:plus = 0.191942
+       7:tree_double = 0.0958887
+       7:tree_double = 0.096053
+      6:multi = 0.04
+       7:tree_var = 0.2
+       7:tree_var = 0.2
+     5:minus = -0.00570256
+      6:tree_var = 0.2
+      6:minus = -0.194297
+       7:tree_double = 0.0970626
+       7:tree_double = 0.0972348
+Tree has 94 terminal(s).
+Tree has 93 non-terminal(s).
+Term mutation on 10 terminal
+0:1
+ 1:2
+  2:3
+   3:4
+    4:5
+     5:6
+      6:7
+       7:7
+       7:7
+      6:8
+       7:8
+       7:8
+     5:9
+      6:10!mutating!DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 6
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.113866
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.114414
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.114868
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.115525
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.115799
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.117646
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.117818
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.118123
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.118296
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.118953
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.119477
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.120033
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.120205
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.120487
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.120651
+DEBUG: tree.cpp: Gen child 1at depth 6
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.121966
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.122138
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.123336
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.123774
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.123946
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 6
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.124181
+DEBUG: tree.cpp: Gen child 1at depth 6
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 5
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.12487
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.125527
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.125911
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.126083
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.127092
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.127265
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.127539
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.127711
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.128556
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 5
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 4
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.129824
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.130066
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.130638
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.130927
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.131107
+DEBUG: tree.cpp: Gen child 1at depth 4
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 3
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.131608
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.13178
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == minus
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.132062
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.132234
+DEBUG: tree.cpp: Gen child 1at depth 3
+DEBUG: tree.cpp: Generating rand node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == plus
+DEBUG: tree.cpp: Gen child 0at depth 2
+DEBUG: tree.cpp: Generating rand node with type 2
+DEBUG: tree_node.cpp: Setting node type
+ Node type == multi
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 1 == 0.3
+DEBUG: tree.cpp: Gen child 1at depth 2
+DEBUG: tree.cpp: Generating rand node with type 3
+DEBUG: tree_node.cpp: Setting node type
+ Node type == div
+DEBUG: tree.cpp: Gen child 0at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 1
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_var
+ Node val from rand index 0 == 0.2
+DEBUG: tree.cpp: Gen child 1at depth 1
+DEBUG: tree.cpp: Generating rand term node with type 0
+DEBUG: tree_node.cpp: Setting node type
+ Node type == tree_double
+ Node val == 0.133299
+
+      6:11
+    4:12
+   3:13
+  2:14
+ 1:15
+After mutation:
+0:multi = 3610.36
+ 1:plus = 3.09908e+06
+  2:multi = 3.09908e+06
+   3:minus = 18930.3
+    4:multi = -18930.2
+     5:minus = -195.359
+      6:div = 195.087
+       7:tree_double = 0.0715095
+       7:tree_double = 0.0716817
+      6:plus = 0.272143
+       7:tree_var = 0.2
+       7:tree_double = 0.0721435
+     5:multi = 96.8997
+      6:plus = 18150.2
+       7:div = 19654.2
+        8:div = 0.000358716
+         9:multi = -12.2866
+          10:plus = 0.293952
+           11:div = 0.286747
+            12:div = 11.1111
+             13:tree_var = 0.3
+             13:tree_var = 0.3
+            12:plus = 0.313866
+             13:tree_var = 0.2
+             13:tree_double = 0.113866
+           11:multi = 0.00720503
+            12:multi = 0.0228827
+             13:tree_var = 0.2
+             13:tree_double = 0.114414
+            12:plus = 0.314868
+             13:tree_var = 0.2
+             13:tree_double = 0.114868
+          10:plus = -41.7979
+           11:multi = -0.131222
+            12:minus = -0.415525
+             13:tree_var = 0.3
+             13:tree_double = 0.115525
+            12:plus = 0.315799
+             13:tree_double = 0.115799
+             13:tree_var = 0.2
+           11:div = -41.6667
+            12:multi = 0.04
+             13:tree_var = 0.2
+             13:tree_var = 0.2
+            12:minus = -0.6
+             13:tree_var = 0.3
+             13:tree_var = 0.3

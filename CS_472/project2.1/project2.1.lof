@@ -1,0 +1,7 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces An expression tree (one per individual)}}{4}
+\contentsline {figure}{\numberline {2}{\ignorespaces Fitness function}}{5}
+\contentsline {figure}{\numberline {3}{\ignorespaces Evaluation function}}{6}
+\contentsline {figure}{\numberline {4}{\ignorespaces Random tree generator}}{6}
+\contentsline {figure}{\numberline {5}{\ignorespaces The non-terminal mutation function (see Figure 4\hbox {} for rand\_tree\_generator() ) }}{7}
+\contentsline {figure}{\numberline {6}{\ignorespaces The expression tested against, $ x^3 + 5y^3 - 4xy + 7 $}}{23}
+\contentsline {figure}{\numberline {7}{\ignorespaces Results from a random tree's expression}}{24}

@@ -10,28 +10,64 @@ bool test_nodes()
 	//create nodes
 	darray *dp = new darray(200, true);
 	tree_node *tp;
-	tp = new tree_node(tree_node::plus, 0);
+	tp = new tree_node(tree_node::plus, 0.0, NULL);
 	delete tp;
-	tp = new tree_node(tree_node::minus, 0);
+	tp = new tree_node(tree_node::minus, 0.0, NULL);
 	delete tp;
-	tp = new tree_node(tree_node::multi, 0);
+	tp = new tree_node(tree_node::multi, 0.0, NULL);
 	delete tp;
-	tp = new tree_node(tree_node::div, 0);
+	tp = new tree_node(tree_node::div, 0.0, NULL);
 	delete tp;
-	tp = new tree_node(tree_node::tree_double, 1, 2.001);
+	tp = new tree_node(tree_node::tree_double, 2.001, NULL);
 	delete tp;
-	tp = new tree_node(tree_node::tree_var, 1, dp);
+	tp = new tree_node(tree_node::tree_var, 0.0, &dp);
 	delete tp;
-
 	delete dp;
+
+	//copy test
+	cout << "Tree node copy test\n";
+	cout << " Plus:\n";
+	darray *dp1 = new darray(10, true);
+	tree_node *tnp1;
+	tree_node *tnp2;
+	tnp1 = new tree_node(tree_node::plus, 0.0, NULL);
+	tnp1->copy(&tnp2);
+	tnp1->print_members();
+	delete tnp1;
+	tnp2->print_members();
+	delete tnp2;
+	delete dp1;
+
+	cout << " Tree var:\n";
+	dp1 = new darray(2, false);
+	dp1->a[0] = 5;
+	dp1->a[1] = 7;
+	cout << "TS45: " << dp1 << endl;
+	tnp1 = new tree_node(tree_node::tree_var, 0.0, &dp1);
+	tnp1->copy(&tnp2);
+	tnp1->print_members();
+	delete tnp1;
+	tnp2->print_members();
+	dp1->a[0] = 9;
+	dp1->a[1] = 9;
+	tnp2->print_members();
+
+	delete dp1;
 }
 
 
 bool test_darray()
 {
-	darray *dp = new darray(200, true);
-	dp->print_vals();
-	delete dp;
+	darray *dp1 = new darray(5, true);
+	darray *dp2;
+	dp1->copy(&dp2);
+
+	cout << "test_darray: dp1: \n";
+	dp1->print_vals();
+	delete dp1;
+	cout << "test_darray: dp2: \n";
+	dp2->print_vals();
+	delete dp2;
 }
 
 
@@ -116,7 +152,7 @@ bool test_trees()
 }
 
 
-bool tree_crossover_test()
+bool test_tree_copy()
 {
 	//Crossover test
 	darray *dp1 = new darray(2, false);
@@ -126,11 +162,62 @@ bool tree_crossover_test()
 	dp2->a[0] = 5;
 	dp2->a[1] = 7;
 	tree *tp1 = new tree(5, dp1);
-	tree *tp2 = new tree(5, dp2);
-	
-	
+	tree *tp2 = NULL;
+
+	tp1->copy(&tp2);
+	cout << "Tree copy test\n";
+	cout << " Tree 1:\n";
+	//tp1->print(0);
+	cout << " " << tp1->eval() << endl;
 	delete tp1;
+	cout << " Tree 2:\n";
+	//tp2->print(0);
+	cout << " " << tp2->eval() << endl;
+	
 	delete tp2;
 	delete dp1;
 	delete dp2;
+}
+
+
+bool test_tree_replace()
+{
+	darray *dp1 = new darray(2, false);
+	dp1->a[0] = 0.2;
+	dp1->a[1] = 0.3;
+	
+	tree *tp1 = new tree(5, dp1);
+	tree *tp2 = new tree(5, dp1);
+
+	cout << "Tree replace test\n";
+	cout << "Tree 2:\n";
+	tp2->print(0);
+
+	cout << "Tree 1 before replace:\n";
+	tp1->print(0);
+	SUM_TEMP = 0;
+	tree_replace_nth_nonterm(&tp1, &tp2, 4);	
+	delete tp2;
+	cout << "Tree 1 after replace:\n";
+	tp1->print(0);
+	
+
+	delete tp1;
+}
+
+bool test_tree_crossover()
+{
+	darray *dp1 = new darray(2, false);
+	dp1->a[0] = 0.2;
+	dp1->a[1] = 0.3;
+	
+	tree *tp1 = new tree(5, dp1);
+	tree *tp2 = new tree(5, dp1);
+
+	cout << "Tree crossover test:\n";
+	tree_crossover(&tp1, &tp2);
+	cout << "Tree 1 after crossover:\n";
+	tp1->print(0);
+	cout << "Tree 2 after crossover:\n";
+	tp2->print(0);
 }

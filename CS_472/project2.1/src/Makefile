@@ -1,8 +1,9 @@
 PROC=eval
 CPP=g++
-CPPFLAGS=-g -pg -Wno-write-strings
+#CPPFLAGS=-g -pg -Wno-write-strings
 #CPPFLAGS=-g -pg -Wno-write-strings -DDEBUG=1
-OBJS=tree_node.o tree.o main.o test.o
+CPPFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE=1
+OBJS=tree_gp.o darray.o tree_node.o tree.o main.o test.o
 
 all: $(OBJS)
 	$(CPP) $(CPPFLAGS) $(OBJS) -o $(PROC)
@@ -18,6 +19,12 @@ tree.o:	tree.cpp tree.h
 
 test.o: test.cpp test.h
 	$(CPP) $(CPPFLAGS) test.cpp -c
+
+darray.o: darray.cpp darray.h
+	$(CPP) $(CPPFLAGS) darray.cpp -c 
+
+tree_gp.o: tree_gp.cpp tree_gp.h
+	$(CPP) $(CPPFLAGS) tree_gp.cpp -c
 
 clean:
 	rm $(PROC) *.o gmon.out

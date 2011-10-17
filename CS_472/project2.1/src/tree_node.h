@@ -2,7 +2,8 @@
 #define _TREE_NODE_H
 
 #include <iostream>
-#include <stdarg.h>
+
+#include "darray.h"
 
 using namespace std; //for string
 
@@ -32,15 +33,24 @@ public:
 private:
 	node_type ntype; //type of node (see node_type)
 	double dval; //for tree_double types only
-	double *ddp; //darray-double-pointer
+	int dpi;     //index the ddp points to in dp
+	darray *dp; //darray pointer
+	double *ddp; //double pointer to rand element in this->dp
 
 public:
 
-	tree_node(tree_node::node_type val, int n_args, ...);
+	tree_node(tree_node::node_type, double, darray**);
+	bool copy(tree_node**);
 	double get_dval();
 	double get_ddp_val();
 	tree_node::node_type get_ntype();
+
+	bool set_ddp(int);
+
 	bool print_ntype();
+	bool print_dval();
+	bool print_ddp();
+	bool print_members();
 };
 
 #endif

@@ -9,9 +9,15 @@
 
 using namespace std;
 
-tree_node::tree_node(tree_node::node_type val, int n_args, ...)
+tree_node::tree_node(tree_node::node_type val, double dval, darray **dp)
 {
 	DEBUGMSG("DEBUG: tree_node.cpp: Setting node type");
+	
+	//init members to default vals
+	this->dval = 0;
+	this->dp = NULL;
+	this->ddp = NULL;
+
 	switch (val)
 	{
 		case tree_node::plus:
@@ -42,12 +48,7 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 		{
 			this->ntype = val;
 			//get the float val
-			// start vargs
-			register int i;
-        		va_list ap;
-			va_start(ap, n_args);
-			this->dval = va_arg(ap, double);
-			va_end(ap);
+			this->dval = dval;
 			DEBUGMSG(" Node type == tree_double");
 			DEBUGMSG(" Node val == " << this->dval);
 			break;
@@ -58,22 +59,22 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 	
 			this->ntype = val;
 			//get the float val
-			// start vargs
-			register int i;
-        		va_list ap;
-			va_start(ap, n_args);
 			//get darray pointer from va_args
-			darray *dp = va_arg(ap, darray*);
-			va_end(ap);
+			//TODO: pass dp by reference instead
 
 			/* initialize random seed: */
 			srand ( clock() );
 
+			//set dp to point to reference of passed in dp
+			this->dp = (*dp);
+
+			//set dpi
 			/* generate secret number: */
 			// select random element in dp
-			int j = rand() % dp->get_size();
+			this->dpi = rand() % this->dp->get_size();
+
 			//set ddp to point to a random element of dp->a
-			this->ddp = &dp->a[j];
+			this->ddp = &this->dp->a[this->dpi];
 			DEBUGMSG(" Node val from rand index " << j << "== " << *this->ddp);
 			break;
 		}
@@ -84,6 +85,31 @@ tree_node::tree_node(tree_node::node_type val, int n_args, ...)
 	}		
 }
 
+
+bool tree_node::copy(tree_node** to)
+{
+	switch (this->ntype)
+	{
+		case tree_node::tree_double:
+		{
+			(*to) = new tree_node(this->ntype, this->dval, NULL);
+			return(true);
+		}
+		case tree_node::tree_var:
+		{
+			//TODO: not sure how stable this is exactly
+			(*to) = new tree_node(this->ntype, 0.0, &this->dp);
+			//TODO: set ddp to dp index
+			(*to)->set_ddp(this->dpi);
+			return(true);
+		}
+		default:
+		{
+			(*to) = new tree_node(this->ntype, 0.0, NULL);
+			return(true);
+		}
+	}
+}
 
 double tree_node::get_dval()
 {
@@ -115,6 +141,20 @@ tree_node::node_type tree_node::get_ntype()
 	}
 
 	return(this->ntype);
+}
+
+
+bool tree_node::set_ddp(int i)
+{
+	if(i >= this->dp->get_size())
+	{
+		return(false);
+	}
+
+	this->dpi = i;
+	this->ddp = &this->dp->a[i];
+
+	return(true);
 }
 
 
@@ -160,4 +200,36 @@ bool tree_node::print_ntype()
 			}
 		} //end switch
 	}
+}
+
+
+bool tree_node::print_dval()
+{
+	cout << this->dval;
+	return(true);
+}
+
+
+bool tree_node::print_ddp()
+{
+	if(this->ddp == NULL)
+	{
+		cout << "  : ";
+	}
+	else
+	{
+		cout << *this->ddp << " : ";
+	}
+
+	return(true);
+}
+
+bool tree_node::print_members()
+{
+	this->print_ntype();
+	cout << " : ";
+	this->print_dval();
+	cout << " : ";
+	this->print_ddp();
+	cout << "\n";
 }

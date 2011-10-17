@@ -49,6 +49,7 @@ This is the structure I am trying to represent
 tree::tree(int depth, darray *dp)
 {
 	this->dp = dp;
+	this->depth = depth;
 	
 	//init null children
 	this->nchildren = 0;
@@ -96,6 +97,34 @@ tree::~tree()
 	delete this->tnp;
 }
 
+
+bool tree::copy(tree** to)
+{
+	//DEBUG_TREE_MSG("DEBUG: tree.cpp:");
+
+	//init the 'to' tree with 'this's depth
+	//(*to) = new tree(this->depth, this->dp);
+	(*to) = (tree*)malloc(sizeof(class tree));
+	(*to)->depth = this->depth;
+	
+
+	//copy tnp
+	this->tnp->copy(&(*to)->tnp);
+
+	//copy dp
+	this->dp->copy(&(*to)->dp);
+
+	//copy nchildren
+	(*to)->nchildren = this->nchildren;
+	
+	//copy children
+	for(int i = 0; i < this->nchildren; i++)
+	{
+		this->children[i]->copy(&(*to)->children[i]);
+	}
+	return(false);
+}
+
 tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 {
 	/* initialize random seed: */
@@ -109,22 +138,22 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 	{
 		case 0:
 		{
-			this->tnp = new tree_node(tree_node::plus, 0);
+			this->tnp = new tree_node(tree_node::plus, 0.0, NULL);
 			break;
 		}	
 		case 1:
 		{
-			this->tnp = new tree_node(tree_node::minus, 0);
+			this->tnp = new tree_node(tree_node::minus, 0.0, NULL);
 			break;
 		}
 		case 2:
 		{
-			this->tnp = new tree_node(tree_node::multi, 0);
+			this->tnp = new tree_node(tree_node::multi, 0.0, NULL);
 			break;
 		}
 		case 3:
 		{
-			this->tnp = new tree_node(tree_node::div, 0);
+			this->tnp = new tree_node(tree_node::div, 0.0, NULL);
 			break;
 		}
 		default:
@@ -153,12 +182,12 @@ tree_node *tree::gen_rand_term_tree_node(darray *dp)
 			/* generate random double: */
 			double d = ((double)rand()/(double)RAND_MAX);	
 
-			this->tnp = new tree_node(tree_node::tree_double, 1, d);
+			this->tnp = new tree_node(tree_node::tree_double, d, NULL);
 			break;
 		}
 		case 1:
 		{
-			this->tnp = new tree_node(tree_node::tree_var, 1, dp);
+			this->tnp = new tree_node(tree_node::tree_var, 0.0, &dp);
 			break;
 		}
 		default:
@@ -300,6 +329,27 @@ int tree::count_nonterms()
 }
 
 
+bool tree::crossover(tree **tp1, tree **tp2)
+{
+	if( (*tp1) == NULL || (*tp2) == NULL)
+	{
+		return(false);
+	}
+
+	int SUM_TEMP = 0;
+
+	//Pick a random value of all nonterminals
+	/* initialize random seed: */
+	srand ( clock() );
+	/* generate secret number: */
+	int rand_val = rand() % (*tp1)->count_nonterms(); //0-n values
+	DEBUG_TREE_MSG("DEBUG: tree.cpp: picking " << rand_val 
+			<< " nonterminal to "<< "crossover");
+
+	//tree_crossover_nth_nonterm(tp1, tp2, rand_val);
+}
+
+
 bool tree::print(int depth)
 {
 	if(this == NULL)
@@ -333,75 +383,6 @@ bool tree::print_tnp_ntype()
 		return(false);
 	}
 	return(this->tnp->print_ntype());
-}
-
-///////////////////////////////////////////////////////////////////////////
-//DArray
-///////////////////////////////////////////////////////////////////////////
-
-darray::darray(int size, bool rand_gen)
-{
-	this->size = size;
-
-	//init with nulls
-	for(int i = 0; i < MAX_BUF; i++)
-	{
-		this->a[i] = NULL;
-	}
-
-	if(rand_gen == true)
-	{
-		//re-init with rand vals
-		for(int i = 0; i < this->size; i++)
-		{
-			/* initialize random seed: */
-			srand ( clock() );
-	
-			/* generate secret number: */
-			this->a[i] = ((double)rand()/(double)RAND_MAX);	
-		}
-	}
-	//else, need to set manually, ie darray->a[0..n] = 1,2,...
-}
-
-
-int darray::get_size()
-{
-	return(this->size);
-}
-
-
-double darray::get_val(int i)
-{
-	if(i >= this->size)
-	{
-		return(NULL);
-	}
-
-	return(this->a[i]);
-}
-
-
-
-bool darray::print_vals()
-{
-	for(int i = 0; i < this->size; i++)
-	{
-		cout << this->a[i];
-		//I dunno, 5 vals per line sounds good
-		if( (i % 5) == 0 && i != 0) 
-		{
-			cout << endl;
-		}
-		else //a delim
-		{
-			cout << " : ";
-		}
-	}
-
-	cout << endl;
-
-	return(true); 
 }
 
 
@@ -458,3 +439,74 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
 	return(true);
 }
 
+
+bool tree_replace_nth_nonterm(tree **tp, tree **with, int n)
+{
+	if((*tp) == NULL)
+	{
+		return(false);
+	}
+
+	if((*tp)->is_nonterm())
+	{
+		SUM_TEMP++;
+
+		if(n == SUM_TEMP)
+		{
+			//copy
+			delete (*tp);
+			(*with)->copy(&(*tp));
+			return(true);
+		}
+		else
+		{
+			for(int i = 0; i < (*tp)->nchildren; i++)
+			{
+				bool status = \
+				 tree_replace_nth_nonterm(
+							&(*tp)->children[i],
+							&(*with), 
+							n
+							);
+				if(status == true) {return(true);}
+			}
+		}
+	}
+
+	return(false);
+}
+
+
+bool tree_crossover(tree **tp1, tree **tp2)
+{
+	//make temp; tp1 original to crossover with tp2
+	tree *tp1_temp;
+	(*tp1)->copy(&tp1_temp);
+
+
+	//crossover - tp1
+	//int rand_val;
+	// create random nonterm index
+	/* initialize random seed: */
+	srand ( clock() );
+	/* generate secret number: */
+	int rand_val = rand() % (*tp1)->count_nonterms(); //0-n values
+	// replace
+	DEBUG_TREE_MSG(	"tree.cpp: tree 1 crossover on " << rand_val);
+	#ifdef DEBUG_TREE 
+	cout << " out of " << (*tp1)->count_nonterms() << endl;
+	#endif
+	tree_replace_nth_nonterm(&(*tp1), &(*tp2), rand_val);
+
+	//crossover - tp2
+	// create random nonterm index
+	/* generate secret number: */
+	rand_val = rand() % (*tp2)->count_nonterms(); //0-n values
+	DEBUG_TREE_MSG(	"tree.cpp: tree 2 crossover on " << rand_val);
+	#ifdef DEBUG_TREE 
+	cout << " out of " << (*tp2)->count_nonterms() << endl;
+	#endif
+	// replace 
+	tree_replace_nth_nonterm(&(*tp2), &tp1_temp, rand_val);
+
+}

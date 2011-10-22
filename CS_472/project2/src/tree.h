@@ -32,11 +32,11 @@ public:
 	tree *children[MAX_CHILDREN];
 
 	//methods
-	tree(int, darray*);
+	tree(int, darray**);
 	~tree();
 	bool copy(tree**);
-	tree_node *gen_rand_nonterm_tree_node(darray*);//[non]terminal vals
-	tree_node *gen_rand_term_tree_node(darray*); //terminal vals
+	tree_node *gen_rand_nonterm_tree_node(darray**);//[non]terminal vals
+	tree_node *gen_rand_term_tree_node(darray**); //terminal vals
 
 	double eval();
 	double fitness(double);
@@ -55,7 +55,7 @@ public:
 };
 
 //External tree stuff
-bool mutate_nth_nonterm(tree**,int, int, int, darray*);
+bool mutate_nth_nonterm(tree**,int, int, int, darray**);
 bool tree_replace_nth_nonterm(tree**,tree**, int);
 bool tree_crossover(tree**,tree**);
 

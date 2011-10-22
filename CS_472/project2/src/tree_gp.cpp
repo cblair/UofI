@@ -19,7 +19,7 @@ tree_gp::tree_gp(int size, int tree_depth, darray **dp)
 
 	for(int i = 0; i < this->size; i++)
 	{
-		this->a[i] = new tree(tree_depth, (*dp));
+		this->a[i] = new tree(tree_depth, &(*dp));
 	}
 }
 
@@ -111,7 +111,7 @@ bool tree_gp::ss(double dexpected)
 	// 0-n values
 	rand_val = rand() % this->a[min1]->count_nonterms(); 
 	mutate_nth_nonterm(&this->a[min1], rand_val, 0, 5, 
-				this->a[min1]->dp);
+				&(this->a[min1]->dp));
 }
 
 
@@ -138,7 +138,7 @@ bool tree_gp::gen(double dexpected)
 		tree *mutant_child = NULL;
 		this->a[min1]->copy(&mutant_child);
 		mutate_nth_nonterm(&mutant_child, rand_val, 0, 5, 
-				mutant_child->dp);
+				&(mutant_child->dp));
 		/*//simple replacement that works ok
 		delete this->a[i];
 		this->a[i] = new tree(5, mutant_child->dp);

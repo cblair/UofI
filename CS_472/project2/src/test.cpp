@@ -81,7 +81,7 @@ bool test_trees()
 	//test making lots of trees
 	for(int i = 0; i < 500; i++)
 	{
-		tp = new tree(5, dp);
+		tp = new tree(5, &dp);
 		delete tp;
 	}
 	delete dp;
@@ -92,7 +92,7 @@ bool test_trees()
 	dp = new darray(2, false);
 	dp->a[0] = 0.2;
 	dp->a[1] = 0.3;
-	tp = new tree(5, dp);
+	tp = new tree(5, &dp);
 	tp->print(0);
 	cout << "Tree has " << tp->count_terms() << " terminal(s).\n";
 	cout << "Tree has " << tp->count_nonterms() << " non-terminal(s).\n";
@@ -107,7 +107,7 @@ bool test_trees()
 	dp = new darray(2, false);
 	dp->a[0] = 0.2;
 	dp->a[1] = 0.3;
-	tp = new tree(16, dp);
+	tp = new tree(16, &dp);
   	etime = (clock () / CLOCKS_PER_SEC) * precision;
 	ttime = (etime - stime) / precision;
 	cout << ttime << " second(s)\n";
@@ -116,14 +116,14 @@ bool test_trees()
 	delete tp;
 
 	//Mutate test
-	tp = new tree(5, dp);
+	tp = new tree(5, &dp);
 	dp = new darray(2, false);
 	dp->a[0] = 0.2;
 	dp->a[1] = 0.3;
 	int n = 10;
 	cout << "Term mutation on " << n << " terminal\n";
 	SUM_TEMP = 0;
-	mutate_nth_nonterm(&tp, n, 0, 5, dp);
+	mutate_nth_nonterm(&tp, n, 0, 5, &dp);
 	cout << "After mutation:\n";
 	tp->print(0);
 
@@ -161,7 +161,7 @@ bool test_tree_copy()
 	dp1->a[1] = 0.3;
 	dp2->a[0] = 5;
 	dp2->a[1] = 7;
-	tree *tp1 = new tree(5, dp1);
+	tree *tp1 = new tree(5, &dp1);
 	tree *tp2 = NULL;
 
 	tp1->copy(&tp2);
@@ -186,8 +186,8 @@ bool test_tree_replace()
 	dp1->a[0] = 0.2;
 	dp1->a[1] = 0.3;
 	
-	tree *tp1 = new tree(5, dp1);
-	tree *tp2 = new tree(5, dp1);
+	tree *tp1 = new tree(5, &dp1);
+	tree *tp2 = new tree(5, &dp1);
 
 	cout << "Tree replace test\n";
 	cout << "Tree 2:\n";
@@ -212,8 +212,8 @@ bool test_tree_get_subtree()
 	dp1->a[0] = 0.2;
 	dp1->a[1] = 0.3;
 	
-	tree *tp1 = new tree(5, dp1);
-	tree *tp2 = new tree(5, dp1);
+	tree *tp1 = new tree(5, &dp1);
+	tree *tp2 = new tree(5, &dp1);
 
 	SUM_TEMP = 0;
 	tree *tp3 = tp1->get_nth_nonterm_subtree(7);
@@ -224,7 +224,7 @@ bool test_tree_get_subtree()
 
 	cout << "Replacing subtree with:\n";
 	delete tp3;
-	tp3 = new tree(5, dp1);
+	tp3 = new tree(5, &dp1);
 	tp3->print(0);
 	cout << "Original tree now:\n";
 	tp1->print(0);
@@ -237,8 +237,8 @@ bool test_tree_crossover()
 	dp1->a[0] = 0.2;
 	dp1->a[1] = 0.3;
 	
-	tree *tp1 = new tree(5, dp1);
-	tree *tp2 = new tree(5, dp1);
+	tree *tp1 = new tree(5, &dp1);
+	tree *tp2 = new tree(5, &dp1);
 
 	cout << "Tree crossover test:\n";
 	cout << "Tree 1 before crossover:\n";

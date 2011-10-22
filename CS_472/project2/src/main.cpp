@@ -37,8 +37,8 @@ int main()
 	bool bored = false;
 	while(!bored)
 	{
-		tgp1->ss(dexpected);
-		//tgp1->gen(dexpected);
+		//tgp1->ss(dexpected);
+		tgp1->gen(dexpected);
 		double lowest_fitness = tgp1->get_lowest_fitness(dexpected);
 		int mini = tgp1->get_lowest_fitness_index(dexpected);
 		cout 	<< i << ": min fit = " 
@@ -56,7 +56,7 @@ int main()
 		 <<  "Its eval value is " << tgp1->get_eval(mini2) << endl;
 		#endif
 
-		if(lowest_fitness <= 0.001 || i > 2)
+		if(lowest_fitness <= 0.001 || i > 100)
 		{
 			bored = true;
 		}

@@ -46,9 +46,9 @@ This is the structure I am trying to represent
 //Tree
 ///////////////////////////////////////////////////////////////////////////
 
-tree::tree(int depth, darray *dp)
+tree::tree(int depth, darray **dp)
 {
-	this->dp = dp;
+	this->dp = (*dp);
 	this->depth = depth;
 	
 	//init null children
@@ -104,7 +104,7 @@ bool tree::copy(tree** to)
 
 	//init the 'to' tree with 'this's depth
 	//(*to) = new tree(this->depth, this->dp);
-	delete (*to);
+	//delete (*to);
 	(*to) = (tree*)malloc(sizeof(class tree));
 	(*to)->depth = this->depth;
 	
@@ -126,7 +126,7 @@ bool tree::copy(tree** to)
 	return(false);
 }
 
-tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
+tree_node *tree::gen_rand_nonterm_tree_node(darray **dp)
 {
 	/* initialize random seed: */
 	srand ( clock() );
@@ -164,7 +164,7 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray *dp)
 }
 
 
-tree_node *tree::gen_rand_term_tree_node(darray *dp)
+tree_node *tree::gen_rand_term_tree_node(darray **dp)
 {
 	/* initialize random seed: */
 	srand ( clock() );
@@ -188,7 +188,7 @@ tree_node *tree::gen_rand_term_tree_node(darray *dp)
 		}
 		case 1:
 		{
-			this->tnp = new tree_node(tree_node::tree_var, 0.0, &dp);
+			this->tnp = new tree_node(tree_node::tree_var, 0.0, &(*dp));
 			break;
 		}
 		default:
@@ -438,7 +438,7 @@ bool tree_crossover(tree **tp1, tree **tp2)
 }
 
 
-bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
+bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 {
 	if( (*tp) == NULL)
 	{
@@ -467,7 +467,7 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray *dp)
 		do
 		{
 			delete (*tp);
-			(*tp) = new tree(new_depth, dp);
+			(*tp) = new tree(new_depth, &(*dp));
 		} while ((*tp)->is_nonterm() != true);
 
 		#ifdef DEBUG_TREE

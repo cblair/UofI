@@ -47,15 +47,6 @@ int main()
 			<< ", avg fitness is " 
 			<< tgp1->get_avg_fitness(dexpected) << endl;
 
-		#ifdef DEBUG
-		tgp1->print_fitnesses(dexpected);
-		cout << "Min fitness is " << mini << " element. "
-		 <<  "Its eval value is " << tgp1->get_eval(mini) << endl;
-		int mini2 = tgp1->get_second_lowest_fitness_index(dexpected);
-		cout << "Second min fitness is " << mini2 << " element. "
-		 <<  "Its eval value is " << tgp1->get_eval(mini2) << endl;
-		#endif
-
 		if(lowest_fitness <= 0.001 || i > 100)
 		{
 			bored = true;

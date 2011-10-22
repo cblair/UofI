@@ -121,6 +121,7 @@ bool tree::copy(tree** to)
 	//copy children
 	for(int i = 0; i < this->nchildren; i++)
 	{
+		(*to)->children[i] = NULL;
 		this->children[i]->copy(&(*to)->children[i]);
 	}
 	return(false);
@@ -415,7 +416,7 @@ bool tree_crossover(tree **tp1, tree **tp2)
 	/* generate secret number: */
 	rand_val = rand() % (*tp1)->count_nonterms(); //0-n values
 	tree *tp1_sub = (*tp1)->get_nth_nonterm_subtree(rand_val);
-	tree *tp1_sub_orig; //the original subtree for tp2 crossover
+	tree *tp1_sub_orig = NULL; //the original subtree for tp2 crossover
 	tp1_sub->copy(&tp1_sub_orig);
 
 	//get tp2 subtree
@@ -426,12 +427,14 @@ bool tree_crossover(tree **tp1, tree **tp2)
 	tree *tp2_sub = (*tp2)->get_nth_nonterm_subtree(rand_val);
 
 	//Replace tp1 rand subtree with rand tp2 subtree
-	delete tp1_sub; tp1_sub = NULL;
+	delete tp1_sub; 
+	tp1_sub = NULL;
 	//TODO: this is where tree_gp->gen() seg faults, ?
 	tp2_sub->copy(&tp1_sub);
 
 	//Replace tp2 rand subtree with original rand tp1 subtree
 	delete tp2_sub;
+	tp2_sub = NULL;
 	tp1_sub_orig->copy(&tp2_sub);
 
 	return(true);
@@ -512,6 +515,7 @@ bool tree_replace_nth_nonterm(tree **tp, tree **with, int n)
 		{
 			//copy
 			delete (*tp);
+			(*tp) = NULL;
 			(*with)->copy(&(*tp));
 			return(true);
 		}

@@ -425,7 +425,8 @@ bool tree_crossover(tree **tp1, tree **tp2)
 	tree *tp2_sub = (*tp2)->get_nth_nonterm_subtree(rand_val);
 
 	//Replace tp1 rand subtree with rand tp2 subtree
-	delete tp1_sub;
+	delete tp1_sub; tp1_sub = NULL;
+	//TODO: this is where tree_gp->gen() seg faults, ?
 	tp2_sub->copy(&tp1_sub);
 
 	//Replace tp2 rand subtree with original rand tp1 subtree

@@ -63,7 +63,9 @@ int main()
 		i++;
 	}
 
-	cout << "Lowest fitness tree:\n";
+	int mini = tgp1->get_lowest_fitness_index(dexpected);
+	cout << "Lowest individual: eval = " << tgp1->get_eval(mini)
+		<< ", tree:\n";
 	tgp1->print_lowest_fitness_tree(dexpected);
 
 	//cleanup

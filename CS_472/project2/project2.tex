@@ -1,0 +1,218 @@
+%\documentclass[12pt,twocolumn]{article}
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{graphicx}
+\title{CS 472 Fall 2011 \\
+     Project 2.2}
+\author{Colby Blair}
+\date{Due October 17th, 2011}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In computer science, one area of study is that of optimizing functions. There are many methods for optimization, and this repor will talk about Genetic Programming (GP). Genetic Programming creates mathematical expression trees, and modifies them to make educated guesses. They are useful for finding the function defintions for curves on a graph. 
+
+This report presents a GP with mathematical non-terminal symbols '+', '-', '*', and '/', and terminal values as contants and variables. Although very simple, this report setups a proof of concept GP for later reports. It talks about the crossover and selection functions, as well as the population representation. It also shows two trees before and after crossover, a sample tree over different values, and finally, the code used.
+\end{abstract}
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\listoffigures
+
+\pagebreak
+
+\part{Representation Description}
+GPs are used to try to approximate a mathamatical expression \textbf{tree} (Section \ref{sec:trees}) that describes a function on a graph. In order to improve the approximation, a random set of expression trees are generated. This set is called the \textbf{population} (Section \ref{sec:population}). When trees are evaluated, they are measured by computing what each mathamatical expression's result is. The fitness is then the error rate, or $ value expected - value computed $. A \textbf{minimum fitness} in this report is, then, the best fitness in the population, and the max is the worst. Inverse to one's first inclination, but an abstract representation nonetheless.
+
+\section{Trees}
+\label{sec:trees}
+\begin{figure}[!h]
+        \begin{center}
+		\scriptsize
+		\begin{lstlisting}
+	+---------------+
+	|tree		|
+	|tree_node *tnp=|------------------------------ +---------------+
+	|...		|				|tree_node	|
+	|int nchildren= |				|enum node_type	|
+	| 2 (nonterminal)|				|double dval	|
+	|tree *children[]|------			|double variable*|
+	+---------------+	|			+---------------+
+				|
+				... (many more non-terminals)
+		----------------|
+		|		|
+		|	+---------------+
+		|	|tree		|
+		|	|tree_node *tnp=|-------------- +---------------+
+		|	|...		|		|tree_node	|
+		|	|int nchildren= |		|enum node_type	|
+		|	| 0 (terminal)	|		|double dval	|
+		|	|tree *children[]|--NULL	|double variable*|
+		|	+---------------+		+---------------+
+	+---------------+
+	|tree		|
+	|tree_node *tnp=|------------------------------ +---------------+
+	|...		|				|tree_node	|
+	|int nchildren= |				|enum node_type	|
+	| 0 (terminal)	|				|double dval	|
+	|tree *children[]|-------NULL			|double variable*|
+	+---------------+				+---------------+
+		\end{lstlisting}
+		\normalsize
+               \caption{An expression tree (one per individual)}
+                \label{tree_rep}
+        \end{center}
+\end{figure}
+
+A tree is simply class, that has pointers to child trees. Since our operators ('+', '-', '*', and '/') only take a left hand and right hand expressions, each tree only needs at most 2 children. But more or less can be inserted for future operators, on a per-operator basis. Since a tree simply points to other subtrees, the term \textbf{tree} in this report can mean either the whole tree or a subtree.
+
+Our operators are called \textbf{non-terminals}, since they rely on the results of child subtrees to compute their results. Our \textbf{terminals} then are either constants or pointers to elements in a variable array (double, or decimal, values). Both are initialized randomly from their respective sets.
+
+Each tree class instance points to a tree\_node class. This class holds the enumerable type of the tree class; either 'plus', 'minus', 'multi', or 'div' for non-terminal trees (operators), or 'tree\_double' or 'tree\_variable' for terminal trees.
+
+The terminal trees will be, in future projects, mutated using point mutation, but for now are left alone. The non-terminal trees are mutated by simple regenerating a random tree in place, and selected at random. Trees of type tree\_var are, again, pointers to a variable array. This tree's value is initialized to point to a random element in the variable list. Since they are pointers, modifying variable values takes immediate affect throughout the tree. The variables in the variable array can be modified, and the tree evaluation and fitness functions (re)ran. 
+
+\section{Population}
+\label{sec:population}
+In order to optimize lots of trees to reach an approximate solution, a \textbf{population} (or set) is kept. Our population is just a list (or array) of trees. 
+
+\begin{figure}[!h]
+        \begin{center}
+		\begin{tabular}{r l}
+	                $ P = i_1, i_2, ... i_j $	& \\
+								& where \\
+								& $ i_n $ is a tree\\
+								& $ j = 500 $ \\
+		\end{tabular} 
+               \caption{The representation of the population}
+                \label{population}
+        \end{center}
+\end{figure}
+
+
+\part{Functions and Generators}
+\section{Crossover Function}
+\begin{figure}[!h]
+        \begin{center}
+		\begin{lstlisting}
+for original tree1:
+	select random nonterminal
+	replace it with random nonterminal in original tree2
+for original tree2:
+	select random nonterminal
+	replace it with random nonterminal in original tree1
+		\end{lstlisting}
+               \caption{Crossover function (see Section \ref{sec:tree.cpp})}
+                \label{fit_func}
+        \end{center}
+\end{figure}
+
+The crossover function needs some pressure still on minimizing tree depth. Currently, they grow quite quickly, with less benefit to fitness than they probably should have. Crossover will probably be better too by producing a child, instead of crossing over the parents with themselves. This effectively creates two new children who are probably worse, and the parents are gone from the population.
+
+\section{Select Function}
+\begin{figure}[!h]
+        \begin{center}
+		\begin{lstlisting}
+repeat until bored:
+	pick the lowest (best) fitness
+	pick the second lowest (second best) fitness
+	use crossover to change both trees
+		\end{lstlisting}
+               \caption{Selection function (see Section \ref{sec:tree-gp.cpp})}
+                \label{selection}
+        \end{center}
+\end{figure}
+
+This selection function is very simple, and not effective. It should find local minimums in fitness (best local fitnesses) faster, but will blow away individuals with possible global minimum fitnesses (best overall) quicker. Instead, a small sample of the population should be selected, and the minimum take from them. This will be a simple improvement in future version of this report, and will look like this:
+\begin{figure}[!h]
+        \begin{center}
+		\begin{tabular}{r l}
+			$ selection(P) = $		&	$ i_1, i_2, ... i_k$ \\
+								& \\
+								&	where \\
+								&	$ P $ is the entire population \\
+								&	$ i_k $ is a random individual \\
+								&	$ k $ is the sample size, specified at run time \\
+		\end{tabular} 
+               \caption{The future selection function}
+                \label{selection_future}
+        \end{center}
+\end{figure}
+
+Note that a higher $ k $ value will find local minimum fitnesses (best fitnesses) faster, while a lower $ k $ will leave more variance in the population, because the minimum (best) fitnesses are less likely to reproduce. 
+
+\section{Output}
+\label{sec:output}
+
+\subsection{Crossover Function}
+\lstinputlisting{crossover.out}
+
+\subsection{Selection Function}
+The selection function didn't preform very well yet, due to some needed improvement in crossover. The source can be seen in the \textbf{tree\_gp::ss()} function in Section \ref{sec:tree-gp.cpp}. Its output looks as follows:
+\begin{lstlisting}
+Min fitness is 331 element. Its eval value is 7.54065
+Second min fitness is 356 element. Its eval value is 7.68431
+...
+Min fitness is 430 element. Its eval value is 6.72136
+Second min fitness is 97 element. Its eval value is 6.27473
+...
+Min fitness is 269 element. Its eval value is 6.28595
+Second min fitness is 475 element. Its eval value is 7.53898
+\end{lstlisting}
+
+
+\pagebreak
+
+\section{Code}
+\footnotesize
+\subsection{Makefile}
+\lstinputlisting{src/Makefile}
+
+\subsection{main.h}
+\lstinputlisting{src/main.h}
+
+\subsection{main.cpp}
+\lstinputlisting{src/main.cpp}
+
+\subsection{tree\_node.h}
+\lstinputlisting{src/tree_node.h}
+
+\subsection{tree\_node.cpp}
+\lstinputlisting{src/tree_node.cpp}
+
+\subsection{tree.h}
+\lstinputlisting{src/tree.h}
+
+\subsection{tree.cpp}
+\label{sec:tree.cpp}
+\lstinputlisting{src/tree.cpp}
+
+\subsection{darray.h}
+\lstinputlisting{src/darray.h}
+
+\subsection{darray.cpp}
+\lstinputlisting{src/darray.cpp}
+
+\subsection{tree\_gp.h}
+\lstinputlisting{src/tree_gp.h}
+
+\subsection{tree\_gp.cpp}
+\label{sec:tree-gp.cpp}
+\lstinputlisting{src/tree_gp.cpp}
+
+\subsection{test.h}
+\lstinputlisting{src/test.h}
+
+\subsection{test.cpp}
+\lstinputlisting{src/test.cpp}
+
+
+\end{document}

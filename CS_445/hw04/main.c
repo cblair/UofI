@@ -51,8 +51,10 @@ int main(int argc, char *argv[])
 		*/
 		yyparse();
 
+		#ifdef DEBUG_TREE
 		//print our results
 		treeprint(YY_TREE,0);
+		#endif
 		DEBUGMSG("DEBUG: done with file '%s'\n", YY_FNAME);
 	}
 

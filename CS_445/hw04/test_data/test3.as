@@ -8,11 +8,12 @@ package com.its
 		public static const NAME:String	= "abstractAdorner";
 		public var aspectName:String;
 
-		public function test()
+		var i = 0;
+		
+		public function test_func()
 		{
-			var i = 0
-
-			i = 1;
+			var j = 1;
+			i = j;
 		}
 	}
 }

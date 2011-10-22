@@ -12,8 +12,9 @@ CC=gcc
 PARSER=AS3
 LEX=flex
 YACC=bison
+#CFLAGS=-g -pg -Wno-write-strings
 #CFLAGS=-g -pg -Wno-write-strings -DYYDEBUG=1
-CFLAGS=-g -pg -Wno-write-strings
+CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
 OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o
 
 all: $(OBJS)

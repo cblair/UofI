@@ -888,8 +888,8 @@ expressionList (240)
 assignmentExpression (241)
     on left: 223 224, on right: 67 78 208 210 211 221 222 223 241 334
 assignmentOperator (242)
-    on left: 225 226 227 228 229 230 231 232 233 234 235 236 237 238
-   , on right: 223
+    on left: 225 226 227 228 229 230 231 232 233 234 235 236 237 238,
+    on right: 223
 conditionalExpression (243)
     on left: 239 240, on right: 223 224
 conditionalSubExpression (244)

@@ -104,6 +104,7 @@ bool tree::copy(tree** to)
 
 	//init the 'to' tree with 'this's depth
 	//(*to) = new tree(this->depth, this->dp);
+	delete (*to);
 	(*to) = (tree*)malloc(sizeof(class tree));
 	(*to)->depth = this->depth;
 	

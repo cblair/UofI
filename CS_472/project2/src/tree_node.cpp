@@ -88,6 +88,12 @@ tree_node::tree_node(tree_node::node_type val, double dval, darray **dp)
 
 bool tree_node::copy(tree_node** to)
 {
+	if(this == NULL)
+	{
+		(*to) = NULL;
+		return(NULL);
+	}
+
 	switch (this->ntype)
 	{
 		case tree_node::tree_double:

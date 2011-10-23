@@ -139,6 +139,7 @@ bool tree_gp::gen(double dexpected)
 		this->a[min1]->copy(&mutant_child);
 		mutate_nth_nonterm(&mutant_child, rand_val, 0, 5, 
 				&(mutant_child->dp));
+
 		//simple replacement that works ok
 		/*
 		delete this->a[i];
@@ -153,7 +154,6 @@ bool tree_gp::gen(double dexpected)
 		delete mutant_child;
 	}
 
-	cout << "TS155\n";	
 	return(true);
 }
 

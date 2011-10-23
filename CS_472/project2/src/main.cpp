@@ -37,17 +37,27 @@ int main()
 	bool bored = false;
 	while(!bored)
 	{
+		//timing stuff
+		clock_t stime, etime, ttime;
+		int precision = 1000;
+	  	stime = (clock () / CLOCKS_PER_SEC) * precision;
+
 		//tgp1->ss(dexpected);
 		tgp1->gen(dexpected);
 		double lowest_fitness = tgp1->get_lowest_fitness(dexpected);
 		int mini = tgp1->get_lowest_fitness_index(dexpected);
+
+	  	etime = (clock () / CLOCKS_PER_SEC) * precision;
+		ttime = (etime - stime) / precision;
 		cout 	<< i << ": min fit = " 
 			<< lowest_fitness
 			<< ", min eval = " << tgp1->get_eval(mini) 
 			<< ", avg fitness is " 
-			<< tgp1->get_avg_fitness(dexpected) << endl;
+			<< tgp1->get_avg_fitness(dexpected) 
+			<< ", time = " << ttime
+			<< endl;
 
-		if(lowest_fitness <= 0.001 || i > 100)
+		if(lowest_fitness <= 0.001 || i > 1000)
 		{
 			bored = true;
 		}

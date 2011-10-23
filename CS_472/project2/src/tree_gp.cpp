@@ -140,17 +140,17 @@ bool tree_gp::gen(double dexpected)
 		mutate_nth_nonterm(&mutant_child, rand_val, 0, 5, 
 				&(mutant_child->dp));
 		//simple replacement that works ok
+		/*
 		delete this->a[i];
 		this->a[i] = new tree(5, &(mutant_child->dp));
 		delete mutant_child;
+		*/
 		
-		/*
 		//replace individual of the population
 		delete this->a[i]; 
 		this->a[i] = NULL;
 		mutant_child->copy(&(this->a[i]));
 		delete mutant_child;
-		*/
 	}
 
 	cout << "TS155\n";	

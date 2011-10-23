@@ -70,19 +70,19 @@ tree::tree(int depth, darray **dp)
 	bool rand_term = (rand_val == 0);
 	if(depth <= 0 ) //|| rand_term == true)
 	{
-		this->gen_rand_term_tree_node(dp);
+		this->gen_rand_term_tree_node(&(this->dp));
 		return;
 	}
 
 	//Nonterminal
-	this->gen_rand_nonterm_tree_node(dp);
+	this->gen_rand_nonterm_tree_node(&(this->dp));
 
 	//create the children
 	this->nchildren = MAX_CHILDREN;
 	for(int i = 0; i < MAX_CHILDREN; i++)
 	{
 		DEBUG_TREE_MSG("DEBUG: tree.cpp: Gen child " << i  << "at depth " << depth);	
-		this->children[i] = new tree(depth - 1, dp);
+		this->children[i] = new tree(depth - 1, &(this->dp));
 	}
 }
 
@@ -92,14 +92,21 @@ tree::~tree()
 	for(int i = 0; i < this->nchildren; i++)
 	{
 		delete this->children[i];
+		this->children[i] = NULL;
 	}
 	
 	delete this->tnp;
+	this->tnp = NULL;
 }
 
 
 bool tree::copy(tree** to)
 {
+	if(this == NULL)
+	{
+		(*to) = NULL;
+		return(false);
+	}
 	//DEBUG_TREE_MSG("DEBUG: tree.cpp:");
 
 	//init the 'to' tree with 'this's depth
@@ -113,7 +120,8 @@ bool tree::copy(tree** to)
 	this->tnp->copy(&(*to)->tnp);
 
 	//copy dp
-	this->dp->copy(&(*to)->dp);
+	//this->dp->copy(&(*to)->dp);
+	(*to)->dp = this->dp;
 
 	//copy nchildren
 	(*to)->nchildren = this->nchildren;

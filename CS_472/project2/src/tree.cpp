@@ -9,6 +9,8 @@
 
 int SUM_TEMP;
 
+#define MAX_DEPTH 15
+
 /*
 This is the structure I am trying to represent
 
@@ -48,8 +50,21 @@ This is the structure I am trying to represent
 
 tree::tree(int depth, darray **dp)
 {
+	//set depth
+	if(depth > MAX_DEPTH)
+	{
+		cerr << "WARNING: tree create depth of " << depth 
+		<< " attempted, setting instead to MAX_DEPTH = "
+		<< MAX_DEPTH << endl;
+		this->depth = MAX_DEPTH;
+	}
+	else
+	{
+		this->depth = depth;
+	}
+
+	//set dp
 	this->dp = (*dp);
-	this->depth = depth;
 	
 	//init null children
 	this->nchildren = 0;
@@ -143,7 +158,7 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray **dp)
 	/* generate secret number: */
 	int type = rand() % NTYPES;	
 
-	DEBUG_TREE_MSG("DEBUG: tree.cpp: Generating rand node with type " << type);
+	//DEBUG_TREE_MSG("DEBUG: tree.cpp: Generating rand node with type " << type);
 	switch (type)
 	{
 		case 0:
@@ -371,7 +386,7 @@ tree *tree::get_nth_nonterm_subtree(int n)
 		SUM_TEMP++;
 		if(SUM_TEMP >= n)
 		{
-			DEBUG_TREE_MSG("returning " << n " subtree node\n");
+			//DEBUG_TREE_MSG("returning " << n << " subtree node\n");
 			return(this);
 		}
 		//do stuff here
@@ -487,15 +502,18 @@ bool mutate(tree **tp)
 	//subtree mutation	
 	if(rand_val == 1)
 	{
+		DEBUG_TREE_MSG("nonterm mutation");
 		//get random n value
 		int rand_n = rand() % (*tp)->count_nonterms(); 
 		//get random new depth value
-		int rand_depth = rand() % (*tp)->depth; 
+		int rand_depth = (rand() % (*tp)->depth) + 1;
+		//cout << "nonterm mutation: " << rand_depth << "\n";
 		mutate_nth_nonterm(&(*tp), rand_n, 0, rand_depth, 
 					&((*tp)->dp));
 	}
 	else
 	{
+		DEBUG_TREE_MSG("term mutation");
 		//get random n value
 		int rand_n = rand() % (*tp)->count_terms(); 
 		mutate_nth_term(&(*tp), rand_n, 0, &((*tp)->dp));
@@ -520,8 +538,6 @@ bool mutate_nth_term(tree **tp, int n, int depth, darray **dp)
 	(*tp)->print_tnp_ntype();
 	cout << " = " << SUM_TEMP;
 	#endif
-
-	cout << "TS505: " << n << ":" << SUM_TEMP << endl;
 
 	if(n >= SUM_TEMP && (*tp)->is_term())
 	{

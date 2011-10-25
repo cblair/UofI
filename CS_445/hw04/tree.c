@@ -4,7 +4,7 @@
 ////Assignment:   Homework 3
 ////Author:       Colby Blair
 ////File name:    tree.c
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -67,7 +67,7 @@ int tree_init()
 	YY_TREE = NULL;
 
 	//init the global symbol table
-	initSymTab(tree_print_error);
+	SymTab_init(tree_print_error);
 }
 
 
@@ -75,7 +75,7 @@ int tree_del()
 {
 	//TODO: actually delete tree
 
-	freeSymTab();
+	SymTab_free();
 }
 
 
@@ -195,6 +195,37 @@ int tree_gen_tac(struct tree *t, int depth)
 }
 
 
+void tree_get_subtree(char *prodrule, struct tree *from, struct tree **retval)
+{
+	if(from == NULL)
+	{
+		(*retval) = NULL;
+		return;
+	}
+	
+	//match
+	if(strcmp(prodrule, from->prodrule) == 0)
+	{
+		(*retval) = from;
+		return;
+	}
+
+	int i;
+	for(i = 0; i < from->nkids; i++)
+	{
+		tree_get_subtree(prodrule, from, &(*retval));
+		if((*retval) != NULL)
+		{
+			return;
+		}
+	}
+
+	//didn't find anything down this path
+	(*retval) = NULL;
+	return;
+}
+
+
 int tree_update_sym_tab(struct tree *t)
 {
 	//terminals
@@ -207,21 +238,27 @@ int tree_update_sym_tab(struct tree *t)
 		
 		{
 			//symbol table scope
-			enter(t->prodrule);
+			SymTab_enter_scope(t->prodrule);
 
 			#ifdef DEBUG_SYMTAB
-			printf("Entering scope. New symtab:\n");
-			print(); //current symbol table
+			printf("Entering scope '%s'. New symtab:\n", 
+								t->prodrule);
+			SymTab_print(); //current symbol table
 			#endif
 		}
 		//leave a scope
 		else if(t->leaf->cat == RCURLY)
 		{
-			leave(); //the current scope in SymTab
+			#ifdef DEBUG_SYMTAB
+			printf("Leaving scope. ");
+			printf(" Old symtab:\n");
+			SymTab_print(); //current symbol table
+			#endif
+			SymTab_leave_scope(); //the current scope in SymTab
 
 			#ifdef DEBUG_SYMTAB
-			printf("Leaving scope. New symtab:\n");
-			print(); //current symbol table
+			printf(" New symtab:\n");
+			SymTab_print(); //current symbol table
 			#endif
 		}
 	}
@@ -231,10 +268,16 @@ int tree_update_sym_tab(struct tree *t)
 		//insert new variable definition in
 		if(strcmp(t->prodrule, "variableDeclarator") == 0)
 		{
+			//TODO: need to use more generic getter
 			struct tree_token *symbol = t->kids[0]->kids[0]->leaf;
-	
+			//get optional type
+			struct tree *type_subtree;
+			tree_get_subtree("optionalTypeExpression", t,
+						&type_subtree);
+			printf("TS277: %s\n", type_subtree->prodrule);
+
 			//if variable already exists, fail
-			bool status = insert(symbol->text, table_);
+			bool status = SymTab_insert(symbol->text, table_);
 			if(status == false)
 			{
 			 fprintf(stderr, 

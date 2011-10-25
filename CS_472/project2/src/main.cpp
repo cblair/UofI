@@ -45,7 +45,7 @@ int main()
 		//tgp1->ss(dexpected);
 		tgp1->gen(dexpected);
 		double lowest_fitness = tgp1->get_lowest_fitness(dexpected);
-		int mini = tgp1->get_lowest_fitness_index(dexpected);
+		int mini = tgp1->select_lowest_fitness_index(dexpected);
 
 	  	etime = (clock () / CLOCKS_PER_SEC) * precision;
 		ttime = (etime - stime) / precision;
@@ -64,7 +64,7 @@ int main()
 		i++;
 	}
 
-	int mini = tgp1->get_lowest_fitness_index(dexpected);
+	int mini = tgp1->select_lowest_fitness_index(dexpected);
 	cout << "Lowest individual: eval = " << tgp1->get_eval(mini)
 		<< ", tree:\n";
 	tgp1->print_lowest_fitness_tree(dexpected);

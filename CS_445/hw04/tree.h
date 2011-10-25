@@ -34,6 +34,10 @@ int treeprint(struct tree *, int);
 struct tree *tree_create_node(char *, int n_args, ...);
 struct tree *tree_create_node_from_token(int, char*, int, char*);
 int tree_gen_tac(struct tree *, int);
+
+//getters of subtree members
+void tree_get_subtree(char *, struct tree*, struct tree**);
+
 //internal only
 //int tree_update_sym_tab(struct tree *);
 

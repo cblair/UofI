@@ -36,7 +36,7 @@ static void xPrint(void *p)
 
 
 // constructor
-void initSymTab(void (* elemPrint)(void *))
+void SymTab_init(void (* elemPrint)(void *))
 {
     int i;
 
@@ -47,25 +47,25 @@ void initSymTab(void (* elemPrint)(void *))
     elemPrint_ = elemPrint;
     scopeDepth_ = 0;
     debug_ = 0x0;
-    enter("globals");
+    SymTab_enter_scope("globals");
 };
 
 
 // destructor
-void freeSymTab()
+void SymTab_free()
 {
     maxTable_ = 0;
     free(table_);
 };
 
 // set the debug flags defined in symtab.h
-void debug(int newDebugValue)
+void SymTab_debug(int newDebugValue)
 {
     debug_ = newDebugValue;
 }
 
 // push the sym and ptr on the stack
-static void push(char *sym, int scopeDepth, void *ptr)
+static void SymTab_push(char *sym, int scopeDepth, void *ptr)
 {
     // if you run out of memory then add some
     if (top_>=table_+maxTable_) {
@@ -96,7 +96,7 @@ static void push(char *sym, int scopeDepth, void *ptr)
 // prints the symbol table with each element printed using
 // the print routine supplied in the constuctor.  New line is supplied
 // by this print routine.
-void print()
+void SymTab_print()
 {
     SymTabEntry *p;
 
@@ -120,7 +120,7 @@ void print()
 
 
 // inserts an element into the symbol table
-bool insert(char *sym, void *ptr)
+bool SymTab_insert(char *sym, void *ptr)
 {
     SymTabEntry *p;
 
@@ -135,7 +135,7 @@ bool insert(char *sym, void *ptr)
 	fflush(stdout);
     }
 
-    push(sym, scopeDepth_, ptr);
+    SymTab_push(sym, scopeDepth_, ptr);
     return true;
 };
 
@@ -143,7 +143,7 @@ bool insert(char *sym, void *ptr)
 // lookup the name in the SymTabEntry
 // returning the pointer to the thing stored with the symbol
 // or NULL if it could not be found
-void *lookup(char *sym)
+void *SymTab_lookup(char *sym)
 {
     SymTabEntry *p;
 
@@ -182,22 +182,22 @@ SymTabEntry *lookupSymTabEntry(char *sym)
 
 
 // create a new scope on the stack
-void enter(char *funcname)
+void SymTab_enter_scope(char *funcname)
 {
     scopeName_ = funcname;
     if (debug_ & DEBUG_TABLE) printf("SymTab: Entering scope %s\n", scopeName_);
     scopeDepth_++;
-    push("", 0, NULL);
+    SymTab_push("", 0, NULL);
 };
 
 
 // leave a scope 
-bool leave()
+bool SymTab_leave_scope()
 {
     SymTabEntry *newTop;
 
     if (debug_ & DEBUG_TABLE) {
-	print();
+	SymTab_print();
 	printf("SymTab: Leaving scope %s ", scopeName_);
 	fflush(stdout);
     }
@@ -221,13 +221,13 @@ bool leave()
 
 // the depth of the scope stack with the first real scope (probably
 // globals) numbered 1
-int depth()
+int SymTab_depth()
 {
     return scopeDepth_;
 }
 
 // number of real entries in the whole table
-int numEntries()
+int SymTab_numEntries()
 {
     return (top_-table_)-scopeDepth_;
 }

@@ -16,6 +16,8 @@ tree_gp::tree_gp(int size, int tree_depth, darray **dp)
 	}
 
 	this->size = size;
+	//default percent of selected indiv for tournament selection
+	this->k = 10; 
 
 	for(int i = 0; i < this->size; i++)
 	{
@@ -33,7 +35,8 @@ tree_gp::~tree_gp()
 }
 
 
-int tree_gp::get_lowest_fitness_index(double dexpected)
+//Selection
+int tree_gp::select_lowest_fitness_index(double dexpected)
 {
 	int min = 0;
 	for(int i = 1; i < this->size; i++)
@@ -49,10 +52,10 @@ int tree_gp::get_lowest_fitness_index(double dexpected)
 }
 
 
-int tree_gp::get_second_lowest_fitness_index(double dexpected)
+int tree_gp::select_second_lowest_fitness_index(double dexpected)
 {
 	int min2 = 0;
-	int min = this->get_lowest_fitness_index(dexpected);
+	int min = this->select_lowest_fitness_index(dexpected);
 
 	for(int i = 1; i < this->size; i++)
 	{
@@ -68,14 +71,52 @@ int tree_gp::get_second_lowest_fitness_index(double dexpected)
 }
 
 
+void tree_gp::select_lowest_tournament_fitness_indices(double dexpected, 
+							int *min1, int *min2)
+{
+	(*min1) = 0;
+	(*min2) = 1;
+
+	int rand_val;
+	/* initialize random seed: */
+	srand ( clock() );
+	
+	int subset = this->size / this->k;	
+
+	for(int i = 1; i < subset; i++) 
+	{
+		int j = rand() % this->size;
+		if(this->a[j]->fitness(dexpected) < \
+			this->a[(*min1)]->fitness(dexpected))
+		{
+			(*min1) = j;
+		}
+	}
+
+	for(int i = 1; i < subset; i++)
+	{
+		int j = rand() % this->size;
+		if(this->a[j]->fitness(dexpected) < \
+			this->a[(*min2)]->fitness(dexpected)
+			&& j != (*min1))
+		{
+			(*min2) = i;
+		}
+	}
+
+	return;
+}
+
+
 double tree_gp::get_lowest_fitness(double dexpected)
 {
 	if(this == NULL)
 	{
-		return(-1.0);
+		cerr << "ERROR: tree_gp individual is NULL\n";
+		exit(1);
 	}
 
-	return(this->a[this->get_lowest_fitness_index(dexpected)]->fitness(dexpected));
+	return(this->a[this->select_lowest_fitness_index(dexpected)]->fitness(dexpected));
 }
 
 
@@ -97,8 +138,8 @@ double tree_gp::get_avg_fitness(double dexpected)
 bool tree_gp::ss(double dexpected)
 {
 	//Selection
-	int min1 = this->get_lowest_fitness_index(dexpected);
-	int min2 = this->get_second_lowest_fitness_index(dexpected);
+	int min1 = this->select_lowest_fitness_index(dexpected);
+	int min2 = this->select_second_lowest_fitness_index(dexpected);
 
 	//Crossover
 	tree_crossover(&(this->a[min1]), &(this->a[min2]));
@@ -119,8 +160,12 @@ bool tree_gp::ss(double dexpected)
 bool tree_gp::gen(double dexpected)
 {
 	//Selection
-	int min1 = this->get_lowest_fitness_index(dexpected);
-	int min2 = this->get_second_lowest_fitness_index(dexpected);
+	//int min1 = this->select_lowest_fitness_index(dexpected);
+	//int min2 = this->select_second_lowest_fitness_index(dexpected);
+	int min1;
+	int min2;
+	this->select_lowest_tournament_fitness_indices(dexpected, &min1, &min2);
+
 
 	//Crossover
 	tree_crossover(&(this->a[min1]), &(this->a[min2]));
@@ -137,8 +182,12 @@ bool tree_gp::gen(double dexpected)
 
 		tree *mutant_child = NULL;
 		this->a[min1]->copy(&mutant_child);
+		/*
+		SUM_TEMP = 0;
 		mutate_nth_nonterm(&mutant_child, rand_val, 0, 5, 
 				&(mutant_child->dp));
+		*/
+		mutate(&mutant_child);
 
 		//simple replacement that works ok
 		/*
@@ -183,7 +232,7 @@ bool tree_gp::print_lowest_fitness_tree(double dexpected)
 		return(false);
 	}
 
-	int min = this->get_lowest_fitness_index(dexpected);
+	int min = this->select_lowest_fitness_index(dexpected);
 	this->a[min]->print(0);
 	return(true);
 }

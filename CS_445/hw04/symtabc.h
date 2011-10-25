@@ -10,10 +10,13 @@
 #define DEBUG_LOOKUP 0x4
 #define DEBUG_ALL 0xffffffff
 
+
 typedef struct {
     char *name;
+    int type; 		//int from defines in .tab.h
     char *scope;
     int depth;
+    int aux_flag; 	//int from defines in .tab.h
     void *ptr;
 } SymTabEntry;
     
@@ -39,18 +42,18 @@ typedef struct {
 //
 
 	
-void initSymTab(void (* elemPrint)(void *));  // the constructor creates and sets the print routine
-void freeSymTab();                           // destructor
-void debug(int newDebugValue);       // sets the debug flags
-void print();                        // prints the entire stack
-bool insert(char *sym, void *ptr);   // inserts a new ptr associated with symbol sym 
+void SymTab_init(void (* elemPrint)(void *));  // the constructor creates and sets the print routine
+void SymTab_free();                           // destructor
+void SymTab_debug(int newDebugValue);       // sets the debug flags
+void SymTab_print();                        // prints the entire stack
+bool SymTab_insert(char *sym, void *ptr);   // inserts a new ptr associated with symbol sym 
                                      // returns false if already defined
-void *lookup(char *sym);             // returns the ptr associated with sym
+void *SymTab_lookup(char *sym);             // returns the ptr associated with sym
                                      // returns NULL if symbol not found
 SymTabEntry *lookupSymTabEntry(char *sym);  // returns pointer to SymTabEntry associated with sym
                                              // returns NULL if symbol not found
 // scope functions
-void enter(char *funcname);          // enter a function named funcname
-bool leave();                        // leave that function
-int numEntries();                    // number of entries (more for debugging)
-int depth();                         // depth of scopes on stack (useful in later assignment)
+void SymTab_enter(char *funcname);          // enter a function named funcname
+bool SymTab_leave();                        // leave that function
+int SymTab_numEntries();                    // number of entries (more for debugging)
+int SymTab_depth();                         // depth of scopes on stack (useful in later assignment)

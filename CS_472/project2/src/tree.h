@@ -55,7 +55,9 @@ public:
 };
 
 //External tree stuff
+bool mutate(tree**);
 bool mutate_nth_nonterm(tree**,int, int, int, darray**);
+bool mutate_nth_term(tree**,int, int, darray**);
 bool tree_replace_nth_nonterm(tree**,tree**, int);
 bool tree_crossover(tree**,tree**);
 

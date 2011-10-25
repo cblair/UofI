@@ -14,12 +14,16 @@ private:
 	tree *a[MAX_TREE_BUF]; //an array of tree pointers
 
 public:
+	int k; //percentage of selected indiv for tournament selection
+	
 	tree_gp(int, int, darray**);
 	~tree_gp();
 
-	int get_lowest_fitness_index(double);
-	int get_second_lowest_fitness_index(double);
-	
+	//Selection
+	int select_lowest_fitness_index(double);
+	int select_second_lowest_fitness_index(double);
+	void select_lowest_tournament_fitness_indices(double, int*, int*);
+
 	double get_lowest_fitness(double);
 	double get_avg_fitness(double);
 

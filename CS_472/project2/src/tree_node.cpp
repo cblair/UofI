@@ -63,7 +63,7 @@ tree_node::tree_node(tree_node::node_type val, double dval, darray **dp)
 			//TODO: pass dp by reference instead
 
 			/* initialize random seed: */
-			srand ( clock() );
+			//srand ( clock() );
 
 			//set dp to point to reference of passed in dp
 			this->dp = (*dp);

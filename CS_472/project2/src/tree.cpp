@@ -284,6 +284,11 @@ double tree::fitness(double dexpected)
 
 bool tree::is_term()
 {
+	if(this == NULL)
+	{
+		return(false);
+	}
+
 	if(this->nchildren <= 0)
 	{
 		return(true);
@@ -295,6 +300,11 @@ bool tree::is_term()
 
 bool tree::is_nonterm()
 {
+	if(this == NULL)
+	{
+		return(false);
+	}
+
 	if(this->nchildren <= 0)
 	{
 		return(false);
@@ -306,6 +316,11 @@ bool tree::is_nonterm()
 
 int tree::count_terms()
 {
+	if(this == NULL)
+	{
+		return(0);
+	}
+
 	if(this->is_term() == true)
 	{
 		return(1);
@@ -323,6 +338,11 @@ int tree::count_terms()
 
 int tree::count_nonterms()
 {
+	if(this == NULL)
+	{
+		return(0);
+	}
+
 	int sum = 0;
 
 	if(this->is_nonterm() == true)
@@ -449,6 +469,102 @@ bool tree_crossover(tree **tp1, tree **tp2)
 }
 
 
+bool mutate(tree **tp)
+{
+	//reset the temp counter
+	SUM_TEMP = 0;
+
+	int rand_val;
+
+	//every 1 in 10 times, do a subtree mutation. otherwise, do point 
+	// mutation
+	/* initialize random seed: */
+	srand ( clock() );
+	/* generate secret number: */
+	// 0-n values
+	rand_val = rand() % 10;
+
+	//subtree mutation	
+	if(rand_val == 1)
+	{
+		//get random n value
+		int rand_n = rand() % (*tp)->count_nonterms(); 
+		//get random new depth value
+		int rand_depth = rand() % (*tp)->depth; 
+		mutate_nth_nonterm(&(*tp), rand_n, 0, rand_depth, 
+					&((*tp)->dp));
+	}
+	else
+	{
+		//get random n value
+		int rand_n = rand() % (*tp)->count_terms(); 
+		mutate_nth_term(&(*tp), rand_n, 0, &((*tp)->dp));
+	}
+}
+
+
+bool mutate_nth_term(tree **tp, int n, int depth, darray **dp)
+{
+	if( (*tp) == NULL)
+	{
+		return(false);
+	}
+
+	if( (*tp)->is_term())
+	{
+		SUM_TEMP++;
+	}
+
+	#ifdef DEBUG_TREE
+	cout << string(depth, ' ') << depth << ":";
+	(*tp)->print_tnp_ntype();
+	cout << " = " << SUM_TEMP;
+	#endif
+
+	cout << "TS505: " << n << ":" << SUM_TEMP << endl;
+
+	if(n >= SUM_TEMP && (*tp)->is_term())
+	{
+		#ifdef DEBUG_TREE
+		cout << " !mutating!";
+		#endif
+
+		//set this tree node to a new rand tree until it is a 
+		// terminal. TODO: bad, have external gen
+		do
+		{
+			delete (*tp);
+			//should always get set to terminal with depth = 0
+			(*tp) = new tree(0, &(*dp)); 
+		} while ((*tp)->is_term() != true);
+
+		#ifdef DEBUG_TREE
+		cout << endl;
+		#endif
+
+		return(true);
+	}
+
+	#ifdef DEBUG_TREE
+	cout << endl;
+	#endif
+
+	//if we've already see the node to mutate
+	
+	if(n > SUM_TEMP)
+	{
+		return(true);
+	}
+	
+	for(int i = 0; i < (*tp)->nchildren; i++)
+	{
+		mutate_nth_term(&(*tp)->children[i], n, depth + 1, dp);
+	}
+	
+	return(true);
+}
+
+
 bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 {
 	if( (*tp) == NULL)
@@ -467,7 +583,7 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 	cout << " = " << SUM_TEMP;
 	#endif
 
-	if(n == SUM_TEMP && (*tp)->is_nonterm())
+	if(n >= SUM_TEMP && (*tp)->is_nonterm())
 	{
 		#ifdef DEBUG_TREE
 		cout << " !mutating!";
@@ -494,7 +610,7 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 
 	//if we've already see the node to mutate
 	
-	if(n < SUM_TEMP)
+	if(n > SUM_TEMP)
 	{
 		return(true);
 	}

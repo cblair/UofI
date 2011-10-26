@@ -58,7 +58,7 @@ int main()
 			<< ", time = " << ttime
 			<< endl;
 
-		if(lowest_fitness <= 0.001 || i > 1000)
+		if(lowest_fitness <= 0.0001 || i > 200)
 		{
 			bored = true;
 		}
@@ -69,6 +69,32 @@ int main()
 	cout << "Lowest individual: eval = " << tgp1->get_eval(mini)
 		<< ", tree:\n";
 	tgp1->print_lowest_fitness_tree(dexpected);
+	
+	//how did we do?
+	cout << "original func:\n";
+	cout << "x, y, z\n";
+	for(double x = -25.; x < 25.0; x += 5.0)
+	{
+		for(double y = -25.0; y < 25.0; y += 5.0)
+		{
+			//x^3 + 5y^3 - 4xy + 7
+			double z = (x * x * x) + ( 5 * y * y *y) - (4 * x * y) + 7;
+			cout << x << "," << y << "," << z << endl;
+		}
+	}
+
+	cout << "our func:\n";
+	cout << "x, y, z\n";
+	for(double x = -25.; x < 25.0; x += 5.0)
+	{
+		for(double y = -25.0; y < 25.0; y += 5.0)
+		{
+			dp1->a[0] = x;
+			dp1->a[1] = y;
+			cout << x << "," << y << "," << tgp1->get_eval(mini)
+				<< endl;
+		}
+	}
 
 	//cleanup
 	delete tgp1;

@@ -170,6 +170,9 @@ bool tree_gp::ss(double dexpected)
 //generational. 
 bool tree_gp::gen(double dexpected)
 {
+	for(int i =0; i < this->size; i++)	
+	{
+
 	//Selection
 	//int min1 = this->select_lowest_fitness_index(dexpected);
 	//int min2 = this->select_second_lowest_fitness_index(dexpected);
@@ -181,8 +184,6 @@ bool tree_gp::gen(double dexpected)
 	//Crossover
 	tree_crossover(&(this->a[min1]), &(this->a[min2]));
 
-	for(int i =0; i < this->size; i++)	
-	{
 		DEBUG_TREE_GP_MSG("gen: mutate [" << i << "]");
 
 		//Mutate

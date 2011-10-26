@@ -632,13 +632,6 @@ bool mutate_nth_term(tree **tp, int n, int depth, darray **dp)
 	cout << endl;
 	#endif
 
-	//if we've already see the node to mutate
-	
-	if(n > SUM_TEMP)
-	{
-		return(true);
-	}
-	
 	for(int i = 0; i < (*tp)->nchildren; i++)
 	{
 		mutate_nth_term(&(*tp)->children[i], n, depth + 1, dp);
@@ -687,7 +680,6 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 					<< "possible to do but abort.");
 				return(false);
 			}
-			cout << "Correct nonterm mutate\n";
 			delete (*tp);
 			(*tp) = new tree(safe_new_depth, &(*dp));
 		} while ((*tp)->is_nonterm() != true);

@@ -58,8 +58,7 @@ int main()
 			<< ", time = " << ttime
 			<< endl;
 
-		//if(lowest_fitness <= 0.001 || i > 1000)
-		if(i >= 1000)
+		if(lowest_fitness <= 0.001 || i > 1000)
 		{
 			bored = true;
 		}

@@ -37,10 +37,6 @@ int main()
 	bool bored = false;
 	while(!bored)
 	{
-		tgp1->print_depths();
-		tgp1->print_fitnesses(dexpected);
-		return(1);
-
 		//timing stuff
 		clock_t stime, etime, ttime;
 		int precision = 1000;
@@ -50,7 +46,7 @@ int main()
 		tgp1->gen(dexpected);
 	
 		//double lowest_fitness = tgp1->get_lowest_fitness(dexpected);
-		int mini = tgp1->select_lowest_fitness_index(dexpected);
+		//int mini = tgp1->select_lowest_fitness_index(dexpected);
 
 	  	etime = (clock () / CLOCKS_PER_SEC) * precision;
 		ttime = (etime - stime) / precision;

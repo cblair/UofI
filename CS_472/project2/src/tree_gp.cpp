@@ -41,11 +41,11 @@ int tree_gp::select_lowest_fitness_index(double dexpected)
 	int min = 0;
 	for(int i = 1; i < this->size; i++)
 	{
-		/*DEBUG_TREE_GP_MSG(
+		DEBUG_TREE_GP_MSG(
 			"select_lowest_fitness_index: [" << i << "] = "
 			<< this->a[i]->max_depth(0) << ":"
 			<< this->a[min]->max_depth(0)
-			);*/
+			);
 		if(this->a[i]->fitness(dexpected) < \
 			this->a[min]->fitness(dexpected))
 		{
@@ -90,8 +90,8 @@ void tree_gp::select_lowest_tournament_fitness_indices(double dexpected,
 
 	for(int i = 1; i < subset; i++) 
 	{
-		/*DEBUG_TREE_GP_MSG(
-			"select_lowest_tournament_fitness_indices: " << i);*/
+		DEBUG_TREE_GP_MSG(
+			"select_lowest_tournament_fitness_indices: " << i);
 
 		int j = rand() % this->size;
 		if(this->a[j]->fitness(dexpected) < \
@@ -103,8 +103,8 @@ void tree_gp::select_lowest_tournament_fitness_indices(double dexpected,
 
 	for(int i = 1; i < subset; i++)
 	{
-		/*DEBUG_TREE_GP_MSG(
-			"select_lowest_tournament_fitness_indices: " << i);*/
+		DEBUG_TREE_GP_MSG(
+			"select_lowest_tournament_fitness_indices: " << i);
 
 		int j = rand() % this->size;
 		if(this->a[j]->fitness(dexpected) < \
@@ -179,10 +179,13 @@ bool tree_gp::gen(double dexpected)
 
 
 	//Crossover
-	//tree_crossover(&(this->a[min1]), &(this->a[min2]));
+	tree_crossover(&(this->a[min1]), &(this->a[min2]));
+	return(false);
 
 	for(int i =0; i < this->size; i++)	
 	{
+		DEBUG_TREE_GP_MSG("gen: mutate [" << i << "]");
+
 		//Mutate
 		int rand_val;
 		/* initialize random seed: */

@@ -202,7 +202,7 @@ void tree_get_subtree(char *prodrule, struct tree *from, struct tree **retval)
 		(*retval) = NULL;
 		return;
 	}
-	
+
 	//match
 	if(strcmp(prodrule, from->prodrule) == 0)
 	{
@@ -213,7 +213,7 @@ void tree_get_subtree(char *prodrule, struct tree *from, struct tree **retval)
 	int i;
 	for(i = 0; i < from->nkids; i++)
 	{
-		tree_get_subtree(prodrule, from, &(*retval));
+		tree_get_subtree(prodrule, from->kids[i], &(*retval));
 		if((*retval) != NULL)
 		{
 			return;
@@ -223,6 +223,30 @@ void tree_get_subtree(char *prodrule, struct tree *from, struct tree **retval)
 	//didn't find anything down this path
 	(*retval) = NULL;
 	return;
+}
+
+
+char *tree_get_opt_type(struct tree* t)
+{
+	char *type = NULL;
+
+	//get larger type expression subtree
+	struct tree *exp_subtree = NULL;
+	tree_get_subtree("optionalTypeExpression", t, &exp_subtree);
+	
+	if(exp_subtree != NULL)
+	{
+		//get type subtree, which is usualy ident->Type
+		struct tree *type_subtree = NULL;
+		tree_get_subtree("ident", exp_subtree, &type_subtree);
+
+		if(type_subtree != NULL)
+		{
+			type = type_subtree->kids[0]->prodrule);
+		}
+	}
+
+	return(type);
 }
 
 
@@ -270,12 +294,10 @@ int tree_update_sym_tab(struct tree *t)
 		{
 			//TODO: need to use more generic getter
 			struct tree_token *symbol = t->kids[0]->kids[0]->leaf;
-			//get optional type
-			struct tree *type_subtree;
-			tree_get_subtree("optionalTypeExpression", t,
-						&type_subtree);
-			printf("TS277: %s\n", type_subtree->prodrule);
-
+			//Get optional type
+			char *type = tree_get_opt_type(&t);
+			printf("TS299: %s\n", type);
+		
 			//if variable already exists, fail
 			bool status = SymTab_insert(symbol->text, table_);
 			if(status == false)

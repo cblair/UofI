@@ -37,6 +37,7 @@ int tree_gen_tac(struct tree *, int);
 
 //getters of subtree members
 void tree_get_subtree(char *, struct tree*, struct tree**);
+char *tree_get_opt_type(struct tree*);
 
 //internal only
 //int tree_update_sym_tab(struct tree *);

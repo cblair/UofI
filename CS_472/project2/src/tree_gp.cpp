@@ -180,7 +180,6 @@ bool tree_gp::gen(double dexpected)
 
 	//Crossover
 	tree_crossover(&(this->a[min1]), &(this->a[min2]));
-	return(false);
 
 	for(int i =0; i < this->size; i++)	
 	{

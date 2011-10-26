@@ -45,18 +45,19 @@ int main()
 		//tgp1->ss(dexpected);
 		tgp1->gen(dexpected);
 	
-		//double lowest_fitness = tgp1->get_lowest_fitness(dexpected);
+		double lowest_fitness = tgp1->get_lowest_fitness(dexpected);
 		//int mini = tgp1->select_lowest_fitness_index(dexpected);
 
 	  	etime = (clock () / CLOCKS_PER_SEC) * precision;
 		ttime = (etime - stime) / precision;
 		cout 	<< i << ": min fit = " 
-			//<< lowest_fitness
+			<< lowest_fitness
 			//<< ", min eval = " << tgp1->get_eval(mini) 
 			//<< ", avg fitness is " 
 			//<< tgp1->get_avg_fitness(dexpected) 
 			<< ", time = " << ttime
 			<< endl;
+
 		//if(lowest_fitness <= 0.001 || i > 1000)
 		if(i >= 1000)
 		{

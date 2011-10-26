@@ -679,6 +679,15 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 			int safe_new_depth = \
 				tree_get_safe_new_depth(depth + \
 							new_depth);
+			if(safe_new_depth == 0)
+			{
+				DEBUG_TREE_MSG("WARNING: bailing from " 
+					<< "mutate_nth_nonterm, safe depth can "
+					<< "only be 0 for nonterm. Nothing "
+					<< "possible to do but abort.");
+				return(false);
+			}
+			cout << "Correct nonterm mutate\n";
 			delete (*tp);
 			(*tp) = new tree(safe_new_depth, &(*dp));
 		} while ((*tp)->is_nonterm() != true);

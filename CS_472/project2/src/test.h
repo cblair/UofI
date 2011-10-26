@@ -8,5 +8,6 @@ bool test_tree_copy();
 bool test_tree_replace();
 bool test_tree_get_subtree();
 bool test_tree_crossover();
+bool test_tree_max_depth();
 
 #endif

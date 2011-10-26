@@ -6,6 +6,12 @@
 
 #define MAX_TREE_BUF 500
 
+#ifdef DEBUG_TREE_GP
+#define DEBUG_TREE_GP_MSG(arg) (cout << arg << endl)
+#else
+#define DEBUG_TREE_GP_MSG(arg) ;
+#endif
+
 //collects other tree classes and instances for gp ops
 class tree_gp
 {
@@ -34,6 +40,7 @@ public:
 	bool gen(double); //generational
 
 	bool print_fitnesses(double);
+	bool print_depths();
 	bool print_lowest_fitness_tree(double);
 };
 

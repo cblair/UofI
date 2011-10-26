@@ -9,7 +9,7 @@
 
 int SUM_TEMP;
 
-#define MAX_DEPTH 15
+#define MAX_DEPTH 12
 
 /*
 This is the structure I am trying to represent
@@ -56,11 +56,11 @@ tree::tree(int depth, darray **dp)
 		cerr << "WARNING: tree create depth of " << depth 
 		<< " attempted, setting instead to MAX_DEPTH = "
 		<< MAX_DEPTH << endl;
-		this->depth = MAX_DEPTH;
+		//this->depth = MAX_DEPTH;
 	}
 	else
 	{
-		this->depth = depth;
+		//this->depth = depth;
 	}
 
 	//set dp
@@ -96,7 +96,7 @@ tree::tree(int depth, darray **dp)
 	this->nchildren = MAX_CHILDREN;
 	for(int i = 0; i < MAX_CHILDREN; i++)
 	{
-		DEBUG_TREE_MSG("DEBUG: tree.cpp: Gen child " << i  << "at depth " << depth);	
+		DEBUG_TREE_MSG("DEBUG: tree.cpp: Gen child " << i  << " at depth " << depth);	
 		this->children[i] = new tree(depth - 1, &(this->dp));
 	}
 }
@@ -128,7 +128,7 @@ bool tree::copy(tree** to)
 	//(*to) = new tree(this->depth, this->dp);
 	//delete (*to);
 	(*to) = (tree*)malloc(sizeof(class tree));
-	(*to)->depth = this->depth;
+	//(*to)->depth = this->depth;
 	
 
 	//copy tnp
@@ -158,7 +158,7 @@ tree_node *tree::gen_rand_nonterm_tree_node(darray **dp)
 	/* generate secret number: */
 	int type = rand() % NTYPES;	
 
-	//DEBUG_TREE_MSG("DEBUG: tree.cpp: Generating rand node with type " << type);
+	DEBUG_TREE_MSG("DEBUG: tree.cpp: Generating rand node with type " << type);
 	switch (type)
 	{
 		case 0:
@@ -222,8 +222,15 @@ tree_node *tree::gen_rand_term_tree_node(darray **dp)
 }
 
 
-double tree::eval()
+double tree::eval(int depth)
 {
+	if(depth > MAX_DEPTH)
+	{
+		cerr	<< "WARNING: bailing on tree::eval(), MAX_DEPTH "
+			<< " exceeded\n";
+		return(0.0);
+	}
+
 	switch(this->tnp->get_ntype())
 	{
 		//nonterminals
@@ -232,16 +239,16 @@ double tree::eval()
 			double sum = 0;
 			for(int i = 0; i < this->nchildren; i++)
 			{
-				sum += this->children[i]->eval();
+				sum += this->children[i]->eval(depth + 1);
 			}
 			return(sum);
 		}
 		case tree_node::minus:
 		{
-			double sum = this->children[0]->eval();
+			double sum = this->children[0]->eval(depth + 1);
 			for(int i = 1; i < this->nchildren; i++)
 			{
-				sum -= this->children[i]->eval();
+				sum -= this->children[i]->eval(depth + 1);
 			}
 			return(sum);
 		}
@@ -250,7 +257,7 @@ double tree::eval()
 			double prod = 1;
 			for(int i = 0; i < this->nchildren; i++)
 			{
-				prod *= this->children[i]->eval();
+				prod *= this->children[i]->eval(depth + 1);
 			}
 			return(prod);
 		}
@@ -260,13 +267,13 @@ double tree::eval()
 			for(int i = 0; i < this->nchildren; i++)
 			{
 				//divide by zero safety
-				if(this->children[i]->eval() == 0)
+				if(this->children[i]->eval(depth + 1) == 0)
 				{
 					quot = 0;
 				}
 				else
 				{
-					quot /= this->children[i]->eval();
+					quot /= this->children[i]->eval(depth + 1);
 				}
 			}
 			return(quot);
@@ -293,7 +300,7 @@ double tree::eval()
 //set / change values in dp, and then run
 double tree::fitness(double dexpected)
 {
-	return(abs(this->eval() - dexpected));
+	return(abs(this->eval(0) - dexpected));
 }
 
 
@@ -408,6 +415,35 @@ tree *tree::get_nth_nonterm_subtree(int n)
 }
 
 
+int tree::max_depth(int depth)
+{
+	if(this == NULL)
+	{
+		//false if I am a child that didn't get a value
+		return(SUM_TEMP);
+	}
+
+	//init SUM_TEMP
+	if(depth == 0)
+	{
+		SUM_TEMP = 0;
+	}
+
+	if(depth > SUM_TEMP)
+	{
+		SUM_TEMP = depth;
+	}
+
+	for(int i = 0; i < this->nchildren; i++)
+	{
+		this->children[i]->max_depth(depth + 1);
+	}
+	
+	return(SUM_TEMP);
+}
+
+
+
 bool tree::print(int depth)
 {
 	if(this == NULL)
@@ -418,7 +454,7 @@ bool tree::print(int depth)
 
 	cout << string(depth, ' ') << depth << ":";
 	this->tnp->print_ntype();
-	cout << " = " << this->eval();
+	cout << " = " << this->eval(0);
 	//more debugging stuff
 	//cout << ", term:nonterm == " << this->is_term() << ":" << this->is_nonterm();
 	//cout << " nterm:nnonterm == " << this->count_terms() << ":" << this->count_nonterms();
@@ -441,6 +477,19 @@ bool tree::print_tnp_ntype()
 		return(false);
 	}
 	return(this->tnp->print_ntype());
+}
+
+
+int tree_get_safe_new_depth(int new_depth)
+{
+	int safe_new_depth = new_depth;
+	if(new_depth > MAX_DEPTH)
+	{
+		DEBUG_TREE_MSG("restricted to depth " << safe_new_depth);
+		safe_new_depth = MAX_DEPTH;
+	}
+
+	return(safe_new_depth);
 }
 
 
@@ -470,15 +519,33 @@ bool tree_crossover(tree **tp1, tree **tp2)
 	tree *tp2_sub = (*tp2)->get_nth_nonterm_subtree(rand_val);
 
 	//Replace tp1 rand subtree with rand tp2 subtree
-	delete tp1_sub; 
-	tp1_sub = NULL;
-	//TODO: this is where tree_gp->gen() seg faults, ?
-	tp2_sub->copy(&tp1_sub);
+	/*TODO: need max depth
+	if( (tp1_sub->depth + tp2_sub->depth) <= MAX_DEPTH)
+	{
+		delete tp1_sub; 
+		tp1_sub = NULL;
+		//TODO: this is where tree_gp->gen() seg faults, ?
+		tp2_sub->copy(&tp1_sub);
+	}
+	//else, abort crossover on these two
+	else
+	{
+		cout << "Aborting crossover 1\n";
+	}
 
 	//Replace tp2 rand subtree with original rand tp1 subtree
-	delete tp2_sub;
-	tp2_sub = NULL;
-	tp1_sub_orig->copy(&tp2_sub);
+	if( (tp1_sub_orig->depth + tp2_sub->depth) <= MAX_DEPTH)
+	{
+		delete tp2_sub;
+		tp2_sub = NULL;
+		tp1_sub_orig->copy(&tp2_sub);
+	}
+	//else, abort crossover on these two
+	else
+	{
+		cout << "Aborting crossover 2\n";
+	}
+	*/
 
 	return(true);
 }
@@ -506,7 +573,7 @@ bool mutate(tree **tp)
 		//get random n value
 		int rand_n = rand() % (*tp)->count_nonterms(); 
 		//get random new depth value
-		int rand_depth = (rand() % (*tp)->depth) + 1;
+		int rand_depth = rand() % MAX_DEPTH;
 		//cout << "nonterm mutation: " << rand_depth << "\n";
 		mutate_nth_nonterm(&(*tp), rand_n, 0, rand_depth, 
 					&((*tp)->dp));
@@ -609,8 +676,11 @@ bool mutate_nth_nonterm(tree **tp, int n, int depth, int new_depth, darray **dp)
 		// nonterminal
 		do
 		{
+			int safe_new_depth = \
+				tree_get_safe_new_depth(depth + \
+							new_depth);
 			delete (*tp);
-			(*tp) = new tree(new_depth, &(*dp));
+			(*tp) = new tree(safe_new_depth, &(*dp));
 		} while ((*tp)->is_nonterm() != true);
 
 		#ifdef DEBUG_TREE

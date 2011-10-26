@@ -41,6 +41,11 @@ int tree_gp::select_lowest_fitness_index(double dexpected)
 	int min = 0;
 	for(int i = 1; i < this->size; i++)
 	{
+		/*DEBUG_TREE_GP_MSG(
+			"select_lowest_fitness_index: [" << i << "] = "
+			<< this->a[i]->max_depth(0) << ":"
+			<< this->a[min]->max_depth(0)
+			);*/
 		if(this->a[i]->fitness(dexpected) < \
 			this->a[min]->fitness(dexpected))
 		{
@@ -85,6 +90,9 @@ void tree_gp::select_lowest_tournament_fitness_indices(double dexpected,
 
 	for(int i = 1; i < subset; i++) 
 	{
+		/*DEBUG_TREE_GP_MSG(
+			"select_lowest_tournament_fitness_indices: " << i);*/
+
 		int j = rand() % this->size;
 		if(this->a[j]->fitness(dexpected) < \
 			this->a[(*min1)]->fitness(dexpected))
@@ -95,6 +103,9 @@ void tree_gp::select_lowest_tournament_fitness_indices(double dexpected,
 
 	for(int i = 1; i < subset; i++)
 	{
+		/*DEBUG_TREE_GP_MSG(
+			"select_lowest_tournament_fitness_indices: " << i);*/
+
 		int j = rand() % this->size;
 		if(this->a[j]->fitness(dexpected) < \
 			this->a[(*min2)]->fitness(dexpected)
@@ -156,7 +167,7 @@ bool tree_gp::ss(double dexpected)
 }
 
 
-//generational. like ss, needs some sort subpopulation tournament selection
+//generational. 
 bool tree_gp::gen(double dexpected)
 {
 	//Selection
@@ -168,7 +179,7 @@ bool tree_gp::gen(double dexpected)
 
 
 	//Crossover
-	tree_crossover(&(this->a[min1]), &(this->a[min2]));
+	//tree_crossover(&(this->a[min1]), &(this->a[min2]));
 
 	for(int i =0; i < this->size; i++)	
 	{
@@ -225,6 +236,25 @@ bool tree_gp::print_fitnesses(double dexpected)
 }
 
 
+bool tree_gp::print_depths()
+{
+	for(int i = 0; i < this->size; i++)
+	{
+		cout << i << ":" << this->a[i]->max_depth(0) << " ";
+		if(i != 0 && (i % 5) == 0)
+		{
+			cout << endl;
+		}
+	}
+
+	cout << endl;
+	
+	//how to fail?
+	return(true);
+
+}
+
+
 bool tree_gp::print_lowest_fitness_tree(double dexpected)
 {
 	if(this == NULL)
@@ -245,5 +275,5 @@ double tree_gp::get_eval(int i)
 		return(-1.0000);
 	}
 
-	return(this->a[i]->eval());
+	return(this->a[i]->eval(0));
 }

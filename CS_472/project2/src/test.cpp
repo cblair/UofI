@@ -134,19 +134,19 @@ bool test_trees()
 	dp->a[0] = 0.2;
 	dp->a[1] = 0.3;
 	cout << "Tree fitness: " << tp->fitness(6.903) << endl;
-	cout << "Tree eval 1: " << tp->eval() << endl;
+	cout << "Tree eval 1: " << tp->eval(0) << endl;
 
 	//x^3 + 5y^3 - 4xy + 7
 	//
 	dp->a[0] = 5;
 	dp->a[1] = 7;
-	cout << "Tree eval 2: " << tp->eval() << endl;
+	cout << "Tree eval 2: " << tp->eval(0) << endl;
 
 	//x^3 + 5y^3 - 4xy + 7
 	//
 	dp->a[0] = 13;
 	dp->a[1] = 20;
-	cout << "Tree eval 3: " << tp->eval() << endl;
+	cout << "Tree eval 3: " << tp->eval(0) << endl;
 
 	delete dp;
 }
@@ -168,11 +168,11 @@ bool test_tree_copy()
 	cout << "Tree copy test\n";
 	cout << " Tree 1:\n";
 	//tp1->print(0);
-	cout << " " << tp1->eval() << endl;
+	cout << " " << tp1->eval(0) << endl;
 	delete tp1;
 	cout << " Tree 2:\n";
 	//tp2->print(0);
-	cout << " " << tp2->eval() << endl;
+	cout << " " << tp2->eval(0) << endl;
 	
 	delete tp2;
 	delete dp1;

@@ -28,7 +28,7 @@ public:
 	tree_node *tnp;
 	darray *dp; //darray pointer, for tree_double use only
 	int nchildren;
-	int depth;  //how deep the current tree is
+	//int depth;  //how deep the current tree is
 	tree *children[MAX_CHILDREN];
 
 	//methods
@@ -38,7 +38,7 @@ public:
 	tree_node *gen_rand_nonterm_tree_node(darray**);//[non]terminal vals
 	tree_node *gen_rand_term_tree_node(darray**); //terminal vals
 
-	double eval();
+	double eval(int);
 	double fitness(double);
 
 	bool is_term();
@@ -49,12 +49,14 @@ public:
 
 	bool crossover(tree**,tree**);
 	tree *get_nth_nonterm_subtree(int);
+	int max_depth(int);
 
 	bool print(int);
 	bool print_tnp_ntype();
 };
 
 //External tree stuff
+int tree_get_safe_new_depth(int);
 bool mutate(tree**);
 bool mutate_nth_nonterm(tree**,int, int, int, darray**);
 bool mutate_nth_term(tree**,int, int, darray**);

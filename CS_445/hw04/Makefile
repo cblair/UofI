@@ -1,7 +1,7 @@
 #############################################################################
 #Class:		CS 445
 #Semester:	Fall 2011
-#Assignment:	Homework 3
+#Assignment:	Homework 4
 #Author:	Colby Blair
 #File name:	Makefile
 #############################################################################
@@ -12,9 +12,9 @@ CC=gcc
 PARSER=AS3
 LEX=flex
 YACC=bison
-#CFLAGS=-g -pg -Wno-write-strings
+CFLAGS=-g -pg -Wno-write-strings
 #CFLAGS=-g -pg -Wno-write-strings -DYYDEBUG=1
-CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
+#CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
 OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o tree_symtab_insert.o
 OBJS+=tree_symtab_gen.o
 
@@ -53,7 +53,7 @@ $(PARSER).l: parser.tab.h
 	$(LEX) $(PARSER).l
 
 turnin:
-	tar cvf hw3.tar AS3.y AS3.l ecma1.l ecma1.y main.c Makefile main.h tree.h tree.c
+	tar cvf hw4.tar *
 
 clean:
-	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'* *.output
+	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'* *.output hw*.tar

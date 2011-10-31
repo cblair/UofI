@@ -36,7 +36,6 @@ GPs are used to try to approximate a mathamatical expression \textbf{tree} (Sect
 Individuals in the population are then selected, crossed over (or bred together), and then mutated. Exactly how depends on the \textbf{random tree generator}, \textbf{selection}, \textbf{crossover}, \textbf{mutation} functions, and in the \textbf{generational algorithm}, which are described in Sections \ref{sec:rand_tree}, \ref{sec:selection}, \ref{sec:crossover}, \ref{sec:mutation}, and \ref{sec:gen_alg}, respectively.
 
 \part{Experimentation}
-Need desc of my GP
 
 \section{Representation Description}
 \subsection{Trees}
@@ -88,7 +87,7 @@ Each tree class instance points to a tree\_node class. This class holds the enum
 
 The terminal (tree) nodes are mutated using point mutation 90\% of the time. 10\% of the time, the non-terminal trees are mutated by simple regenerating a random tree in place, and selected at random. Trees of type tree\_var are, again, pointers to a variable array. This tree's value is initialized to point to a random element in the variable list. Since they are pointers, modifying variable values takes immediate affect throughout the tree. The variables in the variable array can be modified, and the tree evaluation and fitness functions (re)ran.
 
-During the experiment, \textbf{depth issues} became a problem. Tree expanded hugely, and tree evaluations hung due to huge tree search times. This report's approach is to simply limit the max tree depth result that a \textbf{crossover} or \textbf{mutation} would have. If a crossover or mutation would result in a tree max depth greater than a global max depth (12-14), the operation was aborted before it happened, and the tree's state was left alone.
+During the experiment, \textbf{depth issues} became a problem. Tree expanded hugely to protect themselves from destructive changes \cite{growth}, and tree evaluations hung due to huge tree search times. This report's approach is to simply limit the max tree depth result that a \textbf{crossover} or \textbf{mutation} would have. If a crossover or mutation would result in a tree max depth greater than a global max depth (12-14), the operation was aborted before it happened, and the tree's state was left alone.
 
 \subsection{Population}
 \label{sec:population}
@@ -210,6 +209,8 @@ for original tree2:
         \end{center}
 \end{figure}
 
+\pagebreak
+
 \subsection{Mutation Function}
 \label{sec:mutation}
 \begin{figure}[!h]
@@ -262,7 +263,8 @@ while not bored:
 
 
 \part{Results}
-For the results, the equation $x^3 + 5y^3 - 4xy + 7$ is considered. For optimization, $ x = .2, y = .3$. 
+For the results, the equation $x^3 + 5y^3 - 4xy + 7$ is considered. For optimization, $ x = .2, y = .3$.  Below are the graphs and tables for the simulation and actual function.
+
 \begin{figure}[!h]
         \begin{center}
 		\includegraphics[width=70mm]{results.pdf}
@@ -270,6 +272,8 @@ For the results, the equation $x^3 + 5y^3 - 4xy + 7$ is considered. For optimiza
                 \label{results}
         \end{center}
 \end{figure}
+
+\lstinputlisting{results.txt}
 
 \begin{figure}[!h]
         \begin{center}
@@ -279,17 +283,31 @@ For the results, the equation $x^3 + 5y^3 - 4xy + 7$ is considered. For optimiza
         \end{center}
 \end{figure}
 
+\lstinputlisting{func.txt}
+
 \part{Conclusion}
-Say something about retesting over multiple db values, parallelism, tree growth with citation
+In conclusion, the GP did great for $x = .2, y = .3$. But since it didn't consider any other values yet in optimization, the overall results were very bad. With a little more development and much more compute time, optimizing over all the values that this report graphed for the actual function would lead to a much better GP overall.
 
+This report doesn't show overall good results. But it does show a reasonable approach to GPs and linear regression problems. Much more could be done with different population algorithms (steady state vs. generational), as well as with elitism vs. no elitism. More could be done also with different $k$ values in the selection function, and with more experimentation, better results would be achievable.
 
+Tree growth in regard to depth was a constant concern in development. Trees tend to grow to hide entrons and minimize destructive mutations and crossovers\cite{growth}. To identify this problem, this report set MAX\_DEPTH to a low number, like 5. This lead to an opposite problem; minimum fitnesses were always depth 1 trees, or an expression like $ x * 15 $. The depth was not enough to statistically have good mutations/crossovers; most chagnes to depth 5 were very destuctive, and immediately destroyed. There seemed to be a sweet spot around MAX\_DEPTH = 9 before this problem went away. After that, most tree grew immediately to the MAX\_DEPTH, and had many intron branches.
+
+Performance wise, this report used a lower level program language (C++) over interpretive langauges like R or Python. This lead to much higher development time, but much better tree evaluation time compared to our past experience. The performance time was nice, but GP's have an area for parallelism in tree evaluations that is perhaps nicer than GA's fitness evaluations. The deeper the tree, the better the solution, although with diminishing returns. Each tree evaluation is independent of another, so this problem lends itself well to true task parallellism.
 
 \part{Bibliography}
 
+\begin{thebibliography}{99}
+\bibitem{growth} Harrison, M.L.; Foster, J.A. "Improving the Survivability of a Simple Evolved Circuit through Co-evolution". { \em  Evolvable Hardware, 2004. Proceedings. 2004 NASA/DoD Conferenc } 24-26 June 2004 : 123-129. Print
 
-\part{Output}
-\section{A sample run}
-\lstinputlisting{sample_run1.txt}
+\end{thebibliography}
+
+
+\pagebreak
+
+
+%\part{Output}
+%\section{A sample run}
+%\lstinputlisting{sample_run1.txt}
 
 
 

@@ -1,5 +1,7 @@
 package com.its
 {
+	import test_data.import_test;
+	
 	public class XMLElement
 	{
 		public static const METADATA:String			= "md";
@@ -8,13 +10,24 @@ package com.its
 		public static const NAME:String	= "abstractAdorner";
 		public var aspectName:String;
 
-		var i:int = 0;
+		public var s:String;
 		
-		public function test_func()
+		public function call_me(test:String)
+		{
+			
+		}
+
+		public function test_func(AspectName:String, name2:int)
 		{
 			var j = 1;
-			var i = 1;
-			i = j;
-		}
+			j = 2;
+			s = "Help";
+			s = call_me(s);
+		}	
 	}
+}
+
+function test_func(AspectName:String, name2:int)
+{
+
 }

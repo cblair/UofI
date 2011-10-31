@@ -15,7 +15,9 @@ YACC=bison
 #CFLAGS=-g -pg -Wno-write-strings
 #CFLAGS=-g -pg -Wno-write-strings -DYYDEBUG=1
 CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
-OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o
+OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o tree_symtab_insert.o
+OBJS+=tree_symtab_gen.o
+
 
 all: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -lfl -o $(PROC)
@@ -31,6 +33,12 @@ tree.o: tree.c tree.h
 
 symtabc.o: symtabc.c symtabc.h
 	$(CC) $(CFLAGS) symtabc.c -c
+
+tree_symtab_insert.o: tree_symtab_insert.c tree_symtab_insert.h
+	$(CC) $(CFLAGS) tree_symtab_insert.c -c
+
+tree_symtab_gen.o: tree_symtab_gen.c tree_symtab_gen.h
+	$(CC) $(CFLAGS) tree_symtab_gen.c -c
 
 parser.tab.o: parser.tab.c  
 	$(CC) $(CFLAGS) parser.tab.c -c 

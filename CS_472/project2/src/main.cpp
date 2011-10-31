@@ -8,6 +8,14 @@
 
 using namespace std;
 
+
+//x^3 + 5y^3 - 4xy + 7
+double test_func(double x, double y)
+{
+	return( (x * x * x) + ( 5 * y * y *y) - (4 * x * y) + 7 );
+}
+
+
 int main()
 {
 	#ifdef DEBUG
@@ -22,10 +30,29 @@ int main()
 	return(0);
 	#endif
 
-	//Main eval
+	//Setup data
 	darray *dp1 = new darray(2, false);
 	dp1->a[0] = .2;
 	dp1->a[1] = .3;
+
+	//TODO: not finished with creating multiple eval points
+	int dpa_size = 26;
+	int lbound = -25.0; //lower bound
+	int ubound = 25.0; //upper bound
+	double step_size = ( (ubound - lbound) / dpa_size );
+	darray *dpa[dpa_size];
+	int i = 0;
+	for(double x = lbound; x < ubound; x +=  )
+	{
+		for(double y = -25.0; y < 25.0; y += 5.0)
+		{
+			double z = test_func(x, y);
+			cout << x << "," << y << "," << z << endl;
+		}
+		i++;
+	}
+
+
 	tree_gp *tgp1 = new tree_gp(100, 5, &dp1);
 	//x^3 + 5y^3 - 4xy + 7
 	//= (.2)^3 + 5(.3)^3 - 4(.2)(.3) + 7
@@ -33,6 +60,7 @@ int main()
 	//= 6.903
 	double dexpected = 6.903;
 
+	//Main eval
 	int i = 0;
 	bool bored = false;
 	while(!bored)

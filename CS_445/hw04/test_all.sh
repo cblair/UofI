@@ -1,7 +1,9 @@
 #!/bin/bash
 
-TOTALFILES=`ls -talh ts-flat | wc -l`
+TOTALFILES=`ls -talh ts-flat/ | wc -l`
 PARSEDFILES=0
+
+echo "" > test_all.out
 
 for file in `ls ts-flat`; do
 	#./ec ts-flat/$file 
@@ -12,6 +14,8 @@ for file in `ls ts-flat`; do
 		echo "test_all.sh succeeded on file '$file'"
 		PARSEDFILES=`expr $PARSEDFILES + 1`
 	fi
+	
+	cat temp.dat >> test_all.out
 done
 
 rm temp.dat

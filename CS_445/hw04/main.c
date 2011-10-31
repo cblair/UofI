@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //Class:	CS 445
 //Semester:	Fall 2011
-//Assignment:	Homework 3
+//Assignment:	Homework 4
 //Author:	Colby Blair
 //File name:	main.c
 ///////////////////////////////////////////////////////////////////////////////
@@ -13,15 +13,18 @@
 
 FILE *yyin;
 char *YY_FNAME;
-extern struct tree *YY_TREE;
+extern struct tree *YY_TREE; //the tree the parser inserts into
 extern int lineno;
 extern int colno;
 char yytext[YY_MAX_BUF];
 
 int main(int argc, char *argv[])
 {
-	tree_init();
+	tree_init(); //inits YY_TREE
 	yytext[0] = '\0';
+
+	//the master tree that each yyparse will insert YY_TREE into
+	struct tree *tree_master; 
 
 	int i;
 	//for each filename given on the command line
@@ -39,27 +42,29 @@ int main(int argc, char *argv[])
 								YY_FNAME);
 			continue;
 	        }
-		
-		//while not end-of-file do
-		/*int cat = yylex(); //get first token
-		while(cat != EXIT)
-		{
-			yytext[0] = 0; //clear our yytext
-			cat = yylex(); //get next token
-		}
-		fclose(yyin);
-		*/
+	
+		//print file name 	
+		printf("%s\n", YY_FNAME);		
+
+		//parse file
 		yyparse();
 
-		#ifdef DEBUG_TREE
-		//print our results
-		treeprint(YY_TREE,0);
-		#endif
+		//just set to, for now. Later, need to append each YY_TREE from
+		// each parse to children of tree_master
+		tree_master = YY_TREE; 
+
 		DEBUGMSG("DEBUG: done with file '%s'\n", YY_FNAME);
 	}
 
 	//generate code
-	tree_gen_tac(YY_TREE, 0);
+	//tree_gen_tac(YY_TREE);
+	tree_gen_tac(tree_master);
 
-	tree_del();
+	#ifdef DEBUG_TREE
+	//print our results
+	treeprint(tree_master,0);
+	#endif
+
+	tree_del(tree_master);
+	SymTab_free();
 }

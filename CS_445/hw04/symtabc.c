@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+////Class:        CS 445
+////Semester:     Fall 2011
+////Assignment:   Homework 4
+////Author:       Dr. Robert Heckendorn, modified by Colby Blair
+////File name:    symtab.c
+////////////////////////////////////////////////////////////////////////////////
+
 #include "symtabc.h"
 static int initMaxTable_=100;  // this is the initial size of the symbol tables
 static int maxTable_;          // this is how big the table is now since it can grow
@@ -65,7 +73,8 @@ void SymTab_debug(int newDebugValue)
 }
 
 // push the sym and ptr on the stack
-static void SymTab_push(char *sym, int scopeDepth, void *ptr)
+static void SymTab_push(char *sym, char *type, char *aux_flag, 
+			int scopeDepth, void *ptr)
 {
     // if you run out of memory then add some
     if (top_>=table_+maxTable_) {
@@ -86,6 +95,8 @@ static void SymTab_push(char *sym, int scopeDepth, void *ptr)
 
     }
     top_->name = sym;
+    top_->type = type;
+    top_->aux_flag = aux_flag;
     top_->scope = scopeName_;
     top_->depth = scopeDepth;  // note that this is passed in
     top_->ptr = ptr;
@@ -105,7 +116,9 @@ void SymTab_print()
 	// print a regular entry
 	if (p->depth) {
 //debug	    printf("%10s %10s %d 0x%08x ", p->name, p->scope, p->depth, p);
-	    printf("%10s %10s %d ", p->name, p->scope, p->depth);
+//old	    printf("%10s %10s %d ", p->name, p->scope, p->depth);
+	    printf("%10s %10s %10d %10s %10s", p->name, p->scope, p->depth, 
+					p->type, p->aux_flag);
 	    elemPrint_(p->ptr);
 	    printf("\n");
 	}
@@ -120,7 +133,7 @@ void SymTab_print()
 
 
 // inserts an element into the symbol table
-bool SymTab_insert(char *sym, void *ptr)
+bool SymTab_insert(char *sym, char *type, char *aux_flag, void *ptr)
 {
     SymTabEntry *p;
 
@@ -135,7 +148,7 @@ bool SymTab_insert(char *sym, void *ptr)
 	fflush(stdout);
     }
 
-    SymTab_push(sym, scopeDepth_, ptr);
+    SymTab_push(sym, type, aux_flag, scopeDepth_, ptr);
     return true;
 };
 
@@ -156,7 +169,8 @@ void *SymTab_lookup(char *sym)
 		fflush(stdout);
 	    }
 		
-	    return p->ptr;
+	    //return p->ptr; //what the heck is p->ptr suppose to point to?
+	    return p;
 	}
     }
     if (debug_ & DEBUG_LOOKUP) {
@@ -187,7 +201,7 @@ void SymTab_enter_scope(char *funcname)
     scopeName_ = funcname;
     if (debug_ & DEBUG_TABLE) printf("SymTab: Entering scope %s\n", scopeName_);
     scopeDepth_++;
-    SymTab_push("", 0, NULL);
+    SymTab_push("", "", "", 0, NULL);
 };
 
 

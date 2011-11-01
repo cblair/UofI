@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	yytext[0] = '\0';
 
 	//the master tree that each yyparse will insert YY_TREE into
-	struct tree *tree_master; 
+	struct tree *tree_master = NULL; 
 
 	int i;
 	//for each filename given on the command line

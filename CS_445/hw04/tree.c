@@ -116,14 +116,14 @@ int treeprint(struct tree *t, int depth)
 	{
 		printf("%d %*s = \"%s\": %d\n", 
 					depth, 
-					depth + strlen(t->prodrule),
+					(int)(depth + strlen(t->prodrule)),
 					t->leaf->text,
 					t->prodrule, t->nkids);
 	
 	}
 	else
 	{
-		printf("%d %*s: %d\n", 	depth, depth + strlen(t->prodrule), 
+		printf("%d %*s: %d\n", 	depth, (int)(depth + strlen(t->prodrule)), 
 				t->prodrule, t->nkids);
   	}
 

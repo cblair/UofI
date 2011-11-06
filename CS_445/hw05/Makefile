@@ -17,7 +17,7 @@ CFLAGS=-g -pg -Wno-write-strings
 #CFLAGS=-g -pg -Wno-write-strings -DDEBUG_SYMTAB
 #CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
 OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o tree_symtab_insert.o
-OBJS+=tree_symtab_gen.o
+OBJS+=tree_symtab_gen.o mem_add.o
 
 
 all: $(OBJS)
@@ -40,6 +40,9 @@ tree_symtab_insert.o: tree_symtab_insert.c tree_symtab_insert.h
 
 tree_symtab_gen.o: tree_symtab_gen.c tree_symtab_gen.h
 	$(CC) $(CFLAGS) tree_symtab_gen.c -c
+
+mem_add.o: mem_add.c mem_add.h
+	$(CC) $(CFLAGS) mem_add.c -c
 
 parser.tab.o: parser.tab.c  
 	$(CC) $(CFLAGS) parser.tab.c -c 

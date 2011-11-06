@@ -39,7 +39,9 @@ static int debug_;             // this holds debug flags defined above
 
 static void xPrint(void *p)
 {
-    printf("0x%08x", p);
+    //printf("0x%08x", p);
+    //is this the same?
+    printf("%p", p);
 }
 
 

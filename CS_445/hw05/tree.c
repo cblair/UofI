@@ -496,6 +496,13 @@ int tree_type_is_assignable(char *to, char *from)
 	{
 		return(0);
 	}
+	//Boolean
+	else if(
+		strcmp(to, "Boolean") == 0 && strcmp(from, "Boolean") == 0
+	)
+	{
+		return(0);
+	}
 	//anything from a function
 	else if( strcmp(from, "function") == 0)
 	{
@@ -696,7 +703,8 @@ void tree_import_ident_to_path(char *fname, char **retval)
 {
 	if(fname == NULL)
 	{
-		return(NULL);
+		retval = NULL;
+		return;
 	}
 
 	//replace '.' chars with dir delims. Sorry windows, only linux paths

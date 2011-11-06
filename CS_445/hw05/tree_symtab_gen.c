@@ -16,10 +16,10 @@
 //TODO: need to split this function up
 int tree_gen_assignmentExpression(struct tree *t)
 {
+	//Expression type check
 	//see if assignment op is in tree
 	struct tree *subtree = NULL;
 	tree_get_subtree("=",t, &subtree);
-
 	//if no 'op' branch, this is a right hand assignmentExpression with a
 	// literal, which we'll ignore now and handle when we see the entire 
 	//expression later (below)
@@ -39,7 +39,7 @@ int tree_gen_assignmentExpression(struct tree *t)
 		struct tree *temp = NULL;
 		tree_get_subtree(tname, t, &temp);
 	
-		//use before declaration check
+		//Use before declaration check
 		if(p == NULL)
 		{
 			if(temp != NULL)
@@ -59,7 +59,7 @@ int tree_gen_assignmentExpression(struct tree *t)
 			exit(ERROR_SEMANTIC);
 		}
 
-		//assignment to const check
+		//Assignment to const check
 		if(p->aux_flag != NULL 
 			&& strcmp(p->aux_flag, "const") == 0)
 		{
@@ -80,7 +80,7 @@ int tree_gen_assignmentExpression(struct tree *t)
 
 			exit(ERROR_SEMANTIC);
 		}
-	} //end else (if tname != NULL)
+	} //end else (if subtree != NULL)
 
 	//Type assignment check
 	//get left and right branches of tree
@@ -95,12 +95,8 @@ int tree_gen_assignmentExpression(struct tree *t)
 	//get value on right value
 	struct tree *vtree = NULL; //value tree
 	tree_get_subtree("primaryExpression", rtree, &vtree);
-	
-	//printf("TS96\n");
-	//treeprint(t, 0);
-	//treeprint(itree,0);
-	//treeprint(vtree,0);
 
+	//get branch types	
 	char *itype, *vtype;
 	itype = tree_get_leaf_type(itree);
 	vtype = tree_get_leaf_type(vtree);

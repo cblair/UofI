@@ -59,6 +59,6 @@ int tree_type_is_assignable(char*, char*);
 //int tree_symtab_lookahead_update(struct tree *);
 
 //general string stuff
-//void tree_import_ident_to_path(char *, char **);
+void tree_import_ident_to_path(char *, char **);
 
 #endif

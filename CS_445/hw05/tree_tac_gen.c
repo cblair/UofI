@@ -195,7 +195,5 @@ int tree_tac_gen_variableDefinition(struct tree *t, char *classname)
 	}
 	tac_inst_list_append(TAC_CODE, fq_var_name, "", ident_or_val, "");
 
-	treeprint(t, 0);
-
 	return(0); //success
 }

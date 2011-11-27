@@ -1,6 +1,6 @@
 package com.its
 {
-	import test_data.import_test;
+	//import test_data.import_test;
 	
 	public class XMLElement
 	{

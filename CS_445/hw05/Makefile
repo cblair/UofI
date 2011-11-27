@@ -64,7 +64,7 @@ $(PARSER).l: parser.tab.h
 	$(LEX) $(PARSER).l
 
 turnin:
-	tar cvf hw4.tar *
+	tar cvf hw4.tar *.c *.h *.l *.y Makefile
 
 clean:
 	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'* *.output hw*.tar

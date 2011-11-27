@@ -10,6 +10,7 @@
 #include "parser.tab.h"
 #include "main.h"
 #include "tree.h"
+#include "tac.h"
 
 FILE *yyin;
 char *YY_FNAME;
@@ -58,13 +59,18 @@ int main(int argc, char *argv[])
 
 	//generate code
 	//tree_gen_tac(YY_TREE);
-	tree_gen_tac(tree_master);
+	tree_process_all(tree_master);
 
 	#ifdef DEBUG_TREE
-	//print our results
 	treeprint(tree_master,0);
 	#endif
 
+	#ifdef DEBUG_TAC
+	tac_inst_list_print(TAC_CODE);
+	#endif
+
+	//cleanup
 	tree_del(tree_master);
 	SymTab_free();
+	tac_inst_list_del(TAC_CODE);
 }

@@ -524,7 +524,7 @@ declarationTail:
 	;
 
 variableInitializer:
-	ASSIGN assignmentExpression { $$ = _TCN ("variableInitializer",1, $1,$2); }
+	ASSIGN assignmentExpression { $$ = _TCN ("variableInitializer",2, $1,$2); }
 	;
 
 commaParameterDeclaration: 
@@ -533,8 +533,12 @@ commaParameterDeclaration:
 	;
 
 parameterDeclarationList:	
-	LPAREN RPAREN 							{ $$ = _TCN ("parameterDeclarationList",2, $1,$2); }
-	| LPAREN parameterDeclaration commaParameterDeclaration RPAREN	{ $$ = _TCN ("parameterDeclarationList",4, $1,$2,$3,$4); }
+	LPAREN RPAREN 							{ 	
+									$$ = _TCN ("parameterDeclarationList",3, $1,$2, _TCN ("parameterDeclarationListEnd",0)); 
+									}
+	| LPAREN parameterDeclaration commaParameterDeclaration RPAREN	{ 
+									$$ = _TCN ("parameterDeclarationList",5, $1,$2,$3,$4, _TCN ("parameterDeclarationListEnd",0)); 
+									}
 	;
 
 parameterDeclaration:

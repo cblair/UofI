@@ -113,7 +113,7 @@ int tree_symtab_insert_parameterDeclaration(struct tree *t)
 	char *type = tree_get_opt_type(t);
 	//TODO: could also find type from assignment 
 	// expression
-	
+
 	//if variable already declared, fail
 	bool status = SymTab_insert(symbol->text, type, aux_flag, table_);
 	if(status == false)

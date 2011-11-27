@@ -12,12 +12,13 @@ CC=gcc
 PARSER=AS3
 LEX=flex
 YACC=bison
-CFLAGS=-g -pg -Wno-write-strings
+#CFLAGS=-g -pg -Wno-write-strings
 #CFLAGS=-g -pg -Wno-write-strings -DYYDEBUG=1
 #CFLAGS=-g -pg -Wno-write-strings -DDEBUG_SYMTAB
 #CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
+CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TAC
 OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o tree_symtab_insert.o
-OBJS+=tree_symtab_gen.o mem_add.o
+OBJS+=tree_typecheck.o tree_tac_gen.o tac.o mem_add.o
 
 
 all: $(OBJS)
@@ -38,8 +39,14 @@ symtabc.o: symtabc.c symtabc.h
 tree_symtab_insert.o: tree_symtab_insert.c tree_symtab_insert.h
 	$(CC) $(CFLAGS) tree_symtab_insert.c -c
 
-tree_symtab_gen.o: tree_symtab_gen.c tree_symtab_gen.h
-	$(CC) $(CFLAGS) tree_symtab_gen.c -c
+tree_typecheck.o: tree_typecheck.c tree_typecheck.h
+	$(CC) $(CFLAGS) tree_typecheck.c -c
+
+tree_tac_gen.o: tree_tac_gen.c tree_tac_gen.h
+	$(CC) $(CFLAGS) tree_tac_gen.c -c
+
+tac.o: tac.c tac.h
+	$(CC) $(CFLAGS) tac.c -c
 
 mem_add.o: mem_add.c mem_add.h
 	$(CC) $(CFLAGS) mem_add.c -c

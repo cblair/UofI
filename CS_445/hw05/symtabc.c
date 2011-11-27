@@ -7,6 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "symtabc.h"
+#include "mem_add.h"
+
+
 static int initMaxTable_=100;  // this is the initial size of the symbol tables
 static int maxTable_;          // this is how big the table is now since it can grow
 static SymTabEntry *table_;    // the table is simply a fancy stack of SymTabEntries
@@ -15,6 +18,12 @@ static char *scopeName_;       // this is the current scope name
 static int scopeDepth_;        // this is the currect depth of the scopes
 static void (* elemPrint_)(void *);  // this is a print routine to print your TreeNode *
 static int debug_;             // this holds debug flags defined above
+
+//offset for memory address
+int MEM_ADD_OFFSET;
+
+//current memory region
+enum REGION CURRENT_REGION;
 
 // 
 // Class SymTab
@@ -50,6 +59,9 @@ void SymTab_init(void (* elemPrint)(void *))
 {
     int i;
 
+    //init the memory region
+    CURRENT_REGION = GLOBAL_R;
+
     maxTable_ = initMaxTable_;
     table_ = (SymTabEntry *)malloc(sizeof(SymTabEntry)*initMaxTable_);
     for (i=0; i<initMaxTable_; i++) table_[i].name="";
@@ -57,7 +69,7 @@ void SymTab_init(void (* elemPrint)(void *))
     elemPrint_ = elemPrint;
     scopeDepth_ = 0;
     debug_ = 0x0;
-    SymTab_enter_scope("globals");
+    SymTab_enter_scope("globals", CURRENT_REGION);
 };
 
 
@@ -96,13 +108,20 @@ static void SymTab_push(char *sym, char *type, char *aux_flag,
 	top_ = newt+offset;
 
     }
+
     top_->name = sym;
     top_->type = type;
     top_->aux_flag = aux_flag;
     top_->scope = scopeName_;
     top_->depth = scopeDepth;  // note that this is passed in
+    top_->map = mem_add_new(CURRENT_REGION, MEM_ADD_OFFSET);
     top_->ptr = ptr;
     top_++;
+
+    //increment the memory address offset
+    MEM_ADD_OFFSET++;
+
+
 };
 
 
@@ -119,8 +138,9 @@ void SymTab_print()
 	if (p->depth) {
 //debug	    printf("%10s %10s %d 0x%08x ", p->name, p->scope, p->depth, p);
 //old	    printf("%10s %10s %d ", p->name, p->scope, p->depth);
-	    printf("%10s %10s %10d %10s %10s", p->name, p->scope, p->depth, 
+	    printf("%10s %10s %10d %10s %10s  ", p->name, p->scope, p->depth, 
 					p->type, p->aux_flag);
+            mem_add_print(p->map);
 	    elemPrint_(p->ptr);
 	    printf("\n");
 	}
@@ -140,6 +160,7 @@ bool SymTab_insert(char *sym, char *type, char *aux_flag, void *ptr)
     SymTabEntry *p;
 
     for (p=top_-1; p->depth; p--) {
+	
 	if (strcmp(p->name, sym)==0) return false;
     }
 
@@ -198,12 +219,18 @@ SymTabEntry *lookupSymTabEntry(char *sym)
 
 
 // create a new scope on the stack
-void SymTab_enter_scope(char *funcname)
+void SymTab_enter_scope(char *funcname, enum REGION type_r)
 {
     scopeName_ = funcname;
     if (debug_ & DEBUG_TABLE) printf("SymTab: Entering scope %s\n", scopeName_);
     scopeDepth_++;
     SymTab_push("", "", "", 0, NULL);
+
+    //set the memory offset to 0
+    MEM_ADD_OFFSET = 0;
+
+    //set the current region type
+    CURRENT_REGION = type_r;
 };
 
 
@@ -247,3 +274,23 @@ int SymTab_numEntries()
 {
     return (top_-table_)-scopeDepth_;
 }
+
+
+void SymTab_set_current_region(enum REGION region)
+{
+	CURRENT_REGION = region;
+}
+
+
+char *SymTab_lookup_current_scope()
+{
+	SymTabEntry *p = top_-1; 
+
+	if(p == NULL)
+	{
+		return(NULL);
+	}
+
+	return(p->scope);
+};
+

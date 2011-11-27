@@ -14,9 +14,11 @@
 #include "tree.h"
 //#include "symtabc.h" //comes with tree.h now
 #include "tree_symtab_insert.h"
-#include "tree_symtab_gen.h"
+#include "tree_typecheck.h"
+#include "tree_tac_gen.h"
 #include "parser.tab.h"
 #include "main.h"
+
 
 //yacc / bison stuff for parsing files from import statements
 extern struct tree *YY_TREE;
@@ -206,17 +208,20 @@ struct tree *tree_create_node_from_token(int cat, char *text, int lineno,
 //generate three address code (TAC)
 // so far only traverses the tree and:
 // 1. pushes and pops symbols in a symbol table stack according to scope
-int tree_gen_tac(struct tree *t)
+int tree_process_all(struct tree *t)
 {
 	if(t == NULL)
 	{
 		return(1);
 	}
 
-	//pre code generation ops; bring in imports, etc
+	//Pre code generation ops; bring in imports, etc
 	tree_preprocess(&t, 0);
 
-	//generate code
+	//Generate code
+	// init global code list
+	TAC_CODE = tac_inst_list_new("MAIN:", "", "", "");
+
 	tree_process(t, 0);
 
 	//post code generation ops; optimization, etc.
@@ -230,10 +235,21 @@ int tree_preprocess(struct tree **t, int depth)
 		return(1);
 	}
 
-	//preprocess ops
+	//Preprocess ops
+	// import subtrees
 	if(strcmp((*t)->prodrule, "importDefinition") == 0)
 	{
 		tree_insert_importDefinition(&(*t));
+	}
+
+	// update symbol table
+	tree_update_sym_tab((*t));
+
+	// type check
+	//  assignmentExpression
+	if(strcmp((*t)->prodrule, "assignmentExpression") == 0)
+	{
+		tree_typecheck_assignmentExpression((*t));
 	}
 
   	int i;
@@ -244,6 +260,7 @@ int tree_preprocess(struct tree **t, int depth)
 	
 	return(0); //success
 }
+
 
 int tree_process(struct tree *t, int depth)
 {
@@ -256,10 +273,32 @@ int tree_process(struct tree *t, int depth)
 	// update symbol table
 	tree_update_sym_tab(t);
 
-	// assignmentExpression
-	if(strcmp(t->prodrule, "assignmentExpression") == 0)
+	//classDefinition
+	if(strcmp(t->prodrule, "classDefinition") == 0)
 	{
-		tree_gen_assignmentExpression(t);
+		tree_tac_gen_classDefinition(t);
+	}
+	//variableDefinition
+	else if(strcmp(t->prodrule, "variableDefinition") == 0)
+	{
+		tree_tac_gen_variableDefinition(t, "");
+	}
+	//methodDefinition
+	else if(strcmp(t->prodrule, "methodDefinition") == 0)
+	{
+		tree_tac_gen_methodDefinition(t, "");
+	}
+	// assignmentExpression
+	else if(strcmp(t->prodrule, "assignmentExpression") == 0)
+	{
+		//if this is a full assignmentExpression, process
+		struct tree *rtree = NULL; //ident tree
+		tree_get_subtree("assignmentOperator", t, &rtree);
+		//if 't' has an assignment operator, it has a right hand side.
+		if(rtree != NULL)
+		{
+			tree_tac_gen_assignmentExpression(t);
+		}
 	}
 
   	int i;
@@ -399,117 +438,71 @@ char *tree_get_ident(struct tree* t)
 }
 
 
-//get's the type of the leaf; determines a literal type, or symtab lookups
-// a ident's type
-char *tree_get_leaf_type(struct tree *t)
+//gets the ident string value, ie a variable name, or the value string
+char *tree_get_ident_or_val(struct tree* t)
 {
+	char *ident_or_val = NULL;
+
 	if(t == NULL)
 	{
-		return(NULL);
+		return(ident_or_val); //NULL
 	}
 
-	//if t is an ident, return its type, defined in symtab
-	if(strcmp(t->prodrule, "ident") == 0)
+	//get ident expression subtree
+	struct tree *exp_subtree = NULL;
+	tree_get_subtree("primaryExpression", t, &exp_subtree);
+
+	//usually a number	
+	if(exp_subtree != NULL && exp_subtree->kids[0] != NULL
+		&& exp_subtree->kids[0]->kids[0] != NULL 
+		&& exp_subtree->kids[0]->kids[0]->kids[0] != NULL
+	)
 	{
-		SymTabEntry *p = SymTab_lookup(t->kids[0]->prodrule);
-		if(p == NULL)
-		{
-			return(NULL);
-		}
-		return(p->type);
+		ident_or_val = exp_subtree->kids[0]->kids[0]->kids[0]->prodrule;
 	}
-	//else if we hit the leaf, t is a literal. return the translated
-	// type?
-	else if(t->leaf != NULL)
+	//usually a string
+	else if(exp_subtree != NULL && exp_subtree->kids[0] != NULL
+		&& exp_subtree->kids[0]->kids[0] != NULL 
+	)
 	{
-		return(tree_type_trans_lit(t->prodrule));
+		ident_or_val = exp_subtree->kids[0]->kids[0]->prodrule;
 	}
 
-	int i;
-	for(i = 0; i < t->nkids; i++)
-	{
-		char *retval = tree_get_leaf_type(t->kids[i]);
-		if(retval != NULL)
-		{
-			return(retval);
-		}
-	}
-
-	//didn't find a leaf? should never happen
-	return(NULL);
-}
-
-
-//translates a literal val, always a char*, to a real AS3 type
-char *tree_type_trans_lit(char *lval)
-{
-	if(lval == NULL)
-	{
-		return(NULL);
-	}
 	
-	//String
-	// if begins and ends with quotes
-	if(
-		(lval[0] == '"' && lval[strlen(lval) - 1] == '"')
-		||
-		(lval[0] == '\'' && lval[strlen(lval) - 1] == '\'')
-	)
-	{
-		return("String");
-	}
-	//int
-	else if(
-		atoi(lval) != 0 //char * to non-zero int
-		|| strcmp(lval, "0") == 0 //zero int
-	)
-	{
-		return("int");
-	}
-	//TODO: Number, unint, Boolean, Object
-
-	//don't know, some user defined type
-	return("user");
+	return(ident_or_val);
 }
 
 
-//returns 0 for True, 1 for False
-int tree_type_is_assignable(char *to, char *from)
+char *tree_get_operator(struct tree *t)
 {
-	//if a type for one is not yet defined, its ok
-	if(to == NULL || from == NULL)
+	char *op = NULL;
+
+	if(t == NULL)
 	{
-		return(0);
+		return(op); //NULL
 	}
 
-	//int
-	if(
-		strcmp(to, "int") == 0 && strcmp(from, "int") == 0
+	struct tree *exp_subtree = NULL;
+	tree_get_subtree("multiplicativeOperator", t, &exp_subtree);
+	
+	if(exp_subtree != NULL && exp_subtree->kids[0] != NULL
 	)
 	{
-		return(0);
+		op = exp_subtree->kids[0]->prodrule;
 	}
-	//String
-	else if(
-		strcmp(to, "String") == 0 && strcmp(from, "String") == 0
-	)
+	//else, try to get additiveOperator
+	else
 	{
-		return(0);
-	}
-	//Boolean
-	else if(
-		strcmp(to, "Boolean") == 0 && strcmp(from, "Boolean") == 0
-	)
-	{
-		return(0);
-	}
-	//anything from a function
-	else if( strcmp(from, "function") == 0)
-	{
-		return(0);
+		exp_subtree = NULL;
+		tree_get_subtree("additiveOperator", t, &exp_subtree);
+
+		if(exp_subtree != NULL && exp_subtree->kids[0] != NULL)
+		{
+			op = exp_subtree->kids[0]->prodrule;
+		}
 	}
 
-	return(1);
+	return(op);
 }
 
 
@@ -528,12 +521,32 @@ int tree_branch_is_scope(struct tree *t)
 
 	if(strcmp(t->prodrule, "classDefinition") == 0
 	|| strcmp(t->prodrule, "methodDefinition") == 0
-	|| strcmp(t->prodrule, "packageDecl") == 0)
+	|| strcmp(t->prodrule, "packageDecl") == 0
+	)
 	{
 		return(0);
 	}
 
 	return(1);
+}
+
+
+enum REGION tree_get_region_type(struct tree *t)
+{
+	if(strcmp(t->prodrule, "classDefinition") == 0)
+	{
+		return(CLASS_R);
+	}
+	else if(strcmp(t->prodrule, "methodDefinition") == 0)
+	{
+		return(LOCAL_R);
+	}
+	else if(strcmp(t->prodrule, "parameterDeclarationList") == 0)
+	{
+		return(PARAMETER_R);
+	}
+
+	return(UNKNOW_R);
 }
 
 
@@ -556,7 +569,7 @@ int tree_update_sym_tab(struct tree *t)
 			printf(" New symtab:\n");
 			SymTab_print(); //current symbol table
 			#endif
-		}
+		}	
 	}
 	//nonterminals
 	else
@@ -572,8 +585,15 @@ int tree_update_sym_tab(struct tree *t)
 			if(sub_t != NULL && sub_t->kids[0] != NULL
 				&& sub_t->kids[0]->leaf != NULL)
 			{
+				//get the name of the scope
 				char *scope_name = sub_t->kids[0]->leaf->text;
-				SymTab_enter_scope(scope_name);
+
+				//get the type of memory region
+				enum REGION region = \
+					tree_get_region_type(t);
+
+				//update the sym tab scope
+				SymTab_enter_scope(scope_name, region);
 
 				#ifdef DEBUG_SYMTAB
 				printf("Entering scope '%s'. New symtab:\n", 
@@ -588,7 +608,7 @@ int tree_update_sym_tab(struct tree *t)
 			{	
 				tree_symtab_lookahead_update(t->kids[i]);
 			}
-		} //end enter scope
+		} //end enter scope	
 	} //end if nonterminal
 }
 
@@ -599,6 +619,21 @@ int tree_symtab_lookahead_update(struct tree *t)
 	if(t == NULL)
 	{
 		return(0);
+	}
+
+	//parameterDeclarationList
+	if(strcmp(t->prodrule, "parameterDeclarationList") == 0)
+	{
+		//just change the memory region
+		enum REGION region = PARAMETER_R;
+		SymTab_set_current_region(region);
+	}
+	//parameterDeclarationListEnd
+	else if(strcmp(t->prodrule, "parameterDeclarationListEnd") == 0)
+	{
+		//just change the memory region
+		enum REGION region = LOCAL_R;
+		SymTab_set_current_region(region);
 	}
 
 	//TODO: this probably needs to just return like methodDefinition below,

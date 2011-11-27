@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "mem_add.h"
+
 #define false 0
 #define true 1
 #define bool int
@@ -29,6 +31,7 @@ typedef struct {
     int depth;
     char* aux_flag;  //ie. 'const', etc
     void *ptr;
+    struct mem_add *map;
 } SymTabEntry;
     
 
@@ -64,10 +67,15 @@ void *SymTab_lookup(char *sym);             // returns the ptr associated with s
 SymTabEntry *lookupSymTabEntry(char *sym);  // returns pointer to SymTabEntry associated with sym
                                              // returns NULL if symbol not found
 // scope functions
-void SymTab_enter_scope(char *funcname);          // enter a function named funcname
+void SymTab_enter_scope(char *funcname, enum REGION); // enter a function named funcname
 bool SymTab_leave_scope();                        // leave that function
 int SymTab_numEntries();                    // number of entries (more for debugging)
 int SymTab_depth();                         // depth of scopes on stack (useful in later assignment)
 
+
+void SymTab_set_current_region(enum REGION);
+
+//returns the name of the current scope
+char *SymTab_lookup_current_scope();
 
 #endif

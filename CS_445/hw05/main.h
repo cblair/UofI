@@ -9,10 +9,10 @@
 #include <stdio.h>
 
 //Exit codes
-#define ERROR_LEXICAL	-1
-#define ERROR_SYNTAX	-2
-#define ERROR_SEMANTIC	-3
-
+#define ERROR_LEXICAL	1
+#define ERROR_SYNTAX	2
+#define ERROR_SEMANTIC	3
+#define ERROR_INTERNAL	4
 
 #define YY_MAX_BUF 1024
 

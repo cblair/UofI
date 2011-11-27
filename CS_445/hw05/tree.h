@@ -13,6 +13,7 @@
 
 #include <stdarg.h>
 #include "symtabc.h"
+#include "tac.h"
 
 struct tree {
 	//int prodrule; //not sure on how to set the int yet
@@ -20,6 +21,7 @@ struct tree {
 	int nkids;
 	struct tree *kids[MAX_KIDS];
 	struct tree_token *leaf; //points to tree_token, terminals only
+	struct tac_inst_list *code;
 };
 
 struct tree_token {
@@ -40,7 +42,7 @@ int tree_del(struct tree *);
 int treeprint(struct tree *, int);
 struct tree *tree_create_node(char *, int n_args, ...);
 struct tree *tree_create_node_from_token(int, char*, int, char*);
-int tree_gen_tac(struct tree *);
+int tree_process_all(struct tree *);
 
 
 //Internal only
@@ -49,9 +51,9 @@ void tree_get_subtree(char *, struct tree*, struct tree**);
 char *tree_get_opt_type(struct tree*);
 char *tree_get_opt_aux_flag(struct tree*);
 char *tree_get_ident(struct tree*);
+char *tree_get_ident_or_val(struct tree*);
+char *tree_get_operator(struct tree*);
 char *tree_get_leaf_type(struct tree*);
-char *tree_type_trans_lit(char*);
-int tree_type_is_assignable(char*, char*);
 
 //general symbol table things
 //int tree_update_sym_tab(struct tree *);

@@ -28,5 +28,7 @@ struct tac_inst *tac_inst_new(char *, char*, char*, char*);
 struct tac_inst_list *tac_inst_list_new(char*, char*, char*, char*);
 int tac_inst_list_append(struct tac_inst_list *, char*, char*,  char*, char*);
 
+void tac_inst_list_print(struct tac_inst_list*, char*);
+
 
 #endif

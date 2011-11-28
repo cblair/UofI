@@ -72,6 +72,7 @@ bool SymTab_leave_scope();                        // leave that function
 int SymTab_numEntries();                    // number of entries (more for debugging)
 int SymTab_depth();                         // depth of scopes on stack (useful in later assignment)
 
+char *SymTab_get_type(char *);
 
 void SymTab_set_current_region(enum REGION);
 

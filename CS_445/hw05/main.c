@@ -57,13 +57,13 @@ int main(int argc, char *argv[])
 		DEBUGMSG("DEBUG: done with file '%s'\n", YY_FNAME);
 	}
 
-	//generate code
-	//tree_gen_tac(YY_TREE);
-	tree_process_all(tree_master);
-
 	#ifdef DEBUG_TREE
 	treeprint(tree_master,0);
 	#endif
+
+	//generate code
+	//tree_gen_tac(YY_TREE);
+	tree_process_all(tree_master);
 
 	#ifdef DEBUG_TAC
 	tac_inst_list_print(TAC_CODE);

@@ -283,6 +283,13 @@ int tree_process(struct tree *t, int depth)
 	{
 		tree_tac_gen_variableDefinition(t, "");
 	}
+	//TODO: function call
+	/*
+	else if(tree_is_function_call(t) == 0)
+	{
+		tree_tac_gen_function_call(t);
+	}
+	*/
 	//methodDefinition
 	else if(strcmp(t->prodrule, "methodDefinition") == 0)
 	{
@@ -503,6 +510,51 @@ char *tree_get_operator(struct tree *t)
 	}
 
 	return(op);
+}
+
+
+/* 0 on True, 1 on False*/
+int tree_is_function_call(struct tree *t)
+{
+	if(t == NULL)
+	{
+		return(1);
+	}
+
+	//pick a unique tree branch for a function call
+	if(strcmp("blockEntry", t->prodrule) != 0)
+	{
+		return(1); //false
+	}
+
+	struct tree *sub_tree = NULL;
+	tree_get_subtree("methodDefinition", t, &sub_tree);
+
+	if(sub_tree != NULL)
+	{
+		return(1); //false
+	}
+
+	char *ident = tree_get_ident(t);
+	if(ident == NULL)
+	{
+		return(1);
+	}
+
+	//check ident type
+	char *ident_type = NULL;
+	SymTab_lookup_type(ident, &ident_type);
+
+	if(ident_type == NULL)
+	{
+		return(1);
+	}
+	if(strcmp(ident_type, "function") != 0)
+	{
+		return(1);
+	}
+
+	return(0); //true
 }
 
 

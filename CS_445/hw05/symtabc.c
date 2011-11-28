@@ -282,6 +282,25 @@ void SymTab_set_current_region(enum REGION region)
 }
 
 
+void SymTab_lookup_type(char *symbol, char **retval)
+{
+	(*retval) = NULL;
+	SymTabEntry *p = lookupSymTabEntry(symbol);
+	
+	if(p == NULL)
+	{
+		return;
+	}
+
+	if(p->type == NULL)
+	{
+		return;
+	}
+
+	(*retval) = strdup(p->type);
+}
+
+
 char *SymTab_lookup_current_scope()
 {
 	SymTabEntry *p = top_-1; 

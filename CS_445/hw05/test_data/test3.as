@@ -16,6 +16,8 @@ package test3
 		
 		public function test_func(AspectName:String, name2:int)
 		{
+			call_me("test", 1, 2);
+
 		}
 
 		public function call_me(test:String, y:int, z:int)

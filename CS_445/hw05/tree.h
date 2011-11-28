@@ -53,7 +53,7 @@ char *tree_get_opt_aux_flag(struct tree*);
 char *tree_get_ident(struct tree*);
 char *tree_get_ident_or_val(struct tree*);
 char *tree_get_operator(struct tree*);
-char *tree_get_leaf_type(struct tree*);
+int tree_is_function_call(struct tree*);
 
 //general symbol table things
 //int tree_update_sym_tab(struct tree *);

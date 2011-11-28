@@ -136,9 +136,13 @@ void tree_tac_gen_sub_classDefinition(struct tree *t, char *classname)
 	{
 		tree_tac_gen_methodDefinition(t, classname);
 	}
-
+	//function call
+	else if(tree_is_function_call(t) == 0)
+	{
+		tree_tac_gen_function_call(t);
+	}
 	//variableDefinition
-	if(strcmp(t->prodrule, "variableDefinition") == 0)
+	else if(strcmp(t->prodrule, "variableDefinition") == 0)
 	{
 		tree_tac_gen_variableDefinition(t, classname);
 	}
@@ -196,4 +200,60 @@ int tree_tac_gen_variableDefinition(struct tree *t, char *classname)
 	tac_inst_list_append(TAC_CODE, fq_var_name, "", ident_or_val, "");
 
 	return(0); //success
+}
+
+
+void tree_tac_gen_function_call(struct tree *t, char *classname)
+{
+	if(t == NULL)
+	{
+		return;
+	}
+
+	if(tree_is_function_call(t) != 0)
+	{
+		return;
+	}
+
+	char *func_name = tree_get_ident(t);
+	char buffer[MAX_BUF_SIZE];
+	sprintf(buffer, "%s.%s", classname, func_name);
+	char *fq_func_name = strdup(buffer); //fully qualified method name
+
+	//process argument
+	struct tree *sub_tree = NULL;
+	tree_get_subtree("arguments", t, &sub_tree);
+	tree_tac_gen_arguments(sub_tree);
+
+	//write call to function / label
+	tac_inst_list_append(TAC_CODE, "", "", "call", fq_func_name);
+
+	//modify tree node in case it is a class function call, so 
+	// it isn't picked up later as class-less function call.
+	t->prodrule = "variableDefinitionProcessed";
+}
+
+
+void tree_tac_gen_arguments(struct tree *t)
+{
+	if(t == NULL)
+	{
+		return;
+	}
+
+	//tac gen
+	// pick a unique parent tree for each argument
+	if(strcmp("assignmentExpression", t->prodrule) == 0)
+	{
+		struct tree *sub_tree = NULL;
+		char *param = tree_get_ident_or_val(t);
+		tac_inst_list_append(TAC_CODE, "", "", "param", param);
+	}
+
+	//children
+	int i;
+	for(i = 0; i < t->nkids; i++)
+	{
+		tree_tac_gen_arguments(t->kids[i]);
+	}
 }

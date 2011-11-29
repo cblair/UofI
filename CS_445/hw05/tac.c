@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "tac.h"
 
+#define EIC_FNAME_POSTFIX "eic"
 
 //tac_inst's
 
@@ -77,4 +79,57 @@ void tac_inst_list_print(struct tac_inst_list *code)
 		printf("%5s : %5s %5s %5s\n", p->t->result, p->t->o1, 
 							p->t->op, p->t->o2);
 	}
+}
+
+
+char *tac_inst_list_fname_ectoscriptize(char *fname)
+{
+	if(fname == NULL)
+	{
+		return(NULL);
+	}
+
+	//if we found a '.', strip it
+	// set p to the last '.' pos
+	int p = 0;
+	int i;
+	for(i = 0; i < strlen(fname); i++)
+	{
+		if(fname[i] == '.')
+		{
+			p = i;
+		}
+	}
+	if(p != 0)
+	{
+		fname[p] = '\0';
+	}
+
+	char buffer[strlen(fname) + strlen(EIC_FNAME_POSTFIX)];
+	sprintf(buffer, "%s.%s", fname, EIC_FNAME_POSTFIX);
+	char *retval = strdup(buffer);
+
+	return(retval);
+}
+
+
+int tac_inst_list_save(struct tac_inst_list *code, char *fname)
+{
+	if(fname == NULL)
+	{
+		return(1); //fail
+	}
+
+	FILE *fp; //file pointer
+	fp = fopen(fname,"w");
+
+	struct tac_inst_list *lp;
+	for(lp = code; lp != NULL; lp = lp->next)
+	{
+		printf("TS117: %s\n", fname);
+		fprintf(fp,"%s : %s %s %s\n", 	lp->t->result, lp->t->o1, 
+						lp->t->op, lp->t->o2);
+	}
+
+	fclose(fp); /*done!*/ 
 }

@@ -37,7 +37,7 @@ int tree_symtab_insert_variableDefinition(struct tree *t)
 	// expression
 	
 	//if variable already declared, fail
-	bool status = SymTab_insert(symbol->text, type, aux_flag, table_);
+	bool status = SymTab_insert(symbol->text, type, aux_flag, table_, t);
 	if(status == false)
 	{
 		fprintf(stderr, 
@@ -72,7 +72,7 @@ int tree_symtab_insert_methodDefinition(struct tree *t)
 	
 	//if function already declared, fail
 	//TODO: type lookup, aux lookup
-	bool status = SymTab_insert(symbol->text, "function", NULL, table_);
+	bool status = SymTab_insert(symbol->text, "function", NULL, table_, t);
 	if(status == false)
 	{
 		fprintf(stderr, 
@@ -115,7 +115,7 @@ int tree_symtab_insert_parameterDeclaration(struct tree *t)
 	// expression
 
 	//if variable already declared, fail
-	bool status = SymTab_insert(symbol->text, type, aux_flag, table_);
+	bool status = SymTab_insert(symbol->text, type, aux_flag, table_, t);
 	if(status == false)
 	{
 		fprintf(stderr, 

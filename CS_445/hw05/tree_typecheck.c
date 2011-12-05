@@ -3,7 +3,7 @@
 ////Semester:     Fall 2011
 ////Assignment:   Homework 4
 ////Author:       Colby Blair
-////File name:    tree_symtab_gen.h
+////File name:    tree_typecheck.c
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "tree.h"
@@ -11,6 +11,41 @@
 #include "tree_typecheck.h"
 #include "parser.tab.h"
 #include "main.h"
+
+#define MAX_BUF_SIZE	256
+
+#define POSTFIX_DELIM 	'.'
+#define FS_DIR_DELIM 	'/' //linux!
+
+
+char *tree_typecheck_classify(char *fname)
+{
+	if(fname == NULL)
+	{
+		return(NULL);
+	}
+
+	int i;
+	for(i = 0; i < strlen(fname); i++)
+	{
+		//strip off directory delim and what's before it
+		if(	fname[i] == FS_DIR_DELIM
+			&& (i + 1) < strlen(fname) 
+		)
+		{
+			fname = &fname[i+1];
+			i = 0;
+		}
+
+		//blow away delim and everything after
+		if(fname[i] == POSTFIX_DELIM)
+		{
+			fname[i] = '\0';
+		}
+	}
+
+	return(fname);
+}
 
 
 //get's the type of the leaf; determines a literal type, or symtab lookups
@@ -127,8 +162,81 @@ int tree_type_is_assignable(char *to, char *from)
 }
 
 
+void tree_typecheck_packageDecl(struct tree *t)
+{
+	//Class == file name check
 
-int tree_typecheck_assignmentExpression(struct tree *t)
+	//get the class subtree
+	struct tree *class_tree = NULL;
+	tree_get_subtree("classDefinition", t, &class_tree);
+
+	//classify fname
+	if(class_tree == NULL)
+	{
+		fprintf(stderr, 
+			"ERROR: internal class name check. Exiting.\n");
+		exit(ERROR_INTERNAL);
+	}
+
+	//get the class name
+	char *class_name = tree_get_ident(class_tree);
+
+	//get the file name
+	// packageDecl->"package"->fname
+	char *fname = t->kids[0]->leaf->fname;
+	char *fname_classified = tree_typecheck_classify(fname);
+
+	//classify fname
+	if(class_name == NULL
+		|| fname_classified == NULL)
+	{
+		fprintf(stderr, 
+			"ERROR: internal class name check. Exiting.\n");
+		exit(ERROR_INTERNAL);
+	}
+
+	//check
+	if(strcmp(class_name, fname_classified) != 0)
+	{
+		fprintf(stderr,
+			"ERROR: class name '%s' doesn't match filename '%s'. Exiting.\n",
+			class_name, fname_classified);
+		exit(ERROR_SEMANTIC);
+	}
+}
+
+
+void tree_typecheck_class_constructor(struct tree *t, char *class_name)
+{
+	if(t == NULL)
+	{
+		return;
+	}
+	
+	//construct test
+	if(tree_is_class_constructor(t, class_name) == 0)
+	{
+		struct tree *return_tree = NULL;
+		tree_get_subtree("returnStatement", t, &return_tree);
+
+		//constructor result check
+		if(return_tree != NULL)
+		{
+			fprintf(stderr,
+				"ERROR: constructor cannot have a return value. Exiting.\n");
+			exit(ERROR_SEMANTIC);
+		}
+	}
+
+	int i;
+	for(i = 0; i < t->nkids; i++)
+	{
+		tree_typecheck_class_constructor(t->kids[i], class_name);
+	}
+}
+
+
+void tree_typecheck_assignmentExpression(struct tree *t)
 {
 	//Expression type check
 	//see if assignment op is in tree
@@ -139,7 +247,7 @@ int tree_typecheck_assignmentExpression(struct tree *t)
 	//expression later (below)
 	if(subtree == NULL)
 	{
-		return(0);
+		return;
 	}
 	//else, this is an entire assignmentExpression to a identifier
 	else 
@@ -220,6 +328,192 @@ int tree_typecheck_assignmentExpression(struct tree *t)
 		fprintf(stderr, "ERROR: type '%s' and '%s' are not assignable, in file '' on line ''. Exiting...\n", itype, vtype);
 		exit(ERROR_SEMANTIC);
 	}
+}
 
-	return(0); //success
+
+void tree_typecheck_classDefinition(struct tree *t)
+{
+	char *class_name = tree_get_ident(t);
+
+	if(class_name == NULL)
+	{
+		fprintf(stderr,
+			"ERROR: internal class definition. Exiting.\n");
+		exit(ERROR_INTERNAL);
+	}
+
+	tree_typecheck_class_constructor(t, class_name);
+}
+
+
+void tree_typecheck_get_argument_type_list(struct tree *t, int *len, 
+					char *arg_type_list[])
+{
+	if(t == NULL)
+	{
+		return;
+	}
+
+	if(strcmp(t->prodrule, "assignmentExpression") == 0)
+	{
+		char *type = NULL;
+		char *ident_or_val = tree_get_ident_or_val(t);
+		
+		//see if the expression is an ident
+		SymTab_lookup_type(ident_or_val, &type);
+
+		//if it isn't, it is a literal, so look up its type
+		if(type == NULL)
+		{
+			type = tree_type_trans_lit(ident_or_val);
+		}
+
+		arg_type_list[(*len)] = type;
+		(*len)++;
+	}
+
+	int i;
+	for(i = 0; i < t->nkids; i++)
+	{
+		tree_typecheck_get_argument_type_list(t->kids[i], 
+						&(*len), arg_type_list);
+	}
+}
+
+
+void tree_typecheck_get_parameter_type_list(struct tree *t, int *len, 
+					char *param_type_list[])
+{
+	if(t == NULL)
+	{
+		return;
+	}
+
+	if(strcmp(t->prodrule, "parameterDeclaration") == 0)
+	{
+		char *type = "void";
+		
+		struct tree *type_tree = NULL;
+		tree_get_subtree("optionalTypeExpression", t, &type_tree);
+
+		//if there is an optional type expression, then we know the
+		// type
+		if(type_tree != NULL)
+		{
+			type = tree_get_ident(type_tree);
+		}
+		//else, default is void
+		
+		param_type_list[(*len)] = type;
+		(*len)++;
+	}
+
+	int i;
+	for(i = 0; i < t->nkids; i++)
+	{
+		tree_typecheck_get_parameter_type_list(t->kids[i], 
+						&(*len), param_type_list);
+	}
+}
+
+
+void tree_typecheck_arguments(struct tree *t)
+{
+	//Get the function name
+	char *func_name = tree_get_ident(t);
+	if(func_name == NULL)
+	{
+		fprintf(stderr,
+			"ERROR: internal function call. Exiting");
+		exit(ERROR_INTERNAL);
+	}
+
+	//Get the line number for error reporting
+	struct tree *temp = NULL;
+	tree_get_subtree(func_name, t, &temp);
+	int lineno = temp->leaf->lineno;
+
+	//Get the function call argument tree
+	struct tree *arg_tree = NULL;
+	tree_get_subtree("arguments", t, &arg_tree);
+	if(arg_tree == NULL)
+	{
+		fprintf(stderr,
+			"ERROR: internal function call. Exiting");
+		exit(ERROR_INTERNAL);
+	}
+
+	//Get the method definition tree from the symbol table
+	SymTabEntry *p = lookupSymTabEntry(func_name);
+	if(p == NULL)
+	{
+		fprintf(stderr,
+			"ERROR: internal function call. Exiting");
+		exit(ERROR_INTERNAL);
+	}
+
+	//Get the parameter tree from the methodDefinition tree
+	struct tree *param_tree = NULL;
+	tree_get_subtree("parameterDeclarationList", p->def_t, &param_tree);
+	if(param_tree == NULL)
+	{
+		fprintf(stderr,
+			"ERROR: internal function call. Exiting");
+		exit(ERROR_INTERNAL);
+	}
+
+	//Get the argument type list
+	char *arg_type_list[MAX_BUF_SIZE];
+	int arg_len = 0;
+	tree_typecheck_get_argument_type_list(arg_tree, 
+						&arg_len, arg_type_list);
+
+	//Get the parameter type list
+	char *param_type_list[MAX_BUF_SIZE];
+	int param_len = 0;
+	tree_typecheck_get_parameter_type_list(param_tree, &param_len, 
+						param_type_list);
+
+	//Check... finally!
+	
+	//first, should have same number of args as params
+	if(arg_len != param_len)
+	{
+		fprintf(stderr,
+			"ERROR: function call '%s' has %d parameters, but was called with %d on line %d. Exiting.\n",
+			func_name, param_len, arg_len, lineno);
+		exit(ERROR_SEMANTIC);
+	}
+
+	//check if they are all the same type, ignoring any void
+	// definitions
+	int i;
+	for(i = 0; i < param_len; i++)
+	{
+		if(strcmp(param_type_list[i], "void") != 0)
+		{
+			if(strcmp(param_type_list[i], arg_type_list[i]) != \
+				0)
+			{
+				fprintf(stderr,
+					"ERROR: mismatched argument type forargument %d, function call '%s' on \nline %d; type should be '%s' but is called as '%s'. Exiting.\n",
+					i, func_name, lineno, 
+					param_type_list[i], 
+					arg_type_list[i]);
+			}
+		}
+	}
+}
+
+
+void tree_typecheck_function_call(struct tree *t)
+{
+	if(t == NULL)
+	{
+		fprintf(stderr,
+			"ERROR: internal function call. Exiting");
+		exit(ERROR_INTERNAL);
+	}
+
+	tree_typecheck_arguments(t);
 }

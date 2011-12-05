@@ -242,14 +242,27 @@ int tree_preprocess(struct tree **t, int depth)
 		tree_insert_importDefinition(&(*t));
 	}
 
-	// update symbol table
+	//update symbol table
 	tree_update_sym_tab((*t));
 
-	// type check
-	//  assignmentExpression
-	if(strcmp((*t)->prodrule, "assignmentExpression") == 0)
+	//type check
+	// packageExpression
+	if(strcmp((*t)->prodrule, "packageDecl") == 0)
+	{
+		tree_typecheck_packageDecl((*t));
+	}
+	// assignmentExpression
+	else if(strcmp((*t)->prodrule, "assignmentExpression") == 0)
 	{
 		tree_typecheck_assignmentExpression((*t));
+	}
+	else if(strcmp((*t)->prodrule, "classDefinition") == 0)
+	{
+		tree_typecheck_classDefinition((*t));
+	}
+	else if(tree_is_function_call((*t)) == 0)
+	{
+		tree_typecheck_function_call((*t));
 	}
 
   	int i;
@@ -555,6 +568,29 @@ int tree_is_function_call(struct tree *t)
 	}
 
 	return(0); //true
+}
+
+
+int tree_is_class_constructor(struct tree *t, char *class_name)
+{
+	if(strcmp("methodDefinition", t->prodrule) != 0)
+	{
+		return(1); 
+	}
+
+	char *func_name = tree_get_ident(t);
+	
+	if(func_name == NULL)
+	{
+		return(1);
+	}
+
+	if(strcmp(func_name, class_name) != 0)
+	{
+		return(1);
+	}
+
+	return(0);
 }
 
 

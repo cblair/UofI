@@ -16,11 +16,11 @@ package test3
 		
 		public function test_func(AspectName:String, name2:int)
 		{
-			call_me("test", 1, 2);
+			call_me("test", name2, 1);
 
 		}
 
-		public function call_me(test:String, y:int, z:int)
+		public function call_me(test:String, y:int, z)
 		{
 			var x;
 			var a;

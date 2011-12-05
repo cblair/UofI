@@ -17,6 +17,10 @@ int tree_type_is_assignable(char*, char*);
 //Getters
 char *tree_get_leaf_type(struct tree*);
 
-int tree_typecheck_assignmentExpression(struct tree *);
+void tree_typecheck_class_constructor(struct tree*, char*);
+
+void tree_typecheck_assignmentExpression(struct tree *);
+void tree_typecheck_classDefinition(struct tree *);
+void tree_typecheck_function_call(struct tree *);
 
 #endif

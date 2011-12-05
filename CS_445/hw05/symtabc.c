@@ -88,7 +88,7 @@ void SymTab_debug(int newDebugValue)
 
 // push the sym and ptr on the stack
 static void SymTab_push(char *sym, char *type, char *aux_flag, 
-			int scopeDepth, void *ptr)
+			int scopeDepth, void *ptr, struct tree *def_t)
 {
     // if you run out of memory then add some
     if (top_>=table_+maxTable_) {
@@ -115,6 +115,7 @@ static void SymTab_push(char *sym, char *type, char *aux_flag,
     top_->scope = scopeName_;
     top_->depth = scopeDepth;  // note that this is passed in
     top_->map = mem_add_new(CURRENT_REGION, MEM_ADD_OFFSET);
+    top_->def_t = def_t;
     top_->ptr = ptr;
     top_++;
 
@@ -155,7 +156,8 @@ void SymTab_print()
 
 
 // inserts an element into the symbol table
-bool SymTab_insert(char *sym, char *type, char *aux_flag, void *ptr)
+bool SymTab_insert(char *sym, char *type, char *aux_flag, void *ptr,
+			struct tree *def_t)
 {
     SymTabEntry *p;
 
@@ -171,7 +173,7 @@ bool SymTab_insert(char *sym, char *type, char *aux_flag, void *ptr)
 	fflush(stdout);
     }
 
-    SymTab_push(sym, type, aux_flag, scopeDepth_, ptr);
+    SymTab_push(sym, type, aux_flag, scopeDepth_, ptr, def_t);
     return true;
 };
 
@@ -224,7 +226,7 @@ void SymTab_enter_scope(char *funcname, enum REGION type_r)
     scopeName_ = funcname;
     if (debug_ & DEBUG_TABLE) printf("SymTab: Entering scope %s\n", scopeName_);
     scopeDepth_++;
-    SymTab_push("", "", "", 0, NULL);
+    SymTab_push("", "", "", 0, NULL, NULL);
 
     //set the memory offset to 0
     MEM_ADD_OFFSET = 0;

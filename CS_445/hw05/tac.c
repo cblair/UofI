@@ -126,10 +126,9 @@ int tac_inst_list_save(struct tac_inst_list *code, char *fname)
 	struct tac_inst_list *lp;
 	for(lp = code; lp != NULL; lp = lp->next)
 	{
-		printf("TS117: %s\n", fname);
 		fprintf(fp,"%s : %s %s %s\n", 	lp->t->result, lp->t->o1, 
 						lp->t->op, lp->t->o2);
 	}
 
-	fclose(fp); /*done!*/ 
+	return(fclose(fp)); /*done!*/ 
 }

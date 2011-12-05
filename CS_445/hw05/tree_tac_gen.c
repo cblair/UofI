@@ -139,7 +139,7 @@ void tree_tac_gen_sub_classDefinition(struct tree *t, char *classname)
 	//function call
 	else if(tree_is_function_call(t) == 0)
 	{
-		tree_tac_gen_function_call(t);
+		tree_tac_gen_function_call(t, classname);
 	}
 	//variableDefinition
 	else if(strcmp(t->prodrule, "variableDefinition") == 0)

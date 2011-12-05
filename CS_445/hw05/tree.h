@@ -54,6 +54,7 @@ char *tree_get_ident(struct tree*);
 char *tree_get_ident_or_val(struct tree*);
 char *tree_get_operator(struct tree*);
 int tree_is_function_call(struct tree*);
+int tree_is_class_constructor(struct tree*, char*);
 
 //general symbol table things
 //int tree_update_sym_tab(struct tree *);

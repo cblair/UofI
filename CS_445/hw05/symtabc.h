@@ -31,6 +31,8 @@ typedef struct {
     int depth;
     char* aux_flag;  //ie. 'const', etc
     void *ptr;
+    //pointer to the definition subtree, mostly for class and function lookups
+    struct tree *def_t; 
     struct mem_add *map;
 } SymTabEntry;
     
@@ -60,7 +62,7 @@ void SymTab_init(void (* elemPrint)(void *));  // the constructor creates and se
 void SymTab_free();                           // destructor
 void SymTab_debug(int newDebugValue);       // sets the debug flags
 void SymTab_print();                        // prints the entire stack
-bool SymTab_insert(char *, char*, char*, void *ptr);   // inserts a new ptr associated with symbol sym 
+bool SymTab_insert(char *, char*, char*, void *ptr, struct tree*);   // inserts a new ptr associated with symbol sym 
                                      // returns false if already defined
 void *SymTab_lookup(char *sym);             // returns the ptr associated with sym
                                      // returns NULL if symbol not found

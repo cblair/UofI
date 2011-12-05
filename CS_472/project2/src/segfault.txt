@@ -1,0 +1,18 @@
+Starting program: /Users/cblair/src/UofI/CS_472/project2/src/eval 
+0: min fit = 0.344379, min eval = 6.55862, avg fitness is 6.61962e+09, time = 0
+1: min fit = 0.0823344, min eval = 6.82067, avg fitness is 5.1497e+13, time = 0
+2: min fit = 0.129699, min eval = 7.0327, avg fitness is 7.60959e+09, time = 0
+3: min fit = 0.0459595, min eval = 6.94896, avg fitness is 7.07899e+14, time = 0
+4: min fit = 0.24211, min eval = 6.66089, avg fitness is 1.75497e+11, time = 0
+5: min fit = 5.6937, min eval = 1.2093, avg fitness is 5.68231, time = 0
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: 13 at address: 0x0000000000000000
+0x000000010000278d in tree_node::copy (this=0x2000000000000000, to=0x100521480) at tree_node.cpp:97
+97		switch (this->ntype)
+(gdb) bt
+#0  0x000000010000278d in tree_node::copy (this=0x2000000000000000, to=0x100521480) at tree_node.cpp:97
+#1  0x0000000100004288 in tree::copy (this=0x1001008c0, to=0x7fff5fbff9e8) at tree.cpp:120
+#2  0x0000000100004587 in tree_crossover (tp1=0x100801808, tp2=0x100801808) at tree.cpp:441
+#3  0x0000000100001770 in tree_gp::gen (this=0x100801800, dexpected=6.9029999999999996) at tree_gp.cpp:171
+#4  0x000000010000482d in main () at main.cpp:46

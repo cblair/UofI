@@ -1,0 +1,104 @@
+
+%%%%%%%%% SUMMARY -- 1 page, third person
+% e.g:  "The PI will prove" not "I will prove"
+
+%Introduction / Summary (1 page).  The following information is typically included in proposal introductions for this 
+%grant. The summary should lead to the proposal body but it should also be a self-contained document, 
+%summarizing what is being proposed and why.   
+ 
+% Provide appropriate background that sets the context for the problem and the objectives. 
+%State the specific problem (may also be thought of as a need, central research question, or hypothesis) 
+%your research will address. 
+% State the objectives of the proposed research. 
+%State any limits of the proposed research  (may not be needed). 
+%Summarize the research methods you will use to achieve research objectives (if clearly covered elsewhere 
+%in the introduction, a separate section may not be needed). 
+
+
+%\required{Project Summary}
+\section{Project Summary}
+% This should be a brief statement of the problem you plan to address.
+% It should look something like an abstract. 
+In biomechanics, there are many interactions between the body and brain. Some
+interactions can be quantified as electrical signals to motor nerves of muscles.
+The result is a particular musclular reaction due to an electrical signal. The
+input is an electrical nerve signal, and the output is a measured velocity at
+a joint. The overall result to this sytem of inputs and output is actions like 
+walking.
+
+In the proposed project, the focus will be on how to relate these inputs to the 
+outputs. Each muscular system adapts to what each input signal should mean, so
+predicting the output for each system becomes a difficult challenge. The 
+project will focus on optimizing solutions that will explain test data. These
+solution could then be used for predicting outputs for inputs that have not
+yet been measured. This would result in a better understanding of treatment 
+of muscle problems, and better simulations for fixes of muscle irregularities.
+
+\subsection{Background}
+Walking requires a lot of complex tasks to make locomotion possible 
+\cite{mcgowan}. The inputs to muscle motor nerves and the outputs of joint
+motion are one way of measuring all these complex tasks. The data collected
+as inputs and outputs fits nicely into Evolutionary Computation (EC). EC uses 
+many measured inputs and expected outputs, and evolves a system that will 
+produce those expected outputs on its own. 
+
+The EC program will do this with some margin of error, of course, but the 
+error of the solution should be small. The EC solution will then be useful 
+when there are a set of inputs that the output is not already know, like in 
+a simulation. The proposed project, two kinds of EC will be considered: 
+Genetic Algorithms and Genetic Programming. Each has its strength and 
+drawbacks, at least one approach will be used to optimize a model for 
+simulation.
+
+\subsection{Problem Statement}
+For Dr. Craig McGowan's research, a framework already exists. It has been a 
+collaboration between many researchers for many years. There are two problems
+that the research faces, that the project will focus on: optimizing models 
+for the current evaluation function, and creating a better evaluation 
+function. A solution for the first problem will be attempted, and a solution
+for the second will be attempted if time remains. 
+
+McGowan's research has produced their own evaluation function for how 
+well a simulated biomechanical model is walking. The function is very large and abstract,
+although supported by research. It has many parameters itself that are educated
+guesses. McGowan then produces many semi-random models, and uses Simulated 
+Annealing optimization to find the best model per the evaluation function. 
+
+\subsection{Objectives}
+The project will use a Genetic Algorithm (GA) for the first problem, and 
+could use a Genetic Program (GP) for the second. GAs are good for producing
+models for an evaluation function, while GPs are good at actually finding
+out what that evaluation function should be. The models from the GA would show
+a representation of the actual inputs and outputs in a human biomechanical
+system, while a GP would show what actual algorithm represents the system.
+
+Although McGowan does not talk about optimization methods in his paper, the
+research uses Simulated Annealing. This is a method used for steady convergence
+to an optimal solution. This is most likely a local solution in the full domain
+of potential models. What all optimizations want is to find better global 
+solutions, instead of getting stuck on good local solutions. GAs are better
+at this that methods like Simulated Annealing, if they are set up correctly.
+
+Other reseachers also use Simulated Annealing, but a paper by WHO? \cite{who}
+tries to paralellize the Simulated Annealing method. Parallelization is a 
+method of programming that finds tasks that can be done simultaneously, and
+does them all at once on many CPUs / GPUs. The proposed project will use GAs
+that behave simularly to Simulated Annealing at first, and then more variance
+will be tried. Through the proposed project, an eye for parallelizable areas
+will also be active. If any areas are paralellizable, the gains will be 
+analized and produced. If there is time, parallelization may even be 
+implemented.
+
+%\required{Intellectual Merit}
+% This is why your project is interesting and will help further
+% knowledge in the field of mathematics. 
+
+%\required{Broader Impacts}
+% There are 4 kinds of broader impacts.
+% 1. advance discovery and understanding while promoting teaching,
+% training and learning
+% 2. broaden the participation of underrepresented groups
+% 3. disseminated broadly to enhance scientific and technological
+% understanding
+% 4. benefits of the proposed activity to society
+

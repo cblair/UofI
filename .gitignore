@@ -4,3 +4,7 @@
 *.swp
 *.DS_Store
 *~
+*.log
+*.lof
+*.aux
+*.gz

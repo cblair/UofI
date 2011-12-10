@@ -88,7 +88,9 @@ int tree_tac_gen_sub_assignmentExpression(struct tree **t,
 		char *result = strdup(buffer);
 
 		//Gen code
-		tac_inst_list_append(TAC_CODE, result, op, o1, o2);
+		struct tac_inst *p = tac_inst_new(5, result, ":=",
+							o1, op,o2);
+		tac_inst_list_append(TAC_CODE, p);
 	
 		//blow away processed node, and replace with reference
 		// to resulting register; faked out as variable sub tree
@@ -118,7 +120,8 @@ int tree_tac_gen_assignmentExpression(struct tree *t)
 	sprintf(buffer, "t%d", result_count);
 	char *result = strdup(buffer);
 
-	tac_inst_list_append(TAC_CODE, ident, result, "", "");
+	struct tac_inst *p = tac_inst_new(3, ident, ":=", result);
+	tac_inst_list_append(TAC_CODE, p);
 	
 	return(0); //success
 }
@@ -136,16 +139,22 @@ void tree_tac_gen_sub_classDefinition(struct tree *t, char *classname)
 	{
 		tree_tac_gen_methodDefinition(t, classname);
 	}
+	else if(tree_is_class_instantiation(t) == 0)
+	{
+		tree_tac_gen_classInstantiation(t);
+	}
 	//function call
 	else if(tree_is_function_call(t) == 0)
 	{
 		tree_tac_gen_function_call(t, classname);
 	}
+	/*//This should only happen during a class declaration
 	//variableDefinition
 	else if(strcmp(t->prodrule, "variableDefinition") == 0)
 	{
 		tree_tac_gen_variableDefinition(t, classname);
 	}
+	*/
 
 	int i;
 	for(i = 0; i < t->nkids; i++)
@@ -154,6 +163,28 @@ void tree_tac_gen_sub_classDefinition(struct tree *t, char *classname)
 	}
 }
 
+
+void tree_tac_gen_sub_classInstantiation(struct tree *t, char *varname)
+{
+	if(t == NULL)
+	{
+		return; //failure
+	}
+
+	char *var_name = tree_get_ident(t);
+
+	//variableDefinition
+	if(strcmp(t->prodrule, "variableDefinition") == 0)
+	{
+		tree_tac_gen_variableDefinition(t, var_name);
+	}
+
+	int i;
+	for(i = 0; i < t->nkids; i++)
+	{
+		tree_tac_gen_sub_classInstantiation(t->kids[i], var_name);
+	}
+}
 
 int tree_tac_gen_classDefinition(struct tree *t)
 {
@@ -164,13 +195,39 @@ int tree_tac_gen_classDefinition(struct tree *t)
 }
 
 
+
+void tree_tac_gen_classInstantiation(struct tree *t)
+{
+	if(t == NULL)
+	{
+		return; //failure
+	}
+
+	char *var_name = tree_get_ident(t);
+
+	SymTabEntry *p = lookupSymTabEntry(var_name);
+	printf("TS211: %s\n", var_name);
+	if(p == NULL)
+	{
+		return;
+	}
+
+	struct tree *def_t = p->def_t;
+	treeprint(def_t, 0);
+
+	tree_tac_gen_sub_classInstantiation(def_t, var_name);
+}
+
+
 int tree_tac_gen_methodDefinition(struct tree *t, char *classname)
 {
 	char *ident = tree_get_ident(t);
 	char buffer[MAX_BUF_SIZE];
 	sprintf(buffer, "%s.%s", classname, ident);
 	char *fq_method_name = strdup(buffer); //fully qualified method name
-	tac_inst_list_append(TAC_CODE, fq_method_name, "", "", "");
+
+	struct tac_inst *p = tac_inst_new(2, fq_method_name, ":");
+	tac_inst_list_append(TAC_CODE, p);
 
 	//modify tree node in case it is a class methodDefinition, so 
 	// it isn't picked up later as class-less methodDefinition.
@@ -180,11 +237,11 @@ int tree_tac_gen_methodDefinition(struct tree *t, char *classname)
 }
 
 
-int tree_tac_gen_variableDefinition(struct tree *t, char *classname)
+int tree_tac_gen_variableDefinition(struct tree *t, char *var_name)
 {
 	char *ident = tree_get_ident(t);
 	char buffer[MAX_BUF_SIZE];
-	sprintf(buffer, "%s.%s", classname, ident);
+	sprintf(buffer, "%s.%s", var_name, ident);
 	char *fq_var_name = strdup(buffer); //fully qualified method name
 
 	//modify tree node in case it is a class variableDefinition, so 
@@ -197,7 +254,10 @@ int tree_tac_gen_variableDefinition(struct tree *t, char *classname)
 	{
 		ident_or_val = "";
 	}
-	tac_inst_list_append(TAC_CODE, fq_var_name, "", ident_or_val, "");
+
+	struct tac_inst *p = tac_inst_new(3, fq_var_name, ":=", 
+					ident_or_val);
+	tac_inst_list_append(TAC_CODE, p);
 
 	return(0); //success
 }
@@ -226,7 +286,8 @@ void tree_tac_gen_function_call(struct tree *t, char *classname)
 	tree_tac_gen_arguments(sub_tree);
 
 	//write call to function / label
-	tac_inst_list_append(TAC_CODE, "", "", "call", fq_func_name);
+	struct tac_inst *p = tac_inst_new(2, "call", fq_func_name);
+	tac_inst_list_append(TAC_CODE, p);
 
 	//modify tree node in case it is a class function call, so 
 	// it isn't picked up later as class-less function call.
@@ -247,7 +308,8 @@ void tree_tac_gen_arguments(struct tree *t)
 	{
 		struct tree *sub_tree = NULL;
 		char *param = tree_get_ident_or_val(t);
-		tac_inst_list_append(TAC_CODE, "", "", "param", param);
+		struct tac_inst *p = tac_inst_new(2, "param", param);
+		tac_inst_list_append(TAC_CODE, p);
 	}
 
 	//children

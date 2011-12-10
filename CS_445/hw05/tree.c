@@ -220,7 +220,8 @@ int tree_process_all(struct tree *t)
 
 	//Generate code
 	// init global code list
-	TAC_CODE = tac_inst_list_new("MAIN:", "", "", "");
+	struct tac_inst *p = tac_inst_new(2, "MAIN", ":");
+	TAC_CODE = tac_inst_list_new(p);
 
 	tree_process(t, 0);
 
@@ -291,11 +292,18 @@ int tree_process(struct tree *t, int depth)
 	{
 		tree_tac_gen_classDefinition(t);
 	}
+	else if(tree_is_class_instantiation(t) == 0)
+	{
+		tree_tac_gen_classInstantiation(t);
+	}
+	/*Now done in class instantiation
+	//TODO: globals?
 	//variableDefinition
 	else if(strcmp(t->prodrule, "variableDefinition") == 0)
 	{
 		tree_tac_gen_variableDefinition(t, "");
 	}
+	*/
 	//TODO: function call
 	/*
 	else if(tree_is_function_call(t) == 0)
@@ -565,6 +573,29 @@ int tree_is_function_call(struct tree *t)
 	if(strcmp(ident_type, "function") != 0)
 	{
 		return(1);
+	}
+
+	return(0); //true
+}
+
+
+int tree_is_class_instantiation(struct tree *t)
+{
+	if(t == NULL)
+	{
+		return(1); //false
+	}
+	
+	if(strcmp("variableDeclarator", t->prodrule) != 0)
+	{
+		return(1); //false
+	}
+
+	struct tree *sub_tree = NULL;
+	tree_get_subtree("newExpression", t, &sub_tree);
+	if(sub_tree == NULL)
+	{
+		return(1); //false
 	}
 
 	return(0); //true

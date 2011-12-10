@@ -11,6 +11,9 @@
 
 int tree_tac_gen_assignmentExpression(struct tree *);
 
+void tree_tac_gen_sub_classInstantiation(struct tree *, char*);
+void tree_tac_gen_classInstantiation(struct tree *);
+
 void tree_tac_gen_function_call(struct tree *, char *);
 void tree_tac_gen_arguments(struct tree *);
 

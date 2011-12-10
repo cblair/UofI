@@ -10,41 +10,86 @@
 %\required{Project Description}
 \section{Project Description}
 
-\subsection{Agenda}
-
-\subsubsection{Algorithms / Programming}
-
 \begin{figure}[!h]
         \begin{center}
-		%\includegraphics[width=120mm]{images/excite}
-                \caption{Some great figure}
-                \label{curves}
+		\includegraphics[width=120mm]{images/tool_layout}
+                \caption{Software tool's component layout}
+                \label{tool_layout}
         \end{center}
 \end{figure}
 
 
 \subsection{Methodology}
-%this section should talk about how the team will develop, maybe software
-% processes, and how to get customer feedback
+The team will develop the software in whatever style they like, but will report
+weekly to the customer with progress reports and new project projections. 
+Project leaders may occasionally travel with Alex Fremier to meet with other
+users, but only optionally. Weekly trends will give projections, and a 
+customer acceptance test will conclude at the end of the semester.
 
-\subsubsection{Project Software}
-TODO: This project will be written in Ruby on Rails or some other great 
-MVC, will install on Windows, Linux, and Mac, blah blah blah. It will be 
-downloadable to customers via a private github, Apple's App Store,
-or some other overpriced method. Consulting to set it up won't exist because
-the whole thing installs itself, and everything is so simple. 
+\subsubsection{Software Requirements}
+This project will be written a web interface, preferably using a Model View
+Control (MVC) Design pattern like Ruby on Rails. The web gui will implement
+a RESTful interface, and will implement modules for inputing, filtering, 
+visualizing, and analizing data.
+
+The project will contain 4 different module sections:
+\begin{enumerate}
+	\item Metadata server and database
+	\item Data input / output
+	\item Visualization and selection interface
+	\item Networking protocol
+	\item A stub for an analysis pipeline
+	%more?
+\end{enumerate}
+
+The metadata server module will allow the user to specify what format they 
+will like to use (MySQL, PostGreSQL, SQLite, Casandra). It will help them
+manage backups, both locally and offsite, and the scheduling of backups. It will
+allow them to select which offsite datasets or entire hosts to mirror, and
+help them automate the management of data collisions. The interface will also
+allow them to monitor the health of offsite hosts, and view statistics
+about the network health going to the host.
+
+The data input / output modules will help users input various different
+data standards (CSV, R language tables, more) into the tool's common 
+metadata format, which will be similar to an SQL table format. These modules
+will also allow users to apply a few useful filters to the data, similar to
+how Microsoft Excel can. When an data input session start, the data will be 
+staged as a sandbox dataset, and the user will be able to sort, apply filters,
+and delete data similar to a spreadsheet, until the data is formatted correctly.
+
+The data visualization and selection modules will help users with graphing
+their data in an array of charts, and have spatial data represented on 
+3D plots. Users will be able to select ranges from the charts, and have the
+resulting datasets cached for them for future processing. Users will be able
+to join multiple datasets, split datasets, and describe relations between 
+different datasets. They will be able to create lookup tables between datasets
+on the fly, allowing them the maximize data usability while minimizing data 
+redundancy.
+
+The networking modules will provide different ways to syncronize data. These
+can utilize current network protocols, as well as try to implement new
+ones. Examples of existing protocols can include rsync, http, ftp, scp, SOAP
+XML, built in database protocols, and more. The data should make sense, however,
+in whatever incremental state it is in. If a large transfer, or a small
+transfer on a slow connection, fails, then the receiving host should see the
+transfered pieces of data in a dataset, and see a visible gap (i.e. through
+the visualization tools). The client can then choose to resend, and the minimal
+amount of retransmits should occur to finish the transmission.
+
+The distribution will be installable on Windows, 
+Linux, and Mac, and will include any third party source needed. It will be 
+downloadable to customers via a repository. 
 
 \section{Customer}
-%Talk about Alex and the Methow, and all the doe they are rolling in to pay
-% for this thing.
-%Talk about their needs, and the impact this project could have on them.
-%Talk also about how future customer, not just in the Basin, but elsewhere
-% could benefit from the product.
+The customer will be Alex Fremier of the UI's College of Natural Resources.
+If this project proposal is accepted, specific customer requirement will be 
+drawn and presented at the beginning of the Spring 2012 semester. An 
+acceptance test will be specified along with a full list of function tests.
 
-\section{Statement of Qualifications}
-%What gives us the idea we can actually pull this off?
+%\section{Statement of Qualifications}
 
-\section{Conclusion}
+%\section{Conclusion}
 %Why should people pay for this thing, why should the capstone PM's want
 % this project, and why is it great for humanity
 

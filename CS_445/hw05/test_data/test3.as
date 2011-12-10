@@ -28,6 +28,7 @@ package test3
 			var c;
 			x = y + z;
 			x = y * z + a - b / 2;
+			var t = new test3();
 		}
 	}
 }
@@ -40,4 +41,5 @@ function test_func2(AspectName:String, name2:int)
 	var c;
 	x = y + z;
 	x = y * z + a - b / 2;
+
 }

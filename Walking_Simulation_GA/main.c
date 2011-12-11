@@ -50,18 +50,12 @@ double simple_random(double current_val)
 
 	//return(drand);
 
-	/*Note:
-		The following is a nice thought, but values that are close
-		to the ubound stick there. 
-		Fix:
-		ignore the scaling down of diff on the bounds, and set to 
-		bound minus itself scaled down. Good idea?
-	*/
 	//get the difference between the rand value and the current value
 	double diff = current_val - drand; //can be neg or pos
 
 	//scale down the difference
-	double diff_scale = 10.000;
+	//double diff_scale = 10.000;
+	double diff_scale = 40.000;
 	diff = diff / diff_scale;
 
 	//return the scaled down change of current value
@@ -93,9 +87,15 @@ int main()
 	/* initialize random seed: */
 	srand ( time(NULL) );
 
-	double d1[] = {-5.0000, -4.0000, -3.0000, -2.0000, -1.0000, \
-			0.00000, 1.0000, 2.0000, 3.0000, 4.0000};
-	struct ga_pop *p = ga_pop_init(500, d1, 10, simple_fitness, 
+	double d1[] = { \
+			-5.0000, -4.0000, -3.0000, -2.0000, -1.0000, \
+			0.00000, 1.0000, 2.0000, 3.0000, 4.0000, \
+			-5.0000, -4.0000, -3.0000, -2.0000, -1.0000, \
+			0.00000, 1.0000, 2.0000, 3.0000, 4.0000, \
+			-5.0000, -4.0000, -3.0000, -2.0000, -1.0000, \
+			0.00000, 1.0000, 2.0000, 3.0000, 4.0000
+			};
+	struct ga_pop *p = ga_pop_init(500, d1, 30, simple_fitness, 
 					simple_random);
 
 
@@ -144,6 +144,7 @@ int main()
 	*/
 
 	//Fitness function
+	/*
 	p->iarray[0]->attr[0] = 6.0000;
 	p->iarray[0]->attr[1] = 7.0000;
 	p->iarray[0]->attr[2] = 8.0000;
@@ -177,6 +178,7 @@ int main()
 		p->iarray[i]->attr[4] = 0.0000;
 		//printf("TS107: %f\n", p->fitness(p->iarray[2]));
 	}
+	*/
 
 	//Steady state  / Generational test
 	FILE *fp;
@@ -189,8 +191,8 @@ int main()
 	double min_fit;
 	while(!bored)
 	{
-		//min_fit = ga_pop_generational(&p);
-		min_fit = ga_pop_steady_state(&p);
+		min_fit = ga_pop_generational(&p);
+		//min_fit = ga_pop_steady_state(&p);
 		int mini = ga_pop_get_min_fitness_index(p);
 		printf("Generation: %d, min fitness [%d]: %f\n", 
 						i, mini, min_fit);

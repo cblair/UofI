@@ -14,7 +14,7 @@ package test3
 
 		public var i:int = 1;
 		
-		public function test_func(AspectName:String, name2:int)
+		public function test_func(var AspectName:String, name2:int)
 		{
 			call_me("test", name2, 1);
 

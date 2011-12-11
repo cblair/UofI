@@ -156,9 +156,7 @@ double ga_pop_get_min_fitness(struct ga_pop *p)
 	int i = ga_pop_get_min_fitness_index(p);
 	double fit = p->fitness(p->iarray[i]);
 
-	//printf("TS159: %f\n", fit);
-	//return(fit);
-	return(p->fitness(p->iarray[i]));
+	return(fit);
 }
 
 
@@ -177,13 +175,6 @@ double ga_pop_steady_state(struct ga_pop **p)
 	//Mutate
 	ga_i_uniform_mutation(&(*p)->iarray[i1]);
 	ga_i_uniform_mutation(&(*p)->iarray[i2]);
-
-	/*
-	printf("TS168: %d %d: %f %f\n", i1, i2, (*p)->fitness((*p)->iarray[i1]),
-						(*p)->fitness((*p)->iarray[i1]));
-	ga_i_print_attr((*p)->iarray[i1]);
-	ga_i_print_attr((*p)->iarray[i2]);
-	*/
 
 	double pop_min_fit = ga_pop_get_min_fitness((*p));
 
@@ -204,8 +195,8 @@ double ga_pop_generational(struct ga_pop **p)
 	ga_i_2p_crossover(&((*p)->iarray[i1]), &((*p)->iarray[i2]));
 
 	//Mutate
-	ga_i_uniform_mutation(&(*p)->iarray[i1]);
-	ga_i_uniform_mutation(&(*p)->iarray[i2]);
+	//ga_i_uniform_mutation(&(*p)->iarray[i1]);
+	//ga_i_uniform_mutation(&(*p)->iarray[i2]);
 
 	//Regenerate all
 	int i;
@@ -224,7 +215,6 @@ double ga_pop_generational(struct ga_pop **p)
 		//Mutate
 		ga_i_uniform_mutation(&(*p)->iarray[i]);	
 		
-		//printf("TS168: %d: %f\n", i, (*p)->fitness((*p)->iarray[i]));
 		if( (*p)->fitness((*p)->iarray[i]) == 0.0)
 		{
 			ga_i_print_attr((*p)->iarray[i]);
@@ -232,18 +222,10 @@ double ga_pop_generational(struct ga_pop **p)
 			exit(1);
 		}
 	}
-	/*
-	printf("TS168: %d %d: %f %f\n", i1, i2, (*p)->fitness((*p)->iarray[i1]),
-						(*p)->fitness((*p)->iarray[i1]));
-	ga_i_print_attr((*p)->iarray[i1]);
-	ga_i_print_attr((*p)->iarray[i2]);
-	*/
 
 	double pop_min_fit = ga_pop_get_min_fitness((*p));
-	//printf("TS236 %f\n", pop_min_fit);
 
-	//return(pop_min_fit);
-	return(ga_pop_get_min_fitness((*p)));
+	return(pop_min_fit);
 }
 
 

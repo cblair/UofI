@@ -14,10 +14,6 @@ double simple_fitness(struct ga_i *p)
 	for(i = 0; i < p->nattr; i++)
 	{
 		sum += pow(p->attr[i], 2);
-		/*
-		printf(" TS17: %d: %f ^ 2 = %f\n", i, p->attr[i], 
-						pow(p->attr[i], 2));
-		*/
 	}
 
 	if(sum < 0.0)
@@ -39,7 +35,7 @@ double simple_fitness(struct ga_i *p)
 double simple_random(double current_val)
 {
 	int precision = 2; //the most decimal values allowed
-	int scale = (10 * precision);
+	int scale = pow(10, precision);
 
 	double lbound = -5.12;
 	double ubound = 5.12;
@@ -52,12 +48,14 @@ double simple_random(double current_val)
 	// down to the original precision
 	double drand = ubound - ( ((double)irand) / scale );
 
-	return(drand);
-
+	//return(drand);
 
 	/*Note:
 		The following is a nice thought, but values that are close
-		to the ubound stick there. Need to fix
+		to the ubound stick there. 
+		Fix:
+		ignore the scaling down of diff on the bounds, and set to 
+		bound minus itself scaled down. Good idea?
 	*/
 	//get the difference between the rand value and the current value
 	double diff = current_val - drand; //can be neg or pos
@@ -67,7 +65,7 @@ double simple_random(double current_val)
 	diff = diff / diff_scale;
 
 	//return the scaled down change of current value
-	double retval = current_val + diff;
+	double retval = current_val - diff;
 	
 	//gaurantee max precision
 	retval = retval * (10 * precision);
@@ -77,11 +75,11 @@ double simple_random(double current_val)
 	//if we go beyond the bounds, limit
 	if(retval < lbound)
 	{
-		retval = lbound;
+		retval = lbound + (lbound / scale);
 	}
 	else if (retval > ubound)
 	{
-		retval = ubound;
+		retval = ubound - (ubound / scale);
 	}
 
 	return(retval);
@@ -119,15 +117,23 @@ int main()
 
 	//Random tests
 	/*
-	for(i = 0; i < 10; i++)
+	p->iarray[0]->attr[0] = -5.12;
+	for(i = 0; i < 100; i++)
 	{
+		p->iarray[0]->attr[0] = \
+			p->iarray[0]->random(p->iarray[0]->attr[0]);
+		printf("TS65: %f\n", p->iarray[0]->attr[0]);
+
+		//
 		int j;
 		for(j = 0; j < p->iarray[i]->nattr; j++)
 		{
 			printf("TS65: %f\n", 
 			 p->iarray[i]->random(p->iarray[i]->attr[j]));
 		}
+		//
 	}
+	exit(1);
 	*/
 
 	//Mutation test
@@ -177,24 +183,14 @@ int main()
 	char *fname = "graph_in.dat";
 	fp = fopen(fname, "w");
 	fprintf(fp, "min_fit\n");
-	/*
+
 	i = 0;
-	double min_fit = 1.0;
-	while(min_fit != 0.00)
+	int bored = 0;
+	double min_fit;
+	while(!bored)
 	{
-		double min_fit = ga_pop_steady_state(&p));
-		printf("Generation: %d, min fitness: %f\n", i, min_fit);
-		int mini = ga_pop_get_min_fitness_index(p);
-		ga_i_print_attr(p->iarray[mini]);
-		i++;
-	}
-	*/
-	i = 0;
-	double min_fit = 1.0;
-	while(min_fit != 0.00)
-	{
-		min_fit = ga_pop_generational(&p);
-		printf("TS196\n");
+		//min_fit = ga_pop_generational(&p);
+		min_fit = ga_pop_steady_state(&p);
 		int mini = ga_pop_get_min_fitness_index(p);
 		printf("Generation: %d, min fitness [%d]: %f\n", 
 						i, mini, min_fit);
@@ -204,6 +200,11 @@ int main()
 		fprintf(fp, "[%d] %f\n", i + 1, min_fit);
 
 		i++;
+
+		if(min_fit == 0.0 || i > 100000)
+		{
+			bored = 1;
+		}
 	}
 	fclose(fp);
 

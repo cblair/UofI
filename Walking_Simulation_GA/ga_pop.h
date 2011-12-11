@@ -19,6 +19,7 @@ struct ga_pop *ga_pop_init(int, double [], int,
 void ga_pop_del(struct ga_pop**);
 
 double ga_pop_steady_state(struct ga_pop **);
+double ga_pop_generational(struct ga_pop **);
 
 void ga_pop_print_individuals(struct ga_pop*);
 #endif

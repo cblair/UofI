@@ -18,6 +18,8 @@ struct ga_pop *ga_pop_init(int, double [], int,
 				double (* random)(double));
 void ga_pop_del(struct ga_pop**);
 
+int ga_pop_get_min_fitness_index(struct ga_pop *);
+
 double ga_pop_steady_state(struct ga_pop **);
 double ga_pop_generational(struct ga_pop **);
 

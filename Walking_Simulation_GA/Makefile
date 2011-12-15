@@ -1,5 +1,6 @@
 PROC=test
-CC=gcc
+#CC=gcc
+CC=g++
 CFLAGS=-g -pg -Wno-write-strings
 OBJS=main.o ga_i.o ga_pop.o
 

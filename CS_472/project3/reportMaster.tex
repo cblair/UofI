@@ -1,0 +1,77 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{December 14th, 2011}
+\title{Evolutionary Computation\\
+in Muscle Action Simulations
+}
+
+\author{Colby Blair \\
+	Computer Science Undergraduate \\
+	University of Idaho Computer Science Department
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In biomechanics, there are many interactions between the body and brain. Some
+interactions can be quantified as electrical signals to motor nerves of muscles.
+The result is a particular musclular reaction due to an electrical signal. The
+input is an electrical nerve signal, and the output is a measured velocity at
+a joint. The overall result to this sytem of inputs and output is actions like 
+walking.
+
+In this project, a Genetic Algorithm (GA) is used to replace the Simulated Annealing (SA) optimization
+that Dr. Craig McGowan uses for his research in biomechanics. His research takes EMG signals as inputs,
+and tries to predict joint velocities as outputs. This report shows that the GA is much slower, but 
+maintains better solutions when it is set up with the right parameters. This report will also recommend
+further research opportunities for better results and performance.
+\end{abstract}
+
+\thispagestyle{empty}
+
+
+\pagebreak
+
+\thispagestyle{empty}
+\tableofcontents
+\listoffigures
+
+\pagebreak
+
+\setcounter{page}{1}
+\include{reportIntro}
+\include{reportDesc}
+\include{reportResults}
+\include{reportConc}
+\include{reportRefs}
+%\include{reportBio}
+
+
+
+\end{document}

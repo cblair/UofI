@@ -1,0 +1,27 @@
+\section{Introduction}
+Walking requires a lot of complex tasks to make locomotion possible 
+\cite{mcgowan}. The inputs to muscle motor nerves and the outputs of joint
+motion are one way of measuring all these complex tasks. The data collected
+as inputs and outputs fits nicely into Evolutionary Computation (EC). EC uses 
+many measured inputs and expected outputs, and evolves a system that will 
+produce those expected outputs on its own. 
+
+The EC program will do this with some margin of error, of course, but the 
+error of the solution should be small. The EC solution will then be useful 
+when there are a set of inputs that the output is not already know, like in 
+a simulation. In this report, we will use a \textbf{Genetic Program (GA)} as
+it fits the multiple input to one output model well. The expected output is 
+used to evaluate the GA individuals using a fitness function. This fitness 
+function calls the muscle simulation function with paramaters help by each
+GA individual. These parameters are changed in a scheme discribed next, and
+the individuals' fitnesses depend on how well their parameters do in the 
+simulation.
+
+\subsection{Hypothesis}
+As noted above, the GA is set up to represent SA as closely as possible,
+at least at first. Our hypothesis is that the GA will find better solutions
+than the SA, while having the advantage of trying more diverse solution that
+would could cause worse solutions for an SA. The GA will be able to better
+search the domain, without as many problem with local optimums. These 
+advantages may come at the cost of process time, but are hypothesized to 
+not be significant.

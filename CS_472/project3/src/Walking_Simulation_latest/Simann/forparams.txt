@@ -1,0 +1,2 @@
+muscle_file muscles_c.in
+output_motion_file forward.mot

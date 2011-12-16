@@ -12,13 +12,14 @@ CC=gcc
 PARSER=AS3
 LEX=flex
 YACC=bison
-#CFLAGS=-g -pg -Wno-write-strings
-#CFLAGS=-g -pg -Wno-write-strings -DYYDEBUG=1
-CFLAGS=-g -pg -Wno-write-strings -DDEBUG_SYMTAB
-#CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TREE -DDEBUG_SYMTAB
-#CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TAC
-#CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TAC -DDEBUG_SYMTAB
-#CFLAGS=-g -pg -Wno-write-strings -DDEBUG_TAC -DDEBUG_TREE
+CFLAGS=-g -pg -Wno-write-strings
+
+#these are all the debugs to see the features I've implemented
+#CFLAGS+= -DYYDEBUG=1
+CFLAGS+= -DDEBUG_SYMTAB
+#CFLAGS+= -DDEBUG_TREE
+#CFLAGS= -DDEBUG_TAC
+
 OBJS=parser.tab.o $(PARSER).yy.o main.o tree.o symtabc.o tree_symtab_insert.o
 OBJS+=tree_typecheck.o tree_tac_gen.o tac.o mem_add.o
 
@@ -66,7 +67,7 @@ $(PARSER).l: parser.tab.h
 	$(LEX) $(PARSER).l
 
 turnin:
-	tar cvf hw4.tar *.c *.h *.l *.y Makefile
+	tar cvf hw4.tar *.c *.h *.l *.y Makefile README *.pdf
 
 clean:
 	rm -f $(PROC) *.tab.h *.tab.c *.output lex.yy.c *.o *~ core gmon.out '#'* *.output hw*.tar

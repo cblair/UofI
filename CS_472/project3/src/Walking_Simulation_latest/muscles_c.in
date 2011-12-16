@@ -1,0 +1,1408 @@
+begindynamicparameters
+timescale
+mass
+damping
+activation1
+activation2
+enddynamicparameters
+
+beginmuscle defaultmuscle
+
+max_contraction_velocity     10.0
+timescale    0.1
+
+/*
+activation1  0.461538461538462
+activation2  1.538461538461538
+*/
+
+/*
+activation1  10.00
+activation2  10.00
+*/
+
+activation1  6.25 
+activation2  2.0833 /* corresponding to 12 and 48msec with timescale 0.1 */
+
+
+
+mass         0.00286
+damping      0.15
+muscle_model 4
+excitation_format step_function
+pennation_angle         0.0
+
+
+begintendonforcelengthcurve
+
+(-15.000,0.0000)
+(-10.000,0.0000)
+(-0.0020,0.0000)
+(-0.0010,0.0000)
+(0.00000,0.0000)
+(0.00131,0.00864)
+(0.00281,0.02056)
+(0.00431,0.0348)
+(0.00581,0.05216)
+(0.00731,0.0732)
+(0.00881,0.0984)
+(0.01030,0.1288)
+(0.01180,0.1664)
+(0.01230,0.1816)
+(9.20000,276.0)
+(9.20100,276.0)
+(9.20200,276.0)
+(20.0000,276.0)
+
+/*
+(-15.000,0.0000)
+(-10.000,0.0000)
+(-0.0020,0.0000)
+(-0.0010,0.0000)
+(0.00000,0.0000)
+(0.00131,0.0108)
+(0.00281,0.0257)
+(0.00431,0.0435)
+(0.00581,0.0652)
+(0.00731,0.0915)
+(0.00881,0.123)
+(0.01030,0.161)
+(0.01180,0.208)
+(0.01230,0.227)
+(9.20000,345.0)
+(9.20100,345.0)
+(9.20200,345.0)
+(20.0000,345.0)
+*/
+endtendonforcelengthcurve
+
+beginactiveforcelengthcurve
+/*
+(-15.00000,0.000000)
+(-5.00000,0.000000)
+(0.000000,0.000000)
+(0.300000,0.226667)
+(0.402000,0.400000)
+(0.403500,0.4100000)
+(0.527250,0.636667)
+(0.628750,0.856667)
+(0.718750,0.950000)
+(0.861250,0.993333)
+(1.045000,0.993333)
+(1.217500,0.770000)
+(1.438750,0.246667)
+(1.618750,0.000000)
+(1.620000,0.000000)
+(1.621000,0.000000)
+(2.200000,0.000000)
+(5.000000,0.000000)
+(15.000000,0.000000)
+*/
+
+(-15.00000,0.000000)
+(-5.00000,0.000000)
+(0.000000,0.000000)
+(0.401000,0.000000)
+(0.402000,0.000000)
+(0.403500,0.000000)
+(0.527250,0.226667)
+(0.628750,0.636667)
+(0.718750,0.856667)
+(0.861250,0.950000)
+(1.045000,0.993333)
+(1.217500,0.770000)
+(1.438750,0.246667)
+(1.618750,0.000000)
+(1.620000,0.000000)
+(1.621000,0.000000)
+(2.200000,0.000000)
+(5.000000,0.000000)
+(15.000000,0.000000)
+endactiveforcelengthcurve
+
+beginpassiveforcelengthcurve
+(-15.00000,0.000000)
+(-5.00000,0.000000)
+(0.998000,0.000000)
+(0.999000,0.000000)
+(1.000000,0.000000)
+(1.100000,0.035)
+(1.200000,0.120)
+(1.300000,0.260)
+(1.400000,0.550)
+(1.500000,1.170)
+(1.600000,2.000000)
+(1.601000,2.000000)
+(1.602000,2.000000)
+(5.000000,2.000000)
+(15.000000,2.000000)
+endpassiveforcelengthcurve
+
+
+beginforcevelocitycurve
+(-1.000000,0.000000)
+(-0.950000,0.010417)
+(-0.900000,0.021739)
+(-0.850000,0.034091)
+(-0.800000,0.047619)
+(-0.750000,0.062500)
+(-0.700000,0.078947)
+(-0.650000,0.097222)
+(-0.600000,0.117647)
+(-0.550000,0.140625)
+(-0.500000,0.166667)
+(-0.450000,0.196429)
+(-0.400000,0.230769)
+(-0.350000,0.270833)
+(-0.300000,0.318182)
+(-0.250000,0.375000)
+(-0.200000,0.444444)
+(-0.150000,0.531250)
+(-0.100000,0.642857)
+(-0.050000,0.791667)
+(0.000000,1.000000)
+(0.050000,1.482014)
+(0.100000,1.601571)
+(0.150000,1.655791)
+(0.200000,1.686739)
+(0.250000,1.706751)
+(0.300000,1.720753)
+(0.350000,1.731099)
+(0.400000,1.739055)
+(0.450000,1.745365)
+(0.500000,1.750490)
+(0.550000,1.754736)
+(0.600000,1.758312)
+(0.650000,1.761364)
+(0.700000,1.763999)
+(0.750000,1.766298)
+(0.800000,1.768321)
+(0.850000,1.770115)
+(0.900000,1.771717)
+(0.950000,1.773155)
+(1.000000,1.774455)
+endforcevelocitycurve
+
+endmuscle
+
+
+/****************************************************************************/
+/*********************************** Right Leg *******************************/
+
+beginmuscle sol_r
+activation1  2.3249
+activation2  0.9009
+beginpoints
+-0.0024 -0.1533  0.0071 segment tibia_r
+0.0044  0.0310 -0.0053  segment calcn_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+ankle_pf
+endgroups
+/*
+begintendonforcelengthcurve
+(-15.000,0.0000)
+(-10.000,0.0000)
+(-0.0020,0.0000)
+(-0.0010,0.0000)
+(0.00000,0.0000)
+(0.00131,0.00586)
+(0.00281,0.0139)
+(0.00431,0.0236)
+(0.00581,0.0354)
+(0.00731,0.0496)
+(0.00881,0.0667)
+(0.01030,0.0873)
+(0.01180,0.113)
+(0.01230,0.123)
+(9.20000,187.1)
+(9.20100,187.1)
+(9.20200,187.1)
+(20.0000,187.1)
+endtendonforcelengthcurve
+*/
+/*max_force               3549.0*/  
+max_force               6544.0
+/*max_force               7853.0*/
+optimal_fiber_length    0.0300   
+tendon_slack_length     0.2680   
+pennation_angle         25.0     
+endmuscle 
+
+beginmuscle mgas_r 
+activation1  6.8687
+activation2  2.2222
+beginpoints
+-0.0127 -0.3929 -0.0235  segment femur_r 
+-0.0239 -0.4022 -0.0258  segment femur_r ranges 1 knee_angle_r (-44.12, 5.73)
+-0.0217 -0.0487 -0.0295  segment tibia_r
+ 0.0044  0.0310 -0.0053  segment calcn_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_bend ankle_pf
+endgroups
+/*max_force               2225.0*/
+/*max_force               3225.0*/
+/*max_force		1113.0*/
+max_force		1335.0
+optimal_fiber_length    0.045   
+tendon_slack_length     0.408   
+pennation_angle         17.0    
+endmuscle
+
+
+
+beginmuscle sm_r
+activation1  4.1874
+activation2  1.6949
+beginpoints
+-0.1192 -0.1015  0.0695  segment pelvis
+-0.0243 -0.0536 -0.0194  segment tibia_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext knee_bend 
+endgroups
+/*max_force               1698.0*/  
+/*max_force               1998.0*/
+/*max_force               2500.0*/
+max_force               2038.0
+optimal_fiber_length    0.080   
+tendon_slack_length     0.359   
+pennation_angle         15.0    
+endmuscle
+
+beginmuscle bfsh_r  
+activation1  6.8687
+activation2  2.2222
+beginpoints
+ 0.0050 -0.2111  0.0234  segment femur_r
+-0.0101 -0.0725  0.0406  segment tibia_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_bend 
+endgroups
+/*max_force               1502.0*/   
+/*max_force               1802.0*/
+max_force               420.0
+optimal_fiber_length    0.173   
+tendon_slack_length     0.100   
+pennation_angle         23.0    
+endmuscle
+
+beginmuscle psoas_r
+beginpoints
+-0.0647  0.0887 0.0289  segment pelvis
+-0.0238 -0.0570 0.0759  segment pelvis
+ 0.0016 -0.0507 0.0038  segment femur_r 
+-0.0188 -0.0597 0.0104  segment femur_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_flex 
+endgroups
+/*max_force               625.0*/   
+/*max_force               1525.0*/
+max_force               750.0
+optimal_fiber_length    0.104   
+tendon_slack_length     0.130   
+pennation_angle         8.0     
+endmuscle
+
+beginmuscle ta_r 
+activation1  4.8485
+activation2  1.8182
+beginpoints
+0.0179 -0.1624  0.0115  segment tibia_r 
+0.0329 -0.3951 -0.0177  segment tibia_r
+/*0.1166  0.0178 -0.0305  segment calcn_r*/
+-0.0026  0.0178 -0.0305  segment midfoot_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+ankle_df inverter
+endgroups
+/*max_force               1375.0*/ 
+/*max_force               1800.0*/ 
+/*max_force               1775.0*/
+max_force               1650.0
+optimal_fiber_length    0.098   
+tendon_slack_length     0.223   
+pennation_angle         5.0     
+endmuscle
+
+beginmuscle rf_r  
+activation1  8.5470
+activation2  2.5641
+beginpoints 
+-0.0295 -0.0311  0.0968  segment pelvis
+ 0.0331 -0.4030  0.0028  segment femur_r ranges 1 knee_angle_r (-150.0, -91.0)
+ 0.0008  0.0530 -0.0002  segment patella_r ranges 1 knee_angle_r (-150.0, -68.0)
+ 0.0121  0.0437 -0.0010  segment patella_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_flex knee_ext
+endgroups
+/*max_force               974.0*/ 
+max_force               1169.0
+optimal_fiber_length    0.084   
+tendon_slack_length     0.346   
+pennation_angle         5.0     
+endmuscle
+
+beginmuscle vas1_r	
+activation1  4.8810
+activation2  1.7857		
+beginpoints
+0.01539  -0.11823   0.04173 segment femur_r
+0.03159  -0.20979   0.03059 segment femur_r
+0.03305  -0.40035   0.00550 segment femur_r ranges 1 knee_angle_r (-150.0, -81.5)
+0.00580   0.04800  -0.00060 segment patella_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_ext
+endgroups
+/*max_force 		2125.0*/
+/*max_force 		2500.0*/
+/*max_force 		3525.0*/
+max_force 		2550.0
+optimal_fiber_length 	0.0870
+tendon_slack_length 	0.221
+pennation_angle  	3.0
+damping                 0.05
+endmuscle
+
+
+
+beginmuscle gmax_r  
+beginpoints
+-0.1556 -0.0314 0.0058  segment pelvis 
+-0.1529 -0.1052 0.0403  segment pelvis 
+-0.11071 -0.11868  0.05563 segment pelvis  ranges 1 hip_angle_r (55.00,110.00)
+-0.0299 -0.1041 0.0135  segment femur_r 
+-0.0060 -0.1419 0.0411  segment femur_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext 
+endgroups
+/*max_force               1250.0 */
+/*max_force               1950.0*/
+max_force               1500.0
+optimal_fiber_length    0.144   
+tendon_slack_length     0.145   
+pennation_angle         5.0    
+endmuscle
+
+
+
+beginmuscle gmeda_r  /*gluteus medius (anterior compartment) */
+beginpoints
+-0.0408  0.0304 0.1209  segment pelvis
+-0.0218 -0.0117 0.0555  segment femur_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  hip_abd  hip_flex  hip_inrot  endgroups
+/*max_force       546.0*/   /* units: Newtons, source: Brand */
+max_force       655.0
+optimal_fiber_length    0.0535  /* units: meters, source: Friederich */
+tendon_slack_length     0.0780  /* units: meters, source: Delp */
+pennation_angle 8.0     /* units: degrees, source: Friederich */
+endmuscle
+
+
+beginmuscle perlng_r  /*peroneus longus */
+activation1  11.5830
+activation2  2.7027
+beginpoints
+ 0.0005 -0.1568  0.0362  segment tibia_r 
+-0.0207 -0.4205  0.0286  segment tibia_r 
+-0.0162 -0.4319  0.0289  segment tibia_r 
+ 0.0438  0.0230  0.0221  segment calcn_r 
+ 0.0681  0.0106  0.0284  segment calcn_r 
+ 0.0852  0.0069  0.0118  segment calcn_r 
+/* 0.1203  0.0085 -0.0184  segment calcn_r*/
+0.0011  0.0085 -0.0184  segment midfoot_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  everter  endgroups
+max_force       754.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0490  /* source: Wickiewicz */
+tendon_slack_length     0.3450  /* source: Delp */
+pennation_angle 10.0    /* source: Wickiewicz */
+endmuscle
+
+
+
+
+beginmuscle tp_r  /* tibialis posterior */
+activation1  7.6744
+activation2  2.3256	
+beginpoints
+-0.0094 -0.1348  0.0019  segment tibia_r 
+-0.0144 -0.4051 -0.0229  segment tibia_r 
+ 0.0417  0.0334 -0.0286  segment calcn_r 
+ 0.0772  0.0159 -0.0281  segment calcn_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  inverter  endgroups
+max_force       1270.0  /* source: Wickiewicz */
+optimal_fiber_length    0.0310  /* source: Wickiewicz */
+tendon_slack_length     0.3100  /* source: Delp */
+pennation_angle 12.0    /* source: Wickiewicz */
+endmuscle
+
+beginmuscle flxdig_r  /* flexor digitorus longus */
+activation1  8.5470
+activation2  2.5641
+beginpoints
+-0.0083 -0.2046 -0.0018  segment tibia_r 
+-0.0154 -0.4051 -0.0196  segment tibia_r 
+ 0.0436  0.0315 -0.0280  segment calcn_r 
+ 0.0708  0.0176 -0.0263  segment calcn_r 
+ /*0.1658 -0.0081  0.0116  segment calcn_r */
+0.0466 -0.0081  0.0116  segment midfoot_r
+-0.0019 -0.0078  0.0147  segment toes_r 
+ 0.0285 -0.0071  0.0215  segment toes_r 
+ 0.0441 -0.0060  0.0242  segment toes_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  inverter  endgroups
+max_force       310.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0340  /* source: Wickiewicz */
+tendon_slack_length     0.4000  /* source: Delp */
+pennation_angle 7.0     /* source: Wickiewicz */
+endmuscle
+
+beginmuscle flxhal_r  /* flexor hallucis longus */
+beginpoints
+-0.0079 -0.2334  0.0244  segment tibia_r 
+-0.0186 -0.4079 -0.0174  segment tibia_r 
+ 0.0374  0.0276 -0.0241  segment calcn_r 
+ 0.1038  0.0068 -0.0256  segment calcn_r 
+/* 0.1726 -0.0053 -0.0269  segment calcn_r*/ 
+0.0534 -0.0053 -0.0269  segment midfoot_r
+ 0.0155 -0.0064 -0.0265  segment toes_r 
+ 0.0562 -0.0102 -0.0181  segment toes_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  inverter  endgroups
+max_force       322.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0430  /* source: Wickiewicz */
+tendon_slack_length     0.3800  /* source: Delp */
+pennation_angle 10.0    /* source: Wickiewicz */
+endmuscle
+
+
+beginmuscle lgas_r 
+activation1  8.4795
+activation2  2.6316
+beginpoints
+-0.0155 -0.3946  0.0272  segment femur_r 
+-0.0254 -0.4018  0.0274  segment femur_r  ranges 1 knee_angle_r (-44.12, 5.73)
+-0.0242 -0.0481  0.0235  segment tibia_r 
+ 0.0044  0.0310 -0.0053  segment calcn_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  knee_bend  ankle_pf  endgroups
+/*max_force       2225.0*/   /* source:Brand (Wick lumps the two heads) */
+/*max_force               3225.0*/
+/*max_force               488.0*/
+max_force               586.0
+optimal_fiber_length    0.0640  /* source: Wickiewicz */
+tendon_slack_length     0.3850  /* source: Delp */
+pennation_angle 8.0     /* source: Wickiewicz */
+endmuscle
+
+
+beginmuscle bflh_r  
+activation1  4.2157
+activation2  1.6667
+beginpoints
+-0.1244 -0.1001  0.0666  segment pelvis
+-0.0081 -0.0729 0.0423  segment tibia_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext knee_bend 
+endgroups
+/*max_force               896.0*/ 
+/*max_force               1196.0*/  
+/*max_force               1500.0*/
+max_force               1075.0
+optimal_fiber_length    0.109   
+tendon_slack_length     0.341   
+pennation_angle         0.0     
+endmuscle
+
+beginmuscle iliac_r
+beginpoints
+-0.067400  0.036500 0.085400  segment pelvis
+-0.021800 -0.055000 0.085100  segment pelvis
+ 0.001700 -0.054300 0.005700  segment femur_r 
+-0.019300 -0.062100 0.012900  segment femur_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_flex 
+endgroups
+/*max_force               788.0*/  
+/*max_force               1200.0*/
+/*max_force               1588.0*/
+max_force               946.0
+optimal_fiber_length    0.100   
+tendon_slack_length     0.090   
+pennation_angle         7.0     
+endmuscle
+
+
+beginmuscle pertert_r  /* peroneus tertius */
+activation1  13.7255
+activation2  2.9412
+beginpoints
+0.0010 -0.2804 0.0231  segment tibia_r  
+0.0229 -0.4069 0.0159  segment tibia_r  
+/*0.0857  0.0228 0.0299  segment calcn_r*/  
+-0.0335  0.0228 0.0299  segment midfoot_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_df  everter  endgroups
+max_force       90.0    /* source: Brand (not reported by wick) */
+optimal_fiber_length    0.0790  /* source: Friederich */
+tendon_slack_length     0.1000  /* source: Delp */
+pennation_angle 13.0    /* source: Friederich */
+endmuscle
+
+
+beginmuscle extdig_r  /* extensor digitorum longus */
+activation1  11.5830
+activation2  2.7027
+beginpoints
+0.0032 -0.1381  0.0276  segment tibia_r  
+0.0289 -0.4007  0.0072  segment tibia_r  
+0.0922  0.0388 -0.0001  segment calcn_r  
+/*0.1616  0.0055  0.0130  segment calcn_r*/  
+0.0424  0.0055  0.0130  segment midfoot_r
+0.0003  0.0047  0.0153  segment toes_r  
+0.0443 -0.0004  0.0250  segment toes_r  
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_df  everter  endgroups
+max_force       341.0   /* source: Wickiewicz */
+optimal_fiber_length    0.1020  /* source: Wickiewicz */
+tendon_slack_length     0.3450  /* source: Delp */
+pennation_angle 8.0     /* source: Wickiewicz */
+endmuscle
+
+ 
+beginmuscle exthal_r  /* extensor hallucis longus */
+activation1  13.7255
+activation2  2.9412
+beginpoints
+0.0012 -0.1767  0.0228  segment tibia_r  
+0.0326 -0.3985 -0.0085  segment tibia_r  
+0.0970  0.0389 -0.0211  segment calcn_r  
+0.1293  0.0309 -0.0257  segment calcn_r  
+/*0.1734  0.0139 -0.0280  segment calcn_r*/  
+0.0542  0.0139 -0.0280  segment midfoot_r
+0.0298  0.0041 -0.0245  segment toes_r  
+0.0563  0.0034 -0.0186  segment toes_r  
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_df  inverter  endgroups
+max_force       108.0   /* source: Wickiewicz */
+optimal_fiber_length    0.1110  /* source: Wickiewicz */
+tendon_slack_length     0.3050  /* source: Delp */
+pennation_angle 6.0     /* source: Wickiewicz */
+endmuscle
+
+
+beginmuscle vas2_r 
+activation1  4.8810
+activation2  1.7857		
+beginpoints
+0.02900  -0.1924   0.0310 segment femur_r
+0.03350  -0.2084   0.0285 segment femur_r
+0.03430  -0.4030   0.0055 segment femur_r ranges 1 knee_angle_r (-150.0, -81.5)
+0.00580   0.0480  -0.0006 segment patella_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_ext
+endgroups
+/*max_force 		2125.0*/
+/*max_force 		2500.0*/
+/*max_force 		3525.0*/
+max_force 		2550.0
+optimal_fiber_length 	0.0870
+tendon_slack_length 	0.157
+pennation_angle 	3.0
+damping                 0.05 
+endmuscle
+
+beginmuscle vas3_r
+activation1  4.8810
+activation2  1.7857		
+beginpoints
+0.03181  -0.26493   0.02258 segment femur_r
+0.03430  -0.40226   0.00550 segment femur_r ranges 1 knee_angle_r (-150.0, -81.5)
+0.00580   0.04800  -0.00060 segment patella_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_ext
+endgroups
+/*max_force 		2125.0*/
+/*max_force 		2500.0*/
+/*max_force 		3525.0*/
+max_force 		2550.0
+optimal_fiber_length 	0.0870
+tendon_slack_length 	0.081
+pennation_angle 	3.0
+damping                 0.05
+endmuscle
+
+beginmuscle addmag_r  
+beginpoints
+-0.0771 -0.1181 0.0276  segment pelvis
+ 0.0070 -0.3837 -0.0266  segment femur_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext 
+endgroups
+/*max_force               1250.0 */ 
+/*max_force               1750.0 */ 
+max_force               1500.0
+optimal_fiber_length    0.131   
+tendon_slack_length     0.260   
+pennation_angle         5.0     
+endmuscle
+
+
+
+beginmuscle gmedp_r  /*gluteus medius (posterior compartment) */
+beginpoints
+-0.1223  0.0105 0.0648  segment pelvis 
+-0.0309 -0.0047 0.0518  segment femur_r 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  hip_abd  hip_exrot  hip_ext  endgroups
+/*max_force       435.0*/   /* source: Brand */
+max_force       522.0
+optimal_fiber_length    0.0646  /* source: Friederich */
+tendon_slack_length     0.0530  /* source: Delp */
+pennation_angle 19.0    /* source: Friederich*/ 
+endmuscle
+
+
+beginmuscle perbrev_r  /*peroneus brevis */
+activation1  11.4286
+activation2  2.8571
+beginpoints
+-0.0070 -0.2646 0.0325  segment tibia_r 
+-0.0198 -0.4184 0.0283  segment tibia_r 
+-0.0144 -0.4295 0.0289  segment tibia_r 
+ 0.0471  0.0270 0.0233  segment calcn_r 
+/* 0.0677  0.0219 0.0343  segment calcn_r */
+-0.0515  0.0219 0.0343  segment midfoot_r
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  everter  endgroups
+max_force       348.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0500  /* source: Wickiewicz */
+tendon_slack_length     0.1610  /* source: Delp */
+pennation_angle 5.0     /* source: Wickiewicz */
+endmuscle
+
+
+/****************************************************************************/
+/*********************************** Left Leg *******************************/
+
+beginmuscle sol_l
+activation1  2.3249
+activation2  0.9009
+beginpoints
+-0.0024 -0.1533 -0.0071  segment tibia_l 
+ 0.0044  0.0310  0.0053  segment calcn_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+ankle_pf
+endgroups
+/*
+begintendonforcelengthcurve
+(-15.000,0.0000)
+(-10.000,0.0000)
+(-0.0020,0.0000)
+(-0.0010,0.0000)
+(0.00000,0.0000)
+(0.00131,0.00586)
+(0.00281,0.0139)
+(0.00431,0.0236)
+(0.00581,0.0354)
+(0.00731,0.0496)
+(0.00881,0.0667)
+(0.01030,0.0873)
+(0.01180,0.113)
+(0.01230,0.123)
+(9.20000,187.1)
+(9.20100,187.1)
+(9.20200,187.1)
+(20.0000,187.1)
+endtendonforcelengthcurve
+*/
+/*max_force               3549.0*/ 
+max_force               6544.0
+/*max_force               7853.0*/ 
+optimal_fiber_length    0.030   
+tendon_slack_length     0.268   
+pennation_angle         25.0    
+endmuscle 
+
+beginmuscle mgas_l  
+activation1  6.8687
+activation2  2.2222
+beginpoints
+-0.0127 -0.3929  0.0235  segment femur_l 
+-0.0239 -0.4022  0.0258  segment femur_l ranges 1 knee_angle_l (-44.12, 5.73)
+-0.0217 -0.0487  0.0295  segment tibia_l
+ 0.0044  0.0310  0.0053  segment calcn_l      
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_bend ankle_pf
+endgroups
+/*max_force               2225.0*/ 
+/*max_force               3225.0*/
+/*max_force		1113.0*/
+max_force		1335.0
+optimal_fiber_length    0.045   
+tendon_slack_length     0.408   
+pennation_angle         17.0    
+endmuscle
+
+
+
+beginmuscle sm_l
+activation1  4.1874
+activation2  1.6949
+beginpoints
+-0.1192 -0.1015 -0.0695  segment pelvis
+-0.0243 -0.0536  0.0194  segment tibia_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext knee_bend 
+endgroups
+/*max_force               1698.0*/  
+/*max_force               1998.0*/
+/*max_force               2500.0*/
+max_force               2038.0
+optimal_fiber_length    0.080   
+tendon_slack_length     0.359   
+pennation_angle         15.0    
+endmuscle
+
+beginmuscle bfsh_l  
+activation1  6.8687
+activation2  2.2222
+beginpoints
+ 0.0050 -0.2111 -0.0234  segment femur_l
+-0.0101 -0.0725 -0.0406  segment tibia_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_bend 
+endgroups
+/*max_force               1502.0*/   
+/*max_force               1802.0*/  
+max_force               420.0
+optimal_fiber_length    0.173   
+tendon_slack_length     0.100   
+pennation_angle         23.0    
+endmuscle
+
+beginmuscle psoas_l
+beginpoints
+-0.0647  0.0887 -0.0289  segment pelvis
+-0.0238 -0.0570 -0.0759  segment pelvis
+ 0.0016 -0.0507 -0.0038  segment femur_l 
+-0.0188 -0.0597 -0.0104  segment femur_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_flex 
+endgroups
+/*max_force               625.0*/   
+/*max_force               1525.0*/
+max_force               750.0
+optimal_fiber_length    0.104   
+tendon_slack_length     0.130   
+pennation_angle         8.0     
+endmuscle
+
+beginmuscle ta_l 
+activation1  4.8485
+activation2  1.8182 
+beginpoints
+0.0179 -0.1624 -0.0115  segment tibia_l 
+0.0329 -0.3951  0.0177  segment tibia_l 
+/*0.1166  0.0178  0.0305  segment calcn_l*/   
+-0.0026  0.0178  0.0305  segment midfoot_l   
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+ankle_df inverter
+endgroups
+/*max_force               1375.0*/ 
+/*max_force               1800.0*/ 
+/*max_force               1775.0*/
+max_force               1650.0
+optimal_fiber_length    0.098   
+tendon_slack_length     0.223   
+pennation_angle         5.0     
+endmuscle
+
+beginmuscle rf_l 
+activation1  8.5470
+activation2  2.5641 
+beginpoints 
+-0.0295 -0.0311 -0.0968  segment pelvis
+ 0.0331 -0.4030 -0.0028  segment femur_l ranges 1 knee_angle_l (-150.0, -91.0)
+ 0.0008  0.0530  0.0002  segment patella_l ranges 1 knee_angle_l (-150.0, -68.0)
+ 0.0121  0.0437  0.0010  segment patella_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_flex knee_ext
+endgroups
+/*max_force               974.0*/ 
+max_force               1169.0
+optimal_fiber_length    0.084   
+tendon_slack_length     0.346   
+pennation_angle         5.0     
+endmuscle
+
+beginmuscle vas1_l
+activation1  4.8810
+activation2  1.7857			
+beginpoints
+0.01539  -0.11823  -0.04173 segment femur_l
+0.03159  -0.20979  -0.03059 segment femur_l
+0.03305  -0.40035  -0.00550 segment femur_l ranges 1 knee_angle_l (-150.0, -81.5)
+0.00580   0.04800   0.00060 segment patella_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_ext
+endgroups
+/*max_force 		2125.0*/
+/*max_force 		2500.0*/
+/*max_force 		3525.0*/
+max_force 		2550.0
+optimal_fiber_length 	0.087
+tendon_slack_length 	0.221
+pennation_angle  	3.0
+damping                 0.05
+endmuscle
+
+
+
+beginmuscle gmax_l  
+beginpoints
+-0.1556 -0.0314 -0.0058  segment pelvis 
+-0.1529 -0.1052 -0.0403  segment pelvis 
+-0.11071 -0.11868  -0.05563 segment pelvis  ranges 1 hip_angle_l (55.00,110.00)
+-0.0299 -0.1041 -0.0135  segment femur_l 
+-0.0060 -0.1419 -0.0411  segment femur_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext 
+endgroups
+/*max_force               1250.0 */
+/*max_force               1950.0*/
+max_force               1500.0
+optimal_fiber_length    0.144   
+tendon_slack_length     0.145   
+pennation_angle         5.0     
+endmuscle
+
+
+
+beginmuscle gmeda_l  /*gluteus medius (anterior compartment) */
+beginpoints
+-0.0408  0.0304 -0.1209  segment pelvis
+-0.0218 -0.0117 -0.0555  segment femur_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  hip_abd  hip_flex  hip_inrot  endgroups
+/*max_force       546.0*/   /* units: Newtons, source: Brand */
+max_force       655.0
+optimal_fiber_length    0.0535  /* units: meters, source: Friederich */
+tendon_slack_length     0.0780  /* units: meters, source: Delp */
+pennation_angle 8.0     /* units: degrees, source: Friederich */
+endmuscle
+
+
+
+beginmuscle perlng_l  /*peroneus longus */
+activation1  11.5830
+activation2  2.7027
+beginpoints
+ 0.0005 -0.1568  -0.0362  segment tibia_l 
+-0.0207 -0.4205  -0.0286  segment tibia_l 
+-0.0162 -0.4319  -0.0289  segment tibia_l 
+ 0.0438  0.0230  -0.0221  segment calcn_l 
+ 0.0681  0.0106  -0.0284  segment calcn_l 
+ 0.0852  0.0069  -0.0118  segment calcn_l 
+/* 0.1203  0.0085 0.0184  segment calcn_l*/
+0.0011  0.0085 0.0184  segment midfoot_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  everter  endgroups
+max_force       754.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0490  /* source: Wickiewicz */
+tendon_slack_length     0.3450  /* source: Delp */
+pennation_angle 10.0    /* source: Wickiewicz */
+endmuscle
+
+
+beginmuscle tp_l  /* tibialis posterior */
+activation1  7.6744
+activation2  2.3256
+beginpoints
+-0.0094 -0.1348 -0.0019  segment tibia_l 
+-0.0144 -0.4051 0.0229  segment tibia_l 
+ 0.0417  0.0334 0.0286  segment calcn_l 
+ 0.0772  0.0159 0.0281  segment calcn_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  inverter  endgroups
+max_force       1270.0  /* source: Wickiewicz */
+optimal_fiber_length    0.0310  /* source: Wickiewicz */
+tendon_slack_length     0.3100  /* source: Delp */
+pennation_angle 12.0    /* source: Wickiewicz */
+endmuscle
+
+
+
+beginmuscle flxdig_l  /* flexor digitorus longus */
+activation1  8.5470
+activation2  2.5641
+beginpoints
+-0.0083 -0.2046 0.0018  segment tibia_l 
+-0.0154 -0.4051 0.0196  segment tibia_l 
+ 0.0436  0.0315 0.0280  segment calcn_l 
+ 0.0708  0.0176 0.0263  segment calcn_l 
+ /*0.1658 -0.0081  -0.0116  segment calcn_l */
+0.0466 -0.0081  -0.0116  segment midfoot_l
+-0.0019 -0.0078  -0.0147  segment toes_l 
+ 0.0285 -0.0071  -0.0215  segment toes_l 
+ 0.0441 -0.0060  -0.0242  segment toes_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  inverter  endgroups
+max_force       310.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0340  /* source: Wickiewicz */
+tendon_slack_length     0.4000  /* source: Delp */
+pennation_angle 7.0     /* source: Wickiewicz */
+endmuscle
+
+beginmuscle flxhal_l  /* flexor hallucis longus */
+beginpoints
+-0.0079 -0.2334  -0.0244  segment tibia_l 
+-0.0186 -0.4079 0.0174  segment tibia_l 
+ 0.0374  0.0276 0.0241  segment calcn_l 
+ 0.1038  0.0068 0.0256  segment calcn_l 
+/* 0.1726 -0.0053 0.0269  segment calcn_l*/ 
+0.0534 -0.0053 0.0269  segment midfoot_l
+ 0.0155 -0.0064 0.0265  segment toes_l 
+ 0.0562 -0.0102 0.0181  segment toes_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  inverter  endgroups
+max_force       322.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0430  /* source: Wickiewicz */
+tendon_slack_length     0.3800  /* source: Delp */
+pennation_angle 10.0    /* source: Wickiewicz */
+endmuscle
+
+
+
+
+beginmuscle lgas_l 
+activation1  8.4795
+activation2  2.6316
+beginpoints
+-0.0155 -0.3946 -0.0272  segment femur_l 
+-0.0254 -0.4018 -0.0274  segment femur_l  ranges 1 knee_angle_l (-44.12, 5.73)
+-0.0242 -0.0481 -0.0235  segment tibia_l 
+ 0.0044  0.0310  0.0053  segment calcn_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  knee_bend  ankle_pf  endgroups
+/*max_force       2225.0*/   /* source:Brand (Wick lumps the two heads) */
+/*max_force               3225.0*/
+/*max_force               488.0*/
+max_force               586.0
+optimal_fiber_length    0.0640  /* source: Wickiewicz */
+tendon_slack_length     0.3850  /* source: Delp */
+pennation_angle 8.0     /* source: Wickiewicz */
+endmuscle
+
+beginmuscle bflh_l  
+activation1  4.2157
+activation2  1.6667
+beginpoints
+-0.1244 -0.1001 -0.0666  segment pelvis
+-0.0081 -0.0729 -0.0423  segment tibia_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext knee_bend 
+endgroups
+/*max_force               896.0*/ 
+/*max_force               1196.0*/  
+/*max_force               1500.0*/
+max_force               1075.0
+optimal_fiber_length    0.109   
+tendon_slack_length     0.341   
+pennation_angle         0.0     
+endmuscle
+
+
+
+beginmuscle iliac_l
+beginpoints
+-0.067400  0.036500 -0.085400  segment pelvis
+-0.021800 -0.055000 -0.085100  segment pelvis
+ 0.001700 -0.054300 -0.005700  segment femur_l 
+-0.019300 -0.062100 -0.012900  segment femur_l 
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_flex 
+endgroups
+/*max_force               788.0*/  
+/*max_force               1200.0*/
+/*max_force               1588.0*/
+max_force               946.0
+optimal_fiber_length    0.100   
+tendon_slack_length     0.090   
+pennation_angle         7.0     
+endmuscle
+
+beginmuscle pertert_l  /* peroneus tertius */
+activation1  13.7255
+activation2  2.9412
+beginpoints
+0.0010 -0.2804 -0.0231  segment tibia_l  
+0.0229 -0.4069 -0.0159  segment tibia_l   
+/*0.0857  0.0228 -0.0299  segment calcn_l*/  
+-0.0335  0.0228 -0.0299  segment midfoot_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_df  everter  endgroups
+max_force       90.0    /* source: Brand (not reported by wick) */
+optimal_fiber_length    0.0790  /* source: Friederich */
+tendon_slack_length     0.1000  /* source: Delp */
+pennation_angle 13.0    /* source: Friederich */
+endmuscle
+
+
+beginmuscle extdig_l  /* extensor digitorum longus */
+activation1  11.5830
+activation2  2.7027
+beginpoints
+0.0032 -0.1381  -0.0276  segment tibia_l  
+0.0289 -0.4007  -0.0072  segment tibia_l  
+0.0922  0.0388 0.0001  segment calcn_l  
+/*0.1616  0.0055  -0.0130  segment calcn_l*/  
+0.0424  0.0055  -0.0130  segment midfoot_l
+0.0003  0.0047  -0.0153  segment toes_l  
+0.0443 -0.0004  -0.0250  segment toes_l  
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_df  everter  endgroups
+max_force       341.0   /* source: Wickiewicz */
+optimal_fiber_length    0.1020  /* source: Wickiewicz */
+tendon_slack_length     0.3450  /* source: Delp */
+pennation_angle 8.0     /* source: Wickiewicz */
+endmuscle
+
+ 
+beginmuscle exthal_l  /* extensor hallucis longus */
+activation1  13.7255
+activation2  2.9412
+beginpoints
+0.0012 -0.1767  -0.0228  segment tibia_l  
+0.0326 -0.3985 0.0085  segment tibia_l  
+0.0970  0.0389 0.0211  segment calcn_l  
+0.1293  0.0309 0.0257  segment calcn_l  
+/*0.1734  0.0139 0.0280  segment calcn_l*/  
+0.0542  0.0139 0.0280  segment midfoot_l
+0.0298  0.0041 0.0245  segment toes_l  
+0.0563  0.0034 0.0186  segment toes_l  
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_df  inverter  endgroups
+max_force       108.0   /* source: Wickiewicz */
+optimal_fiber_length    0.1110  /* source: Wickiewicz */
+tendon_slack_length     0.3050  /* source: Delp */
+pennation_angle 6.0     /* source: Wickiewicz */
+endmuscle
+
+beginmuscle vas2_l 	
+activation1  4.8810
+activation2  1.7857	
+beginpoints
+0.02900  -0.1924  -0.0310 segment femur_l
+0.03350  -0.2084  -0.0285 segment femur_l
+0.03430  -0.4030  -0.0055 segment femur_l ranges 1 knee_angle_l (-150.0, -81.5)
+0.00580   0.0480   0.0006 segment patella_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_ext
+endgroups
+/*max_force 		2125.0*/
+/*max_force 		2500.0*/
+/*max_force 		3525.0*/
+max_force 		2550.0
+optimal_fiber_length 	0.087
+tendon_slack_length 	0.157
+pennation_angle 	3.0
+damping                 0.05
+endmuscle
+
+beginmuscle vas3_l
+activation1  4.8810
+activation2  1.7857		
+beginpoints
+0.03181  -0.26493  -0.02258 segment femur_l
+0.03430  -0.40226  -0.00550 segment femur_l ranges 1 knee_angle_l (-150.0, -81.5)
+0.00580   0.04800   0.00060 segment patella_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+knee_ext
+endgroups
+/*max_force 		2125.0*/
+/*max_force 		2500.0*/
+/*max_force 		3525.0*/
+max_force 		2550.0
+optimal_fiber_length 	0.087
+tendon_slack_length 	0.081
+pennation_angle 	3.0
+damping                 0.05
+endmuscle
+
+
+beginmuscle addmag_l  
+beginpoints
+-0.0771 -0.1181 -0.0276  segment pelvis
+ 0.0070 -0.3837 0.0266  segment femur_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups
+hip_ext 
+endgroups
+/*max_force               1250.0 */ 
+/*max_force               1750.0 */ 
+max_force               1500.0
+optimal_fiber_length    0.131   
+tendon_slack_length     0.260   
+pennation_angle         5.0     
+endmuscle
+
+beginmuscle gmedp_l  /*gluteus medius (posterior compartment) */
+beginpoints
+-0.1223  0.0105 -0.0648  segment pelvis 
+-0.0309 -0.0047 -0.0518  segment femur_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  hip_abd  hip_exrot  hip_ext  endgroups
+/*max_force       435.0*/   /* source: Brand */
+max_force       522.0
+optimal_fiber_length    0.0646  /* source: Friederich */
+tendon_slack_length     0.0530  /* source: Delp */
+pennation_angle 19.0    /* source: Friederich*/ 
+endmuscle
+
+
+beginmuscle perbrev_l  /*peroneus brevis */
+activation1  11.4286
+activation2  2.8571
+beginpoints
+-0.0070 -0.2646 -0.0325  segment tibia_l 
+-0.0198 -0.4184 -0.0283  segment tibia_l 
+-0.0144 -0.4295 -0.0289  segment tibia_l 
+ 0.0471  0.0270 -0.0233  segment calcn_l 
+/* 0.0677  0.0219 -0.0343  segment calcn_l */
+-0.0515  0.0219 -0.0343  segment midfoot_l
+endpoints
+beginexcitation leg_tx
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+endexcitation
+begingroups  ankle_pf  everter  endgroups
+max_force       348.0   /* source: Wickiewicz */
+optimal_fiber_length    0.0500  /* source: Wickiewicz */
+tendon_slack_length     0.1610  /* source: Delp */
+pennation_angle 5.0     /* source: Wickiewicz */
+endmuscle
+

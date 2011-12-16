@@ -1,0 +1,812 @@
+/****************************************************/
+/* Output joint file made by SIMM, version 1.2.6bp  */
+/* Name of input joint file: joints.in              */
+/****************************************************/
+
+name 2-leg Gait Model
+/*motion_file W100exp150ave.txt*/
+motion_file forward.mot
+muscle_file muscles_c.in
+
+
+
+/*********************************************/
+/*                MATERIALS                  */
+/*********************************************/
+
+beginmaterial floor_mat1
+ambient 0.3000 0.3000 0.9000
+diffuse 0.3000 0.3000 0.9000
+specular 0.3000 0.3000 0.9000
+endmaterial
+
+beginmaterial floor_mat2
+ambient 0.3000 0.3000 0.3000
+diffuse 0.3000 0.3000 0.3000
+specular 0.3000 0.3000 0.3000
+endmaterial
+
+
+/*********************************************/
+/*              WORLDOBJECTS                 */
+/*********************************************/
+/* OLD
+beginworldobject floor1
+filename floor1.bin
+material floor_mat1
+origin 0.000000 0.000000 0.000000
+endworldobject
+
+beginworldobject floor2
+filename floor2.bin
+material floor_mat2
+origin 0.000000 0.000000 0.000000
+endworldobject
+*/
+
+/*********************************************/
+/*              WORLDOBJECTS                 */
+/*********************************************/
+
+beginmotionobject floor1
+filename floor1.new
+material floor_mat1
+position -1.000000 -0.0000 0.000000
+scale  1.000000 1.000000 1.000000
+vectoraxis x
+endmotionobject
+
+beginmotionobject floor2
+filename floor2.new
+material floor_mat2
+position -1.000000 -0.0000 0.000000
+scale  1.000000 1.000000 1.000000
+vectoraxis x
+endmotionobject
+
+
+background_color 0 0 0
+
+/*********************************************/
+/*              MODEL VIEWS                  */
+/*********************************************/
+
+beginview view1
+1.0000 0.0000 0.0000 0.0000 
+0.0000 1.0000 0.0000 0.0000 
+0.0000 0.0000 1.0000 0.0000 
+-0.5077 -0.6245 -3.2657 1.0000 
+endview
+
+beginview view2
+0.4042 0.0578 0.9129 0.0000 
+0.0015 0.9980 -0.0639 0.0000 
+-0.9147 0.0272 0.4033 0.0000 
+-0.5077 -0.6245 -3.2657 1.0000 
+endview
+
+/*********************************************/
+/*               SEGMENTS                    */
+/*********************************************/
+
+beginsegment ground
+mass 0.000000
+masscenter 0.000000 0.000000 0.000000
+inertia 0.0000000000 0.0000000000 0.0000000000
+        0.0000000000 0.0000000000 0.0000000000
+        0.0000000000 0.0000000000 0.0000000000
+endsegment
+
+
+beginsegment pelvis
+beginfiles
+sacrum.bin
+pelvis.bin
+l_pelvis.bin
+endfiles
+mass 51.1
+masscenter -0.0707 0.2639 0.00
+inertia 1.3960000000 0.0000000000 0.0000000000
+        0.0000000000 0.7153000000 0.0000000000
+        0.0000000000 0.0000000000 2.5800000000
+endsegment
+
+
+/****** Right leg ******/
+
+beginsegment femur_r
+beginfiles
+femur.bin
+endfiles
+mass 7.76
+masscenter 0.0 -0.17 0.000000
+inertia 0.1370000000 0.0000000000 0.0000000000
+        0.0000000000 0.0316000000 0.0000000000
+        0.0000000000 0.0000000000 0.1370000000
+endsegment
+
+beginsegment tibia_r
+beginfiles
+tibia.bin
+fibula.bin
+endfiles
+mass 3.03
+masscenter 0.0 -0.1867 0.0
+inertia 0.0444000000 0.0000000000 0.0000000000
+        0.0000000000 0.0038300000 0.0000000000
+        0.0000000000 0.0000000000 0.0445000000
+endsegment
+
+beginsegment patella_r
+beginfiles
+pat.bin
+endfiles
+mass 0.1
+masscenter 0.0 0.0 0.0
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment talus_r
+beginfiles
+talus.bin
+endfiles
+mass 0.1
+masscenter 0.0 0.0 0.0
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment calcn_r
+beginfiles
+rearfoot.asc
+endfiles
+mass 0.4183
+masscenter 0.025 0.015 0.0 
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment midfoot_r
+beginfiles
+midfoot.old
+endfiles
+mass 0.4
+masscenter 0.025 0.015 0.0  
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment toes_r
+beginfiles
+bofoot.bin
+endfiles
+mass 0.2058
+masscenter 0.0346 0.006 -0.0175
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+
+
+
+/****** Left leg ******/
+
+beginsegment femur_l
+beginfiles
+l_femur.bin
+endfiles
+mass 7.76
+masscenter 0.0 -0.17 0.000000
+inertia 0.1370000000 0.0000000000 0.0000000000
+        0.0000000000 0.0316000000 0.0000000000
+        0.0000000000 0.0000000000 0.1370000000
+endsegment
+
+beginsegment tibia_l
+beginfiles
+l_tibia.bin
+l_fibula.bin
+endfiles
+mass 3.03
+masscenter 0.0 -0.1867 0.0
+inertia 0.0444000000 0.0000000000 0.0000000000
+        0.0000000000 0.0038300000 0.0000000000
+        0.0000000000 0.0000000000 0.0445000000
+endsegment
+
+beginsegment patella_l
+beginfiles
+l_pat.bin
+endfiles
+mass 0.1
+masscenter 0.0 0.0 0.0
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment talus_l
+beginfiles
+l_talus.bin
+endfiles
+mass 0.1
+masscenter 0.0 0.0 0.0
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment calcn_l
+beginfiles
+l_rearfoot.asc
+endfiles
+mass 0.4183
+masscenter 0.025 0.015 0.0 
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment midfoot_l
+beginfiles
+l_midfoot.old
+endfiles
+mass 0.4
+masscenter 0.025 0.015 0.0
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+beginsegment toes_l
+beginfiles
+l_bofoot.bin
+endfiles
+mass 0.2058
+masscenter 0.0346 0.006  0.0175
+inertia 0.0010000000 0.0000000000 0.0000000000
+        0.0000000000 0.0010000000 0.0000000000
+        0.0000000000 0.0000000000 0.0010000000
+endsegment
+
+
+
+/*********************************************/
+/*                JOINTS                     */
+/*********************************************/
+
+beginjoint ground_pelvis
+segments ground pelvis
+order t r3 r2 r1
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  function f13(leg_tx)
+ty  function f14(leg_ty)
+tz  constant 0.000000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f15(pelvis_rotation)
+endjoint
+
+
+/****** Right leg ******/
+
+beginjoint hip_r
+segments pelvis femur_r
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant -0.070700
+ty  constant -0.066100
+tz  constant 0.083500
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f1(hip_angle_r)
+endjoint
+
+beginjoint knee_r
+segments femur_r tibia_r
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  function f5(knee_angle_r)
+ty  function f6(knee_angle_r)
+tz  constant 0.000000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f4(knee_angle_r)
+endjoint
+
+beginjoint tib_pat_r
+segments tibia_r patella_r
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  function f7(knee_angle_r)
+ty  function f8(knee_angle_r)
+tz  constant 0.002400
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f9(knee_angle_r)
+endjoint
+
+beginjoint ankle_r
+segments tibia_r talus_r
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant 0.000000
+ty  constant -0.430000
+tz  constant 0.000000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f10(ankle_angle_r)
+endjoint
+
+beginjoint subtalar_r
+segments talus_r calcn_r
+order t r1 r2 r3
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant -0.048770
+ty  constant -0.041950
+tz  constant 0.007920
+r1  constant 0.000000
+r2  constant 0.000000
+r3  constant 0.000000
+endjoint
+
+beginjoint midfoot_r
+segments calcn_r midfoot_r
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant 0.119200
+ty  constant 0.00000
+tz  constant 0.00000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f23(midfoot_angle_r)
+endjoint
+
+beginjoint mtp_r
+segments midfoot_r toes_r
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant 0.059600
+ty  constant -0.002000
+tz  constant 0.001080
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f12(mtp_angle_r)
+endjoint
+
+
+
+/****** Left leg ******/
+
+beginjoint hip_l
+segments pelvis femur_l
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant -0.070700
+ty  constant -0.066100
+tz  constant -0.083500
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f2(hip_angle_l)
+endjoint
+
+beginjoint knee_l
+segments femur_l tibia_l
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  function f16(knee_angle_l)
+ty  function f17(knee_angle_l)
+tz  constant 0.000000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f3(knee_angle_l)
+endjoint
+
+beginjoint tib_pat_l
+segments tibia_l patella_l
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  function f18(knee_angle_l)
+ty  function f19(knee_angle_l)
+tz  constant -0.002400
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f20(knee_angle_l)
+endjoint
+
+beginjoint ankle_l
+segments tibia_l talus_l
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant 0.000000
+ty  constant -0.430000
+tz  constant 0.000000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f21(ankle_angle_l)
+endjoint
+
+beginjoint subtalar_l
+segments talus_l calcn_l
+order t r1 r2 r3
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant -0.048770
+ty  constant -0.041950
+tz  constant -0.007920
+r1  constant 0.000000
+r2  constant 0.000000
+r3  constant 0.000000
+endjoint
+
+beginjoint midfoot_l
+segments calcn_l midfoot_l
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant 0.119200
+ty  constant 0.000000
+tz  constant 0.000000
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f23(midfoot_angle_l)
+endjoint
+
+beginjoint mtp_l
+segments midfoot_l toes_l
+order t r3 r1 r2
+axis1 1.000000 0.000000 0.000000
+axis2 0.000000 1.000000 0.000000
+axis3 0.000000 0.000000 1.000000
+tx  constant  0.059600
+ty  constant -0.0020000
+tz  constant -0.001080
+r1  constant 0.000000
+r2  constant 0.000000
+r3  function f25(mtp_angle_l)
+endjoint
+
+
+
+
+/*********************************************/
+/*              GENCOORDS                    */
+/*********************************************/
+
+/****** Right leg ******/
+
+begingencoord hip_angle_r
+range -40.000000 120.000000
+minrestraint f43
+maxrestraint f43
+keys h_key leftmouse_button
+default_value 0.000000
+endgencoord
+
+begingencoord knee_angle_r
+range -120.000000 5.000000
+minrestraint f43
+maxrestraint f43
+keys k_key
+default_value 0.000000
+endgencoord
+
+begingencoord ankle_angle_r
+range -40.000000 40.000000
+minrestraint f43
+maxrestraint f43
+keys a_key
+default_value 0.000000
+endgencoord
+
+begingencoord mtp_angle_r
+range -60.000000 60.000000
+minrestraint f43
+maxrestraint f43
+keys t_key
+default_value 0.000000
+endgencoord
+
+begingencoord midfoot_angle_r
+range -60.000000 60.000000
+minrestraint f43
+maxrestraint f43
+keys t_key
+default_value 0.000000
+endgencoord
+
+begingencoord leg_tx
+range -2.000000 4.000000
+keys p_key
+default_value 0.000000
+endgencoord
+
+begingencoord leg_ty
+range 0.000000 2.000000
+keys q_key
+default_value 0.871000
+endgencoord
+
+
+begingencoord pelvis_rotation
+range -90.000000 90.000000
+minrestraint f43
+maxrestraint f43
+keys q_key
+default_value 0.000000
+endgencoord
+
+
+/****** Left leg ******/
+
+begingencoord hip_angle_l
+range -40.000000 120.000000
+minrestraint f43
+maxrestraint f43
+keys h_key leftmouse_button
+default_value 0.000000
+endgencoord
+
+begingencoord knee_angle_l
+range -120.000000 5.000000
+minrestraint f43
+maxrestraint f43
+keys k_key
+default_value 0.000000
+endgencoord
+
+begingencoord ankle_angle_l
+range -40.000000 40.000000
+minrestraint f43
+maxrestraint f43
+keys a_key
+default_value 0.000000
+endgencoord
+
+begingencoord mtp_angle_l
+range -60.000000 60.000000
+minrestraint f43
+maxrestraint f43
+keys t_key
+default_value 0.000000
+endgencoord
+
+begingencoord midfoot_angle_l
+range -60.000000 60.000000
+minrestraint f43
+maxrestraint f43
+keys t_key
+default_value 0.000000
+endgencoord
+
+/*********************************************/
+/*               FUNCTIONS                   */
+/*********************************************/
+
+beginfunction f1
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f2
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f3
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f4
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f5
+(-120.000000,  -0.003200)
+(-100.000000,   0.001790)
+( -80.000000,   0.004110)
+( -60.000000,   0.004100)
+( -40.000000,   0.002120)
+( -20.000000,  -0.001000)
+( -10.000000,  -0.003100)
+(   0.000000,  -0.005250)
+(   5.000000,  -0.005250)
+endfunction
+
+beginfunction f6
+(-120.000000,  -0.422600)
+( -70.000000,  -0.408200)
+( -30.000000,  -0.399000)
+( -20.000000,  -0.397600)
+( -10.000000,  -0.396600)
+(   0.000000,  -0.396000)
+(   5.000000,  -0.396000)
+endfunction
+
+beginfunction f7
+(-120.000000,   0.017300)
+( -80.000000,   0.032400)
+( -60.000000,   0.038100)
+( -40.000000,   0.043000)
+( -20.000000,   0.046900)
+( -10.000000,   0.048400)
+(   0.000000,   0.049600)
+(   5.000000,   0.049600)
+endfunction
+
+beginfunction f8
+(-120.000000,  -0.021900)
+( -90.000000,  -0.020200)
+( -80.000000,  -0.020000)
+( -60.000000,  -0.020400)
+( -40.000000,  -0.021100)
+( -20.000000,  -0.021900)
+( -10.000000,  -0.022300)
+(   0.300000,  -0.022700)
+(   5.000000,  -0.022700)
+endfunction
+
+beginfunction f9
+(-120.000000,  17.650000)
+(-114.590000,  17.650000)
+( -83.510000,  17.550000)
+( -30.160000,  15.480000)
+(   1.600000,  -2.120000)
+(  10.000000, -16.040000)
+endfunction
+
+beginfunction f10
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f11
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f12
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f13
+(  -4.000000,  -4.000000)
+(   4.000000,   4.000000)
+endfunction
+
+beginfunction f14
+(  -4.000000,  -4.000000)
+(   4.000000,   4.000000)
+endfunction
+
+beginfunction f15
+(  -90.000000,   -90.000000)
+(   90.000000,   90.000000)
+endfunction
+
+beginfunction f16
+(-120.000000,  -0.003200)
+(-100.000000,   0.001790)
+( -80.000000,   0.004110)
+( -60.000000,   0.004100)
+( -40.000000,   0.002120)
+( -20.000000,  -0.001000)
+( -10.000000,  -0.003100)
+(   0.000000,  -0.005250)
+(   5.000000,  -0.005250)
+endfunction
+
+beginfunction f17
+(-120.000000,  -0.422600)
+( -70.000000,  -0.408200)
+( -30.000000,  -0.399000)
+( -20.000000,  -0.397600)
+( -10.000000,  -0.396600)
+(   0.000000,  -0.396000)
+(   5.000000,  -0.396000)
+endfunction
+
+beginfunction f18
+(-120.000000,   0.017300)
+( -80.000000,   0.032400)
+( -60.000000,   0.038100)
+( -40.000000,   0.043000)
+( -20.000000,   0.046900)
+( -10.000000,   0.048400)
+(   0.000000,   0.049600)
+(   5.000000,   0.049600)
+endfunction
+
+beginfunction f19
+(-120.000000,  -0.021900)
+( -90.000000,  -0.020200)
+( -80.000000,  -0.020000)
+( -60.000000,  -0.020400)
+( -40.000000,  -0.021100)
+( -20.000000,  -0.021900)
+( -10.000000,  -0.022300)
+(   0.300000,  -0.022700)
+(   5.000000,  -0.022700)
+endfunction
+
+beginfunction f20
+(-120.000000,  17.650000)
+(-114.590000,  17.650000)
+( -83.510000,  17.550000)
+( -30.160000,  15.480000)
+(   1.600000,  -2.120000)
+(  10.000000, -16.040000)
+endfunction
+
+beginfunction f21
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f22
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f23
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f24
+(  -4.000000,  -4.000000)
+(   4.000000,   4.000000)
+endfunction
+
+beginfunction f25
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f26
+(-360.000000,-360.000000)
+( 360.000000, 360.000000)
+endfunction
+
+beginfunction f43
+(0.0,0.0)
+(5.0,300.0)
+(10.0,600.0)
+(20.0,1000.0)
+(100.0,3000.0)
+endfunction

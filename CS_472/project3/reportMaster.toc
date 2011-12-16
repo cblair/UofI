@@ -7,18 +7,26 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Crossover}{3}
 \contentsline {subsubsection}{\numberline {2.2.3}Uniform Mutation}{4}
 \contentsline {subsubsection}{\numberline {2.2.4}Generational Reproduction}{4}
-\contentsline {subsection}{\numberline {2.3}Fitness Function}{4}
-\contentsline {subsection}{\numberline {2.4}Parameters}{4}
-\contentsline {section}{\numberline {3}Results}{5}
-\contentsline {subsection}{\numberline {3.1}Simulated Annealing}{5}
-\contentsline {subsubsection}{\numberline {3.1.1}Run 1}{5}
-\contentsline {subsection}{\numberline {3.2}Genetic Algorithm with Mutation Only}{8}
-\contentsline {subsubsection}{\numberline {3.2.1}GA Run 1}{8}
-\contentsline {subsubsection}{\numberline {3.2.2}GA Run 2}{9}
-\contentsline {subsection}{\numberline {3.3}Genetic Algorithm with Uniform Mutation and Point Crossover}{10}
-\contentsline {subsubsection}{\numberline {3.3.1}GA Run 3}{10}
-\contentsline {subsection}{\numberline {3.4}Algorithm Comparison}{11}
-\contentsline {section}{\numberline {4}Performance}{12}
-\contentsline {subsection}{\numberline {4.1}Enhancements with Parallelism}{12}
-\contentsline {section}{\numberline {5}Conclusion}{13}
-\contentsline {section}{\numberline {6}Bibliography}{15}
+\contentsline {subsection}{\numberline {2.3}Fitness Function}{5}
+\contentsline {subsection}{\numberline {2.4}Parameters}{6}
+\contentsline {section}{\numberline {3}Results}{7}
+\contentsline {subsection}{\numberline {3.1}Simulated Annealing}{7}
+\contentsline {subsubsection}{\numberline {3.1.1}SA Run 1}{7}
+\contentsline {subsection}{\numberline {3.2}Genetic Algorithm with Mutation Only}{10}
+\contentsline {subsubsection}{\numberline {3.2.1}GA Run 1}{10}
+\contentsline {subsubsection}{\numberline {3.2.2}GA Run 2}{11}
+\contentsline {subsection}{\numberline {3.3}Genetic Algorithm with Uniform Mutation and Flip Crossover}{12}
+\contentsline {subsubsection}{\numberline {3.3.1}GA Run 3}{12}
+\contentsline {subsubsection}{\numberline {3.3.2}GA Run 4}{13}
+\contentsline {subsection}{\numberline {3.4}Algorithm Comparison}{14}
+\contentsline {section}{\numberline {4}Performance}{15}
+\contentsline {subsection}{\numberline {4.1}Enhancements with Parallelism}{15}
+\contentsline {section}{\numberline {5}Conclusion}{16}
+\contentsline {section}{\numberline {6}Source}{18}
+\contentsline {subsection}{\numberline {6.1}ga\_main.h}{18}
+\contentsline {subsection}{\numberline {6.2}ga\_main.cpp}{18}
+\contentsline {subsection}{\numberline {6.3}ga\_i.h}{25}
+\contentsline {subsection}{\numberline {6.4}ga\_i.cpp}{25}
+\contentsline {subsection}{\numberline {6.5}ga\_pop.h}{30}
+\contentsline {subsection}{\numberline {6.6}ga\_pop.cpp}{31}
+\contentsline {section}{\numberline {7}Bibliography}{41}

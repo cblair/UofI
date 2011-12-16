@@ -36,7 +36,7 @@ To understand parallelism and the gains from it, we must consider Amdahl's Law:
 \normalsize
 
 $ P $ informally is the portion of the program that can be split up into sections, each of which can be worked 
-on simultaniously. The name for this process is textbf{paralellization}. Informally, Ahmdahl's Law shows that 
+on simultaniously. The name for this process is \textbf{paralellization}. Informally, Ahmdahl's Law shows that 
 the higher $ P $, or portion of work that can be split up, the more beneficial adding more CPU's ($ N $) is. Too many CPU's, and the benefit decreases.
 
 For parallelism over many CPU's on a network, an API like OpenMPI can be used.
@@ -95,7 +95,7 @@ to find it.
 
 The project started with trying to imitate an SA using a GA, and then added 
 more variability with mutation and crossover rates. What was quite suprising
-was how sensitive the existing solution where to mutation and crossover.
+was how sensitive the existing solution were to mutation and crossover.
 The solutions the GA started with were recent bests found by the SA, and 
 the GA originally changed them so much that fitness / cost went to infinity.
 This is why this project used such conservative changes, scaling down 

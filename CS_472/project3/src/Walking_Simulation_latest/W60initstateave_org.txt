@@ -1,0 +1,9 @@
+Leg-tx 0.000000
+Leg-ty 0.935146
+Pelvis_rot 4.579380
+Hip_R 20.423407
+Knee_R 0.773637
+Ankle_R -3.164411
+Hip_L -17.307666
+Knee_L -9.848065
+Ankle_L 8.785233

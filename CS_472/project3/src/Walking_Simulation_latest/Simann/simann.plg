@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: simann - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CRAIGM~1\LOCALS~1\Temp\RSP8445.tmp" with contents
+[
+/nologo /MLd /W3 /GX /O2 /Ob2 /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Debug/" /Fp"Debug/simann.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Documents and Settings\Craig McGowan\My Documents\Craig\Research\ReOpt WeightMass\CONTROL\Bimodal_MinE_14_stiff_foot\CostFunc.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CRAIGM~1\LOCALS~1\Temp\RSP8445.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIGM~1\LOCALS~1\Temp\RSP8446.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib acpp.lib wrap.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/simann.pdb" /debug /machine:I386 /out:"Debug/simann.exe" /pdbtype:sept 
+".\Debug\assigns.obj"
+".\Debug\BiModalPattern.obj"
+".\Debug\CostFunc.obj"
+".\Debug\derivs.obj"
+".\Debug\FileReadWrite.obj"
+".\Debug\formain.obj"
+".\Debug\GaussPattern.obj"
+".\Debug\gmc.obj"
+".\Debug\inits.obj"
+".\Debug\invert.obj"
+".\Debug\mathtools.obj"
+".\Debug\model_d.obj"
+".\Debug\model_s.obj"
+".\Debug\pipetools.obj"
+".\Debug\readmuscles.obj"
+".\Debug\readtools.obj"
+".\Debug\sdfor.obj"
+".\Debug\sdlib.obj"
+".\Debug\SetExcPattern_Templates.obj"
+".\Debug\SetParamBounds.obj"
+".\Debug\SetStructure.obj"
+".\Debug\Simann.obj"
+".\Debug\UpdatePattern.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\CRAIGM~1\LOCALS~1\Temp\RSP8446.tmp"
+<h3>Output Window</h3>
+Compiling...
+CostFunc.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\CRAIGM~1\LOCALS~1\Temp\RSP8448.tmp" with contents
+[
+/nologo /o"Debug/simann.bsc" 
+".\Debug\assigns.sbr"
+".\Debug\BiModalPattern.sbr"
+".\Debug\CostFunc.sbr"
+".\Debug\derivs.sbr"
+".\Debug\FileReadWrite.sbr"
+".\Debug\formain.sbr"
+".\Debug\GaussPattern.sbr"
+".\Debug\gmc.sbr"
+".\Debug\inits.sbr"
+".\Debug\invert.sbr"
+".\Debug\mathtools.sbr"
+".\Debug\model_d.sbr"
+".\Debug\model_s.sbr"
+".\Debug\pipetools.sbr"
+".\Debug\readmuscles.sbr"
+".\Debug\readtools.sbr"
+".\Debug\sdfor.sbr"
+".\Debug\sdlib.sbr"
+".\Debug\SetExcPattern_Templates.sbr"
+".\Debug\SetParamBounds.sbr"
+".\Debug\SetStructure.sbr"
+".\Debug\Simann.sbr"
+".\Debug\UpdatePattern.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\CRAIGM~1\LOCALS~1\Temp\RSP8448.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+simann.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

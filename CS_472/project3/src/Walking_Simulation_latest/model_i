@@ -1,0 +1,92 @@
+SD/FAST Information File: model.sd
+Generated 22-Jun-2007 09:35:40 by SD/FAST, Kane's formulation
+(sdfast B.2.8 #30123) on machine ID unknown
+
+ROADMAP (model.sd)
+
+Bodies        Inb
+No  Name      body Joint type  Coords q         Multipliers
+--- --------- ---- ----------- ---------------- -----------------------
+ -1 $ground                                    |
+  0 pelvis     -1  Planar        0   1   2     |
+  1 femur_r     0  Pin           3             |
+  2 tibia_r     1  Planar        4   5   6     |
+  3 patella_r   2  Planar        7   8   9     |
+  4 talus_r     2  Pin          10             |
+  5 calcn_r     4  Pin          11p            |  0p
+  6 midfoot_r   5  Pin          12             |
+  7 toes_r      6  Pin          13             |
+  8 femur_l     0  Pin          14             |
+  9 tibia_l     8  Planar       15  16  17     |
+ 10 patella_l   9  Planar       18  19  20     |
+ 11 talus_l     9  Pin          21             |
+ 12 calcn_l    11  Pin          22p            |  1p
+ 13 midfoot_l  12  Pin          23             |
+ 14 toes_l     13  Pin          24             |
+
+User Constraints
+
+  0 user_0                                     |  2
+  1 user_1                                     |  3
+  2 user_2                                     |  4
+  3 user_3                                     |  5
+  4 user_4                                     |  6
+  5 user_5                                     |  7
+  6 user_6                                     |  8
+  7 user_7                                     |  9
+  8 user_8                                     | 10
+  9 user_9                                     | 11
+
+
+STATE INDEX TO JOINT/AXIS MAP (model.sd)
+
+ Index
+  q|u   Joint  Axis   Joint type    Axis type    Joint Name
+ -----  -----  ----   -----------   ----------   ----------
+  0|25      0     0   Planar        translate    
+  1|26      .     1   .             translate 
+  2|27      .     2   .             rotate    
+  3|28      1     0   Pin           rotate       
+  4|29      2     0   Planar        translate    
+  5|30      .     1   .             translate 
+  6|31      .     2   .             rotate    
+  7|32      3     0   Planar        translate    
+  8|33      .     1   .             translate 
+  9|34      .     2   .             rotate    
+ 10|35      4     0   Pin           rotate       
+ 11|36      5     0p  Pin           rotate       
+ 12|37      6     0   Pin           rotate       
+ 13|38      7     0   Pin           rotate       
+ 14|39      8     0   Pin           rotate       
+ 15|40      9     0   Planar        translate    
+ 16|41      .     1   .             translate 
+ 17|42      .     2   .             rotate    
+ 18|43     10     0   Planar        translate    
+ 19|44      .     1   .             translate 
+ 20|45      .     2   .             rotate    
+ 21|46     11     0   Pin           rotate       
+ 22|47     12     0p  Pin           rotate       
+ 23|48     13     0   Pin           rotate       
+ 24|49     14     0   Pin           rotate       
+
+
+SYSTEM PARAMETERS (model.sd)
+
+Parameter  Value  Description
+
+nbod          15  no. bodies (also, no. of tree joints)
+njnt          15  total number of joints (tree+loop)
+ndof          25  no. degrees of freedom allowed by tree joints
+nloop          0  no. loop joints
+nldof          0  no. degrees of freedom allowed by loop joints
+
+nq            25  no. position coordinates in state (tree joints)
+nu            25  no. rate coordinates in state (tree joints)
+nlq            0  no. position coordinates describing loop joints
+nlu            0  no. rate coordinates describing loop joints
+
+nc            12  total no. constraints defined
+nlc            0  no. loop joint constraints
+npresc         2  no. prescribed motion constraints
+nuserc        10  no. user constraints
+

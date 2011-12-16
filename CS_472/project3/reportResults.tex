@@ -3,7 +3,7 @@
 \subsection{Simulated Annealing}
 This section lists some SA optimizations for comparison.
 
-\subsubsection{Run 1} 
+\subsubsection{SA Run 1} 
 \label{sec:run_1}
 
 \begin{tabular}{lr}
@@ -96,8 +96,9 @@ Parameters for ga:\\
         \end{center}
 \end{figure}
 
+
 \pagebreak
-\subsection{Genetic Algorithm with Uniform Mutation and Point Crossover}
+\subsection{Genetic Algorithm with Uniform Mutation and Flip Crossover}
 \subsubsection{GA Run 3}
 \begin{tabular}{lr}
 	Min: 			& 126286311965193 \\
@@ -125,6 +126,33 @@ Parameters for ga:\\
         \end{center}
 \end{figure}
 
+\subsubsection{GA Run 4}
+\begin{tabular}{lr}
+	Min: 			& 126295965034485 \\
+	Max:			& 126900977814057 \\
+	Standard Deviation:	&  250328896067.985 \\
+\end{tabular}
+
+Parameters for ga:\\
+\begin{tabular}{lr}
+	POP\_SIZE:	& 10 \\
+	ATTR\_SIZE:	& 96 \\
+	GA\_LBOUND:	& -5.000 \\
+	GA\_UBOUND:	& 100.00 \\
+	GA\_DIFF\_SCALE: & 800.000 \\
+	K\_MUT:		& 96 \\
+	K\_SELECT:	& 1 \\
+	K\_FLIP\_XOVER:	& 3 \\
+\end{tabular}
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=120mm]{output/ga04/graph.pdf}
+               	\caption{GA fitness, uniform mutation and three point flip crossover}
+                \label{saXX_exc}
+        \end{center}
+\end{figure}
+
 
 \subsection{Algorithm Comparison}
 \begin{tabular}{llll}
@@ -133,4 +161,5 @@ SA		& 127030005662992 	& 1636549083561452	& 217723255965676 \\
 GA Run 1	& 127156943557514	& 127354767955212	& 35435274465.6039 \\
 GA Run 2	& 126393050706189	& 126471924413236	& 24842647883.601 \\
 GA Run 3	& 126286311965193	& 126903624988318	& 226416086588.11 \\
+GA Run 4	& 126295965034485	& 126900977814057	& 250328896067.985 \\
 \end{tabular}

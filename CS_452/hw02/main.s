@@ -488,7 +488,8 @@ led_switch_echo:
 	cp r25,r24
 	brne .+2
 	rjmp .L27
-	ldi r24,lo8(1)
+	ldd r24,Y+1
+	com r24
 	sts which_switch,r24
 	lds r24,which_switch
 	andi r24,lo8(15)

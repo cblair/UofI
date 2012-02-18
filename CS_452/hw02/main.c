@@ -95,8 +95,8 @@ void led_switch_echo(void)
 		 * set Port B to the LED with the same value 
 		 * (lighting up the LED that is next to the switch)
 		 */
-		//which_switch = ~port_state;
-		which_switch = 0x01;
+		which_switch = ~port_state;
+		//which_switch = 0x01;
 
 		/*make sure which_switch never has bits set in the upper 4 pins*/
 		which_switch &= 0x0F;

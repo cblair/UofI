@@ -5,35 +5,58 @@ __SP_L__ = 0x3d
 __CCP__  = 0x34
 __tmp_reg__ = 0
 __zero_reg__ = 1
-.global	led_cnt
-.global	led_cnt
+.global	cnt
+.global	cnt
 	.section .bss
+	.type	cnt, @object
+	.size	cnt, 1
+cnt:
+	.skip 1,0
+.global	led_cnt
+.global	led_cnt
 	.type	led_cnt, @object
 	.size	led_cnt, 1
 led_cnt:
 	.skip 1,0
 	.text
-.global	port_init
-	.type	port_init, @function
-port_init:
+.global	delay
+	.type	delay, @function
+delay:
 	push r29
 	push r28
+	rcall .
+	rcall .
 	in r28,__SP_L__
 	in r29,__SP_H__
 /* prologue: function */
-/* frame size = 0 */
-	ldi r30,lo8(55)
-	ldi r31,hi8(55)
-	ldi r24,lo8(-1)
-	st Z,r24
-	ldi r30,lo8(49)
-	ldi r31,hi8(49)
-	st Z,__zero_reg__
+/* frame size = 4 */
+	std Y+4,r25
+	std Y+3,r24
+	ldd r24,Y+3
+	ldd r25,Y+4
+	std Y+2,r25
+	std Y+1,r24
+	rjmp .L2
+.L3:
+	ldd r24,Y+1
+	ldd r25,Y+2
+	sbiw r24,1
+	std Y+2,r25
+	std Y+1,r24
+.L2:
+	ldd r24,Y+1
+	ldd r25,Y+2
+	sbiw r24,0
+	brne .L3
 /* epilogue start */
+	pop __tmp_reg__
+	pop __tmp_reg__
+	pop __tmp_reg__
+	pop __tmp_reg__
 	pop r28
 	pop r29
 	ret
-	.size	port_init, .-port_init
+	.size	delay, .-delay
 .global	init_Ex1
 	.type	init_Ex1, @function
 init_Ex1:
@@ -80,14 +103,19 @@ __vector_7:
 	lds r24,cnt
 	subi r24,lo8(-(1))
 	sts cnt,r24
+	lds r24,cnt
+	cpi r24,lo8(30)
+	brne .L9
 	ldi r30,lo8(56)
 	ldi r31,hi8(56)
 	lds r24,led_cnt
 	com r24
 	st Z,r24
 	lds r24,led_cnt
-	subi r24,lo8(-(-16))
+	subi r24,lo8(-(16))
 	sts led_cnt,r24
+	sts cnt,__zero_reg__
+.L9:
 /* epilogue start */
 	pop r28
 	pop r29
@@ -100,68 +128,9 @@ __vector_7:
 	pop __zero_reg__
 	reti
 	.size	__vector_7, .-__vector_7
-.global	delay
-	.type	delay, @function
-delay:
-	push r29
-	push r28
-	rcall .
-	rcall .
-	in r28,__SP_L__
-	in r29,__SP_H__
-/* prologue: function */
-/* frame size = 4 */
-	std Y+4,r25
-	std Y+3,r24
-	ldd r24,Y+3
-	ldd r25,Y+4
-	std Y+2,r25
-	std Y+1,r24
-	rjmp .L8
-.L9:
-	ldd r24,Y+1
-	ldd r25,Y+2
-	sbiw r24,1
-	std Y+2,r25
-	std Y+1,r24
-.L8:
-	ldd r24,Y+1
-	ldd r25,Y+2
-	sbiw r24,0
-	brne .L9
-/* epilogue start */
-	pop __tmp_reg__
-	pop __tmp_reg__
-	pop __tmp_reg__
-	pop __tmp_reg__
-	pop r28
-	pop r29
-	ret
-	.size	delay, .-delay
-.global	button_led_echo_init
-	.type	button_led_echo_init, @function
-button_led_echo_init:
-	push r29
-	push r28
-	rcall .
-	in r28,__SP_L__
-	in r29,__SP_H__
-/* prologue: function */
-/* frame size = 2 */
-	ldi r30,lo8(56)
-	ldi r31,hi8(56)
-	ldi r24,lo8(-1)
-	st Z,r24
-/* epilogue start */
-	pop __tmp_reg__
-	pop __tmp_reg__
-	pop r28
-	pop r29
-	ret
-	.size	button_led_echo_init, .-button_led_echo_init
-.global	button_led_echo
-	.type	button_led_echo, @function
-button_led_echo:
+.global	led_switch_echo
+	.type	led_switch_echo, @function
+led_switch_echo:
 	push r10
 	push r11
 	push r12
@@ -174,15 +143,16 @@ button_led_echo:
 	push r28
 	in r28,__SP_L__
 	in r29,__SP_H__
-	subi r28,lo8(-(-111))
-	sbci r29,hi8(-(-111))
+	subi r28,lo8(-(-110))
+	sbci r29,hi8(-(-110))
 	in __tmp_reg__,__SREG__
 	cli
 	out __SP_H__,r29
 	out __SREG__,__tmp_reg__
 	out __SP_L__,r28
 /* prologue: function */
-/* frame size = 111 */
+/* frame size = 110 */
+	std Y+9,__zero_reg__
 	std Y+10,__zero_reg__
 	std Y+11,__zero_reg__
 	std Y+12,__zero_reg__
@@ -190,7 +160,6 @@ button_led_echo:
 	std Y+14,__zero_reg__
 	std Y+15,__zero_reg__
 	std Y+16,__zero_reg__
-	std Y+17,__zero_reg__
 	std Y+1,__zero_reg__
 	std Y+2,__zero_reg__
 	std Y+3,__zero_reg__
@@ -202,301 +171,309 @@ button_led_echo:
 	ldi r30,lo8(48)
 	ldi r31,hi8(48)
 	ld r24,Z
-	std Y+9,r24
+	sts which_switch,r24
 	ldi r30,lo8(48)
 	ldi r31,hi8(48)
 	ld r24,Z
 	cpi r24,lo8(-1)
-	brne .+2
-	rjmp .L46
-	rjmp .L15
-.L29:
-	ldd r24,Y+10
-	std Y+26,r24
-	ldd r25,Y+11
-	std Y+27,r25
-	ldd r24,Y+12
-	std Y+28,r24
-	ldd r25,Y+13
-	std Y+29,r25
-	ldd r24,Y+14
-	std Y+30,r24
-	ldd r25,Y+15
-	std Y+31,r25
-	ldd r24,Y+16
-	std Y+32,r24
-	ldd r25,Y+17
-	std Y+33,r25
+	breq .+2
+	rjmp .L13
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ldi r24,lo8(-2)
+	st Z,r24
+	ldi r24,lo8(-536)
+	ldi r25,hi8(-536)
+	rcall delay
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ldi r24,lo8(-1)
+	st Z,r24
+	ldi r24,lo8(-536)
+	ldi r25,hi8(-536)
+	rcall delay
+	rjmp .L44
+.L27:
+	ldd r24,Y+9
+	std Y+25,r24
+	ldd r25,Y+10
+	std Y+26,r25
+	ldd r24,Y+11
+	std Y+27,r24
+	ldd r25,Y+12
+	std Y+28,r25
+	ldd r24,Y+13
+	std Y+29,r24
+	ldd r25,Y+14
+	std Y+30,r25
+	ldd r24,Y+15
+	std Y+31,r24
+	ldd r25,Y+16
+	std Y+32,r25
 	ldi r24,lo8(1)
-	std Y+34,r24
+	std Y+33,r24
+	std Y+34,__zero_reg__
 	std Y+35,__zero_reg__
 	std Y+36,__zero_reg__
 	std Y+37,__zero_reg__
 	std Y+38,__zero_reg__
 	std Y+39,__zero_reg__
 	std Y+40,__zero_reg__
-	std Y+41,__zero_reg__
-	ldd r25,Y+26
-	ldd r24,Y+34
+	ldd r25,Y+25
+	ldd r24,Y+33
 	add r25,r24
-	std Y+42,r25
+	std Y+41,r25
 	ldi r25,lo8(1)
-	std Y+50,r25
+	std Y+49,r25
+	ldd r24,Y+41
+	ldd r25,Y+25
+	cp r24,r25
+	brlo .L14
+	std Y+49,__zero_reg__
+.L14:
+	ldd r24,Y+26
+	ldd r25,Y+34
+	add r24,r25
+	std Y+42,r24
+	ldi r24,lo8(1)
+	std Y+50,r24
+	ldd r25,Y+42
+	ldd r24,Y+26
+	cp r25,r24
+	brlo .L15
+	std Y+50,__zero_reg__
+.L15:
+	ldd r25,Y+49
 	ldd r24,Y+42
-	ldd r25,Y+26
+	add r25,r24
+	std Y+51,r25
+	ldi r25,lo8(1)
+	std Y+52,r25
+	ldd r24,Y+51
+	ldd r25,Y+42
 	cp r24,r25
 	brlo .L16
-	std Y+50,__zero_reg__
+	std Y+52,__zero_reg__
 .L16:
-	ldd r24,Y+27
-	ldd r25,Y+35
-	add r24,r25
-	std Y+43,r24
-	ldi r24,lo8(1)
-	std Y+51,r24
-	ldd r25,Y+43
-	ldd r24,Y+27
-	cp r25,r24
-	brlo .L17
-	std Y+51,__zero_reg__
-.L17:
-	ldd r25,Y+50
-	ldd r24,Y+43
+	ldd r24,Y+50
+	ldd r25,Y+52
+	or r24,r25
+	std Y+50,r24
+	ldd r24,Y+51
+	std Y+42,r24
+	ldd r25,Y+27
+	ldd r24,Y+35
 	add r25,r24
-	std Y+52,r25
+	std Y+43,r25
 	ldi r25,lo8(1)
 	std Y+53,r25
-	ldd r24,Y+52
-	ldd r25,Y+43
+	ldd r24,Y+43
+	ldd r25,Y+27
 	cp r24,r25
-	brlo .L18
+	brlo .L17
 	std Y+53,__zero_reg__
-.L18:
-	ldd r24,Y+51
-	ldd r25,Y+53
-	or r24,r25
-	std Y+51,r24
-	ldd r24,Y+52
-	std Y+43,r24
-	ldd r25,Y+28
-	ldd r24,Y+36
-	add r25,r24
-	std Y+44,r25
-	ldi r25,lo8(1)
-	std Y+54,r25
-	ldd r24,Y+44
-	ldd r25,Y+28
-	cp r24,r25
-	brlo .L19
-	std Y+54,__zero_reg__
-.L19:
-	ldd r24,Y+51
-	ldd r25,Y+44
+.L17:
+	ldd r24,Y+50
+	ldd r25,Y+43
 	add r24,r25
+	std Y+54,r24
+	ldi r24,lo8(1)
 	std Y+55,r24
+	ldd r25,Y+54
+	ldd r24,Y+43
+	cp r25,r24
+	brlo .L18
+	std Y+55,__zero_reg__
+.L18:
+	ldd r25,Y+53
+	ldd r24,Y+55
+	or r25,r24
+	std Y+53,r25
+	ldd r25,Y+54
+	std Y+43,r25
+	ldd r24,Y+28
+	ldd r25,Y+36
+	add r24,r25
+	std Y+44,r24
 	ldi r24,lo8(1)
 	std Y+56,r24
-	ldd r25,Y+55
-	ldd r24,Y+44
+	ldd r25,Y+44
+	ldd r24,Y+28
 	cp r25,r24
-	brlo .L20
+	brlo .L19
 	std Y+56,__zero_reg__
-.L20:
-	ldd r25,Y+54
-	ldd r24,Y+56
-	or r25,r24
-	std Y+54,r25
-	ldd r25,Y+55
-	std Y+44,r25
-	ldd r24,Y+29
-	ldd r25,Y+37
-	add r24,r25
-	std Y+45,r24
-	ldi r24,lo8(1)
-	std Y+57,r24
-	ldd r25,Y+45
-	ldd r24,Y+29
-	cp r25,r24
-	brlo .L21
-	std Y+57,__zero_reg__
-.L21:
-	ldd r25,Y+54
-	ldd r24,Y+45
+.L19:
+	ldd r25,Y+53
+	ldd r24,Y+44
 	add r25,r24
+	std Y+57,r25
+	ldi r25,lo8(1)
 	std Y+58,r25
+	ldd r24,Y+57
+	ldd r25,Y+44
+	cp r24,r25
+	brlo .L20
+	std Y+58,__zero_reg__
+.L20:
+	ldd r24,Y+56
+	ldd r25,Y+58
+	or r24,r25
+	std Y+56,r24
+	ldd r24,Y+57
+	std Y+44,r24
+	ldd r25,Y+29
+	ldd r24,Y+37
+	add r25,r24
+	std Y+45,r25
 	ldi r25,lo8(1)
 	std Y+59,r25
-	ldd r24,Y+58
-	ldd r25,Y+45
+	ldd r24,Y+45
+	ldd r25,Y+29
 	cp r24,r25
-	brlo .L22
+	brlo .L21
 	std Y+59,__zero_reg__
-.L22:
-	ldd r24,Y+57
-	ldd r25,Y+59
-	or r24,r25
-	std Y+57,r24
-	ldd r24,Y+58
-	std Y+45,r24
-	ldd r25,Y+30
-	ldd r24,Y+38
-	add r25,r24
-	std Y+46,r25
-	ldi r25,lo8(1)
-	std Y+60,r25
-	ldd r24,Y+46
-	ldd r25,Y+30
-	cp r24,r25
-	brlo .L23
-	std Y+60,__zero_reg__
-.L23:
-	ldd r24,Y+57
-	ldd r25,Y+46
+.L21:
+	ldd r24,Y+56
+	ldd r25,Y+45
 	add r24,r25
+	std Y+60,r24
+	ldi r24,lo8(1)
 	std Y+61,r24
+	ldd r25,Y+60
+	ldd r24,Y+45
+	cp r25,r24
+	brlo .L22
+	std Y+61,__zero_reg__
+.L22:
+	ldd r25,Y+59
+	ldd r24,Y+61
+	or r25,r24
+	std Y+59,r25
+	ldd r25,Y+60
+	std Y+45,r25
+	ldd r24,Y+30
+	ldd r25,Y+38
+	add r24,r25
+	std Y+46,r24
 	ldi r24,lo8(1)
 	std Y+62,r24
-	ldd r25,Y+61
-	ldd r24,Y+46
+	ldd r25,Y+46
+	ldd r24,Y+30
 	cp r25,r24
-	brlo .L24
+	brlo .L23
 	std Y+62,__zero_reg__
-.L24:
-	ldd r25,Y+60
-	ldd r24,Y+62
-	or r25,r24
-	std Y+60,r25
-	ldd r25,Y+61
-	std Y+46,r25
-	ldd r24,Y+31
-	ldd r25,Y+39
-	add r24,r25
-	std Y+47,r24
-	ldi r24,lo8(1)
-	std Y+63,r24
-	ldd r25,Y+47
-	ldd r24,Y+31
-	cp r25,r24
-	brlo .L25
-	std Y+63,__zero_reg__
-.L25:
-	ldd r25,Y+60
-	ldd r24,Y+47
+.L23:
+	ldd r25,Y+59
+	ldd r24,Y+46
 	add r25,r24
+	std Y+63,r25
+	ldi r25,lo8(1)
 	adiw r28,64-63
 	std Y+63,r25
 	sbiw r28,64-63
+	ldd r24,Y+63
+	ldd r25,Y+46
+	cp r24,r25
+	brlo .L24
+	adiw r28,64-63
+	std Y+63,__zero_reg__
+	sbiw r28,64-63
+.L24:
+	ldd r24,Y+62
+	adiw r28,64-63
+	ldd r25,Y+63
+	sbiw r28,64-63
+	or r24,r25
+	std Y+62,r24
+	ldd r24,Y+63
+	std Y+46,r24
+	ldd r25,Y+31
+	ldd r24,Y+39
+	add r25,r24
+	std Y+47,r25
 	ldi r25,lo8(1)
 	adiw r28,65-63
 	std Y+63,r25
 	sbiw r28,65-63
-	adiw r28,64-63
-	ldd r24,Y+63
-	sbiw r28,64-63
-	ldd r25,Y+47
+	ldd r24,Y+47
+	ldd r25,Y+31
 	cp r24,r25
-	brlo .L26
+	brlo .L25
 	adiw r28,65-63
 	std Y+63,__zero_reg__
 	sbiw r28,65-63
+.L25:
+	ldd r24,Y+62
+	ldd r25,Y+47
+	add r24,r25
+	adiw r28,66-63
+	std Y+63,r24
+	sbiw r28,66-63
+	ldi r24,lo8(1)
+	adiw r28,67-63
+	std Y+63,r24
+	sbiw r28,67-63
+	adiw r28,66-63
+	ldd r25,Y+63
+	sbiw r28,66-63
+	ldd r24,Y+47
+	cp r25,r24
+	brlo .L26
+	adiw r28,67-63
+	std Y+63,__zero_reg__
+	sbiw r28,67-63
 .L26:
-	ldd r24,Y+63
 	adiw r28,65-63
 	ldd r25,Y+63
 	sbiw r28,65-63
-	or r24,r25
-	std Y+63,r24
-	adiw r28,64-63
+	adiw r28,67-63
 	ldd r24,Y+63
-	sbiw r28,64-63
-	std Y+47,r24
-	ldd r25,Y+32
-	ldd r24,Y+40
-	add r25,r24
-	std Y+48,r25
-	ldi r25,lo8(1)
-	adiw r28,66-63
+	sbiw r28,67-63
+	or r25,r24
+	adiw r28,65-63
 	std Y+63,r25
-	sbiw r28,66-63
-	ldd r24,Y+48
-	ldd r25,Y+32
-	cp r24,r25
-	brlo .L27
+	sbiw r28,65-63
 	adiw r28,66-63
-	std Y+63,__zero_reg__
+	ldd r25,Y+63
 	sbiw r28,66-63
-.L27:
+	std Y+47,r25
+	ldd r24,Y+32
+	ldd r25,Y+40
+	add r24,r25
+	std Y+48,r24
+	adiw r28,65-63
 	ldd r24,Y+63
+	sbiw r28,65-63
 	ldd r25,Y+48
 	add r24,r25
-	adiw r28,67-63
-	std Y+63,r24
-	sbiw r28,67-63
-	ldi r24,lo8(1)
-	adiw r28,68-63
-	std Y+63,r24
-	sbiw r28,68-63
-	adiw r28,67-63
-	ldd r25,Y+63
-	sbiw r28,67-63
-	ldd r24,Y+48
-	cp r25,r24
-	brlo .L28
-	adiw r28,68-63
-	std Y+63,__zero_reg__
-	sbiw r28,68-63
-.L28:
-	adiw r28,66-63
-	ldd r25,Y+63
-	sbiw r28,66-63
-	adiw r28,68-63
-	ldd r24,Y+63
-	sbiw r28,68-63
-	or r25,r24
-	adiw r28,66-63
-	std Y+63,r25
-	sbiw r28,66-63
-	adiw r28,67-63
-	ldd r25,Y+63
-	sbiw r28,67-63
-	std Y+48,r25
-	ldd r24,Y+33
-	ldd r25,Y+41
-	add r24,r25
-	std Y+49,r24
-	adiw r28,66-63
-	ldd r24,Y+63
-	sbiw r28,66-63
-	ldd r25,Y+49
-	add r24,r25
-	std Y+49,r24
-	ldd r24,Y+42
-	std Y+10,r24
-	ldd r25,Y+43
-	std Y+11,r25
-	ldd r24,Y+44
-	std Y+12,r24
-	ldd r25,Y+45
-	std Y+13,r25
-	ldd r24,Y+46
-	std Y+14,r24
-	ldd r25,Y+47
-	std Y+15,r25
-	ldd r24,Y+48
-	std Y+16,r24
-	ldd r25,Y+49
-	std Y+17,r25
-.L15:
+	std Y+48,r24
+	ldd r24,Y+41
+	std Y+9,r24
+	ldd r25,Y+42
+	std Y+10,r25
+	ldd r24,Y+43
+	std Y+11,r24
+	ldd r25,Y+44
+	std Y+12,r25
+	ldd r24,Y+45
+	std Y+13,r24
+	ldd r25,Y+46
+	std Y+14,r25
+	ldd r24,Y+47
+	std Y+15,r24
+	ldd r25,Y+48
+	std Y+16,r25
+.L13:
 	ldi r30,lo8(48)
 	ldi r31,hi8(48)
 	ld r25,Z
-	ldd r24,Y+9
+	lds r24,which_switch
 	cp r25,r24
 	brne .+2
-	rjmp .L29
+	rjmp .L27
 	ldi r30,lo8(56)
 	ldi r31,hi8(56)
-	ldd r24,Y+9
+	lds r24,which_switch
 	st Z,r24
 	std Y+1,__zero_reg__
 	std Y+2,__zero_reg__
@@ -506,43 +483,46 @@ button_led_echo:
 	std Y+6,__zero_reg__
 	std Y+7,__zero_reg__
 	std Y+8,__zero_reg__
-	rjmp .L30
-.L44:
+	rjmp .L28
+.L42:
 	ldd r24,Y+1
-	adiw r28,69-63
+	adiw r28,68-63
 	std Y+63,r24
-	sbiw r28,69-63
+	sbiw r28,68-63
 	ldd r25,Y+2
-	adiw r28,70-63
+	adiw r28,69-63
 	std Y+63,r25
-	sbiw r28,70-63
+	sbiw r28,69-63
 	ldd r24,Y+3
-	adiw r28,71-63
+	adiw r28,70-63
 	std Y+63,r24
-	sbiw r28,71-63
+	sbiw r28,70-63
 	ldd r25,Y+4
-	adiw r28,72-63
+	adiw r28,71-63
 	std Y+63,r25
-	sbiw r28,72-63
+	sbiw r28,71-63
 	ldd r24,Y+5
-	adiw r28,73-63
+	adiw r28,72-63
 	std Y+63,r24
-	sbiw r28,73-63
+	sbiw r28,72-63
 	ldd r25,Y+6
-	adiw r28,74-63
+	adiw r28,73-63
 	std Y+63,r25
-	sbiw r28,74-63
+	sbiw r28,73-63
 	ldd r24,Y+7
-	adiw r28,75-63
+	adiw r28,74-63
 	std Y+63,r24
-	sbiw r28,75-63
+	sbiw r28,74-63
 	ldd r25,Y+8
-	adiw r28,76-63
+	adiw r28,75-63
 	std Y+63,r25
-	sbiw r28,76-63
+	sbiw r28,75-63
 	ldi r24,lo8(1)
-	adiw r28,77-63
+	adiw r28,76-63
 	std Y+63,r24
+	sbiw r28,76-63
+	adiw r28,77-63
+	std Y+63,__zero_reg__
 	sbiw r28,77-63
 	adiw r28,78-63
 	std Y+63,__zero_reg__
@@ -562,504 +542,501 @@ button_led_echo:
 	adiw r28,83-63
 	std Y+63,__zero_reg__
 	sbiw r28,83-63
-	adiw r28,84-63
-	std Y+63,__zero_reg__
-	sbiw r28,84-63
-	adiw r28,69-63
+	adiw r28,68-63
 	ldd r25,Y+63
+	sbiw r28,68-63
+	adiw r28,76-63
+	ldd r24,Y+63
+	sbiw r28,76-63
+	add r25,r24
+	adiw r28,84-63
+	std Y+63,r25
+	sbiw r28,84-63
+	ldi r25,lo8(1)
+	adiw r28,92-63
+	std Y+63,r25
+	sbiw r28,92-63
+	adiw r28,84-63
+	ldd r24,Y+63
+	sbiw r28,84-63
+	adiw r28,68-63
+	ldd r25,Y+63
+	sbiw r28,68-63
+	cp r24,r25
+	brlo .L29
+	adiw r28,92-63
+	std Y+63,__zero_reg__
+	sbiw r28,92-63
+.L29:
+	adiw r28,69-63
+	ldd r24,Y+63
 	sbiw r28,69-63
 	adiw r28,77-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,77-63
-	add r25,r24
+	add r24,r25
 	adiw r28,85-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,85-63
-	ldi r25,lo8(1)
+	ldi r24,lo8(1)
 	adiw r28,93-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,93-63
 	adiw r28,85-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,85-63
 	adiw r28,69-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,69-63
+	cp r25,r24
+	brlo .L30
+	adiw r28,93-63
+	std Y+63,__zero_reg__
+	sbiw r28,93-63
+.L30:
+	adiw r28,92-63
+	ldd r25,Y+63
+	sbiw r28,92-63
+	adiw r28,85-63
+	ldd r24,Y+63
+	sbiw r28,85-63
+	add r25,r24
+	adiw r28,94-63
+	std Y+63,r25
+	sbiw r28,94-63
+	ldi r25,lo8(1)
+	adiw r28,95-63
+	std Y+63,r25
+	sbiw r28,95-63
+	adiw r28,94-63
+	ldd r24,Y+63
+	sbiw r28,94-63
+	adiw r28,85-63
+	ldd r25,Y+63
+	sbiw r28,85-63
 	cp r24,r25
 	brlo .L31
-	adiw r28,93-63
+	adiw r28,95-63
 	std Y+63,__zero_reg__
-	sbiw r28,93-63
+	sbiw r28,95-63
 .L31:
-	adiw r28,70-63
+	adiw r28,93-63
 	ldd r24,Y+63
+	sbiw r28,93-63
+	adiw r28,95-63
+	ldd r25,Y+63
+	sbiw r28,95-63
+	or r24,r25
+	adiw r28,93-63
+	std Y+63,r24
+	sbiw r28,93-63
+	adiw r28,94-63
+	ldd r24,Y+63
+	sbiw r28,94-63
+	adiw r28,85-63
+	std Y+63,r24
+	sbiw r28,85-63
+	adiw r28,70-63
+	ldd r25,Y+63
 	sbiw r28,70-63
 	adiw r28,78-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,78-63
-	add r24,r25
+	add r25,r24
 	adiw r28,86-63
-	std Y+63,r24
+	std Y+63,r25
 	sbiw r28,86-63
-	ldi r24,lo8(1)
-	adiw r28,94-63
-	std Y+63,r24
-	sbiw r28,94-63
+	ldi r25,lo8(1)
+	adiw r28,96-63
+	std Y+63,r25
+	sbiw r28,96-63
 	adiw r28,86-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,86-63
 	adiw r28,70-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,70-63
-	cp r25,r24
+	cp r24,r25
 	brlo .L32
-	adiw r28,94-63
+	adiw r28,96-63
 	std Y+63,__zero_reg__
-	sbiw r28,94-63
+	sbiw r28,96-63
 .L32:
 	adiw r28,93-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,93-63
 	adiw r28,86-63
-	ldd r24,Y+63
-	sbiw r28,86-63
-	add r25,r24
-	adiw r28,95-63
-	std Y+63,r25
-	sbiw r28,95-63
-	ldi r25,lo8(1)
-	adiw r28,96-63
-	std Y+63,r25
-	sbiw r28,96-63
-	adiw r28,95-63
-	ldd r24,Y+63
-	sbiw r28,95-63
-	adiw r28,86-63
 	ldd r25,Y+63
 	sbiw r28,86-63
-	cp r24,r25
+	add r24,r25
+	adiw r28,97-63
+	std Y+63,r24
+	sbiw r28,97-63
+	ldi r24,lo8(1)
+	adiw r28,98-63
+	std Y+63,r24
+	sbiw r28,98-63
+	adiw r28,97-63
+	ldd r25,Y+63
+	sbiw r28,97-63
+	adiw r28,86-63
+	ldd r24,Y+63
+	sbiw r28,86-63
+	cp r25,r24
 	brlo .L33
-	adiw r28,96-63
+	adiw r28,98-63
 	std Y+63,__zero_reg__
-	sbiw r28,96-63
+	sbiw r28,98-63
 .L33:
-	adiw r28,94-63
-	ldd r24,Y+63
-	sbiw r28,94-63
 	adiw r28,96-63
 	ldd r25,Y+63
 	sbiw r28,96-63
-	or r24,r25
-	adiw r28,94-63
-	std Y+63,r24
-	sbiw r28,94-63
-	adiw r28,95-63
+	adiw r28,98-63
 	ldd r24,Y+63
-	sbiw r28,95-63
+	sbiw r28,98-63
+	or r25,r24
+	adiw r28,96-63
+	std Y+63,r25
+	sbiw r28,96-63
+	adiw r28,97-63
+	ldd r25,Y+63
+	sbiw r28,97-63
 	adiw r28,86-63
-	std Y+63,r24
+	std Y+63,r25
 	sbiw r28,86-63
 	adiw r28,71-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,71-63
 	adiw r28,79-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,79-63
-	add r25,r24
+	add r24,r25
 	adiw r28,87-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,87-63
-	ldi r25,lo8(1)
-	adiw r28,97-63
-	std Y+63,r25
-	sbiw r28,97-63
+	ldi r24,lo8(1)
+	adiw r28,99-63
+	std Y+63,r24
+	sbiw r28,99-63
 	adiw r28,87-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,87-63
 	adiw r28,71-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,71-63
-	cp r24,r25
-	brlo .L34
-	adiw r28,97-63
-	std Y+63,__zero_reg__
-	sbiw r28,97-63
-.L34:
-	adiw r28,94-63
-	ldd r24,Y+63
-	sbiw r28,94-63
-	adiw r28,87-63
-	ldd r25,Y+63
-	sbiw r28,87-63
-	add r24,r25
-	adiw r28,98-63
-	std Y+63,r24
-	sbiw r28,98-63
-	ldi r24,lo8(1)
-	adiw r28,99-63
-	std Y+63,r24
-	sbiw r28,99-63
-	adiw r28,98-63
-	ldd r25,Y+63
-	sbiw r28,98-63
-	adiw r28,87-63
-	ldd r24,Y+63
-	sbiw r28,87-63
 	cp r25,r24
-	brlo .L35
+	brlo .L34
 	adiw r28,99-63
 	std Y+63,__zero_reg__
 	sbiw r28,99-63
-.L35:
-	adiw r28,97-63
+.L34:
+	adiw r28,96-63
 	ldd r25,Y+63
-	sbiw r28,97-63
+	sbiw r28,96-63
+	adiw r28,87-63
+	ldd r24,Y+63
+	sbiw r28,87-63
+	add r25,r24
+	adiw r28,100-63
+	std Y+63,r25
+	sbiw r28,100-63
+	ldi r25,lo8(1)
+	adiw r28,101-63
+	std Y+63,r25
+	sbiw r28,101-63
+	adiw r28,100-63
+	ldd r24,Y+63
+	sbiw r28,100-63
+	adiw r28,87-63
+	ldd r25,Y+63
+	sbiw r28,87-63
+	cp r24,r25
+	brlo .L35
+	adiw r28,101-63
+	std Y+63,__zero_reg__
+	sbiw r28,101-63
+.L35:
 	adiw r28,99-63
 	ldd r24,Y+63
 	sbiw r28,99-63
-	or r25,r24
-	adiw r28,97-63
-	std Y+63,r25
-	sbiw r28,97-63
-	adiw r28,98-63
+	adiw r28,101-63
 	ldd r25,Y+63
-	sbiw r28,98-63
+	sbiw r28,101-63
+	or r24,r25
+	adiw r28,99-63
+	std Y+63,r24
+	sbiw r28,99-63
+	adiw r28,100-63
+	ldd r24,Y+63
+	sbiw r28,100-63
 	adiw r28,87-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,87-63
 	adiw r28,72-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,72-63
 	adiw r28,80-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,80-63
-	add r24,r25
+	add r25,r24
 	adiw r28,88-63
-	std Y+63,r24
+	std Y+63,r25
 	sbiw r28,88-63
-	ldi r24,lo8(1)
-	adiw r28,100-63
-	std Y+63,r24
-	sbiw r28,100-63
+	ldi r25,lo8(1)
+	adiw r28,102-63
+	std Y+63,r25
+	sbiw r28,102-63
 	adiw r28,88-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,88-63
 	adiw r28,72-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,72-63
-	cp r25,r24
-	brlo .L36
-	adiw r28,100-63
-	std Y+63,__zero_reg__
-	sbiw r28,100-63
-.L36:
-	adiw r28,97-63
-	ldd r25,Y+63
-	sbiw r28,97-63
-	adiw r28,88-63
-	ldd r24,Y+63
-	sbiw r28,88-63
-	add r25,r24
-	adiw r28,101-63
-	std Y+63,r25
-	sbiw r28,101-63
-	ldi r25,lo8(1)
-	adiw r28,102-63
-	std Y+63,r25
-	sbiw r28,102-63
-	adiw r28,101-63
-	ldd r24,Y+63
-	sbiw r28,101-63
-	adiw r28,88-63
-	ldd r25,Y+63
-	sbiw r28,88-63
 	cp r24,r25
-	brlo .L37
+	brlo .L36
 	adiw r28,102-63
 	std Y+63,__zero_reg__
 	sbiw r28,102-63
-.L37:
-	adiw r28,100-63
+.L36:
+	adiw r28,99-63
 	ldd r24,Y+63
-	sbiw r28,100-63
+	sbiw r28,99-63
+	adiw r28,88-63
+	ldd r25,Y+63
+	sbiw r28,88-63
+	add r24,r25
+	adiw r28,103-63
+	std Y+63,r24
+	sbiw r28,103-63
+	ldi r24,lo8(1)
+	adiw r28,104-63
+	std Y+63,r24
+	sbiw r28,104-63
+	adiw r28,103-63
+	ldd r25,Y+63
+	sbiw r28,103-63
+	adiw r28,88-63
+	ldd r24,Y+63
+	sbiw r28,88-63
+	cp r25,r24
+	brlo .L37
+	adiw r28,104-63
+	std Y+63,__zero_reg__
+	sbiw r28,104-63
+.L37:
 	adiw r28,102-63
 	ldd r25,Y+63
 	sbiw r28,102-63
-	or r24,r25
-	adiw r28,100-63
-	std Y+63,r24
-	sbiw r28,100-63
-	adiw r28,101-63
+	adiw r28,104-63
 	ldd r24,Y+63
-	sbiw r28,101-63
+	sbiw r28,104-63
+	or r25,r24
+	adiw r28,102-63
+	std Y+63,r25
+	sbiw r28,102-63
+	adiw r28,103-63
+	ldd r25,Y+63
+	sbiw r28,103-63
 	adiw r28,88-63
-	std Y+63,r24
+	std Y+63,r25
 	sbiw r28,88-63
 	adiw r28,73-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,73-63
 	adiw r28,81-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,81-63
-	add r25,r24
+	add r24,r25
 	adiw r28,89-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,89-63
-	ldi r25,lo8(1)
-	adiw r28,103-63
-	std Y+63,r25
-	sbiw r28,103-63
+	ldi r24,lo8(1)
+	adiw r28,105-63
+	std Y+63,r24
+	sbiw r28,105-63
 	adiw r28,89-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,89-63
 	adiw r28,73-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,73-63
-	cp r24,r25
-	brlo .L38
-	adiw r28,103-63
-	std Y+63,__zero_reg__
-	sbiw r28,103-63
-.L38:
-	adiw r28,100-63
-	ldd r24,Y+63
-	sbiw r28,100-63
-	adiw r28,89-63
-	ldd r25,Y+63
-	sbiw r28,89-63
-	add r24,r25
-	adiw r28,104-63
-	std Y+63,r24
-	sbiw r28,104-63
-	ldi r24,lo8(1)
-	adiw r28,105-63
-	std Y+63,r24
-	sbiw r28,105-63
-	adiw r28,104-63
-	ldd r25,Y+63
-	sbiw r28,104-63
-	adiw r28,89-63
-	ldd r24,Y+63
-	sbiw r28,89-63
 	cp r25,r24
-	brlo .L39
+	brlo .L38
 	adiw r28,105-63
 	std Y+63,__zero_reg__
 	sbiw r28,105-63
-.L39:
-	adiw r28,103-63
+.L38:
+	adiw r28,102-63
 	ldd r25,Y+63
-	sbiw r28,103-63
+	sbiw r28,102-63
+	adiw r28,89-63
+	ldd r24,Y+63
+	sbiw r28,89-63
+	add r25,r24
+	adiw r28,106-63
+	std Y+63,r25
+	sbiw r28,106-63
+	ldi r25,lo8(1)
+	adiw r28,107-63
+	std Y+63,r25
+	sbiw r28,107-63
+	adiw r28,106-63
+	ldd r24,Y+63
+	sbiw r28,106-63
+	adiw r28,89-63
+	ldd r25,Y+63
+	sbiw r28,89-63
+	cp r24,r25
+	brlo .L39
+	adiw r28,107-63
+	std Y+63,__zero_reg__
+	sbiw r28,107-63
+.L39:
 	adiw r28,105-63
 	ldd r24,Y+63
 	sbiw r28,105-63
-	or r25,r24
-	adiw r28,103-63
-	std Y+63,r25
-	sbiw r28,103-63
-	adiw r28,104-63
+	adiw r28,107-63
 	ldd r25,Y+63
-	sbiw r28,104-63
+	sbiw r28,107-63
+	or r24,r25
+	adiw r28,105-63
+	std Y+63,r24
+	sbiw r28,105-63
+	adiw r28,106-63
+	ldd r24,Y+63
+	sbiw r28,106-63
 	adiw r28,89-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,89-63
 	adiw r28,74-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,74-63
 	adiw r28,82-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,82-63
-	add r24,r25
+	add r25,r24
 	adiw r28,90-63
-	std Y+63,r24
+	std Y+63,r25
 	sbiw r28,90-63
-	ldi r24,lo8(1)
-	adiw r28,106-63
-	std Y+63,r24
-	sbiw r28,106-63
+	ldi r25,lo8(1)
+	adiw r28,108-63
+	std Y+63,r25
+	sbiw r28,108-63
 	adiw r28,90-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,90-63
 	adiw r28,74-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,74-63
-	cp r25,r24
-	brlo .L40
-	adiw r28,106-63
-	std Y+63,__zero_reg__
-	sbiw r28,106-63
-.L40:
-	adiw r28,103-63
-	ldd r25,Y+63
-	sbiw r28,103-63
-	adiw r28,90-63
-	ldd r24,Y+63
-	sbiw r28,90-63
-	add r25,r24
-	adiw r28,107-63
-	std Y+63,r25
-	sbiw r28,107-63
-	ldi r25,lo8(1)
-	adiw r28,108-63
-	std Y+63,r25
-	sbiw r28,108-63
-	adiw r28,107-63
-	ldd r24,Y+63
-	sbiw r28,107-63
-	adiw r28,90-63
-	ldd r25,Y+63
-	sbiw r28,90-63
 	cp r24,r25
-	brlo .L41
+	brlo .L40
 	adiw r28,108-63
 	std Y+63,__zero_reg__
 	sbiw r28,108-63
-.L41:
-	adiw r28,106-63
+.L40:
+	adiw r28,105-63
 	ldd r24,Y+63
-	sbiw r28,106-63
+	sbiw r28,105-63
+	adiw r28,90-63
+	ldd r25,Y+63
+	sbiw r28,90-63
+	add r24,r25
+	adiw r28,109-63
+	std Y+63,r24
+	sbiw r28,109-63
+	ldi r24,lo8(1)
+	adiw r28,110-63
+	std Y+63,r24
+	sbiw r28,110-63
+	adiw r28,109-63
+	ldd r25,Y+63
+	sbiw r28,109-63
+	adiw r28,90-63
+	ldd r24,Y+63
+	sbiw r28,90-63
+	cp r25,r24
+	brlo .L41
+	adiw r28,110-63
+	std Y+63,__zero_reg__
+	sbiw r28,110-63
+.L41:
 	adiw r28,108-63
 	ldd r25,Y+63
 	sbiw r28,108-63
-	or r24,r25
-	adiw r28,106-63
-	std Y+63,r24
-	sbiw r28,106-63
-	adiw r28,107-63
+	adiw r28,110-63
 	ldd r24,Y+63
-	sbiw r28,107-63
+	sbiw r28,110-63
+	or r25,r24
+	adiw r28,108-63
+	std Y+63,r25
+	sbiw r28,108-63
+	adiw r28,109-63
+	ldd r25,Y+63
+	sbiw r28,109-63
 	adiw r28,90-63
-	std Y+63,r24
+	std Y+63,r25
 	sbiw r28,90-63
 	adiw r28,75-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,75-63
 	adiw r28,83-63
-	ldd r24,Y+63
+	ldd r25,Y+63
 	sbiw r28,83-63
-	add r25,r24
+	add r24,r25
 	adiw r28,91-63
-	std Y+63,r25
+	std Y+63,r24
 	sbiw r28,91-63
-	ldi r25,lo8(1)
-	adiw r28,109-63
-	std Y+63,r25
-	sbiw r28,109-63
-	adiw r28,91-63
+	adiw r28,108-63
 	ldd r24,Y+63
-	sbiw r28,91-63
-	adiw r28,75-63
-	ldd r25,Y+63
-	sbiw r28,75-63
-	cp r24,r25
-	brlo .L42
-	adiw r28,109-63
-	std Y+63,__zero_reg__
-	sbiw r28,109-63
-.L42:
-	adiw r28,106-63
-	ldd r24,Y+63
-	sbiw r28,106-63
+	sbiw r28,108-63
 	adiw r28,91-63
 	ldd r25,Y+63
 	sbiw r28,91-63
 	add r24,r25
-	adiw r28,110-63
-	std Y+63,r24
-	sbiw r28,110-63
-	ldi r24,lo8(1)
-	adiw r28,111-63
-	std Y+63,r24
-	sbiw r28,111-63
-	adiw r28,110-63
-	ldd r25,Y+63
-	sbiw r28,110-63
 	adiw r28,91-63
-	ldd r24,Y+63
+	std Y+63,r24
 	sbiw r28,91-63
-	cp r25,r24
-	brlo .L43
-	adiw r28,111-63
-	std Y+63,__zero_reg__
-	sbiw r28,111-63
-.L43:
-	adiw r28,109-63
-	ldd r25,Y+63
-	sbiw r28,109-63
-	adiw r28,111-63
-	ldd r24,Y+63
-	sbiw r28,111-63
-	or r25,r24
-	adiw r28,109-63
-	std Y+63,r25
-	sbiw r28,109-63
-	adiw r28,110-63
-	ldd r25,Y+63
-	sbiw r28,110-63
-	adiw r28,91-63
-	std Y+63,r25
-	sbiw r28,91-63
-	adiw r28,76-63
-	ldd r24,Y+63
-	sbiw r28,76-63
 	adiw r28,84-63
-	ldd r25,Y+63
+	ldd r24,Y+63
 	sbiw r28,84-63
-	add r24,r25
-	adiw r28,92-63
-	std Y+63,r24
-	sbiw r28,92-63
-	adiw r28,109-63
-	ldd r24,Y+63
-	sbiw r28,109-63
-	adiw r28,92-63
-	ldd r25,Y+63
-	sbiw r28,92-63
-	add r24,r25
-	adiw r28,92-63
-	std Y+63,r24
-	sbiw r28,92-63
-	adiw r28,85-63
-	ldd r24,Y+63
-	sbiw r28,85-63
 	std Y+1,r24
-	adiw r28,86-63
+	adiw r28,85-63
 	ldd r25,Y+63
-	sbiw r28,86-63
+	sbiw r28,85-63
 	std Y+2,r25
-	adiw r28,87-63
+	adiw r28,86-63
 	ldd r24,Y+63
-	sbiw r28,87-63
+	sbiw r28,86-63
 	std Y+3,r24
-	adiw r28,88-63
+	adiw r28,87-63
 	ldd r25,Y+63
-	sbiw r28,88-63
+	sbiw r28,87-63
 	std Y+4,r25
-	adiw r28,89-63
+	adiw r28,88-63
 	ldd r24,Y+63
-	sbiw r28,89-63
+	sbiw r28,88-63
 	std Y+5,r24
-	adiw r28,90-63
+	adiw r28,89-63
 	ldd r25,Y+63
-	sbiw r28,90-63
+	sbiw r28,89-63
 	std Y+6,r25
-	adiw r28,91-63
+	adiw r28,90-63
 	ldd r24,Y+63
-	sbiw r28,91-63
+	sbiw r28,90-63
 	std Y+7,r24
-	adiw r28,92-63
+	adiw r28,91-63
 	ldd r25,Y+63
-	sbiw r28,92-63
+	sbiw r28,91-63
 	std Y+8,r25
-.L30:
-	ldd r10,Y+10
-	ldd r11,Y+11
-	ldd r12,Y+12
-	ldd r13,Y+13
-	ldd r14,Y+14
-	ldd r15,Y+15
-	ldd r16,Y+16
-	ldd r17,Y+17
+.L28:
+	ldd r10,Y+9
+	ldd r11,Y+10
+	ldd r12,Y+11
+	ldd r13,Y+12
+	ldd r14,Y+13
+	ldd r15,Y+14
+	ldd r16,Y+15
+	ldd r17,Y+16
 	mov r18,r10
 	mov r19,r11
 	mov r20,r12
@@ -1088,88 +1065,89 @@ button_led_echo:
 	mov r15,r23
 	mov r16,r24
 	mov r17,r25
-	std Y+18,r10
-	std Y+19,r11
-	std Y+20,r12
-	std Y+21,r13
-	std Y+22,r14
-	std Y+23,r15
-	std Y+24,r16
-	std Y+25,r17
+	std Y+17,r10
+	std Y+18,r11
+	std Y+19,r12
+	std Y+20,r13
+	std Y+21,r14
+	std Y+22,r15
+	std Y+23,r16
+	std Y+24,r17
 	ldd r24,Y+8
-	ldd r25,Y+25
+	ldd r25,Y+24
 	cp r25,r24
 	brsh .+2
-	rjmp .L47
+	rjmp .L45
 	ldd r24,Y+8
-	ldd r25,Y+25
-	cp r24,r25
-	breq .+2
-	rjmp .L44
-	ldd r24,Y+7
-	ldd r25,Y+24
-	cp r25,r24
-	brlo .L47
-	ldd r24,Y+7
 	ldd r25,Y+24
 	cp r24,r25
 	breq .+2
-	rjmp .L44
-	ldd r24,Y+6
+	rjmp .L42
+	ldd r24,Y+7
 	ldd r25,Y+23
 	cp r25,r24
-	brlo .L47
-	ldd r24,Y+6
+	brlo .L45
+	ldd r24,Y+7
 	ldd r25,Y+23
 	cp r24,r25
 	breq .+2
-	rjmp .L44
-	ldd r24,Y+5
+	rjmp .L42
+	ldd r24,Y+6
 	ldd r25,Y+22
 	cp r25,r24
-	brlo .L47
-	ldd r24,Y+5
+	brlo .L45
+	ldd r24,Y+6
 	ldd r25,Y+22
 	cp r24,r25
 	breq .+2
-	rjmp .L44
-	ldd r24,Y+4
+	rjmp .L42
+	ldd r24,Y+5
 	ldd r25,Y+21
 	cp r25,r24
-	brlo .L47
-	ldd r24,Y+4
+	brlo .L45
+	ldd r24,Y+5
 	ldd r25,Y+21
 	cp r24,r25
 	breq .+2
-	rjmp .L44
-	ldd r24,Y+3
+	rjmp .L42
+	ldd r24,Y+4
 	ldd r25,Y+20
 	cp r25,r24
-	brlo .L47
-	ldd r24,Y+3
+	brlo .L45
+	ldd r24,Y+4
 	ldd r25,Y+20
 	cp r24,r25
 	breq .+2
-	rjmp .L44
-	ldd r24,Y+2
+	rjmp .L42
+	ldd r24,Y+3
 	ldd r25,Y+19
 	cp r25,r24
-	brlo .L47
-	ldd r24,Y+2
+	brlo .L45
+	ldd r24,Y+3
 	ldd r25,Y+19
 	cp r24,r25
 	breq .+2
-	rjmp .L44
-	ldd r24,Y+1
+	rjmp .L42
+	ldd r24,Y+2
 	ldd r25,Y+18
 	cp r25,r24
+	brlo .L45
+	ldd r24,Y+2
+	ldd r25,Y+18
+	cp r24,r25
+	breq .+2
+	rjmp .L42
+	ldd r24,Y+1
+	ldd r25,Y+17
+	cp r25,r24
 	brlo .+2
-	rjmp .L44
-.L47:
+	rjmp .L42
+.L45:
 	ldi r30,lo8(56)
 	ldi r31,hi8(56)
 	ldi r24,lo8(-1)
 	st Z,r24
+	std Y+9,__zero_reg__
 	std Y+10,__zero_reg__
 	std Y+11,__zero_reg__
 	std Y+12,__zero_reg__
@@ -1177,11 +1155,10 @@ button_led_echo:
 	std Y+14,__zero_reg__
 	std Y+15,__zero_reg__
 	std Y+16,__zero_reg__
-	std Y+17,__zero_reg__
-.L46:
+.L44:
 /* epilogue start */
-	subi r28,lo8(-(111))
-	sbci r29,hi8(-(111))
+	subi r28,lo8(-(110))
+	sbci r29,hi8(-(110))
 	in __tmp_reg__,__SREG__
 	cli
 	out __SP_H__,r29
@@ -1198,7 +1175,7 @@ button_led_echo:
 	pop r11
 	pop r10
 	ret
-	.size	button_led_echo, .-button_led_echo
+	.size	led_switch_echo, .-led_switch_echo
 .global	main
 	.type	main, @function
 main:
@@ -1208,17 +1185,26 @@ main:
 	in r29,__SP_H__
 /* prologue: function */
 /* frame size = 0 */
+	ldi r30,lo8(55)
+	ldi r31,hi8(55)
+	ldi r24,lo8(-1)
+	st Z,r24
+	ldi r30,lo8(49)
+	ldi r31,hi8(49)
+	st Z,__zero_reg__
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ldi r24,lo8(-1)
+	st Z,r24
 	rcall init_Ex1
 /* #APP */
- ;  132 "main.c" 1
+ ;  130 "main.c" 1
 	sei
  ;  0 "" 2
 /* #NOAPP */
-	rcall port_init
-	rcall button_led_echo_init
-.L49:
-	rcall button_led_echo
-	rjmp .L49
+.L47:
+	rcall led_switch_echo
+	rjmp .L47
 	.size	main, .-main
-	.comm cnt,1,1
+	.comm which_switch,1,1
 .global __do_clear_bss

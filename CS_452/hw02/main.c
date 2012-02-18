@@ -20,8 +20,8 @@
 
 
 uint8_t cnt = 0u; 	/*counts how long switch is pressed*/
-uint8_t led_cnt = 0u; 
-uint8_t which_switch; 	/*records which switch is pressed*/
+uint8_t led_cnt = 0x00; 
+uint8_t which_switch = 0x00; 	/*records which switch is pressed*/
 
 void delay (unsigned int dly)
 {
@@ -47,12 +47,14 @@ ISR(TIMER0_OVF_vect)
 
 	if(cnt == 30)
 	{
-		PORTB = ~(led_cnt);// | which_switch);
+		//PORTB = ~(led_cnt | which_switch);
+		PORTB = ~(led_cnt & 0xF0);
 
 		led_cnt -= 0xF0;	//increment only for pins 4-7
+		//led_cnt += 16u;		//increment only for pins 4-7
 		
-		/*make sure lower bits are not set*/
-		//led_cnt &= 0xF0;
+		/*make sure led_cnt never has bits set in the lower 4 pins*/
+		led_cnt &= 0xF0;
 
 		/*reset count*/
 		cnt = 0;
@@ -64,26 +66,27 @@ void led_switch_echo(void)
 {
 	uint64_t bcnt = 0u; 	/*counts how long switch is pressed*/
 	uint64_t x = 0u; 	/*used to iterate up to bcnt*/
+	uint8_t port_state;
 
 	/*record which switch is being pressed*/
-	which_switch = PIND;		
+	port_state = PIND;
 
 	/*
 	 * if no switches pressed, set LEDs to off / no press
 	 * state
 	 */
-	if( PIND == 0xff ) 
+	if( port_state == 0xff ) 
 	{
-		PORTB = ~0x01;
+		PORTB = ~(led_cnt | 0x01);
 		delay(65000U);
-		PORTB = 0xff;
+		PORTB = ~(led_cnt | 0x00); //really just led_cnt
 		delay(65000U);
 	}
 	/*else, count how long switch is pressed*/
 	else
 	{
 		/*while Port D stays the same*/
-		while(PIND == which_switch)
+		while(PIND == port_state)
 		{
 			bcnt++;
 		}
@@ -92,18 +95,23 @@ void led_switch_echo(void)
 		 * set Port B to the LED with the same value 
 		 * (lighting up the LED that is next to the switch)
 		 */
-		/*--ignore pin 4-7 values*/
-		//if(which_switch
-		PORTB = which_switch;
+		//which_switch = ~port_state;
+		which_switch = 0x01;
+
+		/*make sure which_switch never has bits set in the upper 4 pins*/
+		which_switch &= 0x0F;
 
 		/* 
 		 * no op for the same count as switch was pressed,
 		 * adjusting for the differences in clock cycles
 		 */	
-		for(x = 0; x <= (bcnt / TIME_SCALE); x++) ;
+		for(x = 0; x <= (bcnt / TIME_SCALE); x++) 
+		{
+			PORTB = ~(which_switch | led_cnt);
+		}
 
-		/*set all LEDs to off*/
-		PORTB = ~0x00;
+		/*reset which switch to none*/
+		which_switch = 0x00;
 
 		/*reset the count*/
 		bcnt = 0U;

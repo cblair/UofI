@@ -1,0 +1,234 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due February 15th, 2012}
+\title{CS 395 Homework 4}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section*{PROBLEMS}
+
+\subsection*{1.}
+The basic definition for $\Theta$-notation states:
+
+\small
+\begin{eqnarray}
+\Theta(g(n)) =		& \{f(n) : \exists c_1, c_2, n_0; 0 \leq c_1g(n) \leq f(n) \leq c_2 g(n)  \forall  n \geq n_0 \} 	
+					& \Theta\mbox{-notation Definition} \label{eq:big_theta} \\
+O(g(n)) =			& \{f(n): f(n) \leq g(n) \} 
+					& O(n)\mbox{-notation Definition} \\
+\Omega(g(n)) = 	& \{f(n): f(n) \geq g(n) \}
+					& \Omega\mbox{-notation Definition} %\\
+\end{eqnarray}
+\normalsize
+
+Note that Theorem 3.1 states: For any two functions $f(n)$ and $g(n)$, we have $f(n) = \Theta(g(n))$ if and
+ only if $f(n) = O(g(n)$ and $f(n) = \Omega(g(n))$. Let's assume this is true:
+
+\begin{eqnarray}
+\Omega(g(n)) = f(n) = O(g(n)) 
+				& \\
+f(n) \geq g(n) = f(n) = f(n) \leq g(n) 
+				& \mbox{Substitution} \\
+f(n) = g(n) = f(n) = f(n) = g(n) 
+				& \mbox{Equivalence} \label{eq:equiv}
+\end{eqnarray}
+
+Step \ref{eq:equiv} above matches the conditions for $\Theta$-notation described in step \ref{eq:big_theta}.
+But what about for when $f(n) \neq g(n)$? Assume an equation where this is true:
+
+\begin{eqnarray}
+\Omega(g(n)) < f(n) < O(g(n)) 
+				& \label{eq:contra_hypo}\\
+f(n) \geq g(n) < f(n) < f(n) \leq g(n) 
+				& \mbox{Substitution} \\
+f(n) = g(n) \neq f(n) \neq f(n) = g(n) 
+				& \mbox{Contradiction} \label{eq:contra}
+\end{eqnarray}
+
+Due to the contradiction assumption in step \ref{eq:contra_hypo}, the statement is simplified to a statement
+in step \ref{eq:contra} that is a contradiction. 
+
+Therefore, by Proof by Contradiction, Theorem 3.1 is valid.
+
+
+\subsection*{2}
+Problem two states that $f(n)$ and $g(n)$ are monotonically increasing functions. By definition, this means:
+
+\begin{figure}[!h]
+
+	\begin{center}
+	$ m \leq n \Rightarrow f(m) \leq f(n). $
+	\end{center}
+
+\caption{Definition for Monotonicity, Introduction to Algorithms Chapter 3.2}
+\label{monotonicity}
+\end{figure}
+
+This means for both $f(n)$ and $g(n)$:
+\begin{eqnarray}
+	m \leq n \Rightarrow f(m) \leq f(n). \\
+	m \leq n \Rightarrow g(m) \leq g(n).
+\end{eqnarray}
+
+\textbf{First}, consider the function $h(n) = f(n) + g(n)$. Since both $f()$ and $g()$ are both monotonic, 
+$f(m) + g(m) \leq f(n) + g(n). $ Therefore, $m \leq n \Rightarrow h(m) \leq h(n) $, and the function
+$h(n) = f(n) + g(n)$ by defintion is monotonic.
+
+\textbf{Second}, consider the function $h(n) = f(g(n))$. Once can simply represent $g(m)$ as some
+variable $m_1$, and $g(n)$ as some variable $n_1$. Therefore, $h(n) = f(n_1)$ and $h(m) = f(m_1)$.
+Since $g()$ is monotonic, then $m_1 \leq n_1$. 
+
+Since both $f()$ and $g()$ are both monotonic, and $m_1 \leq n_1 $, 
+$f(m_1) \leq f(n_1). $ Therefore, $m \leq n \Rightarrow h(m) \leq h(n) $, and the function
+$h(n) = f(g(n))$ by defintion is monotonic.
+
+\textbf{Third}, consider the equation $h(n) = f(n) * g(n) \exists f(n) + g(n) \geq 0 $. If $f(n)$ and $g(n)$ are
+monotonic, then $f(m) \leq f(n)$ and $g(m) \leq  g(n)$. Therefore, $f(m) * g(m) \leq f(n) * g(n)$. Substituting 
+$(h()$, $h(m) \leq h(n)$, and by definition, is monotonic.
+
+
+\subsection*{3}
+Proof that $a^{log_b(c)} = c^{log_b(a)}$:
+\begin{eqnarray}
+	a^{ \frac{ log_a(c) }{ log_a(b) } } = c^{ \frac{ log_c(a) }{ log_c(b) } }		& \mbox{Changing bases rule}\\
+	a^{ log_a(c) * log_b(a) } = c^{ log_c(a) * log_b(c) } 					& \mbox{Logarithm property} \\
+	c * a^{ log_b(a) } = a * c^{ log_b(c) }							& \mbox{Logarithm property} %\\
+\end{eqnarray}
+This is as far as I got, did not find properties to continue solving this.
+
+\subsection*{4}
+Consider the equation $x^2 = x + 1$. The equation can be reduced as follows:
+\begin{eqnarray}
+	0 = 		& 	x^2 - x - 1 								&	\\
+	x = 		&	\frac{ -1 \pm \sqrt{ 1^2 - 4 * (1) * (-1) } }{2 * 1}	& 	\mbox{Quadratic Formula} \\
+	x = 		&	\frac{ 1 \pm \sqrt{5} }{2}						&	\\
+	x =		&	\{ \frac{ 1 - \sqrt{5} }{ 2 }, \frac{ 1 + \sqrt{5} }{ 2 } \}	\label{eq:quad}
+\end{eqnarray}
+
+The definitions for $\phi$ and $\wedge\phi$ are:
+\begin{eqnarray}
+	\phi = 		&	\frac{ 1 + \sqrt{5} }{ 2 } 	\label{eq:phi}\\
+	\wedge\phi =	&	\frac{ 1 - \sqrt{5} }{ 2 }	\label{eq:conj_phi}
+\end{eqnarray}
+
+The set $ \{ \phi, \wedge\phi \} = \{ \frac{ 1 - \sqrt{5} }{ 2 }, \frac{ 1 + \sqrt{5} }{ 2 } \} = $ the solution set
+for $x^2 = x + 1$ as shown in step \ref{eq:quad}. Therefore, $\phi$ and $\wedge\phi$ satisfy $x^2 = x + 1$.
+
+
+\subsection*{5}
+For this problem, it will be shown by Proof by Induction that the $i$th Fibonacci umber satisfies the equality:
+\begin{eqnarray}
+	F_i 		& = \frac{ \phi^i - \wedge\phi^i }{ \sqrt{5} } 
+\end{eqnarray}
+
+\subsubsection*{Step 1: Base step}
+Let $i = 2$. It can then be shown:
+
+\Large
+\begin{eqnarray}
+	F_2	=	& \frac{ \phi^2 - \wedge\phi^2 }{ \sqrt{5} } 			
+				&	\\
+	F_2 =	& \frac{ ( \frac{ 1 + \sqrt{5} }{ 2 } )^2 - ( \frac{ 1 - \sqrt{5} }{ 2 } )^2 }{ \sqrt{5} } 
+				& \mbox{Definitions from steps \ref{eq:phi} and \ref{eq:conj_phi} } \\
+	F_2 =	& \frac{ ( \frac{ 1 + \sqrt{5} }{ 2 } )^2 - ( \frac{ 1 - \sqrt{5} }{ 2 } )^2 }{ \sqrt{5} } 
+				& 	\\
+	F_2 =	& \frac{ 
+				( \frac{ 1 + \sqrt{5} }{ 2 } * \frac{ 1 + \sqrt{5} }{ 2 }) - 
+				( \frac{ 1 - \sqrt{5} }{ 2 } * \frac{ 1 - \sqrt{5} }{ 2 })
+				}
+				{ \sqrt{5} } 
+				& 	\\
+	F_2	=	& \frac{ \frac{1 + 2\sqrt{5} + 5}{4} - \frac{1 - 2\sqrt{5} + 5}{4} }
+				{ \sqrt{5} } 
+				& \\
+	F_2 =	& \frac{ \frac{ 1 + 2\sqrt{5} + 5 - 1 + 2\sqrt{5} - 5 }{ 4 } }
+				{ \sqrt{5} }
+				& \\
+	F_2 =	& \frac{ \frac{ 4\sqrt{5} }{ 4 } }
+				{ \sqrt{5} }
+				& \\
+	F_ 2 =	& \frac{\sqrt{5}}{\sqrt{5}}
+				& \\
+	F_2 = 	& 1
+				& 
+\end{eqnarray}
+\normalsize
+
+Note that the \textbf{Fibonacci numbers} are defined by the following recurrence:
+\begin{eqnarray}
+	F_0 = 	& 0, \\
+	F_1 = 	& 1, \\
+	F_i =	& F_{i-1} + F_{i-2} \label{eq:fib_nums1}
+\end{eqnarray}
+
+Per the definition of the \textbf{Fibonacci numbers}, the 2nd number in the sequence is 1, so the Base Step
+holds.
+
+\subsubsection*{Induction Assumption}
+For the Induction Assumption, it is assumed that $ F_i = \frac{ \phi^i - \wedge\phi^i }{ \sqrt{5} } $ for $i$.
+
+\subsubsection*{Induction Step}
+For the Induction Step, it will be shown that $ F_k = \frac{ \phi^k - \wedge\phi^k }{ \sqrt{5} } $ for $k = i + 1$.
+
+First, we will show that $ F_k = \frac{ \phi^k - \wedge\phi^k }{ \sqrt{5} } $ for $k = i$.
+\begin{eqnarray}
+	F_i = 	& F_{i+1} + F_i 		
+		&	\mbox{Definition from step \ref{eq:fib_nums1} } \\
+	     =		& \frac{ \phi^{i-1} - \wedge\phi^{i-1} }{ \sqrt{5} } + \frac{ \phi^{i-2} - \wedge\phi^{i-2} }
+			{ \sqrt{5} }
+				&	\mbox{The Induction Assumption} \\
+	     =		& \frac{ 
+				\phi^{i-1} - \wedge\phi^{i-1} + \phi^{i-2} - \wedge\phi^{i-2} }
+				{ \sqrt{5} }
+				& \\
+	     =		& \frac{ 
+				\phi^{i-2}(\phi + 1) - \phi^{i-2}( \wedge\phi^{i} + ) }
+				{ \sqrt{5} }
+				& \\
+	     =		& \frac{ \phi^i - \wedge\phi^i }{ \sqrt{5} }
+				& \label{eq:prob_5_proof} \\
+\end{eqnarray}
+
+Therefore, as shown above leading to step \ref{eq:prob_5_proof}, the Inductions Step holds, showing proof by Induction.
+
+
+\end{document}

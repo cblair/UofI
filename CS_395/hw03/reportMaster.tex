@@ -1,0 +1,185 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due February 8th, 2012}
+\title{CS 395 Homework 3}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section*{PROBLEMS}
+
+\subsection*{1.}
+To find the running time of Horner's rule, consider the following Horner's rule pseudocode:
+\begin{figure}[!h]
+
+\scriptsize
+\begin{lstlisting}
+						C 		T
+P(x)
+\end{lstlisting}
+
+\lstset{numbers=left}
+\begin{lstlisting}
+	y = 0					C1		1
+	i = n 					C2		1
+	while i >= 0 				C3		n
+		y = ai + (x * y) 		C4 		n - 1
+		i = i - 1 				C5 		n - 1
+\end{lstlisting}
+\normalsize
+
+\caption{Horner's Rule}
+\label{horners_rule}
+\end{figure}
+
+This may be a little verbose, but the resulting running time function $T(n)$ is as follows:
+
+\begin{eqnarray}
+T(n) 	&	= C_1 + C_2 + C_3n + C_4(n-1) + C_5(n - 1) \\
+	&	= C_1 + C_2 + C_3n + C_4n - C_4 + C_5n - C_5 \\
+	&	= (C_4 + C_4 + C_5)n + (C_1 + C_2 - C_4 - C_5) \\
+	&	= an + b
+\end{eqnarray}
+
+Considering $T(n) = an + b$, to find $\Theta(T(n))$, we drop the leading constant $a$ and the rest of the 
+terms, in this case $b$. So $\Theta(T(n)) = \Theta(n). $
+
+The pseudocode for the naive polynomial-evaluation algorithm follows:
+
+\begin{figure}[!h]
+
+\scriptsize
+\begin{lstlisting}
+						C 		T
+P(x)
+\end{lstlisting}
+
+\lstset{numbers=left}
+\begin{lstlisting}
+	sum = 0					C1		1
+	i = n 					C2		1
+	while i >= 0 				C3 		n
+		j = i 				C4 		n - 1
+		prod = 1 			C5		n - 1
+		while j > 0 			C6		(n - 1)(tj())
+			prod = prod * x 	C7		(n - 1)(tj()) - 1
+		sum = sum + (ai * prod) 	C8		n - 1
+\end{lstlisting}
+\normalsize
+
+\caption{Naive polynomial-evaluation algorithm}
+\label{naive_poly_eval}
+\end{figure}
+
+For $t_j()$ (listed about in pseudocode as tj() ), $t_j() = 1 + 2 + ... j$, in the worst case, $ j = i = n $, so for the worst case, we say $t_j() = n$. 
+
+Knowing this, the total run time function $T(n)$ can be shown as follows:
+\small
+\begin{eqnarray}
+T(n)	&	= C_1 + C_2 + C_3n + C_4(n - 1) + C_5(n-1) + C_6(n-1)(n) + C_7((n-1)(n) - 1) + C_8(n-1) \\
+T(n)	&	= C_1 + C_2 + C_3n + C_4n - C_4 + C_5n - C_5 + C_6n - C_6 + C_7n_2 - C_7n - C_7 + C_8n - C_8 \\
+	&	= C_7n^2 + (C_4 + C_5 + C_6 - C_7 + C_8)n + (C_1 + C_2 - C_4 - C_5 - C_6 - C_7 - C_8) \\
+	&	= an^2 + bn + c
+\end{eqnarray}
+\normalsize
+
+Considering $T(n) = an^2 + bn + c$, to find $\Theta(T(n))$, we drop the leading constant $a$ and the rest of the 
+terms, in this case $bn$ and $c$. So $\Theta(T(n)) = \Theta(n^2). $ 
+
+Compares to Horner's rule with a $\Theta(n)$, the naive approach is clearly worse. 
+
+
+\subsection*{2}
+The basic definition for $\Theta$-notation states:
+\begin{figure}[!h]
+
+\small
+$\Theta(g(n)) = \{f(n) : $ there exists positive constants $c_1, c_2,$ and $n_0$ such that $0 \leq c_1g(n) \leq f(n) \leq c_2 g(n) $ for all $ n \geq n_0 \}$
+\normalsize
+
+\caption{Basic $\Theta$-notation}
+\label{basic_theta_not}
+\end{figure}
+
+When considering two functions $f(n),g(n)$, consider $\Theta(f(n) + g(n))$ . $\Theta$ notation states than 
+when considering run times of functions, the highest ordered term is used, and all other constants and terms
+are dropped. As an example, $\Theta(an^2 + bn + c) = \Theta(n^2)$.
+
+So for whichever $f(n), g(n)$, if $max(f(n),g(n)) = f(n)$, then $\Theta(f(n) + g(n)) = \Theta(f(n))$. If 
+$max(f(n),g(n)) = g(n)$, then $\Theta(f(n) + g(n)) = \Theta(g(n))$.
+
+
+\subsection*{3}
+Consider real constants $a$ and $b$, where $b > 0$. For the equation:
+\begin{eqnarray}
+	(n+a)^b 	&	= \Theta(n^b)
+\end{eqnarray}
+
+If we distibute out the above equation, it came be shown that:
+\begin{eqnarray}
+	(n+a)^b 	&	= (n+a)^1(n+a)^2(n+a)^3 ... (n+a)^{b-1}(n+a)^b \\
+			&	= (n+a)(n+a)(n+a)(n+a)^3 ... (n+a)^{b-1}(n+a)^b \\
+			&	= (n^2 + 2an + a^2)(n+a)(n+a)^3 ... (n+a)^{b-1}(n+a)^b \\
+			&	= (n^3 + 3an^2 + 3a^2n + a^3)(n+a)(n+a)^3 ... (n+a)^{b-1}(n+a)^b \\
+			&	= n^b + C_1an^{b-1} + C_2an^{b-2} ... C_{b-1}an^{1}
+\end{eqnarray}
+
+When considering $(n+a)^b = n^b + C_1an^{b-1} + C_2an^{b-2} ... C_{b-1}an^{1}$, $\Theta()$ states that
+the highest order term in the equation is used, and all other constants and terms are disguarded. So in the 
+case of $n^b + C_1an^{b-1} + C_2an^{b-2} ... C_{b-1}an^{1}$, 
+$\Theta(n^b + C_1an^{b-1} + C_2an^{b-2} ... C_{b-1}an^{1}) = \Theta(n^b)$. Since it has been shown here
+that $(n+a)^b = n^b + C_1an^{b-1} + C_2an^{b-2} ... C_{b-1}an^{1}$, it can be shown that 
+$(n+a)^b = \Theta(n^b)$.
+
+
+\subsection*{4}
+The statement "Running time of algorithm $A$ is at least $O(n^2)$" is meaningless, because by definition,
+$f(n) \leq T(n^b)$. $f(n)$ could never $> T(n^2).$ . Saying $f(n)$ equals at least $O(n^2)$ means $f(n) = \Theta(n^2)$, by definition, and is probably not what the statment meant. Whoever wrote the statement
+probably meant $f(n) = \Omega(n^2)$, which by definition means $f(n) \geq T(n^b)$.
+
+
+\subsection*{5}
+Yes; $2^{n+1} = O(2^n)$.
+
+Yes; $2^n = O(2^n)$. 
+
+
+\end{document}

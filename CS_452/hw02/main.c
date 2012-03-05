@@ -66,7 +66,7 @@ void led_switch_echo(void)
 {
 	uint64_t bcnt = 0u; 	/*counts how long switch is pressed*/
 	uint64_t x = 0u; 	/*used to iterate up to bcnt*/
-	uint8_t port_state;
+	uint8_t port_state;	/*caches the port state to detect a change*/
 
 	/*record which switch is being pressed*/
 	port_state = PIND;
@@ -77,6 +77,7 @@ void led_switch_echo(void)
 	 */
 	if( port_state == 0xff ) 
 	{
+		/*toggle pin 0 with whatever value is in led_cnt*/
 		PORTB = ~(led_cnt | 0x01);
 		delay(65000U);
 		PORTB = ~(led_cnt | 0x00); //really just led_cnt

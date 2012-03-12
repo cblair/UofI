@@ -18,6 +18,12 @@ ln -s `which gobjcopy` ./objcopy
 PARTNO=atmega8515
 
 #Fuses
+# The following line will set the clock speed. Values for lfuse are:
+#   0xE1 - 1 MHz
+#   0xE2 - 2 MHz
+#   0xE3 - 4 MHz
+#   0xE4 - 8 MHz
+# avrdude -v -y -p atmega32  -P /dev/ttyS0 -c stk500v2 -U lfuse:w:0xE1:m 
 FUSES="-U flash:w:$1.hex:i"
 #FUSES="-U hfuse:w:0x40:m -U lfuse:w:0xA4:m"
 

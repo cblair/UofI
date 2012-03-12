@@ -5,9 +5,27 @@ __SP_L__ = 0x3d
 __CCP__  = 0x34
 __tmp_reg__ = 0
 __zero_reg__ = 1
-.global	cnt
-.global	cnt
+.global	SONG_INDEX
+	.data
+	.type	SONG_INDEX, @object
+	.size	SONG_INDEX, 2
+SONG_INDEX:
+	.word	1
+.global	ENABLE_MUSIC
+.global	ENABLE_MUSIC
 	.section .bss
+	.type	ENABLE_MUSIC, @object
+	.size	ENABLE_MUSIC, 1
+ENABLE_MUSIC:
+	.skip 1,0
+.global	NOTE_COUNT
+.global	NOTE_COUNT
+	.type	NOTE_COUNT, @object
+	.size	NOTE_COUNT, 1
+NOTE_COUNT:
+	.skip 1,0
+.global	cnt
+.global	cnt
 	.type	cnt, @object
 	.size	cnt, 1
 cnt:
@@ -24,6 +42,12 @@ led_cnt:
 	.size	which_switch, 1
 which_switch:
 	.skip 1,0
+.global	idelay
+.global	idelay
+	.type	idelay, @object
+	.size	idelay, 8
+idelay:
+	.skip 8,0
 	.text
 .global	delay
 	.type	delay, @function
@@ -63,6 +87,219 @@ delay:
 	pop r29
 	ret
 	.size	delay, .-delay
+.global	init_Ex1
+	.type	init_Ex1, @function
+init_Ex1:
+	push r29
+	push r28
+	in r28,__SP_L__
+	in r29,__SP_H__
+/* prologue: function */
+/* frame size = 0 */
+	ldi r30,lo8(83)
+	ldi r31,hi8(83)
+	ldi r24,lo8(5)
+	st Z,r24
+	ldi r30,lo8(88)
+	ldi r31,hi8(88)
+	ldi r24,lo8(2)
+	st Z,r24
+	ldi r30,lo8(89)
+	ldi r31,hi8(89)
+	ldi r24,lo8(2)
+	st Z,r24
+/* epilogue start */
+	pop r28
+	pop r29
+	ret
+	.size	init_Ex1, .-init_Ex1
+.global	init_Ex2
+	.type	init_Ex2, @function
+init_Ex2:
+	push r29
+	push r28
+	in r28,__SP_L__
+	in r29,__SP_H__
+/* prologue: function */
+/* frame size = 0 */
+	ldi r30,lo8(78)
+	ldi r31,hi8(78)
+	ldi r24,lo8(5)
+	st Z,r24
+	ldi r30,lo8(78)
+	ldi r31,hi8(78)
+	ldi r24,lo8(3)
+	st Z,r24
+/* epilogue start */
+	pop r28
+	pop r29
+	ret
+	.size	init_Ex2, .-init_Ex2
+.global	__vector_7
+	.type	__vector_7, @function
+__vector_7:
+	push __zero_reg__
+	push r0
+	in r0,__SREG__
+	push r0
+	clr __zero_reg__
+	push r24
+	push r25
+	push r30
+	push r31
+	push r29
+	push r28
+	in r28,__SP_L__
+	in r29,__SP_H__
+/* prologue: Signal */
+/* frame size = 0 */
+	lds r24,cnt
+	subi r24,lo8(-(1))
+	sts cnt,r24
+	lds r24,cnt
+	cpi r24,lo8(15)
+	brne .L10
+	ldi r24,lo8(1)
+	sts ENABLE_MUSIC,r24
+	rjmp .L11
+.L10:
+	lds r24,cnt
+	cpi r24,lo8(30)
+	brne .L11
+	sts cnt,__zero_reg__
+	sts ENABLE_MUSIC,__zero_reg__
+	lds r24,SONG_INDEX
+	lds r25,(SONG_INDEX)+1
+	cpi r24,8
+	cpc r25,__zero_reg__
+	brne .L12
+	sts (SONG_INDEX)+1,__zero_reg__
+	sts SONG_INDEX,__zero_reg__
+	rjmp .L11
+.L12:
+	lds r24,SONG_INDEX
+	lds r25,(SONG_INDEX)+1
+	adiw r24,1
+	sts (SONG_INDEX)+1,r25
+	sts SONG_INDEX,r24
+.L11:
+	lds r24,ENABLE_MUSIC
+	cpi r24,lo8(1)
+	brne .L13
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ldi r24,lo8(-3)
+	st Z,r24
+	rjmp .L15
+.L13:
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ldi r24,lo8(-2)
+	st Z,r24
+.L15:
+/* epilogue start */
+	pop r28
+	pop r29
+	pop r31
+	pop r30
+	pop r25
+	pop r24
+	pop r0
+	out __SREG__,r0
+	pop r0
+	pop __zero_reg__
+	reti
+	.size	__vector_7, .-__vector_7
+.global	__vector_6
+	.type	__vector_6, @function
+__vector_6:
+	push __zero_reg__
+	push r0
+	in r0,__SREG__
+	push r0
+	clr __zero_reg__
+	push r24
+	push r26
+	push r27
+	push r30
+	push r31
+	push r29
+	push r28
+	in r28,__SP_L__
+	in r29,__SP_H__
+/* prologue: Signal */
+/* frame size = 0 */
+	ldi r26,lo8(56)
+	ldi r27,hi8(56)
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ld r24,Z
+	com r24
+	st X,r24
+/* epilogue start */
+	pop r28
+	pop r29
+	pop r31
+	pop r30
+	pop r27
+	pop r26
+	pop r24
+	pop r0
+	out __SREG__,r0
+	pop r0
+	pop __zero_reg__
+	reti
+	.size	__vector_6, .-__vector_6
+.global	play_note
+	.type	play_note, @function
+play_note:
+	push r29
+	push r28
+	rcall .
+	in r28,__SP_L__
+	in r29,__SP_H__
+/* prologue: function */
+/* frame size = 2 */
+	std Y+1,r24
+	std Y+2,r22
+	ldi r30,lo8(76)
+	ldi r31,hi8(76)
+	ld r18,Z
+	ldd r19,Z+1
+	ldd r24,Y+1
+	mov r24,r24
+	ldi r25,lo8(0)
+	cp r18,r24
+	cpc r19,r25
+	brlo .L20
+	ldi r26,lo8(56)
+	ldi r27,hi8(56)
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ld r24,Z
+	com r24
+	ori r24,lo8(4)
+	com r24
+	st X,r24
+	ldi r26,lo8(59)
+	ldi r27,hi8(59)
+	ldi r30,lo8(59)
+	ldi r31,hi8(59)
+	ld r24,Z
+	com r24
+	st X,r24
+	ldi r30,lo8(76)
+	ldi r31,hi8(76)
+	std Z+1,__zero_reg__
+	st Z,__zero_reg__
+.L20:
+/* epilogue start */
+	pop __tmp_reg__
+	pop __tmp_reg__
+	pop r28
+	pop r29
+	ret
+	.size	play_note, .-play_note
 .global	main
 	.type	main, @function
 main:
@@ -70,22 +307,8 @@ main:
 	push r28
 	in r28,__SP_L__
 	in r29,__SP_H__
-	sbiw r28,51
-	in __tmp_reg__,__SREG__
-	cli
-	out __SP_H__,r29
-	out __SREG__,__tmp_reg__
-	out __SP_L__,r28
 /* prologue: function */
-/* frame size = 51 */
-	std Y+1,__zero_reg__
-	std Y+2,__zero_reg__
-	std Y+3,__zero_reg__
-	std Y+4,__zero_reg__
-	std Y+5,__zero_reg__
-	std Y+6,__zero_reg__
-	std Y+7,__zero_reg__
-	std Y+8,__zero_reg__
+/* frame size = 0 */
 	ldi r30,lo8(58)
 	ldi r31,hi8(58)
 	ldi r24,lo8(-1)
@@ -94,332 +317,45 @@ main:
 	ldi r31,hi8(55)
 	ldi r24,lo8(-1)
 	st Z,r24
-.L21:
-	ldi r30,lo8(59)
-	ldi r31,hi8(59)
-	ldi r24,lo8(-2)
-	st Z,r24
-	ldi r30,lo8(56)
-	ldi r31,hi8(56)
-	ldi r24,lo8(-2)
-	st Z,r24
-	ldd r24,Y+1
-	ldd r25,Y+2
-	rcall delay
-	ldi r30,lo8(59)
-	ldi r31,hi8(59)
-	ldi r24,lo8(-1)
-	st Z,r24
 	ldi r30,lo8(56)
 	ldi r31,hi8(56)
 	ldi r24,lo8(-1)
 	st Z,r24
-	ldd r24,Y+1
-	ldd r25,Y+2
-	rcall delay
-	ldd r24,Y+1
-	std Y+9,r24
-	ldd r25,Y+2
-	std Y+10,r25
-	ldd r24,Y+3
-	std Y+11,r24
-	ldd r25,Y+4
-	std Y+12,r25
-	ldd r24,Y+5
-	std Y+13,r24
-	ldd r25,Y+6
-	std Y+14,r25
-	ldd r24,Y+7
-	std Y+15,r24
-	ldd r25,Y+8
-	std Y+16,r25
-	ldi r24,lo8(64)
-	std Y+17,r24
-	std Y+18,__zero_reg__
-	std Y+19,__zero_reg__
-	std Y+20,__zero_reg__
-	std Y+21,__zero_reg__
-	std Y+22,__zero_reg__
-	std Y+23,__zero_reg__
-	std Y+24,__zero_reg__
-	ldd r25,Y+9
-	ldd r24,Y+17
-	add r25,r24
-	std Y+25,r25
-	ldi r25,lo8(1)
-	std Y+33,r25
-	ldd r24,Y+25
-	ldd r25,Y+9
-	cp r24,r25
-	brlo .L6
-	std Y+33,__zero_reg__
-.L6:
-	ldd r24,Y+10
-	ldd r25,Y+18
-	add r24,r25
-	std Y+26,r24
-	ldi r24,lo8(1)
-	std Y+34,r24
-	ldd r25,Y+26
-	ldd r24,Y+10
-	cp r25,r24
-	brlo .L7
-	std Y+34,__zero_reg__
-.L7:
-	ldd r25,Y+33
-	ldd r24,Y+26
-	add r25,r24
-	std Y+35,r25
-	ldi r25,lo8(1)
-	std Y+36,r25
-	ldd r24,Y+35
-	ldd r25,Y+26
-	cp r24,r25
-	brlo .L8
-	std Y+36,__zero_reg__
-.L8:
-	ldd r24,Y+34
-	ldd r25,Y+36
-	or r24,r25
-	std Y+34,r24
-	ldd r24,Y+35
-	std Y+26,r24
-	ldd r25,Y+11
-	ldd r24,Y+19
-	add r25,r24
-	std Y+27,r25
-	ldi r25,lo8(1)
-	std Y+37,r25
-	ldd r24,Y+27
-	ldd r25,Y+11
-	cp r24,r25
-	brlo .L9
-	std Y+37,__zero_reg__
-.L9:
-	ldd r24,Y+34
-	ldd r25,Y+27
-	add r24,r25
-	std Y+38,r24
-	ldi r24,lo8(1)
-	std Y+39,r24
-	ldd r25,Y+38
-	ldd r24,Y+27
-	cp r25,r24
-	brlo .L10
-	std Y+39,__zero_reg__
-.L10:
-	ldd r25,Y+37
-	ldd r24,Y+39
-	or r25,r24
-	std Y+37,r25
-	ldd r25,Y+38
-	std Y+27,r25
-	ldd r24,Y+12
-	ldd r25,Y+20
-	add r24,r25
-	std Y+28,r24
-	ldi r24,lo8(1)
-	std Y+40,r24
-	ldd r25,Y+28
-	ldd r24,Y+12
-	cp r25,r24
-	brlo .L11
-	std Y+40,__zero_reg__
-.L11:
-	ldd r25,Y+37
-	ldd r24,Y+28
-	add r25,r24
-	std Y+41,r25
-	ldi r25,lo8(1)
-	std Y+42,r25
-	ldd r24,Y+41
-	ldd r25,Y+28
-	cp r24,r25
-	brlo .L12
-	std Y+42,__zero_reg__
-.L12:
-	ldd r24,Y+40
-	ldd r25,Y+42
-	or r24,r25
-	std Y+40,r24
-	ldd r24,Y+41
-	std Y+28,r24
-	ldd r25,Y+13
-	ldd r24,Y+21
-	add r25,r24
-	std Y+29,r25
-	ldi r25,lo8(1)
-	std Y+43,r25
-	ldd r24,Y+29
-	ldd r25,Y+13
-	cp r24,r25
-	brlo .L13
-	std Y+43,__zero_reg__
-.L13:
-	ldd r24,Y+40
-	ldd r25,Y+29
-	add r24,r25
-	std Y+44,r24
-	ldi r24,lo8(1)
-	std Y+45,r24
-	ldd r25,Y+44
-	ldd r24,Y+29
-	cp r25,r24
-	brlo .L14
-	std Y+45,__zero_reg__
-.L14:
-	ldd r25,Y+43
-	ldd r24,Y+45
-	or r25,r24
-	std Y+43,r25
-	ldd r25,Y+44
-	std Y+29,r25
-	ldd r24,Y+14
-	ldd r25,Y+22
-	add r24,r25
-	std Y+30,r24
-	ldi r24,lo8(1)
-	std Y+46,r24
-	ldd r25,Y+30
-	ldd r24,Y+14
-	cp r25,r24
-	brlo .L15
-	std Y+46,__zero_reg__
-.L15:
-	ldd r25,Y+43
-	ldd r24,Y+30
-	add r25,r24
-	std Y+47,r25
-	ldi r25,lo8(1)
-	std Y+48,r25
-	ldd r24,Y+47
-	ldd r25,Y+30
-	cp r24,r25
-	brlo .L16
-	std Y+48,__zero_reg__
-.L16:
-	ldd r24,Y+46
-	ldd r25,Y+48
-	or r24,r25
-	std Y+46,r24
-	ldd r24,Y+47
-	std Y+30,r24
-	ldd r25,Y+15
-	ldd r24,Y+23
-	add r25,r24
-	std Y+31,r25
-	ldi r25,lo8(1)
-	std Y+49,r25
-	ldd r24,Y+31
-	ldd r25,Y+15
-	cp r24,r25
-	brlo .L17
-	std Y+49,__zero_reg__
-.L17:
-	ldd r24,Y+46
-	ldd r25,Y+31
-	add r24,r25
-	std Y+50,r24
-	ldi r24,lo8(1)
-	std Y+51,r24
-	ldd r25,Y+50
-	ldd r24,Y+31
-	cp r25,r24
-	brlo .L18
-	std Y+51,__zero_reg__
-.L18:
-	ldd r25,Y+49
-	ldd r24,Y+51
-	or r25,r24
-	std Y+49,r25
-	ldd r25,Y+50
-	std Y+31,r25
-	ldd r24,Y+16
-	ldd r25,Y+24
-	add r24,r25
-	std Y+32,r24
-	ldd r24,Y+49
-	ldd r25,Y+32
-	add r24,r25
-	std Y+32,r24
-	ldd r24,Y+25
-	std Y+1,r24
-	ldd r25,Y+26
-	std Y+2,r25
-	ldd r24,Y+27
-	std Y+3,r24
-	ldd r25,Y+28
-	std Y+4,r25
-	ldd r24,Y+29
-	std Y+5,r24
-	ldd r25,Y+30
-	std Y+6,r25
-	ldd r24,Y+31
-	std Y+7,r24
-	ldd r25,Y+32
-	std Y+8,r25
-	ldd r24,Y+8
-	tst r24
-	brne .L23
-	ldd r24,Y+8
-	tst r24
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+7
-	tst r24
-	brne .L23
-	ldd r24,Y+7
-	tst r24
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+6
-	tst r24
-	brne .L23
-	ldd r24,Y+6
-	tst r24
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+5
-	tst r24
-	brne .L23
-	ldd r24,Y+5
-	tst r24
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+4
-	tst r24
-	brne .L23
-	ldd r24,Y+4
-	tst r24
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+3
-	tst r24
-	brne .L23
-	ldd r24,Y+3
-	tst r24
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+2
-	cpi r24,lo8(36)
-	brsh .L23
-	ldd r24,Y+2
-	cpi r24,lo8(35)
-	breq .+2
-	rjmp .L21
-	ldd r24,Y+1
-	cpi r24,lo8(41)
-	brsh .+2
-	rjmp .L21
-.L23:
-	std Y+1,__zero_reg__
-	std Y+2,__zero_reg__
-	std Y+3,__zero_reg__
-	std Y+4,__zero_reg__
-	std Y+5,__zero_reg__
-	std Y+6,__zero_reg__
-	std Y+7,__zero_reg__
-	std Y+8,__zero_reg__
-	rjmp .L21
+	rcall init_Ex1
+	rcall init_Ex2
+/* #APP */
+ ;  133 "main.c" 1
+	sei
+ ;  0 "" 2
+/* #NOAPP */
+	ldi r24,lo8(90)
+	sts SONG,r24
+	ldi r24,lo8(82)
+	sts SONG+1,r24
+	ldi r24,lo8(76)
+	sts SONG+2,r24
+	ldi r24,lo8(69)
+	sts SONG+3,r24
+	ldi r24,lo8(62)
+	sts SONG+4,r24
+	ldi r24,lo8(55)
+	sts SONG+5,r24
+	ldi r24,lo8(49)
+	sts SONG+6,r24
+	ldi r24,lo8(44)
+	sts SONG+7,r24
+	sts SONG+8,__zero_reg__
+.L22:
+	lds r24,SONG_INDEX
+	lds r25,(SONG_INDEX)+1
+	movw r30,r24
+	subi r30,lo8(-(SONG))
+	sbci r31,hi8(-(SONG))
+	ld r24,Z
+	ldi r22,lo8(1)
+	rcall play_note
+	rjmp .L22
 	.size	main, .-main
+	.comm SONG,9,1
+.global __do_copy_data
 .global __do_clear_bss

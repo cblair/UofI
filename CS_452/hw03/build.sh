@@ -45,9 +45,9 @@ fi
 #INC=-I/usr/local/CrossPack-AVR/avr-4/include
 
 #if is a .c file, dump an assembly file, just to read over
-if [[ $POSTFIX == ".c" ]]; then
-	avr-gcc $INC -O0 -S -mmcu=$PARTNO "$1""$POSTFIX"
-fi
+#if [[ $POSTFIX == ".c" ]]; then
+	#avr-gcc $INC -O0 -S -mmcu=$PARTNO "$1""$POSTFIX"
+#fi
 
 #real compile
 CMD="avr-gcc $INC -o $1 -mmcu=$PARTNO $1$POSTFIX"

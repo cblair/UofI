@@ -42,12 +42,6 @@ led_cnt:
 	.size	which_switch, 1
 which_switch:
 	.skip 1,0
-.global	idelay
-.global	idelay
-	.type	idelay, @object
-	.size	idelay, 8
-idelay:
-	.skip 8,0
 	.text
 .global	delay
 	.type	delay, @function
@@ -167,6 +161,18 @@ __vector_7:
 	cpi r24,lo8(30)
 	brne .L11
 	sts cnt,__zero_reg__
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	lds r24,led_cnt
+	andi r24,lo8(-16)
+	com r24
+	st Z,r24
+	lds r24,led_cnt
+	subi r24,lo8(-(16))
+	sts led_cnt,r24
+	lds r24,led_cnt
+	andi r24,lo8(-16)
+	sts led_cnt,r24
 	sts ENABLE_MUSIC,__zero_reg__
 	lds r24,SONG_INDEX
 	lds r25,(SONG_INDEX)+1
@@ -183,20 +189,6 @@ __vector_7:
 	sts (SONG_INDEX)+1,r25
 	sts SONG_INDEX,r24
 .L11:
-	lds r24,ENABLE_MUSIC
-	cpi r24,lo8(1)
-	brne .L13
-	ldi r30,lo8(56)
-	ldi r31,hi8(56)
-	ldi r24,lo8(-3)
-	st Z,r24
-	rjmp .L15
-.L13:
-	ldi r30,lo8(56)
-	ldi r31,hi8(56)
-	ldi r24,lo8(-2)
-	st Z,r24
-.L15:
 /* epilogue start */
 	pop r28
 	pop r29
@@ -218,32 +210,15 @@ __vector_6:
 	in r0,__SREG__
 	push r0
 	clr __zero_reg__
-	push r24
-	push r26
-	push r27
-	push r30
-	push r31
 	push r29
 	push r28
 	in r28,__SP_L__
 	in r29,__SP_H__
 /* prologue: Signal */
 /* frame size = 0 */
-	ldi r26,lo8(56)
-	ldi r27,hi8(56)
-	ldi r30,lo8(56)
-	ldi r31,hi8(56)
-	ld r24,Z
-	com r24
-	st X,r24
 /* epilogue start */
 	pop r28
 	pop r29
-	pop r31
-	pop r30
-	pop r27
-	pop r26
-	pop r24
 	pop r0
 	out __SREG__,r0
 	pop r0
@@ -262,6 +237,20 @@ play_note:
 /* frame size = 2 */
 	std Y+1,r24
 	std Y+2,r22
+	ldd r24,Y+1
+	tst r24
+	brne .L17
+	ldi r26,lo8(56)
+	ldi r27,hi8(56)
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ld r24,Z
+	com r24
+	andi r24,lo8(-2)
+	com r24
+	st X,r24
+	rjmp .L19
+.L17:
 	ldi r30,lo8(76)
 	ldi r31,hi8(76)
 	ld r18,Z
@@ -271,16 +260,7 @@ play_note:
 	ldi r25,lo8(0)
 	cp r18,r24
 	cpc r19,r25
-	brlo .L20
-	ldi r26,lo8(56)
-	ldi r27,hi8(56)
-	ldi r30,lo8(56)
-	ldi r31,hi8(56)
-	ld r24,Z
-	com r24
-	ori r24,lo8(4)
-	com r24
-	st X,r24
+	brlo .L19
 	ldi r26,lo8(59)
 	ldi r27,hi8(59)
 	ldi r30,lo8(59)
@@ -288,11 +268,20 @@ play_note:
 	ld r24,Z
 	com r24
 	st X,r24
+	ldi r26,lo8(56)
+	ldi r27,hi8(56)
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	ld r24,Z
+	com r24
+	ori r24,lo8(2)
+	com r24
+	st X,r24
 	ldi r30,lo8(76)
 	ldi r31,hi8(76)
 	std Z+1,__zero_reg__
 	st Z,__zero_reg__
-.L20:
+.L19:
 /* epilogue start */
 	pop __tmp_reg__
 	pop __tmp_reg__
@@ -300,6 +289,1067 @@ play_note:
 	pop r29
 	ret
 	.size	play_note, .-play_note
+.global	led_switch_echo
+	.type	led_switch_echo, @function
+led_switch_echo:
+	push r10
+	push r11
+	push r12
+	push r13
+	push r14
+	push r15
+	push r16
+	push r17
+	push r29
+	push r28
+	in r28,__SP_L__
+	in r29,__SP_H__
+	subi r28,lo8(-(-111))
+	sbci r29,hi8(-(-111))
+	in __tmp_reg__,__SREG__
+	cli
+	out __SP_H__,r29
+	out __SREG__,__tmp_reg__
+	out __SP_L__,r28
+/* prologue: function */
+/* frame size = 111 */
+	std Y+10,__zero_reg__
+	std Y+11,__zero_reg__
+	std Y+12,__zero_reg__
+	std Y+13,__zero_reg__
+	std Y+14,__zero_reg__
+	std Y+15,__zero_reg__
+	std Y+16,__zero_reg__
+	std Y+17,__zero_reg__
+	std Y+2,__zero_reg__
+	std Y+3,__zero_reg__
+	std Y+4,__zero_reg__
+	std Y+5,__zero_reg__
+	std Y+6,__zero_reg__
+	std Y+7,__zero_reg__
+	std Y+8,__zero_reg__
+	std Y+9,__zero_reg__
+	ldi r30,lo8(48)
+	ldi r31,hi8(48)
+	ld r24,Z
+	std Y+1,r24
+	ldd r24,Y+1
+	cpi r24,lo8(-1)
+	breq .+2
+	rjmp .L23
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	lds r24,led_cnt
+	ori r24,lo8(1)
+	com r24
+	st Z,r24
+	ldi r24,lo8(-536)
+	ldi r25,hi8(-536)
+	rcall delay
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	lds r24,led_cnt
+	com r24
+	st Z,r24
+	ldi r24,lo8(-536)
+	ldi r25,hi8(-536)
+	rcall delay
+	rjmp .L54
+.L37:
+	ldd r24,Y+10
+	std Y+26,r24
+	ldd r25,Y+11
+	std Y+27,r25
+	ldd r24,Y+12
+	std Y+28,r24
+	ldd r25,Y+13
+	std Y+29,r25
+	ldd r24,Y+14
+	std Y+30,r24
+	ldd r25,Y+15
+	std Y+31,r25
+	ldd r24,Y+16
+	std Y+32,r24
+	ldd r25,Y+17
+	std Y+33,r25
+	ldi r24,lo8(1)
+	std Y+34,r24
+	std Y+35,__zero_reg__
+	std Y+36,__zero_reg__
+	std Y+37,__zero_reg__
+	std Y+38,__zero_reg__
+	std Y+39,__zero_reg__
+	std Y+40,__zero_reg__
+	std Y+41,__zero_reg__
+	ldd r25,Y+26
+	ldd r24,Y+34
+	add r25,r24
+	std Y+42,r25
+	ldi r25,lo8(1)
+	std Y+50,r25
+	ldd r24,Y+42
+	ldd r25,Y+26
+	cp r24,r25
+	brlo .L24
+	std Y+50,__zero_reg__
+.L24:
+	ldd r24,Y+27
+	ldd r25,Y+35
+	add r24,r25
+	std Y+43,r24
+	ldi r24,lo8(1)
+	std Y+51,r24
+	ldd r25,Y+43
+	ldd r24,Y+27
+	cp r25,r24
+	brlo .L25
+	std Y+51,__zero_reg__
+.L25:
+	ldd r25,Y+50
+	ldd r24,Y+43
+	add r25,r24
+	std Y+52,r25
+	ldi r25,lo8(1)
+	std Y+53,r25
+	ldd r24,Y+52
+	ldd r25,Y+43
+	cp r24,r25
+	brlo .L26
+	std Y+53,__zero_reg__
+.L26:
+	ldd r24,Y+51
+	ldd r25,Y+53
+	or r24,r25
+	std Y+51,r24
+	ldd r24,Y+52
+	std Y+43,r24
+	ldd r25,Y+28
+	ldd r24,Y+36
+	add r25,r24
+	std Y+44,r25
+	ldi r25,lo8(1)
+	std Y+54,r25
+	ldd r24,Y+44
+	ldd r25,Y+28
+	cp r24,r25
+	brlo .L27
+	std Y+54,__zero_reg__
+.L27:
+	ldd r24,Y+51
+	ldd r25,Y+44
+	add r24,r25
+	std Y+55,r24
+	ldi r24,lo8(1)
+	std Y+56,r24
+	ldd r25,Y+55
+	ldd r24,Y+44
+	cp r25,r24
+	brlo .L28
+	std Y+56,__zero_reg__
+.L28:
+	ldd r25,Y+54
+	ldd r24,Y+56
+	or r25,r24
+	std Y+54,r25
+	ldd r25,Y+55
+	std Y+44,r25
+	ldd r24,Y+29
+	ldd r25,Y+37
+	add r24,r25
+	std Y+45,r24
+	ldi r24,lo8(1)
+	std Y+57,r24
+	ldd r25,Y+45
+	ldd r24,Y+29
+	cp r25,r24
+	brlo .L29
+	std Y+57,__zero_reg__
+.L29:
+	ldd r25,Y+54
+	ldd r24,Y+45
+	add r25,r24
+	std Y+58,r25
+	ldi r25,lo8(1)
+	std Y+59,r25
+	ldd r24,Y+58
+	ldd r25,Y+45
+	cp r24,r25
+	brlo .L30
+	std Y+59,__zero_reg__
+.L30:
+	ldd r24,Y+57
+	ldd r25,Y+59
+	or r24,r25
+	std Y+57,r24
+	ldd r24,Y+58
+	std Y+45,r24
+	ldd r25,Y+30
+	ldd r24,Y+38
+	add r25,r24
+	std Y+46,r25
+	ldi r25,lo8(1)
+	std Y+60,r25
+	ldd r24,Y+46
+	ldd r25,Y+30
+	cp r24,r25
+	brlo .L31
+	std Y+60,__zero_reg__
+.L31:
+	ldd r24,Y+57
+	ldd r25,Y+46
+	add r24,r25
+	std Y+61,r24
+	ldi r24,lo8(1)
+	std Y+62,r24
+	ldd r25,Y+61
+	ldd r24,Y+46
+	cp r25,r24
+	brlo .L32
+	std Y+62,__zero_reg__
+.L32:
+	ldd r25,Y+60
+	ldd r24,Y+62
+	or r25,r24
+	std Y+60,r25
+	ldd r25,Y+61
+	std Y+46,r25
+	ldd r24,Y+31
+	ldd r25,Y+39
+	add r24,r25
+	std Y+47,r24
+	ldi r24,lo8(1)
+	std Y+63,r24
+	ldd r25,Y+47
+	ldd r24,Y+31
+	cp r25,r24
+	brlo .L33
+	std Y+63,__zero_reg__
+.L33:
+	ldd r25,Y+60
+	ldd r24,Y+47
+	add r25,r24
+	adiw r28,64-63
+	std Y+63,r25
+	sbiw r28,64-63
+	ldi r25,lo8(1)
+	adiw r28,65-63
+	std Y+63,r25
+	sbiw r28,65-63
+	adiw r28,64-63
+	ldd r24,Y+63
+	sbiw r28,64-63
+	ldd r25,Y+47
+	cp r24,r25
+	brlo .L34
+	adiw r28,65-63
+	std Y+63,__zero_reg__
+	sbiw r28,65-63
+.L34:
+	ldd r24,Y+63
+	adiw r28,65-63
+	ldd r25,Y+63
+	sbiw r28,65-63
+	or r24,r25
+	std Y+63,r24
+	adiw r28,64-63
+	ldd r24,Y+63
+	sbiw r28,64-63
+	std Y+47,r24
+	ldd r25,Y+32
+	ldd r24,Y+40
+	add r25,r24
+	std Y+48,r25
+	ldi r25,lo8(1)
+	adiw r28,66-63
+	std Y+63,r25
+	sbiw r28,66-63
+	ldd r24,Y+48
+	ldd r25,Y+32
+	cp r24,r25
+	brlo .L35
+	adiw r28,66-63
+	std Y+63,__zero_reg__
+	sbiw r28,66-63
+.L35:
+	ldd r24,Y+63
+	ldd r25,Y+48
+	add r24,r25
+	adiw r28,67-63
+	std Y+63,r24
+	sbiw r28,67-63
+	ldi r24,lo8(1)
+	adiw r28,68-63
+	std Y+63,r24
+	sbiw r28,68-63
+	adiw r28,67-63
+	ldd r25,Y+63
+	sbiw r28,67-63
+	ldd r24,Y+48
+	cp r25,r24
+	brlo .L36
+	adiw r28,68-63
+	std Y+63,__zero_reg__
+	sbiw r28,68-63
+.L36:
+	adiw r28,66-63
+	ldd r25,Y+63
+	sbiw r28,66-63
+	adiw r28,68-63
+	ldd r24,Y+63
+	sbiw r28,68-63
+	or r25,r24
+	adiw r28,66-63
+	std Y+63,r25
+	sbiw r28,66-63
+	adiw r28,67-63
+	ldd r25,Y+63
+	sbiw r28,67-63
+	std Y+48,r25
+	ldd r24,Y+33
+	ldd r25,Y+41
+	add r24,r25
+	std Y+49,r24
+	adiw r28,66-63
+	ldd r24,Y+63
+	sbiw r28,66-63
+	ldd r25,Y+49
+	add r24,r25
+	std Y+49,r24
+	ldd r24,Y+42
+	std Y+10,r24
+	ldd r25,Y+43
+	std Y+11,r25
+	ldd r24,Y+44
+	std Y+12,r24
+	ldd r25,Y+45
+	std Y+13,r25
+	ldd r24,Y+46
+	std Y+14,r24
+	ldd r25,Y+47
+	std Y+15,r25
+	ldd r24,Y+48
+	std Y+16,r24
+	ldd r25,Y+49
+	std Y+17,r25
+.L23:
+	ldi r30,lo8(48)
+	ldi r31,hi8(48)
+	ld r25,Z
+	ldd r24,Y+1
+	cp r25,r24
+	brne .+2
+	rjmp .L37
+	ldd r24,Y+1
+	com r24
+	sts which_switch,r24
+	lds r24,which_switch
+	andi r24,lo8(15)
+	sts which_switch,r24
+	std Y+2,__zero_reg__
+	std Y+3,__zero_reg__
+	std Y+4,__zero_reg__
+	std Y+5,__zero_reg__
+	std Y+6,__zero_reg__
+	std Y+7,__zero_reg__
+	std Y+8,__zero_reg__
+	std Y+9,__zero_reg__
+	rjmp .L38
+.L52:
+	ldi r30,lo8(56)
+	ldi r31,hi8(56)
+	lds r25,which_switch
+	lds r24,led_cnt
+	or r24,r25
+	com r24
+	st Z,r24
+	ldd r24,Y+2
+	adiw r28,69-63
+	std Y+63,r24
+	sbiw r28,69-63
+	ldd r25,Y+3
+	adiw r28,70-63
+	std Y+63,r25
+	sbiw r28,70-63
+	ldd r24,Y+4
+	adiw r28,71-63
+	std Y+63,r24
+	sbiw r28,71-63
+	ldd r25,Y+5
+	adiw r28,72-63
+	std Y+63,r25
+	sbiw r28,72-63
+	ldd r24,Y+6
+	adiw r28,73-63
+	std Y+63,r24
+	sbiw r28,73-63
+	ldd r25,Y+7
+	adiw r28,74-63
+	std Y+63,r25
+	sbiw r28,74-63
+	ldd r24,Y+8
+	adiw r28,75-63
+	std Y+63,r24
+	sbiw r28,75-63
+	ldd r25,Y+9
+	adiw r28,76-63
+	std Y+63,r25
+	sbiw r28,76-63
+	ldi r24,lo8(1)
+	adiw r28,77-63
+	std Y+63,r24
+	sbiw r28,77-63
+	adiw r28,78-63
+	std Y+63,__zero_reg__
+	sbiw r28,78-63
+	adiw r28,79-63
+	std Y+63,__zero_reg__
+	sbiw r28,79-63
+	adiw r28,80-63
+	std Y+63,__zero_reg__
+	sbiw r28,80-63
+	adiw r28,81-63
+	std Y+63,__zero_reg__
+	sbiw r28,81-63
+	adiw r28,82-63
+	std Y+63,__zero_reg__
+	sbiw r28,82-63
+	adiw r28,83-63
+	std Y+63,__zero_reg__
+	sbiw r28,83-63
+	adiw r28,84-63
+	std Y+63,__zero_reg__
+	sbiw r28,84-63
+	adiw r28,69-63
+	ldd r25,Y+63
+	sbiw r28,69-63
+	adiw r28,77-63
+	ldd r24,Y+63
+	sbiw r28,77-63
+	add r25,r24
+	adiw r28,85-63
+	std Y+63,r25
+	sbiw r28,85-63
+	ldi r25,lo8(1)
+	adiw r28,93-63
+	std Y+63,r25
+	sbiw r28,93-63
+	adiw r28,85-63
+	ldd r24,Y+63
+	sbiw r28,85-63
+	adiw r28,69-63
+	ldd r25,Y+63
+	sbiw r28,69-63
+	cp r24,r25
+	brlo .L39
+	adiw r28,93-63
+	std Y+63,__zero_reg__
+	sbiw r28,93-63
+.L39:
+	adiw r28,70-63
+	ldd r24,Y+63
+	sbiw r28,70-63
+	adiw r28,78-63
+	ldd r25,Y+63
+	sbiw r28,78-63
+	add r24,r25
+	adiw r28,86-63
+	std Y+63,r24
+	sbiw r28,86-63
+	ldi r24,lo8(1)
+	adiw r28,94-63
+	std Y+63,r24
+	sbiw r28,94-63
+	adiw r28,86-63
+	ldd r25,Y+63
+	sbiw r28,86-63
+	adiw r28,70-63
+	ldd r24,Y+63
+	sbiw r28,70-63
+	cp r25,r24
+	brlo .L40
+	adiw r28,94-63
+	std Y+63,__zero_reg__
+	sbiw r28,94-63
+.L40:
+	adiw r28,93-63
+	ldd r25,Y+63
+	sbiw r28,93-63
+	adiw r28,86-63
+	ldd r24,Y+63
+	sbiw r28,86-63
+	add r25,r24
+	adiw r28,95-63
+	std Y+63,r25
+	sbiw r28,95-63
+	ldi r25,lo8(1)
+	adiw r28,96-63
+	std Y+63,r25
+	sbiw r28,96-63
+	adiw r28,95-63
+	ldd r24,Y+63
+	sbiw r28,95-63
+	adiw r28,86-63
+	ldd r25,Y+63
+	sbiw r28,86-63
+	cp r24,r25
+	brlo .L41
+	adiw r28,96-63
+	std Y+63,__zero_reg__
+	sbiw r28,96-63
+.L41:
+	adiw r28,94-63
+	ldd r24,Y+63
+	sbiw r28,94-63
+	adiw r28,96-63
+	ldd r25,Y+63
+	sbiw r28,96-63
+	or r24,r25
+	adiw r28,94-63
+	std Y+63,r24
+	sbiw r28,94-63
+	adiw r28,95-63
+	ldd r24,Y+63
+	sbiw r28,95-63
+	adiw r28,86-63
+	std Y+63,r24
+	sbiw r28,86-63
+	adiw r28,71-63
+	ldd r25,Y+63
+	sbiw r28,71-63
+	adiw r28,79-63
+	ldd r24,Y+63
+	sbiw r28,79-63
+	add r25,r24
+	adiw r28,87-63
+	std Y+63,r25
+	sbiw r28,87-63
+	ldi r25,lo8(1)
+	adiw r28,97-63
+	std Y+63,r25
+	sbiw r28,97-63
+	adiw r28,87-63
+	ldd r24,Y+63
+	sbiw r28,87-63
+	adiw r28,71-63
+	ldd r25,Y+63
+	sbiw r28,71-63
+	cp r24,r25
+	brlo .L42
+	adiw r28,97-63
+	std Y+63,__zero_reg__
+	sbiw r28,97-63
+.L42:
+	adiw r28,94-63
+	ldd r24,Y+63
+	sbiw r28,94-63
+	adiw r28,87-63
+	ldd r25,Y+63
+	sbiw r28,87-63
+	add r24,r25
+	adiw r28,98-63
+	std Y+63,r24
+	sbiw r28,98-63
+	ldi r24,lo8(1)
+	adiw r28,99-63
+	std Y+63,r24
+	sbiw r28,99-63
+	adiw r28,98-63
+	ldd r25,Y+63
+	sbiw r28,98-63
+	adiw r28,87-63
+	ldd r24,Y+63
+	sbiw r28,87-63
+	cp r25,r24
+	brlo .L43
+	adiw r28,99-63
+	std Y+63,__zero_reg__
+	sbiw r28,99-63
+.L43:
+	adiw r28,97-63
+	ldd r25,Y+63
+	sbiw r28,97-63
+	adiw r28,99-63
+	ldd r24,Y+63
+	sbiw r28,99-63
+	or r25,r24
+	adiw r28,97-63
+	std Y+63,r25
+	sbiw r28,97-63
+	adiw r28,98-63
+	ldd r25,Y+63
+	sbiw r28,98-63
+	adiw r28,87-63
+	std Y+63,r25
+	sbiw r28,87-63
+	adiw r28,72-63
+	ldd r24,Y+63
+	sbiw r28,72-63
+	adiw r28,80-63
+	ldd r25,Y+63
+	sbiw r28,80-63
+	add r24,r25
+	adiw r28,88-63
+	std Y+63,r24
+	sbiw r28,88-63
+	ldi r24,lo8(1)
+	adiw r28,100-63
+	std Y+63,r24
+	sbiw r28,100-63
+	adiw r28,88-63
+	ldd r25,Y+63
+	sbiw r28,88-63
+	adiw r28,72-63
+	ldd r24,Y+63
+	sbiw r28,72-63
+	cp r25,r24
+	brlo .L44
+	adiw r28,100-63
+	std Y+63,__zero_reg__
+	sbiw r28,100-63
+.L44:
+	adiw r28,97-63
+	ldd r25,Y+63
+	sbiw r28,97-63
+	adiw r28,88-63
+	ldd r24,Y+63
+	sbiw r28,88-63
+	add r25,r24
+	adiw r28,101-63
+	std Y+63,r25
+	sbiw r28,101-63
+	ldi r25,lo8(1)
+	adiw r28,102-63
+	std Y+63,r25
+	sbiw r28,102-63
+	adiw r28,101-63
+	ldd r24,Y+63
+	sbiw r28,101-63
+	adiw r28,88-63
+	ldd r25,Y+63
+	sbiw r28,88-63
+	cp r24,r25
+	brlo .L45
+	adiw r28,102-63
+	std Y+63,__zero_reg__
+	sbiw r28,102-63
+.L45:
+	adiw r28,100-63
+	ldd r24,Y+63
+	sbiw r28,100-63
+	adiw r28,102-63
+	ldd r25,Y+63
+	sbiw r28,102-63
+	or r24,r25
+	adiw r28,100-63
+	std Y+63,r24
+	sbiw r28,100-63
+	adiw r28,101-63
+	ldd r24,Y+63
+	sbiw r28,101-63
+	adiw r28,88-63
+	std Y+63,r24
+	sbiw r28,88-63
+	adiw r28,73-63
+	ldd r25,Y+63
+	sbiw r28,73-63
+	adiw r28,81-63
+	ldd r24,Y+63
+	sbiw r28,81-63
+	add r25,r24
+	adiw r28,89-63
+	std Y+63,r25
+	sbiw r28,89-63
+	ldi r25,lo8(1)
+	adiw r28,103-63
+	std Y+63,r25
+	sbiw r28,103-63
+	adiw r28,89-63
+	ldd r24,Y+63
+	sbiw r28,89-63
+	adiw r28,73-63
+	ldd r25,Y+63
+	sbiw r28,73-63
+	cp r24,r25
+	brlo .L46
+	adiw r28,103-63
+	std Y+63,__zero_reg__
+	sbiw r28,103-63
+.L46:
+	adiw r28,100-63
+	ldd r24,Y+63
+	sbiw r28,100-63
+	adiw r28,89-63
+	ldd r25,Y+63
+	sbiw r28,89-63
+	add r24,r25
+	adiw r28,104-63
+	std Y+63,r24
+	sbiw r28,104-63
+	ldi r24,lo8(1)
+	adiw r28,105-63
+	std Y+63,r24
+	sbiw r28,105-63
+	adiw r28,104-63
+	ldd r25,Y+63
+	sbiw r28,104-63
+	adiw r28,89-63
+	ldd r24,Y+63
+	sbiw r28,89-63
+	cp r25,r24
+	brlo .L47
+	adiw r28,105-63
+	std Y+63,__zero_reg__
+	sbiw r28,105-63
+.L47:
+	adiw r28,103-63
+	ldd r25,Y+63
+	sbiw r28,103-63
+	adiw r28,105-63
+	ldd r24,Y+63
+	sbiw r28,105-63
+	or r25,r24
+	adiw r28,103-63
+	std Y+63,r25
+	sbiw r28,103-63
+	adiw r28,104-63
+	ldd r25,Y+63
+	sbiw r28,104-63
+	adiw r28,89-63
+	std Y+63,r25
+	sbiw r28,89-63
+	adiw r28,74-63
+	ldd r24,Y+63
+	sbiw r28,74-63
+	adiw r28,82-63
+	ldd r25,Y+63
+	sbiw r28,82-63
+	add r24,r25
+	adiw r28,90-63
+	std Y+63,r24
+	sbiw r28,90-63
+	ldi r24,lo8(1)
+	adiw r28,106-63
+	std Y+63,r24
+	sbiw r28,106-63
+	adiw r28,90-63
+	ldd r25,Y+63
+	sbiw r28,90-63
+	adiw r28,74-63
+	ldd r24,Y+63
+	sbiw r28,74-63
+	cp r25,r24
+	brlo .L48
+	adiw r28,106-63
+	std Y+63,__zero_reg__
+	sbiw r28,106-63
+.L48:
+	adiw r28,103-63
+	ldd r25,Y+63
+	sbiw r28,103-63
+	adiw r28,90-63
+	ldd r24,Y+63
+	sbiw r28,90-63
+	add r25,r24
+	adiw r28,107-63
+	std Y+63,r25
+	sbiw r28,107-63
+	ldi r25,lo8(1)
+	adiw r28,108-63
+	std Y+63,r25
+	sbiw r28,108-63
+	adiw r28,107-63
+	ldd r24,Y+63
+	sbiw r28,107-63
+	adiw r28,90-63
+	ldd r25,Y+63
+	sbiw r28,90-63
+	cp r24,r25
+	brlo .L49
+	adiw r28,108-63
+	std Y+63,__zero_reg__
+	sbiw r28,108-63
+.L49:
+	adiw r28,106-63
+	ldd r24,Y+63
+	sbiw r28,106-63
+	adiw r28,108-63
+	ldd r25,Y+63
+	sbiw r28,108-63
+	or r24,r25
+	adiw r28,106-63
+	std Y+63,r24
+	sbiw r28,106-63
+	adiw r28,107-63
+	ldd r24,Y+63
+	sbiw r28,107-63
+	adiw r28,90-63
+	std Y+63,r24
+	sbiw r28,90-63
+	adiw r28,75-63
+	ldd r25,Y+63
+	sbiw r28,75-63
+	adiw r28,83-63
+	ldd r24,Y+63
+	sbiw r28,83-63
+	add r25,r24
+	adiw r28,91-63
+	std Y+63,r25
+	sbiw r28,91-63
+	ldi r25,lo8(1)
+	adiw r28,109-63
+	std Y+63,r25
+	sbiw r28,109-63
+	adiw r28,91-63
+	ldd r24,Y+63
+	sbiw r28,91-63
+	adiw r28,75-63
+	ldd r25,Y+63
+	sbiw r28,75-63
+	cp r24,r25
+	brlo .L50
+	adiw r28,109-63
+	std Y+63,__zero_reg__
+	sbiw r28,109-63
+.L50:
+	adiw r28,106-63
+	ldd r24,Y+63
+	sbiw r28,106-63
+	adiw r28,91-63
+	ldd r25,Y+63
+	sbiw r28,91-63
+	add r24,r25
+	adiw r28,110-63
+	std Y+63,r24
+	sbiw r28,110-63
+	ldi r24,lo8(1)
+	adiw r28,111-63
+	std Y+63,r24
+	sbiw r28,111-63
+	adiw r28,110-63
+	ldd r25,Y+63
+	sbiw r28,110-63
+	adiw r28,91-63
+	ldd r24,Y+63
+	sbiw r28,91-63
+	cp r25,r24
+	brlo .L51
+	adiw r28,111-63
+	std Y+63,__zero_reg__
+	sbiw r28,111-63
+.L51:
+	adiw r28,109-63
+	ldd r25,Y+63
+	sbiw r28,109-63
+	adiw r28,111-63
+	ldd r24,Y+63
+	sbiw r28,111-63
+	or r25,r24
+	adiw r28,109-63
+	std Y+63,r25
+	sbiw r28,109-63
+	adiw r28,110-63
+	ldd r25,Y+63
+	sbiw r28,110-63
+	adiw r28,91-63
+	std Y+63,r25
+	sbiw r28,91-63
+	adiw r28,76-63
+	ldd r24,Y+63
+	sbiw r28,76-63
+	adiw r28,84-63
+	ldd r25,Y+63
+	sbiw r28,84-63
+	add r24,r25
+	adiw r28,92-63
+	std Y+63,r24
+	sbiw r28,92-63
+	adiw r28,109-63
+	ldd r24,Y+63
+	sbiw r28,109-63
+	adiw r28,92-63
+	ldd r25,Y+63
+	sbiw r28,92-63
+	add r24,r25
+	adiw r28,92-63
+	std Y+63,r24
+	sbiw r28,92-63
+	adiw r28,85-63
+	ldd r24,Y+63
+	sbiw r28,85-63
+	std Y+2,r24
+	adiw r28,86-63
+	ldd r25,Y+63
+	sbiw r28,86-63
+	std Y+3,r25
+	adiw r28,87-63
+	ldd r24,Y+63
+	sbiw r28,87-63
+	std Y+4,r24
+	adiw r28,88-63
+	ldd r25,Y+63
+	sbiw r28,88-63
+	std Y+5,r25
+	adiw r28,89-63
+	ldd r24,Y+63
+	sbiw r28,89-63
+	std Y+6,r24
+	adiw r28,90-63
+	ldd r25,Y+63
+	sbiw r28,90-63
+	std Y+7,r25
+	adiw r28,91-63
+	ldd r24,Y+63
+	sbiw r28,91-63
+	std Y+8,r24
+	adiw r28,92-63
+	ldd r25,Y+63
+	sbiw r28,92-63
+	std Y+9,r25
+.L38:
+	ldd r10,Y+10
+	ldd r11,Y+11
+	ldd r12,Y+12
+	ldd r13,Y+13
+	ldd r14,Y+14
+	ldd r15,Y+15
+	ldd r16,Y+16
+	ldd r17,Y+17
+	mov r18,r10
+	mov r19,r11
+	mov r20,r12
+	mov r21,r13
+	mov r22,r14
+	mov r23,r15
+	mov r24,r16
+	mov r25,r17
+	mov __tmp_reg__,r31
+	ldi r31,lo8(7)
+	mov r10,r31
+	mov r31,__tmp_reg__
+	clr r11
+	clr r12
+	clr r13
+	clr r14
+	clr r15
+	ldi r16,lo8(0)
+	ldi r17,lo8(0)
+	rcall __udivdi3
+	mov r10,r18
+	mov r11,r19
+	mov r12,r20
+	mov r13,r21
+	mov r14,r22
+	mov r15,r23
+	mov r16,r24
+	mov r17,r25
+	std Y+18,r10
+	std Y+19,r11
+	std Y+20,r12
+	std Y+21,r13
+	std Y+22,r14
+	std Y+23,r15
+	std Y+24,r16
+	std Y+25,r17
+	ldd r24,Y+9
+	ldd r25,Y+25
+	cp r25,r24
+	brsh .+2
+	rjmp .L55
+	ldd r24,Y+9
+	ldd r25,Y+25
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+8
+	ldd r25,Y+24
+	cp r25,r24
+	brlo .L55
+	ldd r24,Y+8
+	ldd r25,Y+24
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+7
+	ldd r25,Y+23
+	cp r25,r24
+	brlo .L55
+	ldd r24,Y+7
+	ldd r25,Y+23
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+6
+	ldd r25,Y+22
+	cp r25,r24
+	brlo .L55
+	ldd r24,Y+6
+	ldd r25,Y+22
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+5
+	ldd r25,Y+21
+	cp r25,r24
+	brlo .L55
+	ldd r24,Y+5
+	ldd r25,Y+21
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+4
+	ldd r25,Y+20
+	cp r25,r24
+	brlo .L55
+	ldd r24,Y+4
+	ldd r25,Y+20
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+3
+	ldd r25,Y+19
+	cp r25,r24
+	brlo .L55
+	ldd r24,Y+3
+	ldd r25,Y+19
+	cp r24,r25
+	breq .+2
+	rjmp .L52
+	ldd r24,Y+2
+	ldd r25,Y+18
+	cp r25,r24
+	brlo .+2
+	rjmp .L52
+.L55:
+	sts which_switch,__zero_reg__
+	std Y+10,__zero_reg__
+	std Y+11,__zero_reg__
+	std Y+12,__zero_reg__
+	std Y+13,__zero_reg__
+	std Y+14,__zero_reg__
+	std Y+15,__zero_reg__
+	std Y+16,__zero_reg__
+	std Y+17,__zero_reg__
+.L54:
+/* epilogue start */
+	subi r28,lo8(-(111))
+	sbci r29,hi8(-(111))
+	in __tmp_reg__,__SREG__
+	cli
+	out __SP_H__,r29
+	out __SREG__,__tmp_reg__
+	out __SP_L__,r28
+	pop r28
+	pop r29
+	pop r17
+	pop r16
+	pop r15
+	pop r14
+	pop r13
+	pop r12
+	pop r11
+	pop r10
+	ret
+	.size	led_switch_echo, .-led_switch_echo
 .global	main
 	.type	main, @function
 main:
@@ -317,6 +1367,9 @@ main:
 	ldi r31,hi8(55)
 	ldi r24,lo8(-1)
 	st Z,r24
+	ldi r30,lo8(49)
+	ldi r31,hi8(49)
+	st Z,__zero_reg__
 	ldi r30,lo8(56)
 	ldi r31,hi8(56)
 	ldi r24,lo8(-1)
@@ -324,7 +1377,7 @@ main:
 	rcall init_Ex1
 	rcall init_Ex2
 /* #APP */
- ;  133 "main.c" 1
+ ;  214 "main.c" 1
 	sei
  ;  0 "" 2
 /* #NOAPP */
@@ -342,10 +1395,10 @@ main:
 	sts SONG+5,r24
 	ldi r24,lo8(49)
 	sts SONG+6,r24
-	ldi r24,lo8(44)
+	ldi r24,lo8(43)
 	sts SONG+7,r24
 	sts SONG+8,__zero_reg__
-.L22:
+.L57:
 	lds r24,SONG_INDEX
 	lds r25,(SONG_INDEX)+1
 	movw r30,r24
@@ -354,7 +1407,7 @@ main:
 	ld r24,Z
 	ldi r22,lo8(1)
 	rcall play_note
-	rjmp .L22
+	rjmp .L57
 	.size	main, .-main
 	.comm SONG,9,1
 .global __do_copy_data

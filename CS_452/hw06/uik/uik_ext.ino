@@ -41,10 +41,6 @@ void UIKInitialize(uint64_t ticklen, uint8_t MaxTasks)
   UIKTickLen = ticklen;
 }
 
-uint8_t UIKAddTask2(void(*task)(void))
-{
-  
-}
 
 uint8_t UIKAddTask(void(* task)(void), uint8_t priority /*,stack*/)
 {
@@ -69,7 +65,7 @@ uint8_t UIKAddTask(void(* task)(void), uint8_t priority /*,stack*/)
 
 void UIKRun(uint8_t taskid)
 {
-  TaskStack[UIKCurrentTaskI].task_p();
+  TaskStack[taskid].task_p();
 }
 
 

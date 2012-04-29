@@ -1,4 +1,5 @@
 #include "uik_stack.h"
+#include "uik_ext.h"
 
 void loop()
 {
@@ -6,9 +7,12 @@ void loop()
   UIKInitialize(500, 3);
   
   /*Add tasks*/
-  UIKAddTask2();
+  UIKAddTask(led_update_delay, 1);
+  UIKAddTask(led_hog, 1);
   
   /*Run the current task*/
-  UIKRun(TaskStack[UIKCurrentTaskI].tid);
-  
+  while(1)
+  {
+    UIKRun(TaskStack[UIKCurrentTaskI].tid);
+  }
 }

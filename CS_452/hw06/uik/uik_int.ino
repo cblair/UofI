@@ -101,7 +101,16 @@ ISR(TIMER2_OVF_vect)
     
     /*Increment the count of how many ticks have occured*/
     UIKTickNum++;
-
-    led_update();
+    
+    /*
+     * Increment the index of the task that should be run. If the incemented 
+     * index is the same value as where to add new tasks, it is too big, and 
+     * should go back to the start.
+     */
+    UIKCurrentTaskI++;
+    if(UIKCurrentTaskI >= UIKAddTaskI)
+    {
+     UIKCurrentTaskI = 0; 
+    }
   }
 }

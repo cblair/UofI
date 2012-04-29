@@ -1,0 +1,233 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amssymb,amsmath}
+\usepackage{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due April 4th, 2012}
+\title{CS 452 Second Exam}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section{}
+
+\textbf{a.} F \\
+\textbf{b.} T \\
+\textbf{c.} T \\
+\textbf{d.} F \\
+\textbf{e.} T \\
+
+
+\section{}
+\begin{enumerate}[(a)]
+	\item Variables allocated in the \textbf{bss} section.
+		\begin{itemize}
+			\item In languages like C, the compiler typicall adds code to the beginning (in our case, to the
+				program memory) that initializes variables found in the bss section to 0, NULL, etc.
+				Variables found in the bss section are typically globals or static variables, seen through
+				the life of the program.
+		\end{itemize}
+	\item Variables allocated in the \textbf{data} section
+		\begin{itemize}
+			\item Variables in the data section are initialized variables. For Harvard archetictures like ours,
+				each time the variable is referenced, a load in program memory must be inserted to
+				bind the variable to a register. Each time the variable is assigned to, a store must be
+				inserted into program memory 
+		\end{itemize}
+	\item Local variables declared (but not initialized) as static
+		\begin{itemize}
+			\item At the begging of program memory, code is inserted to initialize static variables to 0,
+				NULL, etc.
+		\end{itemize}
+	\item an interrupt service routine
+		\begin{itemize}
+			\item Enabling interrupts will cause the compiler to create an interrupt vector/table at
+				the beginning of program memory. The values in this table are usually the memory
+				addresses for the respective interrupt handler functions.
+		\end{itemize}
+\end{enumerate}
+
+
+\section{}
+The \textit{round-robin} for our RTOS is a \textbf{non-preemptive} scheduling algorithm. It is the simplest
+possible algorithm for running multiple tasks. It calls the first task, lets it run until it finishes, then calls the
+second, etc. Since tasks are essentially unmanaged, \textbf{starvation} is possible, and tasks with 
+higher prority can end up waiting on lower priority tasks.
+
+By comparison, \textit{multi-user round-robin} algorithms preemptively give each task even time slices. 
+If a task is not finished, it is interrupted and will resume on the next round. It is a starvation free algorithm,
+but it also has no task priorities.
+
+
+\section{}
+The primary point of the tick counter in the RTOS is to create a adjustable time unit in which to base
+preemptive actions (interrupts, context switches) on. 
+
+
+\section{}
+Having a \textbf{fast time tick} means that context switctes happen fast. A a pro, \textbf{Higher 
+priority tasks wait less} for the next time tick, in which case they get to switch with a lower priority tasks and
+run. As a con, context switches can happen more often, which means the CPU has much more overhead
+doing context switch operations, and less actual task execution is done.
+
+Having a \textbf{slow time tick} means just the opposite. As a pro, there are \textbf{less context switches 
+and thus less overhead}. As a con, \textbf{higher priority tasks} have to wait longer before they can switch
+with a lower priority task.
+
+
+\section{}
+Disadvantages to disabling interrupts while tasks are in critical section:
+\begin{itemize}
+	\item If a task goes into an infinite loop (i.e. logic issues or waiting on IO), than the entire operating
+		system is frozen.
+	\item If the user forgets to renable interrupts, than the operating system may be frozen, or scheduling
+		will not function properly.
+\end{itemize}
+
+
+\section{}
+\scriptsize
+\begin{lstlisting}
+int SEMAPHORE1 = TRUE; /*available*/
+
+int CHECK_SEMAPHORE_INTERVAL = 3; /*seconds*/
+
+/*
+ * This function will make the callee wait until the semaphore is ready, 
+ * and then reserves the semaphore for the callee. The callee must free 
+ * it when it is done with its critical section.
+ */
+void P(int semaphore)
+{
+	while(semaphore != TRUE)
+	{
+		delay(CHECK_SEMAPHORE_INTERVAL);
+	}
+
+	/*
+	  * we execute the semaphore reservation as quickly as possible
+	  * after it is freed, to avoid any mutex issues by another task 
+	  * doing the same thing.
+	  */
+	
+	semaphore = FALSE; /*reserved*/
+
+	return;
+}
+\end{lstlisting}
+\normalsize
+
+
+\pagebreak
+
+
+\section{}
+Things that UIK has to preserve during a context switch are:
+\begin{itemize}
+	\item The Stack Pointer register
+	\item The General Purpose register
+	\item The Status register
+	\item Program Counter
+\end{itemize}
+
+
+\section{}
+UIK Design
+
+The task stack, PCB, and more can be seen coded as follows:
+\scriptsize
+\lstinputlisting{src/task_stack.h}
+\normalsize
+
+\subsection{Task Stack(s)}
+I'm starting out with one task stack. It is specified in the same spot as the process control block (PCB).
+I've declared it with PROGMEM, so it lives in program memory as opposed to data memory. Anticipating
+lots of context switching, this will hopefully keep latency to a minimum, since it won't have to go to 
+data memory for context information. The task stack is \textbf{static} in size, but the values for the 
+tasks can be modified. New tasks have to be compiled in.
+
+
+\subsection{Task Control Block}
+Contained in my Task Control Block is all the standard stuff from our textbook and classnotes: 
+(function) \textbf{pointer} to the task, \textbf{state/status} (blocked, ready, running), 
+\text{pid} (process/task id), \text{program counter}, \textbf{register} (Status, General Purpose), 
+and \textbf{memory limits} (upper and lower bounds).
+
+
+\subsection{Stack Pointer}
+To access the Stack pointer, we'll have to write some assembly code. I choose to use inline assembly in C.
+
+\begin{lstlisting}
+   asm volatile ( 
+		...
+               "in      r0, 0x3d            \n\t"   \ 
+               "st      x+, r0               \n\t"   \ 
+               "in      r0, 0x3e            \n\t"   \ 
+               "st      x+, r0               \n\t"   \
+		);
+\end{lstlisting}
+
+The Stack Pointer is now in the General Purpose Register, and I can access this way. 0x03d and 0x3E above
+are  the locations of the Stack Pointer in memory. I save this later in a variable in my C code (see code 
+snippet above).
+
+\subsection{Context}
+I save the context of each task (function) in there respective PCB's. The Task Stack and the PCB's are
+defined in program memory using the AVR PROGMEM macro.
+
+\subsection{Program counter register}
+Saving the Program Counter is tricky, apparently. You have to do some sort of jump, and the PC value is 
+popped on top of the stack. In assembly, an \textbf{RCALL} to a relative position of 0. We can then store 
+the value to whatever we like.
+
+To restore the program to the PC, do an assembly ICALL (immediate jump) to our stored PC value.
+
+We can use inline assembly in the C source to do all this. Example:
+\begin{lstlisting}
+asm volatile("RCALL 0\n\t"
+             "nop\n\t"
+	      ...
+             "nop\n\t"
+             "ICALL r1\n\t"
+             ::);
+\end{lstlisting}
+
+
+\end{document}

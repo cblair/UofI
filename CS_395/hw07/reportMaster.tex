@@ -1,0 +1,199 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amssymb,amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due April 5th, 2012}
+\title{CS 395 Homework 7}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section*{PROBLEMS}
+
+\subsection*{1.}
+Considering the equation $T(n) = T(\frac{n}{2}) + n^2$. The cost for the recursive tree is:
+
+\begin{tabular}{r l}
+	$T(n)$		& $ = T(\frac{n}{2}) + n^2 $ \\
+				& $ = (T(\frac{n}{4}) + n^2) + n^2$ \\
+				& $ = ( (T(\frac{n}{8}) + n^2) + n^2) + n^2 $ \\
+				& $ = n^2 + (\frac{n}{2})^2 + (\frac{n}{4})^2 + (\frac{n}{8})^2 + \ldots + 1$ \\
+				& $ = n^2 \frac{ 1 - (\frac{1}{4})^{log 2^2} }{ 1 - \frac{1}{4} } $ \\
+				& $ \leq \frac{4}{3}n^2 $\\
+				& $ = O(n^2) $ \\
+\end{tabular}
+
+Using the \textbf{substitution method}, $T(n) = O(n^2)$ will be the upper bound. It will be shown that 
+$T(n) < dn^2$ for some constant $d > 0$. 
+
+\begin{tabular}{r l}
+	$T(n)$		& $ = T(\frac{n}{2}) + n^2 \leq d(\frac{n}{2})^2 + n^2$ \\
+				& $ = d(\frac{n^2}{4}) + n^2 \leq dn^2 $ \\
+				& $ = (\frac{d}{4} + 1)n^2 \leq dn^2 $ \\
+\end{tabular}
+
+For $n >0$ and $d=4$, the condition holds. Therefore, proof by substitution method.
+
+
+\subsection*{2.}
+Considering the equation $T(n) = T(n - 1) + 1$. The cost for the recursive tree is:
+
+\begin{tabular}{r l}
+	$T(n)$		& $ = T(n - 1) + 1 $\\
+				& $ \leq T(n - 1) + T(n - 1) $ \\
+				& $ \leq 2(n-1) + 2^2(n-2) + \ldots + 2^{n-1} $ \\
+				& $ \leq -n + 2 + 2^2 + \dot + 2^{n-1} + 2^n $ \\
+				& $ \leq -n + 2 \frac{1 - 2^n}{1 - 2} $ \\
+				& $ \leq 2 * 2^n $ \\
+				& $ = O(2^n) $\\
+\end{tabular}
+
+Using the \textbf{substitution method}, $T(n) = O(2^n)$ will be the upper bound. It will be shown that 
+$T(n) < c2^n$ for some constant $c > 0$. 
+
+\begin{tabular}{r l}
+	$T(n)$		& $ \leq c 2^{n-1} + c2^{\frac{n}{2}}$ \\
+				& $ \leq c 2^{n-1} + c 2^{n-2}$ \\
+				& $ = c 2^n$ \\ 
+\end{tabular}
+
+For $n \geq 4$ and $c=1$, the condition holds. Therefore, proof by substitution method.
+
+
+\subsection*{3.}
+The recursive tree for $T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + cn$ is as follows:
+
+\begin{tabular}{ l | c c c}
+				&					&	$Cn$			&	\\
+$lg_{\frac{3}{2}	}n$	&	$C(\frac{n}{3})$	&					&	$C(\frac{2n}{3})$ \\
+				&	$C(n/9)$	$C(2n/9)$&					&	$C(2n/9)$	$C(4n/9)$\\
+\end{tabular}
+
+The greatest cost in the tree is $T(n) = (\frac{2/3})^2 n $, where $T(n) = (\frac{2}{3})^k n$. When
+$k = log_{\frac{3}{2}} n$, the depth of the tree is $log_{\frac{3}{2}} n$. $T(n)$ is at least 
+$cn log_3 n = \Omega({n log n})$ where every node has 2 children.
+
+
+\subsection*{4.}
+\subsubsection*{(a) $T(n) = 2T(\frac{n}{4}) + 1$}
+Consider $a = 2, b = 4, f(n) = 1$. Using the \textbf{master theorem}:
+
+\begin{tabular}{r l}
+	$n^{ log_b a }$		&	$ = n^{log_4 2} $\\
+					&	$ = \Theta(n^{\frac{1}{2}} ) $ \\
+\end{tabular}
+
+Applying Case 3, $T(n) = \Theta(n)$.
+
+
+\subsubsection*{(b) $T(n) = 2T(\frac{n}{4}) + \sqrt{n} $}
+Consider $a = 2, b = 4, and f(n) = \sqrt{n} $ Using the \textbf{master theorem}:
+
+\begin{tabular}{r l}
+	$n^{ log_b a }$		&	$ = n^{log_4 2} $\\
+					&	$ = \Theta(n^{\frac{1}{2}} ) $ \\
+	$f(n)$			&	$ = \Theta(n^{\frac{1}{2}} log n) $ \\
+\end{tabular}
+
+Therefore, $T(n) = \Theta(n^{\frac{1}{2}} log n) $.
+
+
+\subsubsection*{(c) $T(n) = 2T(\frac{n}{4}) + n$ }
+Consider $a = 2, b = 4, f(n) = n$. Using the \textbf{master theorem}:
+
+\begin{tabular}{r l}
+	$n^{ log_b a }$		&	$ = n^{log_4 2} $\\
+					&	$ = \Theta(n^{\frac{1}{2}} ) $ \\
+	$f(n)$			&	$ = O(n^{log_3 4 - e}) $ \\
+\end{tabular}
+
+Applying Case 1, $T(n) = \Theta(n)$.
+
+
+\subsubsection*{(d) $T(n) = 2T(\frac{n}{4}) + n^2$ }
+Consider $a = 2, b = 4, and f(n) = n^2 $ Using the \textbf{master theorem}:
+
+\begin{tabular}{r l}
+	$n^{ log_b a }$		&	$ = n^{log_4 2} $\\
+					&	$ = \Theta(n^{\frac{1}{2}} ) $ \\
+	$f(n)$			&	$ = O(n^{log_3 4 - e}) $ \\
+\end{tabular}
+
+Applying Case 3, $T(n) = \Theta(n^{\frac{1}{2}}) $.
+
+
+\subsubsection*{5.}
+Consider the equation $T(n) = T(\frac{n}{4}) + \Theta(n^2)$. With $a = 2, b = 4, and f(n) = \Theta(n^2) $, using the \textbf{master theorem}:
+
+\begin{tabular}{r l}
+	$n^{ log_b a }$		&	$ = n^{log_4 2} + \Theta(n^2) $\\
+					&	$ = \Theta(n^{\frac{1}{2}} ) + \Theta(n^2) $ \\
+	$f(n)$			&	$ = \Theta(n^{\frac{1}{2}} log n) + \Theta(n^2)$ \\
+\end{tabular}
+
+Applying Case 2, $T(n) = \Theta(n^{\frac{1}{2}} log n) + \Theta(n^2) \geq \Theta(n^2)$. Which is equal or
+slower than Strassen's algorithm at $\Theta{n^2}$, so Caesar's algorithm is no better.
+
+
+\subsubsection*{6}
+Consider the equation $T(n) = T(\frac{n}{2}) + \Theta(1)$. With $a = 1, b = 2, and f(n) = \Theta(1) $, using the \textbf{master theorem}:
+
+\begin{tabular}{r l}
+	$n^{ log_b a }$		&	$ = n^{log_2 1} $\\
+					&	$ = n^0 $ \\
+					&	$ = 1$ \\
+	$f(n)$			&	$ = \Theta(n^{log_b a}) $ \\
+					&	$ = \Theta(n^{log_2 1}) $ \\
+					&	$ = \Theta(n^0) $ \\
+					&	$ = \Theta(1) $ \\ 
+\end{tabular}
+
+Applying Case 2:
+
+\begin{tabular}{r l}
+	$T(n)$			&	$ = \Theta(n^{log_b a} log n)$ \\
+					&	$ = \Theta(n^{log_2 1} lg n) $ \\
+					&	$ = \Theta(n^0 lg n) $ \\
+					&	$ = \Theta(1 lg n) $ \\
+\end{tabular}
+
+Therefore, $ = \Theta(lg n) $
+
+\end{document}

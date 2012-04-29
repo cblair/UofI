@@ -1,0 +1,251 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amssymb,amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due March 27th, 2012}
+\title{CS 395 Homework 6}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section*{PROBLEMS}
+
+\subsection*{1.}
+First, the matrix product using Strassen's algorithm is as follows:
+\begin{eqnarray}
+	A = 	\bigl(
+		\begin{smallmatrix}
+		A_{11} & A_{12} \\
+		A_{21} & A_{22}
+		\end{smallmatrix} \bigr)
+	B = 	\bigl(
+		\begin{smallmatrix}
+		B_{11} & B_{12} \\
+		B_{21} & B_{22}
+		\end{smallmatrix} \bigr)
+\\
+	A = 	\bigl(
+		\begin{smallmatrix}
+		1 & 3 \\
+		7 & 5
+		\end{smallmatrix} \bigr)
+	B = 	\bigl(
+		\begin{smallmatrix}
+		6 & 8\\
+		4 & 2
+		\end{smallmatrix} \bigr)
+\end{eqnarray}
+
+We then find the $ \frac{n}{2} * \frac{n}{2} $ matrices:
+\begin{eqnarray}
+	S_1 = B_{12} - B_{22} = 8 - 2 = 6 \\
+	S_2 = A_{11} + A_{12} = 1 + 3 = 4 \\
+	S_3 = A_{21} + A_{22} = 7 + 5 = 12 \\
+	S_4 = B_{21} - B_{11} = 4 - 6 = -2 \\
+	S_5 = A_{11} + A_{22} = 1 + 5 = 6 \\
+	S_6 = B_{11} + B_{22} = 6 + 2 = 8 \\
+	S_7 = A_{12} - A{21} = 3 - 5 = -2 \\
+	S_8 = B_{21} + B_{22} = 4 + 2 = 6 \\
+	S_9 = A_{11} - A_{21} = 1 - 7 = -6 \\
+	S_{10} = B_{11} + B_{12} = 6 + 8 = 14
+\end{eqnarray}
+
+We then compute the product of A and B matrices as follows:
+\begin{eqnarray}
+	P_1 = A_{11} * S_1 = 1 * 6 = 6 \\
+	P_2 = S_2 * B_{22} = 4 * 2 = 8 \\
+	P_3 = S_3 * B_{11} = 12 * 6 = 72 \\
+	P_4 = A_{22} * S_4 = 5 * (-2) = -10 \\
+	P_5 = S_5 * S_6 = 6 * 8 = 48 \\
+	P_6 = S_7 * S_8 = -2 * 6 = -12 \\
+	P_7 = S_9 * S_{10} = (-16) * 14 \\
+	= -84
+\end{eqnarray}
+
+The $ \frac{n}{2} * \frac{n}{2} $ sub matrices of the product:
+\begin{eqnarray}
+	C_{11} = P_5 + P_4 - P_2 + P_6 \\
+	= 48 - 10 - 8 - 12 \\
+	= 18 \\
+	C_{12} = P_1 + P_2 \\
+	= 6 + 8 \\
+	= 14 \\
+	C_{21} = P_3 + P_4 \\
+	= 72 - 10 \\
+	= 62 \\
+	C_{22} = P_5 + P_1 - P_3 - P_7 \\
+	= 48 + 6 - 72 + 84 \\
+	= 66
+\end{eqnarray}
+
+The resulting matrix for $C$ is:
+\begin{eqnarray}
+	C = \bigl(
+		\begin{smallmatrix}
+		C_{11} & C_{12} \\
+		C_{21} & C_{22}
+		\end{smallmatrix} \bigr)
+\\
+	C = \bigl(
+		\begin{smallmatrix}
+		18 & 14 \\
+		62 & 66
+		\end{smallmatrix} \bigr)
+\end{eqnarray}
+
+\subsection*{2.}
+\begin{lstlisting}
+						
+STRASSENS_ALG(A,B)
+\end{lstlisting}
+
+\lstset{numbers=left}
+\begin{lstlisting}
+n = rows in A
+
+A = matrix with n/2 x n/2 dimensions
+B = matrix with n/2 x n/2 dimensions
+C = matrix with n/2 x n/2 dimensions
+
+if == 2
+	S1 = B12 - B22
+	S2 = A11 + A12
+	S3 = A21 + A22
+	S4 = B21 - B11
+	S5 = A11 + A22
+	S6 = B11 + B22
+	S7 = A12 - A22
+	S8 = B21 + B22
+	S9 = A11 + A21
+	S10 = B11 + B12
+
+	P1 = A11 * S1
+	P2 = S2 * B22
+	P3 = S3 * B11
+	P4 = A22 * S4
+	P5 = S5 * S6
+	P6 = S7 * S8
+	P7 = S9 * S10
+	C11 = P5 + P4 - P2 + P6
+	C12 = P1 + P2
+	C21 = P3 + P4
+	C22 = P5 + P1 - P3 - P7
+
+return C
+\end{lstlisting}
+
+\subsection*{3.}
+Consider the recurrence for each:
+\\
+\begin{tabular}{l l}
+	$ T(n) $	&	$ = 132464 T(n/68) + n^2 $ \\
+			&	$ = \Theta( n^{lg_{68} 132464} ) $ \\
+			&	$ \approx \Theta( n^{2.795128} ) $
+\end{tabular}
+
+\begin{tabular}{l l}
+	$ T(n) $	&	$ = 143640 T(n/70) + n^2 $ \\
+			&	$ = \Theta( n^{lg_{70} 143640} ) $ \\
+			&	$ \approx \Theta( n^{2.795128} ) $
+\end{tabular}
+
+\begin{tabular}{l l}
+	$ T(n) $	&	$ = 155424 T(n/72) + n^2 $ \\
+			&	$ = \Theta( n^{lg_{72} 155424} ) $ \\
+			&	$ = \Theta( n^{2.795147} ) $
+\end{tabular}
+
+Strassen's algorithm runs in $\Theta( n^{lg 7} ) \approx \Theta( n^{2.81} ) $. All of the above outperform 
+Strassen's algorithm.
+
+
+\subsection*{4.}
+Let $ (a + bi) (c + di) = (ac - bd) + (ad + bc) i$.
+
+Now consider the following:
+\begin{eqnarray}
+	p_1 = (a + b) * (c + d) \\
+	p_2 = a * c \\
+	p_3 = b * d \\
+	ac - bd = p_2 - p_3 \\
+	ad + bc = p_1 = p_2 - p_3
+\end{eqnarray}
+
+Using only $ p_1, p_2, $ and $ p_3 $, the product of two complex numbers can be computed.
+
+
+\subsection*{5.}
+Using the substitution method, we will prove that $T(n) = T(n -1) + n $ is $O(n^2)$.
+
+\subsubsection*{Assumption}
+$T(n) = T(n-1) + n$
+
+\subsubsection*{Substitution} 
+\begin{eqnarray}
+	T(n) = T(n-1) + n \\
+	T(n-1) = T(n-2) + (n-1) \\
+	T(n-2) = T(n-3) + (n-2) \\
+	...
+\end{eqnarray}
+
+Adding up the equations as follows:
+\begin{eqnarray}
+	T(n-1) + T(n-2) + ... T(2) + T(1) + n + (n-1) + n(-2) + ... 3 + 2 +1 \\
+	T(n) = n + (n-1) + (n-2) + ... 2 + 1 \\
+	= \frac{n(n+1)}{2} \\
+	= O(n^2)
+\end{eqnarray}
+
+Therefore, we have shown that $T(n) = O(n^2)$.
+
+
+\subsection*{6.}
+We will show that $ T(n) = 4 T( \frac{n}{3} ) + n $ is $ T(n) = \Theta(n^{log_{3}4 } ) $. Consider 
+$ a = 4, b = 3$. $n^{log_b a} = n^{log_3 4} = \Theta(n^2), f(n) = O(n^{log_3 4 - \epsilon} )$, 
+when $\epsilon = 1$. Applying case 1 of the Master Theorem, we conclude that the solution is 
+$ T(n) = \Theta(n^2) $.
+
+Using the \textbf{Substitution Method}, we assume with the induction hypothesis that 
+$T(n/3) \le c(\frac{n}{3})^2 - c(\frac{n}{3})$. Consider:
+\begin{eqnarray}
+	T(n) = 4T(\frac{n}{3}) + n 
+\end{eqnarray}
+
+\end{document}

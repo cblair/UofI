@@ -72,6 +72,30 @@ void lcdInit(){
 }
 
 
+void newline(){
+	/*just move cursor to address 40
+	which is line 2
+	*/
+	sendControl(0b10101000);
+}
+
+
+int putchar(int ch){
+	
+	sendData(ch);
+	return 1;
+}
+
+
+void putstr(char *c,int len){
+	int i;
+	for(i=0;i<len;i++){
+		putchar(c[i]);
+	}
+	
+}
+
+
 int main(){
 	DATA_SETUP = 0xff;//set data  dirrection to out
 	CTRL_SETUP = 0xff;//set data direction to out
@@ -79,10 +103,11 @@ int main(){
 	lcdInit();//initialize
 	_delay_ms(100);//wait
 
-	//TS
-	sendData(0b00110011);
-	CTRL=3;
 
+	putstr("Hello",5);
+	newline();
+	putstr("World",5);
+	
 	/*Don't need to loop, because the LCD has memory!*/
 	return 0;
 }

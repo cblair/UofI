@@ -40,25 +40,17 @@ void led_update(void)
  * Uses on board LED, doesn't need led_setup() above.
  */
 void led_update_delay(void)
-{
-    if(led_inited == 0)
-    {
-     led_init(); 
-    }
-  
-    while(1)
-    {
+{ 
       digitalWrite(13, LOW);   // set the LED
       _delay_ms(50);
       digitalWrite(13, HIGH);   // set the LED
       _delay_ms(50);
-    }
 }
 
 
 /*Test function to hog run time from above*/
 void led_hog(void)
-{
+{  
     digitalWrite(12, LOW);   // set the LED
     _delay_ms(50);
     digitalWrite(12, HIGH);   // set the LED
@@ -69,6 +61,11 @@ void led_hog(void)
 /*Test function to hog run time from above*/
 void led_hog2(void)
 {
+    if(led_inited == 0)
+    {
+     led_init(); 
+    }
+  
     digitalWrite(11, LOW);   // set the LED
     _delay_ms(50);
     digitalWrite(11, HIGH);   // set the LED

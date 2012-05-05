@@ -3,10 +3,13 @@
 
 #include <avr/pgmspace.h>
 
+/*Init stack with absolute biggest size. Only used to init.*/
 #define MAX_TASKS 100
+/*User setable max stack size*/
+uint8_t MaxStackSize = 0;
 
 /* Index of current task being run*/
-uint16_t UIKCurrentTaskI = 0;
+uint8_t UIKCurrentTaskI = 0;
 
 /*Task State Type*/
 enum task_state_t
@@ -27,6 +30,9 @@ struct process_control_block
 
 	/*Task state - see task_state enum type*/
 	enum task_state_t task_state;
+
+        /*Priority - for scheduling*/
+        uint8_t priority;
 
 	/*Task/Process ID*/
 	uint64_t tid;

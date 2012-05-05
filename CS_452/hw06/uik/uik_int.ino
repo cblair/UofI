@@ -1,5 +1,7 @@
 /*UIK internal / hidden functions*/
 
+#include "uik_context.h"
+
 /* 32 bit global variable that is incremented
  * by the tick handler. It is a count of the
  * number of ticks that have occured so far.
@@ -12,7 +14,7 @@ static uint32_t UIKTickNum = 0;
 uint16_t UIKTickLen = 0;
 
 /* Index of current task being run*/
-extern uint16_t UIKCurrentTaskI;
+extern uint8_t UIKCurrentTaskI;
 
 /*
  * How many times the timer overflows
@@ -22,12 +24,9 @@ static uint64_t UIKTimerCnt = 0;
 
 /*This is the scheduler from class*/
 void UIKDispatcher(void)
-{
-  /*Suspend the current task*/
-  //TODO
-  
-  /*Increment index to next task*/
-  UIKCurrentTaskI++;  
+{ 
+  /*Get the next task to run*/
+  UIKCurrentTaskI = UIKGetMaxPriority();
 }
 
 
@@ -44,15 +43,73 @@ void UIKIdle(void)
 /*Device driver for the UIK main tick timer*/
 void UIKTickHandler(void)
 {
+  UIKTimerCnt++;
   
+  /*if time to run new task*/
+  if(UIKTimerCnt >= UIKTickLen)
+  {
+    /*reset the count of how many times the timer has overflowed*/
+    UIKTimerCnt = 0; 
+    
+    /*Increment the count of how many ticks have occured*/
+    UIKTickNum++;
+    
+    if(digitalRead(10) == LOW)
+    {
+     TaskStack[1].priority = 10; 
+    }
+    else
+    {
+     TaskStack[1].priority = 1;  
+    }
+    
+    UIKDispatcher();
+  }
 }
 
 
-/*Interrupt stuff*/
+/*
+ * UIKGetMaxPriority
+ *
+ * Gets the task with the max priority (duh). Tie goes to the 
+ * task that got added first.
+ */
+uint8_t UIKGetMaxPriority(void)
+{
+  /*
+   * Increment the index of the task that should be run by default. If the 
+   * incemented index is the same value as where to add new tasks, it is too 
+   * big, and should go back to the start.
+   */
+  uint8_t maxi = UIKCurrentTaskI + 1;
+  if(maxi >= UIKAddTaskI)
+  {
+   maxi = 0; 
+  }
+  uint8_t max_val = TaskStack[maxi].priority;
+  
+  uint8_t i;
+  for(i = 0; i < MaxStackSize; i++)
+  {
+   if(TaskStack[i].priority > max_val)
+   {
+     max_val = TaskStack[i].priority;
+     maxi = i; 
+   }
+  }
+  
+  return(maxi);
+}
+
+
+/*
+ * Internal interrupt stuff. Automatically gets called on init in Arduino,
+ * otherwise you should #define USE_AVR to have UIKInitialize call this
+ * on init.
+ */
 void setup() {                
-  // initialize the digital pin as an output.
-  // Pin 13 has an LED connected on most Arduino boards:
-  pinMode(13, OUTPUT);     
+  pinMode(10, INPUT);
+  digitalWrite(10, HIGH);   
 
   /* First disable the timer overflow interrupt*/
   TIMSK2 &= ~(1<<TOIE2);
@@ -91,26 +148,7 @@ void setup() {
 /*Interrupt callback*/
 ISR(TIMER2_OVF_vect) 
 {
-  UIKTimerCnt++;
+  UIKContextSave();
   
-  /*if time to run new task*/
-  if(UIKTimerCnt >= UIKTickLen)
-  {
-    /*reset the count of how many times the timer has overflowed*/
-    UIKTimerCnt = 0; 
-    
-    /*Increment the count of how many ticks have occured*/
-    UIKTickNum++;
-    
-    /*
-     * Increment the index of the task that should be run. If the incemented 
-     * index is the same value as where to add new tasks, it is too big, and 
-     * should go back to the start.
-     */
-    UIKCurrentTaskI++;
-    if(UIKCurrentTaskI >= UIKAddTaskI)
-    {
-     UIKCurrentTaskI = 0; 
-    }
-  }
+  UIKTickHandler();
 }

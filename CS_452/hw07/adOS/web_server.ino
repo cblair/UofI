@@ -45,10 +45,11 @@ void web_server_init()
 void web_server_loop()
 {
  ados_sleep(500);//give time for rest of tasks to start
-  
+ 
+ led_update_delay13(); 
  /*main loop*/
  while(1)
- {
+ { 
   // listen for incoming clients
   EthernetClient client = server.available();
   if (client) {
@@ -75,10 +76,20 @@ void web_server_loop()
             client.print(analogRead(analogChannel));
             client.print(", "); 
             client.print("\n<br />");
+            
+            if(analogChannel >= 5)
+            {
+              client.print("\"read count\" : ");
+              client.print(read_count);
+              client.print("\n<br />\n");
+              
+              client.print("}"); 
+            }
           }
-          client.print("\"read count\" : ");
+          client.print("<!-- \"read count\" : ");
           client.print(read_count);
-          client.print("}");
+          client.print(" -->");
+          client.print("\n<br />\n");
           client.print("\n<br />\n");
           
           read_count++;
@@ -96,11 +107,13 @@ void web_server_loop()
         }
       }
     }
+    
     // give the web browser time to receive the data
     delay(1);
     // close the connection:
     client.stop();
   }
   
+  ados_sleep(500);
  }/*end main loop*/
 }

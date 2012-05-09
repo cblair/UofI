@@ -25,7 +25,7 @@ void mainTask()
 	ados_sleep(500); //give time for rest of tasks to start
 	for(;;)
 	{
-                led_update_delay();
+                led_update_delay2();
                 //uik_counter();
 		g_command = random(255);
 		ados_eventSet(&g_event,&g_command);
@@ -39,10 +39,10 @@ void mainTask2()
 	ados_sleep(500); //give time for rest of tasks to start
 	for(;;)
 	{
-                led_hog();
+                //led_hog();
 		g_command = random(255);
 		ados_eventSet(&g_event,&g_command);
-		//ados_sleep(5000);
+		ados_sleep(5000);
 	}
 }
 
@@ -68,22 +68,23 @@ void setup()
 	ados_init();
 	ados_eventReset(&g_event);
         
-        led_init();
-        counter_init();
+        //led_init();
+        //counter_init();
         web_server_init();
         
 	ados_addTask(&g_serviceTcb, serviceTask,
 		g_serviceTaskStack, sizeof(g_serviceTaskStack), SERVICE_TASK_PRIO);
-        /*
+        
 	ados_addTask(&g_mainTcb, mainTask,
 		g_mainTaskStack, sizeof(g_mainTaskStack), MAIN_TASK_PRIO);
-        */
+        
+        
         ados_addTask(&g_webTcb, web_server_loop,
 		g_webTaskStack, sizeof(g_webTaskStack), WEB_TASK_PRIO);
         
-	/*ados_addTask(&g_mainTcb2, mainTask2,
-		g_mainTaskStack2, sizeof(g_mainTaskStack2), MAIN_TASK2_PRIO);
-        */
+	//ados_addTask(&g_mainTcb2, mainTask2,
+	//	g_mainTaskStack2, sizeof(g_mainTaskStack2), MAIN_TASK2_PRIO);
+        
 }
 
 void loop()

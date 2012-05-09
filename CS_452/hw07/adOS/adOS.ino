@@ -312,7 +312,7 @@ void idleTask()
 	ados_reSchedule();
 	for(;;)
 	{
-                led_hog2();
+                led_update_delay3();
   		ados_lock();
 		ados_reSchedule();
 		delay(1);

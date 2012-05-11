@@ -18,9 +18,9 @@ void led_init()
 void led_update_delay(void)
 { 
       pinMode(13, OUTPUT);
-      digitalWrite(13, LOW);   // set the LED
-      _delay_ms(50);
       digitalWrite(13, HIGH);   // set the LED
+      _delay_ms(50);
+      digitalWrite(13, LOW);   // set the LED
       _delay_ms(50);
 }
 
@@ -28,18 +28,18 @@ void led_update_delay(void)
 void led_update_delay2(void)
 { 
       pinMode(2, OUTPUT);
-      digitalWrite(2, LOW);   // set the LED
-      _delay_ms(50);
       digitalWrite(2, HIGH);   // set the LED
+      _delay_ms(50);
+      digitalWrite(2, LOW);   // set the LED
       _delay_ms(50);
 }
 
 void led_update_delay3(void)
 { 
       pinMode(3, OUTPUT);
-      digitalWrite(3, LOW);   // set the LED
-      _delay_ms(50);
       digitalWrite(3, HIGH);   // set the LED
+      _delay_ms(50);
+      digitalWrite(3, LOW);   // set the LED
       _delay_ms(50);
 }
 
@@ -47,8 +47,8 @@ void led_update_delay3(void)
 void led_update_delay13(void)
 { 
       pinMode(13, OUTPUT);
-      digitalWrite(13, LOW);   // set the LED
-      _delay_ms(50);
       digitalWrite(13, HIGH);   // set the LED
+      _delay_ms(50);
+      digitalWrite(13, LOW);   // set the LED
       _delay_ms(50);
 }

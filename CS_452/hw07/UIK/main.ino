@@ -33,8 +33,8 @@ void mainTask()
 	{
                 led_update_delay2();
                 //uik_counter();
-		g_command = random(255);
-		UIK_eventSet(&g_event,&g_command);
+		//g_command = random(255);
+		//UIK_eventSet(&g_event,&g_command);
 		//UIK_sleep(5000);
                 //UIK_sleep(500);
 	}
@@ -73,6 +73,7 @@ void setup()
         //tone();
   
         Timer1.initialize(500000);         // initialize timer1, and set a 1/2 second period
+        //Timer1.initialize(50000);
         Timer1.pwm(9, 512);                // setup pwm on pin 9, 50% duty cycle
         Timer1.attachInterrupt(callback);  // attaches callback() as a timer overflow interrupt
   
@@ -107,8 +108,13 @@ void setup()
 
 void callback()
 {
-  led_update_delay3();
-  UIK_reSchedule();
+  //UIK_reSchedule();
+ 
+  //led_update_delay3();
+ 
+  g_command = random(255);
+  UIK_eventSet(&g_event,&g_command);
+  UIK_sleep(1);
 }
 
 void loop()

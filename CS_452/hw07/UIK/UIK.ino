@@ -345,7 +345,7 @@ void idleTask()
 	UIK_reSchedule();
 	for(;;)
 	{
-                led_update_delay3();
+                //led_update_delay3();
   		UIK_lock();
 		UIK_reSchedule();
 		delay(1);

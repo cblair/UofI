@@ -1,4 +1,6 @@
 #include <inttypes.h>
+#include "TimerOne.h"
+
 #include "UIK.h"
 
 #define MAIN_TASK_PRIO	0
@@ -34,7 +36,7 @@ void mainTask()
 		g_command = random(255);
 		UIK_eventSet(&g_event,&g_command);
 		//UIK_sleep(5000);
-                UIK_sleep(500);
+                //UIK_sleep(500);
 	}
 }
 
@@ -46,7 +48,7 @@ void mainTask2()
                 //led_hog();
 		g_command = random(255);
 		UIK_eventSet(&g_event,&g_command);
-		UIK_sleep(5000);
+		//UIK_sleep(5000);
 	}
 }
 
@@ -67,6 +69,13 @@ void serviceTask()
 
 void setup()
 {
+        /*Let's toot our horn a little bit to celebrate the fact that we are starting up*/
+        //tone();
+  
+        Timer1.initialize(500000);         // initialize timer1, and set a 1/2 second period
+        Timer1.pwm(9, 512);                // setup pwm on pin 9, 50% duty cycle
+        Timer1.attachInterrupt(callback);  // attaches callback() as a timer overflow interrupt
+  
 	Serial.begin(115200);
 
 	UIK_init();
@@ -77,7 +86,7 @@ void setup()
         web_server_init();
         
         /*Let's toot our horn a little bit to celebrate the fact that we are starting up*/
-        tone();
+        //tone();
         
 	UIK_addTask(&g_serviceTcb, serviceTask,
 		g_serviceTaskStack, sizeof(g_serviceTaskStack), SERVICE_TASK_PRIO);
@@ -94,6 +103,12 @@ void setup()
 	//UIK_addTask(&g_mainTcb2, mainTask2,
 	//	g_mainTaskStack2, sizeof(g_mainTaskStack2), MAIN_TASK2_PRIO);
         
+}
+
+void callback()
+{
+  led_update_delay3();
+  UIK_reSchedule();
 }
 
 void loop()

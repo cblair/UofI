@@ -1,5 +1,5 @@
-#ifndef __ADOS_INCLUDE
-#define __ADOS_INCLUDE
+#ifndef __UIK_OS__INCLUDE
+#define __UIK_OS__INCLUDE
 
 #ifdef __cplusplus
 extern "C"{
@@ -11,19 +11,19 @@ extern "C"{
 
 typedef enum UIK_status_t
 {
-    ADOS_STATUS_RESERVED,
-    ADOS_STATUS_OK,
-    ADOS_STATUS_ERROR,
-    ADOS_STATUS_BAD_PARAM,
-    ADOS_STATUS_NOT_READY,
+    UIK_OS__STATUS_RESERVED,
+    UIK_OS__STATUS_OK,
+    UIK_OS__STATUS_ERROR,
+    UIK_OS__STATUS_BAD_PARAM,
+    UIK_OS__STATUS_NOT_READY,
 }UIK_status_t;
 
 typedef enum UIK_state_t
 {
-    ADOS_STATE_RESERVED,
-    ADOS_STATE_READY_TO_RUN,
-    ADOS_STATE_NOT_READY_TO_RUN,
-    ADOS_STATE_SLEEP,
+    UIK_OS__STATE_RESERVED,
+    UIK_OS__STATE_READY_TO_RUN,
+    UIK_OS__STATE_NOT_READY_TO_RUN,
+    UIK_OS__STATE_SLEEP,
 }UIK_state_t;
 
 typedef unsigned long UIK_timestamp_t;
@@ -72,4 +72,4 @@ void UIK_eventReset(volatile UIK_event_t* event);
 } // extern "C"
 #endif
 
-#endif //__ADOS_INCLUDE
+#endif //__UIK_OS__INCLUDE

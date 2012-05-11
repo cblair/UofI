@@ -116,6 +116,8 @@ void web_server_loop()
     client.stop();
   }
   
-  //UIK_sleep(500);
+  #ifndef UIK_PREEMPT
+  UIK_sleep(500);
+  #endif
  }/*end main loop*/
 }

@@ -63,11 +63,11 @@ static void UIK_reSchedule()
   		for (t_tcb=g_UIK_ctrl.m_firstcb; NULL!=t_tcb; t_tcb=t_tcb->m_next)
                 {
                        
-			if (ADOS_STATE_SLEEP==t_tcb->m_state && t_tcb->m_nexttimetorun<=t_currenttime)
+			if (UIK_OS__STATE_SLEEP==t_tcb->m_state && t_tcb->m_nexttimetorun<=t_currenttime)
 			{
-				t_tcb->m_state = ADOS_STATE_READY_TO_RUN;
+				t_tcb->m_state = UIK_OS__STATE_READY_TO_RUN;
 			}
-			if (ADOS_STATE_READY_TO_RUN==t_tcb->m_state)
+			if (UIK_OS__STATE_READY_TO_RUN==t_tcb->m_state)
 			{
 				if (t_tcb==g_UIK_ctrl.m_currenttcb)
 				{
@@ -370,7 +370,7 @@ void UIK_start()
 	//start scheduler
 	g_shedulerstarted = 1;
 	//switch to Idle task context
-	g_idleTcb.m_state = ADOS_STATE_READY_TO_RUN;
+	g_idleTcb.m_state = UIK_OS__STATE_READY_TO_RUN;
 	UIK_reSchedule();
 }
 
@@ -379,13 +379,13 @@ UIK_status_t UIK_addTask(volatile UIK_tcb_t* tcb, UIK_taskptr_t taskptr,
 {
 	if (NULL==tcb || NULL==stack)
 	{
-		return ADOS_STATUS_BAD_PARAM;
+		return UIK_OS__STATUS_BAD_PARAM;
 	}
 	UIK_lock();
 	tcb->m_stack = stack+stacksize-1;
 	tcb->m_taskptr = taskptr;
 	tcb->m_priority = priority;
-	tcb->m_state = ADOS_STATE_NOT_READY_TO_RUN;
+	tcb->m_state = UIK_OS__STATE_NOT_READY_TO_RUN;
 	if (NULL==g_UIK_ctrl.m_firstcb)
 	{
 		tcb->m_next = g_UIK_ctrl.m_firstcb;
@@ -407,7 +407,7 @@ UIK_status_t UIK_addTask(volatile UIK_tcb_t* tcb, UIK_taskptr_t taskptr,
 			t_prevtcb = (UIK_tcb_t**)&t_tcb->m_next;
 		}
 	}
-	return ADOS_STATUS_OK;
+	return UIK_OS__STATUS_OK;
 }
 
 void UIK_sleep(unsigned long msec)
@@ -415,7 +415,7 @@ void UIK_sleep(unsigned long msec)
 	if (0!=msec)
 	{
 		UIK_lock();
-		g_UIK_ctrl.m_currenttcb->m_state = ADOS_STATE_SLEEP;
+		g_UIK_ctrl.m_currenttcb->m_state = UIK_OS__STATE_SLEEP;
 		g_UIK_ctrl.m_currenttcb->m_nexttimetorun = millis() + msec;
 		UIK_reSchedule();
 	}
@@ -433,12 +433,12 @@ volatile void* UIK_eventWaitFor(volatile UIK_event_t* event, unsigned long timeo
 		UIK_lock();
 		if (timeout)
 		{
-			g_UIK_ctrl.m_currenttcb->m_state = ADOS_STATE_SLEEP;
+			g_UIK_ctrl.m_currenttcb->m_state = UIK_OS__STATE_SLEEP;
 			g_UIK_ctrl.m_currenttcb->m_nexttimetorun = millis() + timeout;
 		}
 		else
 		{
-			g_UIK_ctrl.m_currenttcb->m_state = ADOS_STATE_NOT_READY_TO_RUN;
+			g_UIK_ctrl.m_currenttcb->m_state = UIK_OS__STATE_NOT_READY_TO_RUN;
 		}
 		g_UIK_ctrl.m_currenttcb->m_waitingfor = event;
 		UIK_reSchedule();
@@ -456,7 +456,7 @@ void UIK_eventPulse(volatile UIK_event_t* event, volatile void* param)
 	{
 		if (t_tcb->m_waitingfor==event)
 		{
-			t_tcb->m_state = ADOS_STATE_READY_TO_RUN;
+			t_tcb->m_state = UIK_OS__STATE_READY_TO_RUN;
 			t_tcb->m_waitingfor = NULL;
 		}
 	}

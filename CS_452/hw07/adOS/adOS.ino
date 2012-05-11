@@ -12,6 +12,30 @@ unsigned char 			g_shedulerstarted = 0;
 unsigned char 			g_idleTaskStack[64];
 volatile ados_tcb_t 	g_idleTcb = {0};
 
+/*Addition for preemptive scheduling*/
+int ados_get_n_tasks()
+{
+  int retval;
+  volatile ados_tcb_t* t_tcb;
+
+  for (t_tcb=g_ados_ctrl.m_firstcb; NULL!=t_tcb; t_tcb=t_tcb->m_next)
+  {
+   retval++; 
+  }
+  
+  return(retval);
+}
+
+void ados_get_i_task(int i, volatile ados_tcb_t* t_tcb)
+{
+  int x;
+  for (t_tcb=g_ados_ctrl.m_firstcb; NULL!=t_tcb && x < i; t_tcb=t_tcb->m_next)
+  {
+    
+    x++;
+  }
+}
+
 static void ados_lock()
 {
 }
@@ -28,8 +52,15 @@ static void ados_reSchedule()
 
 		ados_timestamp_t t_currenttime = millis();
 
-		for (t_tcb=g_ados_ctrl.m_firstcb; NULL!=t_tcb; t_tcb=t_tcb->m_next)
+                /*
+                int i;
+                for(i = 0; i < ados_get_n_tasks(); i++)
 		{
+                    ados_get_i_task(i, t_tcb);
+                */
+  		for (t_tcb=g_ados_ctrl.m_firstcb; NULL!=t_tcb; t_tcb=t_tcb->m_next)
+                {
+                       
 			if (ADOS_STATE_SLEEP==t_tcb->m_state && t_tcb->m_nexttimetorun<=t_currenttime)
 			{
 				t_tcb->m_state = ADOS_STATE_READY_TO_RUN;

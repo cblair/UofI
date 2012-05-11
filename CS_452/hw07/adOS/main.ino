@@ -5,6 +5,10 @@
 volatile ados_tcb_t g_mainTcb;
 unsigned char g_mainTaskStack[128]   = {0xE7};
 
+#define TONE_TASK_PRIO	0
+volatile ados_tcb_t g_toneTcb;
+unsigned char g_toneTaskStack[128]   = {0xE7};
+
 #define MAIN_TASK2_PRIO	0
 volatile ados_tcb_t g_mainTcb2;
 unsigned char g_mainTaskStack2[128]   = {0xE7};
@@ -72,13 +76,18 @@ void setup()
         //counter_init();
         web_server_init();
         
+        /*Let's toot our horn a little bit to celebrate the fact that we are starting up*/
+        tone();
+        
 	ados_addTask(&g_serviceTcb, serviceTask,
 		g_serviceTaskStack, sizeof(g_serviceTaskStack), SERVICE_TASK_PRIO);
         
 	ados_addTask(&g_mainTcb, mainTask,
 		g_mainTaskStack, sizeof(g_mainTaskStack), MAIN_TASK_PRIO);
-        
-        
+        /*
+        ados_addTask(&g_toneTcb, tone_loop,
+		g_toneTaskStack, sizeof(g_toneTaskStack), TONE_TASK_PRIO);
+        */
         ados_addTask(&g_webTcb, web_server_loop,
 		g_webTaskStack, sizeof(g_webTaskStack), WEB_TASK_PRIO);
         

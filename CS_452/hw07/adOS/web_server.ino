@@ -31,8 +31,6 @@ EthernetServer server(80);
 
 int web_server_inited = 0; /*false*/
 
-int read_count = 0; /*how many times we've read the pins for data*/
-
 void web_server_init()
 {
   // start the Ethernet connection and the server:
@@ -44,9 +42,10 @@ void web_server_init()
 
 void web_server_loop()
 {
+ int read_count = 0; /*how many times we've read the pins for data*/
+  
  ados_sleep(500);//give time for rest of tasks to start
  
- led_update_delay13(); 
  /*main loop*/
  while(1)
  { 
@@ -58,6 +57,7 @@ void web_server_loop()
     while (client.connected()) {
       if (client.available()) {
         char c = client.read();
+        
         // if you've gotten to the end of the line (received a newline
         // character) and the line is blank, the http request has ended,
         // so you can send a reply
@@ -86,13 +86,15 @@ void web_server_loop()
               client.print("}"); 
             }
           }
+          
+          led_update_delay13(); 
+          read_count++;
+          
           client.print("<!-- \"read count\" : ");
           client.print(read_count);
           client.print(" -->");
           client.print("\n<br />\n");
           client.print("\n<br />\n");
-          
-          read_count++;
           
           break;
         }

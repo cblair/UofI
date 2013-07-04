@@ -1,0 +1,100 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amssymb,amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due April 23rd, 2012}
+\title{CS 395 Homework 8}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section*{PROBLEMS}
+
+\subsection*{5.2-1}
+$ P = \frac{1}{n} $
+
+
+\subsection*{5.2-2}
+$ P = \frac{1}{n!} $
+
+
+\subsection*{5.3-1}
+\begin{lstlisting}
+						
+RANDOMIZE_IN_PLACE(A)
+\end{lstlisting}
+
+\lstset{numbers=left}
+\begin{lstlisting}
+n = length(A)
+swap(A[1], A[RANDOM(1,n)]
+
+for i in 2 to n
+	swap(A[i], A[RANDOM(i,n)])
+\end{lstlisting}
+
+\subsubsection*{Loop Invariant}
+Just before  $ i = 2 $, the array $A[1...i-1]$ maintains the initial loop invariant. For the remaining iterations,
+the maintenance and termination loop invariants are upheld.
+
+
+\subsection*{5.3-2}
+It would, except at some point, $ i = n $, so the random functions is called as $RANDOM(n+1, n)$. I
+don't know what to expect out of the function with these values, but my guess would be an error. Besides
+this issue, it is simular to the $RANDOM\_IN\_PLACE()$ function I wrote in 5.3-1. Instead, Kelp should right the iteration range as $ i in 1 .. n - 1 $. The result would be:
+
+\begin{lstlisting}
+						
+PERMUTE_WITHOUT_IDENTITY(A)
+\end{lstlisting}
+
+\lstset{numbers=left}
+\begin{lstlisting}
+n = length(A)
+
+for i in 1 to n - 1
+	swap(A[i], A[RANDOM(i+1,n)])
+\end{lstlisting}
+
+
+%\subsection*{5.3-4}
+
+
+\end{document}

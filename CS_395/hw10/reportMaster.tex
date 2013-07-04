@@ -1,0 +1,209 @@
+
+%%%%%%%%% MASTER -- compiles the 4 sections
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amssymb,amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+
+\date{Due May 7th, 2012}
+\title{CS 395 Homework 10}
+
+\author{Colby Blair}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+
+Grade: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\end{center}
+
+\thispagestyle{empty}
+
+\pagebreak
+
+
+\section*{PROBLEMS}
+
+\subsection*{1. 7.1-1}
+Consider the array $ A = \{13,19,9,5,12,8,7,4,21,2,6,11\} $. The PARTITION(A) algorithm operations are 
+as follows:
+
+\subsubsection*{a).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p,j	&		&		&		&		&		&		&		&		&		&		&	r	\\
+	\hline
+		13	&	19	&	9	&	5	&	12	&	8	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular} \\
+
+\subsubsection*{b).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p,i	&	j	&		&		&		&		&		&		&		&		&		&	r	\\
+	\hline
+		13	&	19	&	9	&	5	&	12	&	8	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{c).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p,i	&		&	j	&		&		&		&		&		&		&		&		&	r	\\
+	\hline
+		13	&	19	&	9	&	5	&	12	&	8	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{d).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		i	&	p	&		&	j	&		&		&		&		&		&		&		&	r	\\
+	\hline
+		9	&	19	&	13	&	5	&	12	&	8	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{e).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+			&	i	&	p	&	j	&		&		&		&		&		&		&		&	r	\\
+	\hline
+		9	&	5	&	13	&	19	&	12	&	8	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{f).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&	i	&	p	&		&		&	j	&		&		&		&		&		&	r	\\
+	\hline
+		9	&	5	&	13	&	19	&	12	&	8	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{g).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&	i	&		&		&		&	j	&		&		&		&		&	r	\\
+	\hline
+		9	&	5	&	8	&	19	&	12	&	13	&	7	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{h).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&		&	i	&		&		&		&	j	&		&		&		&	r	\\
+	\hline
+		9	&	5	&	8	&	7	&	12	&	13	&	19	&	4	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{i).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&		&		&	i	&		&		&	j	&		&		&		&	r	\\
+	\hline
+		9	&	5	&	8	&	7	&	4	&	13	&	19	&	12	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{j).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&		&		&	i	&		&		&		&	j	&		&		&	r	\\
+	\hline
+		9	&	5	&	8	&	7	&	4	&	13	&	19	&	12	&	21	&	2	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{k).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&		&		&		&	i	&		&		&		&	j	&		&	r	\\
+	\hline
+		9	&	5	&	8	&	7	&	4	&	2	&	19	&	12	&	21	&	13	&	6	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{l).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&		&		&		&		&	i	&		&		&		&	j	&	r	\\
+	\hline
+		9	&	5	&	8	&	7	&	4	&	2	&	6	&	12	&	21	&	13	&	19	&	11	\\
+	\hline
+\end{tabular}
+
+\subsubsection*{m).}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | }
+		p	&		&		&		&		&		&	i	&		&		&		&	j	&	r	\\
+	\hline
+		9	&	5	&	8	&	7	&	4	&	2	&	6	&	11	&	21	&	13	&	19	&	12	\\
+	\hline
+\end{tabular}
+
+
+\subsection*{2. 7.2-2}
+In Quicksort, if every element is the same, then the call to PARTITION(A) in Quicksort always returns r - 1. 
+This leads to the worst case partitions, and Quicksort runtime $ = T(n) = \Theta(n^2) $ (worst case
+runtime).
+
+
+\subsection*{3. 7.3-1}
+The randomization won't improve the worst case, it just makes the chances of hitting the worst case small.
+So we don't consider it.
+
+
+\subsection*{4. 7.4-1}
+Considering the equation $ T(n) = max_{0 \le q \le n - 1} ( T(q) + T(n - q - 1)) + \Theta(n) $, we will show
+that the running time $ T(n) = \Omega(n^2) $.
+
+\subsubsection*{Inductive Hypothesis}
+Given $ T(n) = \Omega(n^2) $, we assume:
+
+\begin{eqnarray}
+	T(n) \ge cn^2
+\end{eqnarray}
+
+Where $c$ is a constant. 
+
+
+\pagebreak
+
+Further:
+
+\begin{eqnarray}
+	T(n) \ge max_{0 \le q \le n - 1} ( q^2 + c(n - q - 1)^2 ) + \Theta(n) \\
+		= (c) max_{0 \le q \le n - 1} ( q^2 + (n - q - 1)^2 ) + \Theta(n) \\
+\end{eqnarray}
+
+The minimum for $q^2 + (n - q - 1)^2$ can be found  in the range $ 0 \le q \le n - 1 $. We can then say:
+
+\begin{eqnarray}
+	max_{0 \le q \le n - 1} ( q^2 + (n - q - 1)^2 ) \le (n - 1)^2 = n^2 - 2n + 1 \\
+\end{eqnarray}
+
+Furthermore:
+
+\begin{eqnarray}
+	T(n) 	\ge cn^2 - c(2n - 1) \Theta(n) \\
+		\ge cn^2
+\end{eqnarray}
+
+Therefore, runtime $ T(n) = \Omega(n^2) $.
+
+
+\end{document}
